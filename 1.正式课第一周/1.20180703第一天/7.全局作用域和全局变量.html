@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 全局作用域 ： 当打开浏览器时，浏览器会形成一个全局的作用域，给当前代码提供运行环境的；并且存储基本数据类型值；
+    // 基本数据类型存储到栈内存中,全局作用域是最大的一个栈内存；
+    // window： 是全局下最大的一个对象；里面存储了大量的内置属性；
+    //console.log(typeof window);// 对象；
+    //window.alert();
+    //window.b = 100;
+    //window.alert();
+    //window.alert = 99;
+    //window.alert();
+    /*var  ary = [];
+    ary.push();*/
+    //console.log(age);
+    //console.log(name);
+    /*var  str = "126723";
+    console.log(str[length - 1]);*/
+    // in  : 检测当前属性名是否存在对象中；存在返回true，不存在返回false；
+
+    console.log(a);// undefined
+    console.log(b);// b is not defined  : b  is not defined;
+    var a = 100;// 全局变量
+    b = 1000;// 全局属性；
+    // 全局变量：会给window这个大对象新增键值对；
+    function sum() {
+        var  a = 1000;// 私有变量；
+        console.log(b);
+    }
+    sum();
+
+    // 私有作用域：
+    // 浏览器的渲染机制；
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -38,8 +38,18 @@
       <file leaf-file-name="4.git命令.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/4.git命令.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+            <state relative-caret-position="406">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="7.全局作用域和全局变量.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/7.全局作用域和全局变量.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -50,16 +60,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="268">
               <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="6.测试.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/6.测试.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -80,6 +80,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -90,9 +91,11 @@
         <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/1. 复习考试题.html" />
         <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/2.git.html" />
         <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/3.DOS命令.html" />
-        <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/4.git命令.html" />
         <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/5.gitHub.html" />
         <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/6.测试.html" />
+        <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/23.css" />
+        <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/4.git命令.html" />
+        <option value="$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/7.全局作用域和全局变量.html" />
       </list>
     </option>
   </component>
@@ -164,6 +167,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../备课" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -256,18 +260,17 @@
       <option name="presentableId" value="Default" />
       <updated>1530539820484</updated>
       <workItem from="1530539822834" duration="1501000" />
-      <workItem from="1530583362298" duration="17777000" />
+      <workItem from="1530583362298" duration="21331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19278000" />
+    <option name="totallyTimeSpent" value="22832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="2" width="1934" height="1036" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22925532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12712766" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -320,10 +323,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/4.git命令.html">
+    <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/6.测试.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="42" lean-forward="true" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+        <state relative-caret-position="414">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/23.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -336,10 +347,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/6.测试.html">
+    <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/4.git命令.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="406">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.正式课第一周/1.20180703第一天/7.全局作用域和全局变量.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding />
         </state>
       </provider>
