@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var obj ={a:1,b:2,c:3,12:16,1:2};
+    // for  in： 遍历循环对象；
+    // 循环中，只能用对象名[属性名]来获取属性值；
+    // 循环次数:跟当前对象键值对的个数有关；
+    // key  : 是字符串
+    // 在循环中，如果有数字的话，先输出，并且按照数字大小顺序，越小越先输出；
+    for(var key  in  obj){
+        console.log(key);// 属性名；
+        console.log(obj[key]);// 属性值
+    }
+
+</script>
+</body>
+</html>

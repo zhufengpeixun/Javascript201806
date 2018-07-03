@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // : 匿名函数
+    //    function fn() {
+    //
+    //    }
+    // 函数表达式；
+    /*var  f = function () {
+        console.log(1)
+    }
+    f();*/
+
+    // 自执行函数
+    (function (m,n) {
+        console.log(1)
+        console.log(m);
+        console.log(n);
+    })();
+    !function () {}();
+    +function () {}();
+    -function () {}();
+    ~function () {}();
+
+   function f() {
+       console.log(100);
+       return 100;
+   }
+   var a = f();
+   console.log(f());// 100;
+
+
+</script>
+</body>
+</html>

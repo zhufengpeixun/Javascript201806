@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id='price'></div>
+<script>
+    // 函数的return；
+    // 1.函数如果没有return，那么函数的返回值就是undefined；
+    // 2. 函数执行都会产生一个返回值；
+    // 3. 中止函数return下面的代码运行；
+    function sum() {
+        var total =null;
+        for(var i=0;i<arguments.length;i++){
+            var cur =arguments[i];
+            if(!isNaN(cur)){
+                total += Number(cur);
+            }
+        }
+        return total;
+        //console.log(1);
+    }
+    var count = sum(12,"12","12px",true,[],undefined,NaN,{},100);
+    //console.log(sum(12,"12","12px",true,[],undefined,NaN,{},100))
+    var price = document.getElementById("price")
+    price.innerText = count;
+
+
+</script>
+</body>
+</html>

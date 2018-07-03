@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>大哥</div>
+    <!--shhss-->
+    <!--shhss-->
+    <!--shhss-->
+    <!--shhss-->
+    <div id="second">
+        <div id="center"></div>
+    </div>
+    <div></div>
+</div>
+<script>
+    var  sec = document.getElementById("second");
+    var  center = document.getElementById("center");
+    //sec.previousElementSibling
+    // previousSibling :
+    // 1.是一个哥哥节点  2.是一个元素节点；nodeType===1
+    /*function getBrother(curEle) {
+        var  pre = curEle.previousSibling;
+        while(pre){
+            if(pre.nodeType===1){// 如果nodeType是1;说明是一个元素节点；
+                return pre;
+            }
+            pre = pre.previousSibling;
+        }
+        return null;
+    }
+    getBrother(sec);*/
+    // 2.获取当前元素下一个弟弟元素节点
+    // 3.获取当前元素所有的兄弟元素节点；
+    // 4.获取当前元素祖先元素节点；
+
+    function getParent(curEle) {
+        var parent = curEle.parentNode;
+        var ary = [];
+        while(parent){
+            ary.push(parent);
+            if(parent.nodeName==="HTML"){
+                return ary;
+            }
+            parent = parent.parentNode;
+
+        }
+    }
+    console.log(getParent(center));;
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

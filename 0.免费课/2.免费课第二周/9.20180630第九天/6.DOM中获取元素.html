@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent" class="first">
+    <div id="child"></div>
+</div>
+<div id="parent1"></div>
+<input type="text" name="a">
+<div id="a" class="first">111</div>
+<script>
+    // 获取元素的方式
+    // 1.document.getElementById()
+    // 如果ID名字相同，那么获取第一个；
+    // document : 文档；上下文；
+    // parent : 对象
+    // getElementById 的上下文必须document；
+    // 如果ID不存在，那么默认获取到的结果null；
+    //在IE8以下，会把name属性叫a的也获取到
+    /*var parent = document.getElementById("parent");
+    var child = document.getElementById("child");
+    var input = document.getElementById("a");
+    console.log(input);
+    console.log(parent);*/
+
+    // 2. document.getElementsByTagName(): 通过标签名来获取一组元素
+    // 返回值是一个类数组集合；不是一个真正的数组；
+    // 上下文可以是元素节点；
+    //[{style:{background:""}}]
+   /* var parent = document.getElementById("parent");
+    var divs = parent.getElementsByTagName("div")[0];
+    divs.style.background = "red";
+    console.log(divs);*/
+   // 3.document.getElementsByClassName(): 通过class名字来获取元素；获取到一个类数组集合；
+    // 在IE8 及以下是不兼容的；
+   //var  first =  document.getElementsByClassName("first");
+   //console.log(first);
+
+   // 4. document.getElementsByName: 通过name属性获取元素，一般用于获取表单元素；
+    //  会把id当做name 来获取【IE9及以下】
+    //console.log(document.getElementsByName("a"));
+
+    // 5.document.documentElement
+    console.log(document.getElementsByTagName("html"));
+    console.log(document.documentElement);
+
+    // 6.document.body
+    console.log(document.body);
+
+    //  获取当前浏览器可视窗口的宽度和高度
+    // 处理兼容
+
+    /*var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;*/
+
+    // 移动端获取元素
+    // 7.querySelector : 获取一个元素
+    // ID : #   class : .
+    //console.log(document.querySelector(".first"));
+    //console.log(document.querySelector("div"));
+
+    // 8.querySelectorAll : 复数
+    console.log(document.querySelectorAll("#a"));
+
+
+</script>
+</body>
+</html>

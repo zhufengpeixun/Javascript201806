@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 数组的方法、数组的算法【去重、冒泡排序、插入排序、快速排序】
+    // DOM ： dom 的获取 dom的节点  dom的节点属性 动态操作dom
+    // 字符串方法  解析url的案例；
+    // Math  : 数学方法  随机验证码
+    // Date 、定时器；倒计时案例；
+
+    // 数组的方法：只有数组可以使用；
+    // 1. push  : 向数组添加一项
+    //console.log(push());
+    //console.log([].push1());
+
+    // 2. pop  : 删除数组最后一项
+    /*ary.pop();
+    ary.length--;
+    ary.splice(ary.length-1,1)*/
+    // 3. unshift : 新增数组第一项
+    //ary.unshift(100)
+    // 4.shift : 删除数组第一项
+    //ary.shift();
+    // 5.slice : 截取; 支持负数
+    //ary.slice(n-1,m)
+    // slice() : 克隆
+    // slice(m) : 从索引截取最后  slice(0)
+    // slice(m,n)： 从索引m开始，截取到索引n,不包含n;
+
+    // 6.splice : 删除数组中某几项
+    // splice(2) : 从索引m开始，删除原有数组发生改变
+    // splice(2,5) : 从索引m开始删除n个；
+    // splice(2,3,6) : 替换
+    // splice(2,0,6) : 在索引2这一项的前面新增；
+
+    // 7.sort :
+    // 排序: 只能排相同位数的数组成员的数组；
+    // 需要传参数；
+    // 返回值是排好的数组
+    // 原有数组发生改变
+    /*var ary = [123,870,766,576,376,766,970,783];
+    ary.sort();
+    console.log(ary);*/
+    /*var ary = [20,7,8828,29,99,356];
+    //
+    var  a = ary.sort(function (a,b) {
+        return b-a;
+    })
+    console.log(ary);
+    console.log(a);*/
+    var ary = [20,7,8828,29,99,356];
+    // 8.reverse :
+    // 将数组倒过来排序
+    // 不需要传参数
+    // 倒过来之后的数组
+    // 原有数组发生改变
+    /*var a = ary.reverse();
+    console.log(ary);
+    console.log(a);*/
+
+    // 9.join: 按照特定的字符把数组成员连接成一个字符串
+     // 需要参数（特定的字符）
+    //  拼接之后的字符串
+    // 原有数组不发生改变
+    //console.log(ary.join("%"));
+    //console.log(ary);
+
+    // 10.concat : 数组的拼接
+    // 需要参数
+    // 拼接之后的数组
+    // 原有数组不发生改变
+   /* var  ary1 = [12,89,7];
+    var ary2 = [100,100];
+    var  num = 99;
+    console.log(ary.concat(ary1,ary2,num));
+*/
+   /* var  ary1 = [12,89,7];
+    var ary2 = [100,100];
+    // 展开运算符
+    var hh = [...ary1,...ary2]
+    console.log(hh);*/
+
+   // 11. indexOf : 检测数组成员在数组中第一次出现的索引位置
+    // 如果当前成员不存在，那么返回-1；
+    /*var ary = [20,7,8828,29,99,29,356];
+    function index(a,num) {
+        for(var i=0;i<a.length;i++){
+            if(a[i]===num){
+                return i;
+            }
+            /!*if(i===a.length-1){
+                return -1;
+            }*!/
+        }
+        return -1;
+    }
+    index(ary,29)
+    console.log(ary.indexOf(29));// 3
+    console.log(ary.indexOf(66));*/// -1
+
+    // 12. lastIndexOf : 检测数组成员在数组中最后一次出现的索引位置
+    //不存在返回-1
+    // 13.map :数组的映射; 有返回值的；
+    // 一定有返回值，并且是个数组，数组成员由回调函数的return来决定；
+    // 遍历循环数组
+    var ary = [20,7,8828,29,99,356];
+    /*var  a = ary.map(function (item,index) {
+        // 数组有多少项，执行多少次；
+        // item: 数组的每一项
+        // index : 数组成员的索引
+        console.log(item, index);
+        // return 1;
+    });
+    console.log(a);*/// [1, 1, 1, 1, 1, 1]
+    //14.forEach : 数组的遍历;没有return；
+    //
+    /*var a = ary.forEach(function (item,index) {
+        console.log(item);
+        console.log(index);
+        return 1;
+    });
+    console.log(a);*/
+
+    // 15.toString: 把数组转成字符串
+    console.log(ary.toString());
+
+
+</script>
+</body>
+</html>

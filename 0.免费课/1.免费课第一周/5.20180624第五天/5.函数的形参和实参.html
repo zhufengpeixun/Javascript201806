@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+    var a =10;
+    var total=10;
+    function fn(m,n){// 函数定义的括号中的变量是形参: 函数的入口；
+        console.log(m);// 10
+        m =1;
+        console.log(a);
+        var total = 10+10;
+    }
+    fn(a,100)// 函数执行的位置都是实参；
+    console.log(total);
+    // 在函数执行时，函数体中可以找到函数外面的变量；但是函数外面不能访问里面的变量；
+    // 在函数执行时，函数会形成一个私有的作用域，保护了里面的私有变量不受外界的干扰；这种保护机制--> "闭包"；
+
+
+</script>
+</body>
+</html>

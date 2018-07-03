@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // arguments
+    /*function sum() {
+        // arguments : 函数天生自带实参参数集合
+        // 是一个对象数据类型的，不是数组
+        // []: 集合；
+        console.log(arguments instanceof Array);
+        var total = 0;
+        for(var i=0;i<7;i++){
+            total += arguments[i];
+        }
+        console.log(total);
+    }
+    sum(1,2,3,4,58,99,100)*/
+    // 任意数求和
+    /*function sum() {
+        var  total =0;
+        for(var i =0;i<arguments.length;i++){
+            if(!isNaN(arguments[i])){// 校验当前值转number是否是有效数字；如果是有效数字，就进判断条件；
+                total +=Number(arguments[i]);
+            }
+        }
+        console.log(total);
+
+    }
+    sum("1",199,10,"12px",true,[],19,NaN);*/
+    // 只求是number类型的，并且排除NaN
+    function sum() {
+        var  total =0;
+        for(var i =0;i<arguments.length;i++){
+           if(typeof arguments[i]==="number"){
+               if(!isNaN(arguments[i])){
+                   total += arguments[i];
+               }
+           }
+        }
+        console.log(total);
+    }
+    sum("1",199,10,"12px",true,[],19,NaN);
+</script>
+</body>
+</html>

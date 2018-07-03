@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "A0zabc324jd";
+    // 1.索引  2.length  3.字符串运算
+    // 1. toUpperCase : 把小写字母转成大写
+    //str.toUpperCase()
+    //var  str1 = "HELLO"
+    // 2.toLowerCase 把大写转小写
+    //console.log(str1.toLowerCase());
+
+    // 3.charAt : 通过索引获取字符
+    //console.log(str.charAt(4));
+    // 4.charCodeAt : 通过索引获取对应字符的Unicode编码；
+    // a-z : 97--122  0-9 : 48-57  A-Z : 65-90
+    //console.log(str.charCodeAt(0));
+
+    // 5.substr : 截取 substr(m,n) 从索引m开始，截取n个字符；
+    //substr(m) : 从索引m开始截取到末尾
+    //console.log(str.substr(2));
+    //console.log(str.substr(2,5));
+
+    // 6.substring: substring(m,n) ：从索引m开始，截取到索引n，不包含n;
+    // 当n是负数时，m截取到开头； 不支持负数；
+    //console.log(str.substring(2, 5));
+    //console.log(str.substring(5, -1));
+
+    // 7.slice(m,n): substring; 从索引m开始，截取到索引n，不包含n
+    // 支持负数的的截取；
+    /*console.log(str.slice(3, 7));
+    console.log(str.slice(3, -1));
+    console.log(str.slice(3, 0));*/// ""
+
+
+    //8.indexOf : 检测字符在字符串中第一次出现的索引位置；返回索引；如果字符串不存在，返回-1；
+    //console.log(str.indexOf("e"));// 4
+    //console.log(str.indexOf("w"));// -1
+
+    // 9.lastIndexOf : 检测字符在字符串中最后一次出现的索引位置；返回索引；如果字符串不存在，返回-1
+    /*console.log(str.lastIndexOf("n"));
+    console.log(str.lastIndexOf("k"));*/
+
+    // 10.split : 把字符串按照特定的字符分隔数组中的每一项；
+    //console.log(str.split(""));
+    //var str = "zhufengpeixun";
+    // 11.replace:替换;原有字符串不变；用新字符替换旧的字符
+    //console.log(str.replace("u", "m").replace("u", "m"));
+
+    // 字符串.replace(oldStr,newStr);
+    /*console.log(str);
+    var  str1 = "zhufengzhufeng";
+    console.log(str1.replace("zhufeng", "zhufengpeixun").replace("zhufeng", "zhufengpeixun"));*///"zhufengpeixunpeixunzhufeng"
+
+    // 12.concat : 拼接
+    /*var str = "aer";
+    console.log(str.concat("123"));*/// "aer123"
+
+    // 13.trim : 去空格 : 去除字符串中左右的空格；
+    // trimLeft : 去字符串左边的空格
+    // trimRight : 去字符串右边的空格；
+
+    var str = "  66yy yww ";
+    str.trim();
+
+
+
+</script>
+</body>
+</html>

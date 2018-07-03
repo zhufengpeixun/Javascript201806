@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var  box = document.getElementById("box");
+    //1. console.log: 控制台输出
+    console.log(1)//number
+    console.log("1")// 字符串
+    console.log(box)
+    // 2.
+    console.dir(box);
+    // 3. document.write()
+    document.write("你很帅");// 页面中打印内容；
+
+    //4.alert : 弹出; 默认会进行数据类型转换，转换成字符串，调用toString的这个方法；会让当前代码停止到这一行；
+
+    // 5.confirm :
+    // 点击确定按钮函数返回值是true；点击取消函数返回值是false；
+     // var a = confirm("你很帅");
+      //console.log(a);
+
+      //6.prompt : 点击确定时，输入框输入内容就是函数的返回值，点击取消，返回值是null；
+    console.log(prompt("天气很暖和"));
+
+    //alert(1);
+    //alert("")// ""
+    //console.log(15);
+
+    //debugger: 断点；
+
+
+</script>
+</body>
+</html>

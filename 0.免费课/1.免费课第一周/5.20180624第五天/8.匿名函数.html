@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    function fn() {
+
+    }
+    // 匿名函数： 没有名字的函数；
+    // 把等号右边的函数的 空间地址赋值给变量f;
+    /*console.log(a);// undefined
+    var  a = 10;
+    console.log(a);*/
+    console.log(typeof  f);// "undefined"
+    var  f = function () { // eeefff000;
+
+    }
+    f();
+    console.log(typeof  f);// "function"
+
+    var obj = {
+        num:10,
+        fn:function () {
+
+        }
+    }
+    var  box = document.getElementById("box");
+    // box--> object
+    box.onclick = function () {
+
+    };
+    // 自执行函数： 自己运行；
+    (function () {
+        // 当浏览器加载到这一行马上执行；
+        var a =10;
+        console.log(100);
+    })();
+    //hh()//hh is not defined ： 函数名没有存储空间地址；
+    //
+    ~function () {}();
+    var a = +function () {
+        return 18;
+    }();
+    var d = -function () {
+        return 18;
+    }();
+    console.log(a);
+    console.log(d);
+    var r = !function () {
+        return 0;
+    }();
+    console.log(r);
+    var obj = {};
+    obj = null;
+
+
+    function fn() {
+
+    }
+    fn();
+    fn();
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

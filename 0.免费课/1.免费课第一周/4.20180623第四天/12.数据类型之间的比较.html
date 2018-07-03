@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. = :  赋值；
+    /*var a = 10;
+    var obj = {b:1};
+    obj.b = 100;*/
+
+    // 2. ==  :比较；数据类型之间的比较；返回值是一个布尔值 true false；
+    //1==1 // true
+    //1=="1"
+    // 数据类型之间比较时，会默认进行数据类型之间的转换，然后再进行比较；
+    // 数据类型比较时转换的规律；
+    // 对象==对象： 比较的是空间地址
+    // 对象 == 字符串 ：首先会把对象转换成字符串，然后再进行比较；
+    // 对象==布尔 ： 对象首先调用toString转换成字符串，然后再调用Number转数字；布尔直接转数字，进行比较；
+    //对象 == 数字： 对象首先调用toString转换成字符串，然后再调用Number转数字,然后和数字比较；
+    // 布尔==字符串： 布尔转数字，字符串也是转数字；
+    // 布尔 ==数字： 布尔转数字，然后进行比较
+    // 字符串== 数字： 字符串转数字，然后进行比较
+    // null == undefined : true;
+    // NaN == NaN : false；
+    /*var obj = {};
+    var s  = {};
+    console.log(obj == s);*/
+    //var a = b ={};
+   /* var  obj = {a:1}
+    obj == "a:1"
+    console.log(obj.toString());// "[object Object]"
+   */
+    //({}) == false  false
+    //({}) == NaN  false
+  //true.toString()
+
+    // === ： 绝对比较；不会进行数据类型之间的转换；只要数据类型不一样，就是false；
+
+    // ! : 放在值前面是取反
+    //!= : 放在等号前面是不等于
+    //({}) !=({})
+
+
+
+
+
+</script>
+</body>
+</html>

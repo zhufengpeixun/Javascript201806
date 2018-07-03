@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            cursor: pointer;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            border:1px dashed blue;
+        }
+    </style>
+</head>
+<body>
+<button>变宽</button>
+<button>变高</button>
+<button>变红</button>
+<button>复原</button>
+<div id="box"></div>
+<script>
+    var  btns = document.getElementsByTagName("button");
+    var  box = document.getElementById("box");
+    btns[0].onclick = function () {
+        box.style.width = "300px";
+    }
+    btns[1].onclick = function () {
+        box.style.height = "300px";
+    }
+    btns[2].onclick = function () {
+        box.style.background = "red";
+    }
+    btns[3].onclick = function () {
+        box.style.background = "";
+        box.style.width="100px";
+        box.style.height = "100px";
+    }
+    console.log(btns);
+
+    // for  if else
+     for(var i=0;i<btns.length;i++){
+         btns[i].onclick = function () {
+             // if else  .....
+         }
+     }
+
+
+</script>
+</body>
+</html>

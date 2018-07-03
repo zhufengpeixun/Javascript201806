@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*console.log(1)
+    function fn() {
+        console.log(1)
+    }
+    fn()
+    fn();
+    for(var i=0;i<100;i++){
+        console.log(100)
+    }
+    if([]==![]){
+        console.log(1)
+    }*/
+    /*for(var i=0;i<100;i++){
+        console.log(100)
+    }*/
+    // 函数的递归： 在函数体内部执行函数自己；
+    //课下的练习： 用递归方式去实现获取上一个哥哥元素节点；
+    /*function fn() {
+        console.log(100);// 1
+        if(1==1){
+            return;
+        }
+        fn();
+    }
+    fn()*/
+
+    // 求1-100之间既是3倍数和又是5倍数的数字的和
+    function sum(num,n) {
+        if(num>n){
+            return;
+        }
+        if(num%3===0&&num%5===0){// 3倍数和又是5倍数
+            return num + sum(num+1);
+        }
+        if(num%3!==0||num%5!==0){
+            return sum(num+1);
+        }
+        // 1  return  sum(1+1);
+        // 2  return  sum(2+1);
+        // 3 return  sum(3+1)
+        // 14  return sum(14+1)
+        // 15return  15 + 30 + ...+0;
+        // 100
+    }
+    console.log(sum(1,100));
+    console.log(sum(100,200));
+
+</script>
+</body>
+</html>

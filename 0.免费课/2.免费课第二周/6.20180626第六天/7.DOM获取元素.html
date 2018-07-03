@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box" class="box">
+        <div id="box1" class="box">
+            2
+            <span></span>
+        </div>
+
+    </div>
+    <div></div>
+    <input type="text" id="a">
+
+<script>
+    // 要操作谁，就要先获取谁；
+    // 1. 获取元素
+      //1.document.getElementById:\
+    // 兼容性： 在IE8以下，会默认把name属性当做id来获取；
+    // document : 文档；上下问必须是document
+    // get : 获取
+    // element : 元素
+    // By : 通过
+    // Id : ID名字；
+    // id 是唯一的；不能重复
+   var  oBox = document.getElementById("box");// {className:"",style:{}}
+    //var oBox1 = oBox.getElementById("box1");
+    /*var a = document.getElementById("a");
+    console.log(a);
+    console.log(oBox);*/
+    //console.log(typeof oBox);// "object"
+    //oBox.style.background = "red";
+
+    // 2. document.getElementsByTagName: 通过标签名来获取元素
+    // 是一个类数组集合
+    /*var arr = oBox.getElementsByTagName("span");// "标签名"[{style:{}]
+    arr[0].style.background = "red";
+    console.log(arr);*/
+    // 3. document.getElementsByClassName(); 类数组集合；
+    // IE8及以下是不兼容的；
+    // 通过class名字来获取元素；
+    //
+    /*var a = document.getElementsByClassName("box");
+    console.log(a.length);
+    console.log(a);*/
+
+    // 4.document.getElementsByName;通过name属性来获取元素；
+    // 在IE9及以下，会默认把id名是a的获取到；
+    /*var  inputs = document.getElementsByName("a");
+    console.log(inputs);*/
+
+    // 5.
+    //document.documentElement 获取当前的html
+    /*console.log(document.documentElement);
+    var htm = document.getElementsByTagName("html")
+    console.log(htm);*/
+
+    // 6.body :获取页面的body元素；
+    //console.log(document.body);
+
+    // 获取当前浏览器可视窗口高度和宽度
+    /*var winW= document.documentElement.clientWidth || document.body.clientWidth;
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+    console.log(winW);
+    console.log(winH);*/
+    // 7.document.querySelector();
+    //var divs = document.querySelector(".box");//
+    // 如果是id名，前面需要加一个#;如果是class,要加一个.
+    //console.log(divs);
+    // 8.document.querySelectorAll();
+    // querySelectorAll: 获取所有的元素；
+    var divs = oBox.querySelectorAll("div")
+    console.log(divs);
+</script>
+</body>
+</html>

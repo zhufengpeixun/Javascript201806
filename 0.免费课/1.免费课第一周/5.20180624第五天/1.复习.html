@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 数据类型
+    // 基本数据类型和引用数据类型
+    // number  string  boolean  null undefined
+    // 对象数据类型  函数数据类型
+    // 对象{}  数组[]  正则/\d123/  Math  Date 的实例...
+    // 对象 == 字符串
+    // []== 字符串
+    var  a= 19;
+    //number :
+    var num = 1.23;
+    num.toFixed(2);
+    var  str = "1.2474";
+    console.log(str.toFixed);// undefined
+    //str.toFixed(2);// str.toFixed is not a function
+    Number([])// 0
+    Number({})//NaN
+
+    // string
+    // 索引  length
+    // 字符串的运算 + - * /
+    // 字符串在进行- * / 运算时，会先把字符串转换成number；然后再进行运算；
+    // + : 字符串的拼接；
+    //"3"-"1"
+    /*if("3px"*3){
+        console.log(10);
+    }*/
+
+    // 布尔 true false
+
+    // 0  ""  NaN  null  undefined : 转布尔是false
+    // Boolean   ||  &&   ！
+    //![]: 先把后面的值转布尔，然后再进行取反
+    //!= : 不等于  后面最多跟两个等号；
+
+    // null undefined :
+
+    //  对象
+
+    var pvj = {a:1,b:45};
+    // 增删改查
+    var a = pvj.a;// 获取值
+    pvj.a = 100;// 被赋值
+    console.log(pvj.a)// 获取对象a的属性名对应的属性值；
+
+    // 新增
+    pvj.c = 10;
+    pvj["c"] = 10;
+
+    // 改
+    pvj.a = 0;
+    pvj["a"] = 10;
+    // 获取
+    var g = pvj.a;
+    // 删除
+    pvj.a  =null;
+    delete pvj.a;
+
+    // in  : 检测当前属性名是否在对象中存在；返回值布尔
+    if(!("a" in  pvj)){
+
+    }
+
+    // 数组
+    // 索引 length
+
+    // 操作语句
+
+    // // if else  三元运算符  switch case[绝对比较]
+
+    // 数据类型检测：typeof  instanceof  constructor  Object.prototype.toString.call();
+
+    // 数据类型的比较
+    // 对象 -->字符串 -->number
+    // 布尔--> number
+    // 字符串--> number;
+    // null == undefined
+
+    console.log(![] != 0);// false
+
+
+
+</script>
+</body>
+</html>

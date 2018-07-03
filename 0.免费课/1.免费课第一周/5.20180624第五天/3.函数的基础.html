@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // function : 关键字；定义函数；
+    /*var  a  =10;
+    function fn() {
+        console.log(100);
+    }
+    console.log(1);
+    fn();
+    fn();
+    box.onclick = function () {// 函数： 当点击box时，执行函数；
+       console.log("box")
+    }*/
+
+    // 函数的封装
+    /*var num1 = 12.893349;
+    var num2 = 28.90077;
+    var val1 = Number((num1+num2).toFixed(2));
+    console.log(val);
+
+    var num3 = 6.4633349;
+    var num4 = 2.92177;
+    var val2 = Number((num3+num4).toFixed(2));
+    console.log(val2);*/
+   function sum(num1,num2) {// 形参
+       /*console.log(num1);// 12.893349
+       console.log(num2);*///28.90077
+       var val = Number((num1+num2).toFixed(2));
+       console.log(val);
+   }
+   sum(12.893349,28.90077);// 实参
+   sum(6.4633349,2.92177);
+   // 函数的封装： 把实现相同功能的代码放到一个函数中，当想实现类似功能时，执行这个函数；减少了代码的冗余；高内聚，低耦合的特点;--> 函数的封装；
+
+
+</script>
+</body>
+</html>

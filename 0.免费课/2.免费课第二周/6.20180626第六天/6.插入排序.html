@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary = [12, 88, 67, 98, 56, 35, 45, 26, 1];
+
+    //5   6  7 8  10
+    //得到的新数组是排好序
+    //插入排序原理：去原有数组中去取每一项，然后和新数组中的成员进行比较，从新数组后面开始，一一向前比较，比新数组项小，继续和前一项比较，直到当前项比数组中一项值大时，把它放到这一项的后面；
+    var newAry = [];
+    newAry.push(ary[0]);
+    for (var i = 1; i < ary.length; i++) {
+        var cur = ary[i];
+        for (var j = newAry.length - 1; j >= 0; j--) {
+            if (cur < newAry[j]) {// 如果数组中拿到的这一项比新数组中j的这一项小；那么继续j--;和上一个成员进行比较；
+                if (j === 0) {
+                    newAry.unshift(cur);
+                    break;// 只会中止当前的小循环
+                }
+            } else {
+                // cur<newAry[j]的情况，把当前项放到新数组这一项的后面；
+                newAry.splice(j + 1, 0, cur);
+                break;
+            }
+
+        }
+    }
+    // 从前向后
+    console.log(newAry);
+
+
+    var ary = [12, 88, 67, 98, 56, 35, 45, 26, 1];
+    var mAry = [12, 67, 88];
+    mAry.push(ary[0]);
+    for (var i = 1; i < ary.length; i++) {
+        var cur = ary[i];
+        for (var j = mAry.length - 1; j >= 0; j--) {
+            if (cur < mAry[j]) {
+                if (j === 0) {
+                    mAry.unshift(cur);
+                    break;
+                }
+            } else {
+                mAry.splice(j + 1, 0, cur);
+                break;
+            }
+        }
+    }
+</script>
+</body>
+</html>

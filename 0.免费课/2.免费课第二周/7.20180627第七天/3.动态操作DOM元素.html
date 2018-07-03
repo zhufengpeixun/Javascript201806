@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hello{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+        .world{
+            width:100px;
+            height:100px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p></p>
+    <div hh="nnn" class="hello">
+    </div>
+</div>
+<script>
+    var oBox = document.getElementById("box");
+    /*oBox.innerHTML = "函数很重要";*/
+    // 1.document.createElement;创建元素
+    //var  newDiv = document.createElement("div");
+    ///console.log(newDiv);
+    // 2.appendChild : 向元素的末尾添加子节点；
+    // 父级.appendChild(儿子)/
+    //  oBox.appendChild(newDiv);
+    //Failed to execute 'appendChild' on 'Node': parameter 1 is not of type 'Node'
+    var div = document.getElementsByTagName("div")[1];
+    // 3.removeChild : 删除子节点；
+    //oBox.removeChild(div);
+    //var  span = document.createElement("span")
+    // 4.replaceChild : 替换节点；
+    // 父级.replaceChild(newChild,oldChild);
+    //oBox.replaceChild(span,div);
+
+    // 5.insertBefore :把元素节点插入某个节点的前面
+    // 父级.insertBefore(newChild,oldChild)
+    //oBox.insertBefore(span,div);
+
+    // 6.cloneNode : 复制节点；
+    // 参数： true： 深克隆，会当前元素以及子孙节点全部获取到
+    // false或不传 : 浅克隆，只会克隆当前元素节点；
+    //console.log(oBox.cloneNode(true));
+    //console.log(oBox.cloneNode());
+    //var a = document.getElementsByClassName("a")[0];
+    //var b = a.cloneNode(true);
+    //oBox.appendChild(a);
+    // 7. set/get/remove  Attribute : 设置自定义行内属性；
+    //1. getAttribute 不能获取通过元素.属性 = 属性值这种方式新增的属性；可以获取行内直接设置的，还有通过setAttribute 来设置的属性；
+   /* div.setAttribute("name","time");
+    div.index = 100;
+    console.log(div.name);// undefined
+    div.setAttribute("na","ti");*/
+    // 如果获取不到自定义行内属性，结果就是null；
+    /*console.log(div.getAttribute("name"));
+    console.log(div.getAttribute("index"));
+    console.log(div.getAttribute("hh"));*/
+    // 移出行内属性
+    //div.removeAttribute("class");
+    //div.className = "a";
+
+    // 8. classList
+    // add : 增加class
+    // remove: 移出class
+    //div.classList.add("hello")
+    //div.classList.remove("hello")
+    //div.classList.replace("hello","world")
+    div.onclick = function () {
+        if(div.className==="world"){
+            div.classList.replace("world","hello");
+        }else{
+            div.classList.replace("hello","world");
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #time{
+            width:200px;
+            height:40px;
+            text-align: center;
+            line-height: 40px;
+            margin: 30px auto;
+            border: 2px solid lightcoral;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+ <div id="time"></div>
+ <script>
+     // 倒计时： 目标时间---> 计算当前的最新时间和目标的时间的时间差---> 计算当前时间差中含有多少个小时，多少个分钟，多少秒【每隔一秒需要计算一次】--> 把计算出来的小时、分钟 、秒放回页面中；
+     var  time = document.getElementById("time");
+     var targetTime = new Date("2018/06/28 15:54:00");
+    // targetTime - new Date() : 计算目标时间距离当前最新时间的毫秒差；
+     function addZero(num) {
+         return num<10?"0"+num:num;
+     }
+     function count() {
+         // 计算时间差
+         var  diffTime = targetTime - new Date();
+         if(diffTime<=0){
+             clearInterval(a);
+             // 1. 返回值 2.中止代码
+             return;
+         }
+         // 计算时间差中含有多少个小时 分钟 秒；
+         var  hours = Math.floor(diffTime/(1000*60*60));
+         var minutes = Math.floor((diffTime-hours*1000*60*60)/(1000*60));
+         var seconds = Math.floor((diffTime-hours*1000*60*60-minutes*1000*60)/1000);
+         time.innerHTML = addZero(hours)+":" + addZero(minutes) + ":"+ addZero(seconds);
+     }
+     count();
+     var  a = setInterval(count,1000);
+
+      //4000秒  3600  400秒    6   40
+      // 1     6   40；
+
+
+ </script>
+</body>
+</html>

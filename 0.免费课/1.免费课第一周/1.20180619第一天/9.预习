@@ -1,0 +1,5 @@
+// 布尔  null  undefined  object  数组 ；
+// 数据检测： typeof  instanceOf   constructor  Object.prototype.toString.call();
+// 数据类型之间的转换；
+// 元素的获取方式；
+// 操作语句；

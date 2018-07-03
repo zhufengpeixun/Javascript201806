@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div id="a">122</div>
+</div>
+<div id="box1"></div>
+<script>
+    // JS的数据类型   操作语句  函数    数组;
+    //认识JS
+    // 组成的部分： 1.ECMAScript  : JS的核心语法、数据类型、变量、操作语句；（ es3  es5  ; es6/es7）
+    var a = 19;
+    function f(){
+
+    }
+    //2. DOM :document.object model : 文档对象模型；给JS提供了一些操作页面元素的属性和方法；
+    var box = document.getElementById("box");
+    //var b = box.getElementById("a");//box.getElementById is not a function
+    //console.log(b);
+    // document : 文档；上下文；getElementById的上下文必须是document；
+    // 通过标签名来获取元素
+    /*var  ary = box.getElementsByTagName("div")
+    console.log(ary);*/
+
+    // 3.BOM : browser object  model : 浏览器对象模型； 给JS提供一些操作浏览器的方法和属性；
+    // alert()
+    // console.log()
+    //history.go()// 正数和负数；负数就是后退；正数是前进；
+    //history.back();// 返回
+    //history.forward()// 前进
+
+    console.log(location.href);// 输出当前页面url地址；
+
+
+</script>
+</body>
+</html>

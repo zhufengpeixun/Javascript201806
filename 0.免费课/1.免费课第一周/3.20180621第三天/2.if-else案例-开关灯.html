@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+            background: white;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            margin:50px  auto;
+            background: red;
+            text-align: center;
+            line-height: 100px;
+            color:white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box">点我啊</div>
+<script>
+    // 操作谁，就要先获取谁
+    var oBox = document.getElementById("box");
+    // 给oBox这个元素绑定一个点击事件；当点击这个盒子的时候，触发后面的function里面的代码；
+    // 获取body 元素：document.body
+    console.log(document.body);
+    oBox.onclick = function () {
+        // 当页面现在是白色时，让它变成黑色，
+        // 如果本来就是黑色，让它变成白色；
+        // 获取
+        //{style:{background:""}}
+        // 只有行内样式可以影响这个属性值；
+        var  curBg = document.body.style.background;
+        console.log(curBg);
+        if(curBg==""||curBg=="white"){
+            console.log(100);
+            document.body.style.background = "black";
+        }else if(curBg=="black"){
+            console.log(200);
+            document.body.style.background = "red";
+        }else if(curBg==="red"){
+            document.body.style.background = "white";
+        }
+    }
+    // 黑白
+    // 红-->黄色-->蓝色--> 黑色-->红
+    // 先用if else  在用switch  case;
+</script>
+</body>
+</html>

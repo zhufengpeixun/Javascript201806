@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,p,ul,li{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        p{
+            width:200px;
+            height:40px;
+            margin:20px 100px;
+            font-size: 30px;
+            letter-spacing: 4px;
+            color:#f00;
+            text-align:center;
+            line-height: 40px;
+            border:1px solid #ff0000;
+            font-family: "Microsoft Yahei";
+        }
+        li{
+            margin:20px 0 4px 100px;
+            width:400px;
+            height:30px;
+        }
+        .bg{
+            background:#ffc0cb!important;
+        }
+    </style>
+</head>
+<body>
+<p id="code"></p>
+<ul id='ul1'>
+    <li></li>   <li></li>   <li></li>   <li></li>
+</ul>
+
+</body>
+</html>
+<script>
+    /*
+    答案：
+    一：基础知识填空
+    1.A基本数据类型
+       a.number string boolean null undefined
+    B.引用数据类型
+       a.对象数据类型 ：object{} Array[] Math Data() 正则
+       b.函数数据类型：function a(){}
+    2.数据类型检测方法：
+        typeof() instanceof  __proto__.toString.call()
+    3.a.基本数据类型存储在栈内存中，引用数据类型存储在堆内存中
+      b.基本数据类型操作值，引用数据类型操作的是空间地址
+    4.
+    5.setInterval() setTimeout()
+    二：基础知识填空
+    1. document.getElementById('div1');
+       document.getElementsByClassName('box')[0];
+    2.  var label = document.createElement('p'),
+        bodyBox= document.body;
+        bodyBox.appendChild(label);
+    3. var dom = document.getElementById('div1');
+        dom.previousSibling;
+    4.  substr(m,n) 从索引m开始,截取n个字符
+        substring(m,n) 从索引m开始，截取到索引n，不包括n
+        slice(m,n) 从索引m开始，截取到索引n，不包括n,参数可以是负数
+    5.replace(old,newstr);
+     三、数组的基础知识和应用
+      1.ary.push() ary.splice(ary.length,0,1)
+      2.ary.pop() ary.splice(ary.length-1,1);
+      3.for(var item in ary){}  for(var i;i<ary.length;i++){}
+      4.ary.sort()
+      5.ary.splice(n-1,m);    -2
+     四、Math常用的方法和数据类型比较
+     1.Math.round(Math.random()*(m-n)+n);
+     2.Math.max(ary); Math.min(ary);
+     3.true
+     4.true
+     五、 写一个sum方法来实现如下功能
+    ->用户可以根据自己的需要传递一个或者多个数值给函数
+    ->获取到用户传递进来的数值，把所有即能被三整除也能被五整除的进行相加
+    function sum(){
+        var total=0;
+        for(var i=0;i<arguments.length;i++){
+            var cur = arguments[i];
+            if(!isNaN(cur)){
+                if(cur%3==0&&cur%5==0){
+                    total+=Number(cur);
+                }
+            }
+        }
+        return total;
+    }
+    console.log(sum(15,"45","dfg",90))
+
+   六、 有一个数组 [1,2,3,2,1,2,3,4,2,1,2,3,4,3,2,1]
+   接下来由你自己来编写方法，最后我想获取的数组是 [4,3,2,1]
+
+    var ary = [1,2,3,2,1,2,3,4,2,1,2,3,4,3,2,1];
+
+    function heavy(a){
+        var aryFir = [];
+        for(var i=0;i< a.length;i++){
+            var cur = a[i];
+            if(aryFir.indexOf(cur)===-1){
+                aryFir.push(cur);
+            }
+        }
+        aryFir.reverse();
+        return aryFir;
+    }
+    var result = heavy(ary);
+    console.log(result);
+
+    七、做一个抽奖程序，页面中有一个区域显示中奖人员的编号，在JS中写一段代码，
+    要求每隔1秒中随机创建一个四位的数字（每一位数字的取值范围0-9），当10秒结束后，
+    结束定时器，最后显示的四位数字即是中奖的号码
+    var dom = document.getElementById('code');
+    var dataAfter = 10;
+    function luckDraw(){
+        //倒计时，创建随机四位数字，时间结束把中奖数字显示在页面上
+        var str = '';
+        if( dataAfter<0){
+            clearInterval(timer);
+            return;
+        }
+        for(var i=0;i<4;i++){
+            str += Math.round(Math.random()*9);
+            dom.innerHTML= str;
+        }
+        dataAfter-- ;
+    }
+    八.隔行变色
+    var uli = document.getElementById('ul1').getElementsByTagName('li');
+    for(var i=0;i<uli.length;i++){
+        uli[i].index = i;
+        if(i%2==0){
+            uli[i].style.background="#f00";
+        }else{
+            uli[i].style.background="#09ff00";
+        }
+        uli[i].onclick = function(){
+            alert("我是第"+(this.index+1)+"个li标签");
+        }
+        uli[i].onmouseover = function(){
+            this.classList.add('bg');
+        }
+        uli[i].onmouseout = function(){
+            this.classList.remove('bg');
+        }
+    }*/
+
+</script>

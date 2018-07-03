@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div id="parent">
+    世界杯
+    <div id="bro"></div>
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <!--赢多少-->
+    <div id="second" class="a">
+        <div></div>
+    </div>
+    <div id="last"></div>
+
+</div>
+<script>
+    // DOM的节点 ： 四种类型的节点；
+    //              nodeType     nodeName    nodeValue
+    // 元素节点        1          大写的标签名    null
+    // 文本节点        3           #text        文本内容
+    // 注释节点        8           #comment     注释内容
+    // document       9           #document     null
+    // 空格和换行都是文本节点；
+    var  parent = document.getElementById("parent");
+    var  sec = document.getElementById("second");
+    //节点的属性
+    // 1. childNodes : 获取当前元素所有的子节点；
+    //console.log(parent.childNodes);
+    //parent.childNodes[1].style.width="100px";
+    // 2.children : 获取当前元素的子元素节点；
+    // 3.firstChild : 获取第一子节点；
+         //firstElementChild : 第一个子元素节点； 在IE8及以下，是不兼容的；
+    // 4.lastChild :获取最后一个子节点；
+        // lastElementChild : 最后一个子元素节点；在IE8及以下，是不兼容的；
+    //console.log(parent.firstChild);
+    //console.log(parent.firstElementChild);
+    // 5.previousSibling : 获取上一个哥哥节点
+        // previousElementSibling
+    // 6.nextSibling : 获取下一个弟弟节点
+        // nextElementSibling : 获取下一个元素弟弟节点；
+    //console.log(sec.previousSibling);
+    // 7.parentNode: 获取当前元素的父亲节点；
+    // console.log(sec.parentNode.previousElementSibling);
+
+    //var body =document.body;
+    // document 没有父亲节点；如果没有获取结果就是null；
+    //console.log(body.parentNode.parentNode.parentNode);
+   var last = document.getElementById("last");
+    // 获取上一个哥哥的元素节点；兼容所有浏览器的方法；
+   function getBrother(curEle) {
+       var pre = curEle.previousSibling;
+       while(pre){
+           if(pre.nodeType === 1){//不满足，说明不是一个元素；
+               return pre;
+           }
+           pre = pre.previousSibling;
+       }
+       return pre;
+   }
+   getBrother(sec);
+   getBrother(last);
+    var  obj = {a:1};
+    obj = obj.a;
+    console.log(obj);// 1
+
+</script>
+</body>
+</html>

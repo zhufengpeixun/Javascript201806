@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 7. sort : 排序
+    // ary.sort() : 只能排数组成员位数相同的数组；
+    var  ary = [12,8,99,67,85,1,35,66,"78"];
+    //var ary = [1,8,5,3,2];
+    //var  ary = [123,678,987,567,345,234];
+    /*ary.sort(function (a,b) {
+        return a-b;
+    });*/
+    /*var newAry =  ary.sort(function (a,b) {
+        return b-a;
+    });
+    console.log(newAry);*/
+
+    // 8.reverse()
+    /*console.log(ary.reverse());
+    console.log(ary);*/
+
+    // 9.concat : 数组的拼接；
+    var  ary = [12,8,99,67,66,66,85,1,35,66,"78",66];
+    //var ary1 =[1,2,3]
+    /*console.log(ary.concat([100,200,null]));
+    var a = ary.concat();
+    console.log(ary.concat());*/
+
+    // 10.join :
+    /*console.log(ary.join("+"));//"12+8+99+67+85+1+35+66+78"
+    console.log(ary.join(""));//"1289967851356678"
+    console.log(ary.join());/*///"12,8,99,67,85,1,35,66,78"
+
+    // 11.indexOf
+    /*console.log(ary.indexOf(66));
+    console.log(ary.indexOf(666));
+    console.log(ary.indexOf(888));*/
+
+    // 12.lastIndexOf :
+    //console.log(ary.lastIndexOf(66));
+
+    // 13.map : 数组的遍历、映射；
+   /* var  ary = [12,8,99,67,66,66,85,1,"78",66];
+    var total= null;
+    var  mn = ary.map(function (item,index) {
+        //console.log(item);//遍历数组；第一个参数就是数组成员
+        //console.log(index);// 代表数组成员的索引
+        //return "<li></li>>";
+        // 求和
+        total +=Number(item);
+    });
+    console.log(total);
+    console.log(mn);*/
+
+    // 14.forEach： 没有返回值；
+   /* var  bhh = ary.forEach(function (item,index) {
+        console.log(item);
+        return 10;
+    })
+    console.log(bhh);//undefined
+    console.log(ary);*/
+    var ary = [1,23,8,9,90]
+
+    // 15.toString
+    console.log(ary.toString());// "1,23,8,9,90"
+    console.log([12].toString());// "12"
+    console.log([].toString());// ""
+    console.log(ary);
+
+</script>
+</body>
+</html>

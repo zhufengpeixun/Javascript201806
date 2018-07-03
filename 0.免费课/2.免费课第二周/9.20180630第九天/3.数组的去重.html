@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var  ary = [12,66,88,12,56,66,87,88];
+    // 1.indexOf :检测当前项是否存在，不存在返回-1；
+    /*var  newAry = [];
+    for(var i=0;i<ary.length;i++){
+        var cur = ary[i];
+        // 判断当前项在数组中是否出现过；
+        if(newAry.indexOf(cur)===-1){
+            newAry.push(cur);
+        }
+    }
+    console.log(newAry);*/
+
+    // 2.排序方法
+    //var  ary = [12,66,88,12,56,66,87,88];
+    /*var  newAry = [];
+    // 数组的排序
+    ary.sort(function (a,b) {
+        return a-b
+    });
+    console.log(ary);
+    // 相邻两项进行比较，如果这一项和后一项不相等,把这一项放进新数组中；
+    for(var i=0;i<ary.length;i++){
+        if(ary[i]!==ary[i+1]){
+            newAry.push(ary[i])
+        }
+    }
+    console.log(newAry);
+    var b = [12,3];
+    console.log(b[3]);*/// undefined
+    var  ary = [12,66,88,12,56,66,87,88];
+    // 3.对象的属性名不能重复;原有数组上去重；
+    var  obj = {};//12:12,66:66,88:88,12:12
+    for(var i=0;i<ary.length;i++){
+        var  cur = ary[i];
+        if(obj[cur] === cur){
+            //ary.splice(i,1);// 数组塌陷的问题: 会导致数组后面的每一项的索引都要进行重新计算，这样很消耗浏览器的性能；
+            ary[i] = ary[ary.length-1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[cur] = cur;
+    }
+    console.log(ary);
+
+    var  obj = {a:1,b:2};
+    var c = obj.a;
+    c = 10;
+    console.log(obj);// {a:1,b:2}
+
+    // 课下思考练习题；
+    // var ary = [12,13,67,77,88,12,88,67];
+    obj = {12:2,13:1,67:2,77:1,88:2}
+
+</script>
+</body>
+</html>

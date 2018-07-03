@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var url="https://www.baidu.com/s?cl=3&tn=baidutop10&fr=top1000&wd=工人嘴啃无骨鸡爪AA&rsv_idx=2";
+    //{cl:3,tn:baidutop10,fr:top1000,wd:工人嘴啃无骨鸡爪,rsv_idx:2}
+
+    function query(url) {
+        var  index = url.indexOf("?");
+        var  newStr = url.slice(index+1);
+        console.log(newStr);
+        var  ary = newStr.split("&");
+        console.log(ary);
+        var obj = {};
+        for(var i=0;i<ary.length;i++){
+            var  newAry = ary[i].split("=");
+            //console.log(newAry);
+            obj[newAry[0]] = newAry[1];
+        }
+        return obj;
+    }
+    console.log(query(url));
+
+
+</script>
+</body>
+</html>

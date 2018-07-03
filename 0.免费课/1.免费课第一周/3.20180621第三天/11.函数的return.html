@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function  入口  形参实参；
+    // 函数的出口  return
+    // return 后面跟着的内容就是函数的返回值；
+    function sum(num1,num2) {
+        var  total =0;
+        for(var i =0;i<arguments.length;i++){
+            if(typeof arguments[i]==="number"){
+                if(!isNaN(arguments[i])){
+                    total += arguments[i];
+                }
+            }
+        }
+        console.log(100)
+        return total;
+    }
+    console.log(sum("1", 199, 10, "12px", true, [], 19, NaN));
+    // 函数名() ： 代表函数返回值； 函数体中return出来的；
+    // return： 结束整个函数；下面的代码不再运行；
+    // 如果函数没有return；那么函数默认返回undefined；
+    var newSum = sum("1",199,10,"12px",true,[],19,NaN);
+    console.log(newSum);
+
+
+</script>
+</body>
+</html>

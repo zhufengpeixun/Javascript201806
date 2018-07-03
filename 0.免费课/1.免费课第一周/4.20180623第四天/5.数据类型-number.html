@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 正数 负数  0  NaN；
+    // NaN： Not  a  number 不是一个数字，但是属于number类型；
+    var num =100;
+    var  a = NaN;
+    // Number() : 把其他数据类型值强制转换成number类型；
+    Number("1") // 1
+    Number("1px")// NaN;
+    Number(NaN) // NaN
+    Number(true)// 1
+    Number([])// 0
+    Number(null)// 0
+    Number(undefined)// NaN
+    Number({})// NaN
+    // isNaN : 检测当前是否是一个非有效数字；是有效数字，返回false ;不是返回true；如果检测的值不是数字，首先强制转换成number类型；
+    // 如果转换之后是数字的话，就是false；
+    // 如果是NaN，结果就是true；
+    isNaN(NaN)// true
+    isNaN(1)// false
+    isNaN("1")// false;
+    isNaN("1px")// true;
+
+    // parseInt : 提取字符串中的的数字；把字符串从左到右依次识别，直到遇到一个非有效数字停止查找；把找到的数字返回；
+    parseInt("12px")// 12
+    parseInt("12.5px")// 12
+    parseInt("12px88")// 12
+    parseInt("px88")// NaN
+    parseInt("")// NaN
+    parseInt(null)// NaN
+    parseInt([])// NaN
+
+    // parFloat : 相对于parseInt多识别一位小数点；
+    parseFloat("12.5.88px")// 12.5
+
+    // toFixed : 保留小数点位数的方法;返回一个字符串；而且会进行四舍五入的机制；
+    console.log(1.889696.toFixed(2));
+    isNaN(null);
+    parseInt(null);
+    Number(null);
+    parseInt("");
+    Number("");
+    isNaN(NaN);
+    parseInt(NaN);
+    Number(NaN);
+    isNaN(parseInt(""));
+    isNaN(Number("1px"));
+    parseInt("1px");
+    isNaN("NaN");
+    isNaN(parseInt("1px"));
+    isNaN(parseInt(undefined));
+    isNaN(Number(undefined));
+    isNaN("1 1");
+    parseInt("1.2px");
+    parseFloat("1.2px");
+
+</script>
+</body>
+</html>

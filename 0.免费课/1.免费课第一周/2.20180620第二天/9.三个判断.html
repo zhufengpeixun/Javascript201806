@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //三个判断语句：
+    //if else
+    // if else if  ... else
+   /* if(1=="1"){
+        // 当括号中条件为true时，执行此处的代码
+        console.log(100);
+    }else{
+        //如果括号中条件不成立，此处代码是不执行的；
+        console.log(200);
+    }*/
+    /*if(true==[]){
+        console.log("100块钱")
+    }else if([]!==[]){
+        console.log("200块钱")
+    }else if(typeof NaN === "Number"){
+        console.log("250块钱")
+    }else{
+        console.log("300块钱");
+    }*/
+    /*if([]=={}){
+        console.log("100")
+    }
+    if(isNaN(true)){
+        console.log("100")
+    }*/
+    // 如果括号中只有一个值时，转布尔类型
+    /*if(undefined){
+        console.log(100)
+        if(0==false){
+            console.log(1)
+            if([]){
+            }
+        }
+    }*/
+    //  三元运算符： 一般用于处理简单的逻辑；
+    // ?  前面放的是条件，问号后面是当条件成立时，执行的代码；
+    // : 当条件不成立时，执行的代码；
+    /*if(1=="1"){
+        console.log(100)
+    }else{
+        console.log(200)
+    }*/
+    //1=="1"?console.log(100):console.log(200);
+    //晚自习练习；
+  /*  if(1=="1"){
+        if([]==false){
+            console.log(100)
+        }else{
+            console.log(200)
+        }
+    }else{
+        console.log("你对了");
+    }*/
+
+    // switch case
+    // 扩号中的值和case后面的值进行绝对比较；===
+    // break : 中止 中断；
+    // default : 默认执行；
+    // 在条件中如果没有break，会继续向下执行；即便条件不成立；
+    var num = 10;
+    switch (num){
+        case "0":
+            console.log("第一天");
+            break;
+        case 0:
+        case 10:
+            console.log("明天");
+            break;
+        case false:
+            console.log("第二天");
+            break;
+        default:
+            console.log("后天");
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

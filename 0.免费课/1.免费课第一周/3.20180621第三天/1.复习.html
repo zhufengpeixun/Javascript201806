@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 数据类型中布尔： true  false;
+    // true  --> 1  false--> 0;
+    // Number
+    // Boolean: 将其他数据类型强制转换成布尔类型
+    //  0  "" NaN  null  undefined 这五个值转布尔值是false；
+    // Boolean([])  Boolean({})  true
+    // Boolean("3px") true
+    // isNaN("3px") :true
+    // || &&
+    if(0||!isNaN([])){
+        console.log(1)
+    }
+    if([]&&undefined){
+
+    }
+    // 赋值
+    // || : 前面的值转布尔是true直接取前面这个值；如果是false，直接取后面的；
+    var str = null||0;
+    var a = 5 && 17;
+
+    // ! : 取反； 后面跟一个值类型的；
+    var obj = !{};
+    // !! : Boolean ：相当于直接转布尔类型；
+
+    // null 和undefined
+    var o = {a:1};
+    console.log(o.b);// undefined
+
+    // 对象 ： 引用数据类型 {}
+    // 基本数据类型和引用数据类型区别
+    //
+   /* var  a =b =c = 10;
+    c = 19;
+    var  a= b =c = {};
+    c.h  = 100;*/
+   // 对象的定义
+    // 1) : 开辟一个新的空间地址
+    // 2) : 把键值对存储到这个空间中
+    // 3) : 把空间地址赋值给变量名；
+    // 增删改查
+    // 对象名.属性名 ： 属性名不能是数字；
+    var obj = {a:"hello",b:"world",c:"珠峰"};
+  /*  obj.a=100;
+    obj["10"] = 100;
+    obj[10] = 100;*/
+    //console.log(obj);
+    // 改：
+    // 属性名存在就是修改，没有就是新增；
+    //obj.a = "world";
+    // 查： 获取属性名对应的属性值；如果属性名不存在,结果就是undefined；
+    //var  newStr = obj.c
+
+    // 删除
+    /*obj.a = null;
+    delete obj.a;
+*/
+    // in  : 检测当前属性名是否在这个对象中存在；存在返回true，不存在返回false；
+    console.log("c" in obj);// true
+
+    // 数组： 有索引 有 length；
+    // 数据类型之间的比较
+
+    // 对象==对象: 在JS中只要遇到[]/{} 都会开辟一个新的空间地址；
+    // 对象==字符串：
+    // 对象==布尔：
+    // 对象==数字：
+    // 布尔==字符串：
+    // 布尔==数字
+    // 字符串== 数字 ：
+    // null == undefined
+
+
+    // 数据类型检测
+    // typeof  instanceof  constructor Object.prototype.toString.call()
+
+    // 三个判断
+    // if else
+    if(true==!1){
+        console.log(1);
+    }else if(NaN == NaN){
+        console.log(2);
+    }else if([] == false){
+        console.log(3);
+    }else{
+        console.log(4);
+    }
+    if(NaN){
+        if(undefined){
+
+        }
+    }
+    // 三元运算符
+    // 处理简单的逻辑
+    // switch case :
+    switch(100){
+        case "100":
+            console.log(100);
+            break;
+        case 99:
+           console.log(99);
+           break;
+        default:
+            console.log(98);
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

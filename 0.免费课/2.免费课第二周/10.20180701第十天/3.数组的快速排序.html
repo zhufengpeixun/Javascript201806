@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var  ary = [12,8,88,97,67,56,78,86,85];
+    //left =[12,8,56]    67   right = [88,97,78,86,85];
+   // []   8   [12,56]                  []   78 [88,97,86,85]
+   //      [12]   56                              [85] 86 [88,97]
+    //
+    //                                             [88]    97
+    // 原理： 获取当前数组的中间项，比中间项小的放在左边的数组，比中间项大的放在右边的数组；然后对左边的数组进行同样的操作；直到当前数组只有一项或者是空时，中止这个过程；然后把所有的小数组和取到的中间项拼接在一起；
+    function quick(a) {
+        //获取
+        // 当数组的长度小于等于1时，中止当前这个函数；
+        if(a.length<=1){
+            return a;
+        }
+        var middleIndex = Math.floor(a.length/2);
+        var middleVal = a.splice(middleIndex,1)[0];
+        var  left = [];
+        var  right = [];
+        for(var i=0;i<a.length;i++){
+            var  cur = a[i];
+            // 比中间项小的放左边的数组，比中间项大或者相等都放右边的数组；
+            if(cur<middleVal){
+                left.push(cur);
+            }else{
+                right.push(cur);
+            }
+        }
+        return quick(left).concat(middleVal, quick(right));
+    }
+    console.log(quick(ary));
+    //    console.log(ary);
+    /*var num =10;
+    function sum(n) {
+        n=100;
+    }
+    sum(num)*/
+</script>
+</body>
+</html>

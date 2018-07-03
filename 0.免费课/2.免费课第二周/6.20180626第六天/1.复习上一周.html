@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 变量   数据类型【number  string  boolean  null  undefined  对象  数组】
+
+    // number： 数字和NaN ;
+    // Number  isNaN parseInt  parseFloat  toFixed
+    Number([]) // 0
+    Number({})// NaN
+    parseInt([])// NaN
+
+    // boolean : Boolean  逻辑运算符   ！
+    // string : 有索引 有length  字符串运算；
+    // null  undefined :
+    //
+
+    // 对象： {a:1}
+    //
+    var  num = 10;
+    var obj = {a:"100"};// eeefff111;
+    // 增删改查；
+    //
+    //obj["a"] = 10;
+    var  a = obj["a"]
+    if(obj["a"]){
+
+    }
+    delete obj.a;
+    // in :
+
+    // 数据类型的检测：
+    // typeof :
+    typeof  {}// "object"
+    typeof  []// "object"
+    typeof function () {}// "function"
+
+    // instanceof  constructor  Object.prototype.toString.call();
+
+    // 数据类型的比较；
+    // = : 赋值
+    // == : 比较；
+    //
+    // Number({})
+
+    // === : 绝对比较
+
+
+    //操作语句；
+    // if else   三元运算符   switch case
+    // for 循环   for in循环   while；
+
+    // function :
+    // 函数的基础： 函数的封装     函数的核心原理   形参 实参   arguments[函数体中天生自带的实参集合]  return    匿名函数
+    var  g = 10;
+    function fn() {
+        var  a = 10;
+        function f() {
+
+        }
+        f();
+        fn();// 函数递归；
+    }
+    fn();
+    console.log(a);
+    f()// f  is  not  defined
+    //
+
+
+
+</script>
+</body>
+</html>

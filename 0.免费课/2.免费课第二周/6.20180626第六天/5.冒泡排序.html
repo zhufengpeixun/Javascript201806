@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   // 数组的冒泡排序
+   var ary = [12,67,88,98,56,35,45,26,1];
+   //var  ary = [12,32,56,67,88,99,101];
+   // 1. sort
+    /*ary.sort(function (a,b) {
+        return a-b;// 从小到大
+    });*/
+    // 实现从小到大
+    // 让相邻两项进行比较，如果前面一项比后面一项大，那么让这两项互换位置；如果前比后面一项小，那么不换位置；每循环一整轮，把数组的最大值放到数组的最后面；有多少项，就执行多少次这样的循环；
+   for(var j = 0;j<ary.length;j++){
+       // 当外面的循环循环一次；
+       var flag = true;// 标识的作用
+       for(var i=0;i<ary.length-1-j;i++){
+           // 里面整个循环完一次，实现将最大值放到最后；
+           if(ary[i]>ary[i+1]){//前面一项比后面大
+               // 借助第三方变量
+               //如果能进来，说明数组没有排好顺序；如果进不来，说明数组已经是排好的
+               /*var temp = ary[i];
+               ary[i] = ary[i+1];
+               ary[i+1] = temp;
+               flag = false;*/
+               // 两项交换位置的一种思想；
+               var  a = ary[i]+ary[i+1];
+               var  b = ary[i]-ary[i+1];
+               ary[i] = (a-b)/2;
+               ary[i+1] = (a+b)/2;
+           }
+       }
+       if(flag){
+           break;
+       }
+   }
+   console.log(ary);
+ /*   var a = 10;
+    var b = 15;
+    var  c = a +b;
+    var  d = a-b;
+    a = (c-d)/2;
+    b = (c+d)/2;*/
+
+
+</script>
+</body>
+</html>

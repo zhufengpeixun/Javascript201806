@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary = [12,3,48,89,899,19];
+    // 对象数据类型；
+    // 数组成员有一个与之对应的索引
+    // length : 代表数组成员的个数；
+
+    // 操作改变数组一些方法；这些数组的方法都是内置的；
+    // 1. push :
+    /*console.log(ary.push(20,100));
+    console.log(ary);*/
+    // 2.pop
+    /*console.log(ary.pop(12));
+    console.log(ary);*/
+    // 3.unshift : 向数组开头新增一项
+//    var f  = ary.unshift(100,200)
+
+    /*console.log(ary.unshift(100,200));
+    console.log(ary);*/
+
+
+    // 4.shift
+    /*ary.shift();
+    console.log(ary);*/
+    var ary = [12,3,48,89,899,19];
+    // 5.slice :
+    /*console.log(ary.slice(2, -1));
+    console.log(ary.slice(2));
+    console.log(ary.slice());
+    console.log(ary);*/
+    /*ary.unshift(12);
+    console.log(ary);*/
+    // 6.splice  删除
+    //console.log(ary.splice(3, 2));
+    //console.log(ary.splice(0));
+    ary.splice(3,0,17,18)
+    console.log(ary);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 对象数据类型 Math
+    //console.log(Math);
+    //console.log(typeof Math);// "object"
+
+    // 1. Math.abs()  取绝对值;得到一个正数
+    //console.log(Math.abs(-1));
+    // 2.Math.floor()  向下取整
+    // 3.Math.ceil() : 向上取整；Math.ceil(-4.777) -4
+    // 4.Math.max() : 获取一组数的最大值
+    // 5.Math.min() : 获取一组数的最小值
+    // 6.Math.round() : 四舍五入
+    // 7.Math.random() :产生一个随机数，取值[0,1)
+    // 20-60的随机整数
+    // 8.Math.round(Math.random()*(60-20)+20);
+     //Math.round(Math.random()*100)
+    // 9.Math.pow() ： 取幂次方
+    // 10.Math.sqrt() : 开平方
+
+
+    // 产生
+    var i =0;
+    var  timer = setInterval(function () {
+        i++;
+        if(i>10){
+            clearInterval(timer);
+            return;
+        }
+        if(Math.random()>0.5){
+            console.log(2);
+        }else{
+            console.log(1);
+        }
+    },1000)
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

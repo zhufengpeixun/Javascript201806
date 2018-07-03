@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. sort()
+    var  ary = [12,89,78,56,25,78,56];
+    /*ary.sort(function (a,b) {
+        return a-b;
+    });*/
+    // 2.冒泡排序 ：让数组中相邻两项进行比较，如果前面一项比后一项数值大，那么让这两项交换位置；如果前面一项比后一项小，则不交换顺序；当循环一整轮之后，把数组中的最大值放在数组的最后面；
+    var ary = [12,78,89,101,102,309,188];
+    for(var j=0;j<ary.length-1;j++){
+        //代码优化：
+        // 让i最大取到ary.length-2;
+        // 当外面循环一轮，解决一个最大值，当前值没有必要和其他值进行比较；-j
+        var  flag = true;
+        for(var i=0;i<ary.length-1-j;i++){
+            console.log(12);
+            if(ary[i]>ary[i+1]){
+                // 存在前面一项比后面一项值大；
+                var a = ary[i]+ary[i+1];
+                var b  = ary[i]-ary[i+1];
+                ary[i] = (a-b)/2;
+                ary[i+1] = (a+b)/2;
+                flag = false;
+            }
+        }
+        if(flag){
+            break;// 中止外层大循环；
+        }
+    }
+    console.log(ary);
+
+    //交换位置
+    /*if(ary[i]>ary[i+1]){
+        // 交换位置
+        /!*var temp = ary[i];
+         ary[i] = ary[i+1];
+         ary[i+1] = temp;*!/
+        // 求和求差
+        var a = ary[i]+ary[i+1];
+        var b  = ary[i]-ary[i+1];
+        ary[i] = (a-b)/2;
+        ary[i+1] = (a+b)/2;
+    }*/
+
+
+</script>
+</body>
+</html>

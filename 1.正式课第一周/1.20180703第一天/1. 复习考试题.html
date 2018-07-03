@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 基本和引用 ；number  string  boolean  null  undefined  symbol
+    // 引用： 对象数据类型和函数数据类型
+    //对象数据类型: 对象  数组  正则  Math  Date的实例
+    // 函数数据类型： 函数和类；
+    // typeof  :
+    // instanceof
+    // constructor
+    // Object.prototype.toString.call();
+    // 基本数据类型：
+    /*var  num = 10;
+    var  obj = {a:1,1:2};// eeefff000;
+    console.log(obj);*/
+    // 1. 值类型的 ，存储到栈内存中
+    // 2. 空间地址类型的
+
+    // 字符串：
+    // 1. charAt :
+    // 2.charCodeAt :
+    //3.toUpperCase
+    // 4.toLowerCase
+    // 5.slice(m,n)
+    // 6.substr(m,5)
+    // 7.substring :
+    // 8.concat :
+    // 9.split :
+    // 10. replace :
+    // 11.indexOf
+    // 12.lastIndexOf
+    //14.trim   Match  search
+    var  str = "ni"
+    var str1 = "很帅";
+    console.log(str.concat(str1));
+
+
+    //数组：
+    // slice
+    // splice
+    // sort
+    // reverse  concat join  indexOf  lastIndexOf  map  forEach
+    /*var  ary = [];
+    ary.forEach(function (p1, p2, p3) {
+        return 100;
+    });
+    // map
+    function A(m) {
+        m();
+    }
+    A(B)
+    function B() {
+    }*/
+   // push  splice  concat
+    /*var  ary = [12,7,89,99];
+    ary.length++;
+    console.log(ary);*/
+
+    // for  for  in  while
+    /*var  ary = [12,7,89,99];
+    for(var key in ary){
+        console.log(key);//
+        console.log(ary[key]);
+    }*/
+    // ! : 取反
+    // 不等于
+    /*if([]!=""){
+        console.log(100);
+    }*/
+
+    // 1-100  递归
+
+    function fn(num) {
+        // % : 取余数
+        if(num<=0){
+            return 0;
+        }
+        if(num%3===0&&num%5===0){
+            return num + fn(num-1)
+        }
+        if(num%3!==0||num%5!==0){
+           return fn(num-1);
+        }
+    }
+    console.log(fn(100));
+
+
+</script>
+
+
+</body>
+</html>

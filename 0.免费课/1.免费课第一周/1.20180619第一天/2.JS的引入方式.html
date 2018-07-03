@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+    <script>
+        var oBox1 = document.getElementById("box");
+        console.log(oBox1);
+    </script>
+</head>
+<body>
+<div onclick="alert(1)" id="box"></div>
+<script>
+    // JS一般放在body的最后后者HTML的最后；
+    // 行内式
+    // 内嵌式
+    // 外联式
+    // 导入式
+    //alert(1)
+    //JS 引入方式
+    //1. 行内式；
+    //2. 内嵌式 ： script这个标签里面；一个页面中可以有多个script；代码从上到下加载；
+    console.log(1);
+    console.log(100);
+    //3. 外链式
+    // 相对路径
+    //  ./   ： 同级的兄弟
+    //  /  ： 下一级
+    // ../  : 上一级；
+    // 4.导入式；
+    // 1. 要操作谁，就要先获取谁；
+    var oBox = document.getElementById("box");
+    console.log(oBox);
+    oBox.onclick = function () {
+        alert(2);
+    }
+
+</script>
+<script src="js/index.js">
+    // 外联式，script标签中的代码是无效的；
+    // console.log(1000)
+</script>
+</body>
+</html>

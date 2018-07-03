@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div></div>
+
+    <div></div>
+
+</div>
+
+<script>
+    // 隔行变色  选项卡  任意数求和    1-100是3倍数的和  随机验证码
+    // 去重、排序【】
+
+    // DOM 的获取  DOM的节点  DOM节点属性 动态操作DOM；
+    // 4种节点类型
+    //              nodeType       nodeName    nodeValue
+    // 元素节点        1             大写的标签名    null
+    // 文本节点        3             #text        文本内容
+    // 注释节点        8             #comment      注释内容
+    // document       9             #document     null
+
+    // 1. childNodes : 获取元素的子节点
+    // 2. children
+    // 3.parentNode:
+    // 4. firstChild :
+        // firstElementChild : 不兼容IE8及以下
+    // 5. lastChild :
+        // lastElementChild
+    // 6.previousSibling :
+        // previousElementSibling
+    // 7.nextSibling
+       //nextElementSibling
+
+    // 动态操作DOM
+      // 1. document.createElement
+      // 2. appendChild
+    // 3.removeChild
+    // 4.replaceChild
+        // replaceChild(newChild,oldChild)
+    // 5.cloneNode
+        // true ：深克隆 false/不传 ： 浅克隆
+    // 6.insertBefore
+    // 父级元素.insertBefore(newChild,oldChild)
+    // 7.set/remove/getAttribute :   设置 删除  获取行内属性
+    // 8.classList : 新增class 删除class 替换class；
+
+    //
+    var  div = document.createElement("span");
+    document.body.appendChild(div);
+    //console.log("span");// span  is not  defined
+    // Math : 对象数据类型
+    // Math.abs :
+    // Math.floor:
+    // Math.ceil :
+    // Math.max:
+    // Math.min :
+    // Math.round:
+    // Math.pow :
+    // Math.random(): [0,1)
+    // Math.sqrt()
+    // Math.round(Math.random()*(100-60)+60)
+    //随机验证码
+
+
+
+    // 递归思想： 在函数体内部调用函数本身；
+    function fn(){
+
+        fn()
+    }
+    fn();
+    // 求1-100是2倍数并且3倍数的和；
+    var a = 10;
+    function f(a) {
+
+    }
+    f(a);
+    f(100)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

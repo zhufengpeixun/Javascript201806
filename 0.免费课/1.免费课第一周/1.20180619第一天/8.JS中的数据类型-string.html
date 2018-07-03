@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 字符串： 在js中被单引号或双引号包起来的内容都是字符串；
+    /*var t = "true";
+    console.log(typeof  t);// "string"
+    console.log(typeof  true);// "boolean"
+    var  str = "yyy./NIha";
+    var  s = 'www';*/
+    //var  str = "zhufengpeixun";
+    // 索引： 在字符串中，每一个字符都有一个与之对应的索引，这个索引是个数字，从0开始；
+    //console.log(str[3]);// "f";
+
+
+    // length :字符串有一个length属性，属性值代表当前字符串的字符的个数；
+    //console.log(str.length);
+
+    // 获取一个字符串最后一个字符；
+    //console.log(str[str.length - 1]);
+
+    // 字符串的运算； + -  *  /
+    // - *  / : 会先把字符串转换成数字，然后再进行计算
+    console.log("6" - 2);// 4
+    console.log("5"/"4")// 1.25
+    console.log("5px"-"4")// NaN
+    console.log(true*"4")// 4
+    // 1. 任何数字和NaN 计算，结果都是NaN;
+    // 2. 任何数字和undefined运算，得到也是NaN；
+
+    // +: 字符串拼接；
+    console.log("6px"+undefined);
+    console.log(NaN+"undefined");
+    // [] : 空数组在进行拼接时，会默认调用toString转换成空字符串；然后拼接；
+    var  a = typeof 10 + true + [] + null + undefined+{};
+    // "numbertruenullundefined"
+    console.log(a);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" a="123" class="box">
+   <div id="child">
+       <div></div>
+   </div>
+
+   <div id="child1"></div>
+
+</div>
+<script>
+    //  1.innerHTML :
+    /*var  oBox = document.getElementById("box");
+    oBox.innerHTML = "<div></div>"*/
+
+    // 1.document.createElement():创建一个元素；通过标签名创建元素；
+    var divs = document.createElement("div");
+    var  box = document.getElementById("box");
+    var  child = document.getElementById("child");
+    var  child1 = document.getElementById("child1");
+    //console.log(divs);
+
+    // 2.appendChild : 向元素容器的末尾添加一个元素
+    // 父级.appendChild(子元素)[参数是节点]
+    //divs.innerHTML = "天很热";
+    //box.appendChild(divs);
+    //box.appendChild(divs);
+    //box.appendChild();
+
+    // 3.removeChild: 删除子元素
+    // 父级.removeChild(子元素)
+    //box.removeChild(child)
+    // 4.replaceChild : 替换子节点
+    // 父级.replaceChild(newChild,oldChild)
+    // box.replaceChild(divs,child)
+
+    // 5.insertBefore : 向容器中某个元素的前面插入一个元素节点
+    //box.insertBefore(divs,child)
+
+    // 6.cloneNode : 克隆
+    // cloneNode(false/true/ )
+    // cloneNode()/cloneNode(false)浅克隆：没有参数，或者传false，是克隆自己本身
+    // cloneNode(true)深克隆：可以获取到子元素
+    //console.log(box.cloneNode(true));// 深克隆：可以获取到子孙元素
+    //console.log(box.cloneNode(false));// 克隆自己
+
+    // 7.get/set/removeAttribute
+    /*console.log(box.getAttribute("a"));
+    box.setAttribute("mmn","888")
+    box.removeAttribute("a")*/
+
+    // 8.classList :
+    // add : 新增class
+    // remove : 删除class
+    //replace : 替换class；
+
+    /*box.classList.add("cup");
+    box.classList.remove("box");*/
+    box.classList.replace("box","hghg");
+</script>
+</body>
+</html>

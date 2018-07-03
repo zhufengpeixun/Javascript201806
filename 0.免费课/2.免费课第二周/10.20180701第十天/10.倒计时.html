@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #time{
+            width:200px;
+            height:50px;
+            margin:30px auto;
+            text-align: center;
+            line-height: 50px;
+            border:3px solid lightcoral;
+            border-radius: 5px;
+            font-size: 20px;
+            color:black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="time"></div>
+<script>
+    var  time = document.getElementById("time");
+    // 1. 需要确定目标时间
+    // 2.计算当前最新时间和目标的时间毫秒差；
+    // 3.计算毫秒差中有多少个小时，多少个分钟，多少个秒；
+    // 4.结合定时器，每隔一秒执行计算一次；
+    var targetTime = new Date("2018/07/01 16:48:00");
+    function addZero(value) {
+       return  value<10?"0"+value:value;
+    }
+    function count() {
+        var curTime = new Date();
+        var difTime = targetTime-curTime;// 毫秒差
+        if(difTime<=0){
+            clearInterval(timer);
+            time.innerHTML = "你中奖了";
+            time.style.background = "red";
+            return;
+        }
+        var  hours = Math.floor(difTime/(1000*60*60));
+        var minutes = Math.floor((difTime-hours*1000*60*60)/(1000*60));
+        var  seconds = Math.floor((difTime-hours*1000*60*60-minutes*1000*60)/1000);
+        time.innerHTML = addZero(hours)+ ":"+addZero(minutes)+":"+addZero(seconds)
+    }
+    count();
+    var timer = setInterval(count,1000)
+
+</script>
+</body>
+</html>

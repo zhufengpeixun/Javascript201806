@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="a"></div>
+<script>
+    // 开发人员调试代码；
+    // 1.console.log(): 在控制台输出；
+    // 要操作谁，就要先获取谁
+    /*var box = document.getElementById("a");
+    console.log(box);
+    box.style.background = "red";*/
+    // 2. console.dir(); 详细输出；
+    // 3.document.write :会默认把后面的值转换成字符串，然后再放在页面中；
+    //document.write(box)
+    // 4.alert : 先把值转成字符串，然后再输出；会让代码停止到这一行；
+    /*alert(1);
+    console.log(100);*/
+    // 5.confirm :多一个取消按钮；点击确定返回值是true，点击取消返回值false；
+    /*var  val = confirm("你确定吗？");
+    console.log(val);*/
+    // 6.prompt :多一个输入框；点击确定,返回值就是输入框输入的内容；如果点击，返回值是null；
+    var val = prompt("你确定吗？");
+    console.log(val);
+    // debugger
+</script>
+</body>
+</html>

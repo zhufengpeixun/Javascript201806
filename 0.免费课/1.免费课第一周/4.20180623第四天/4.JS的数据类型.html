@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS 的数据类型 ： 分为两大类； 基本数据类型和引用数据类型；
+    // 基本数据类型: number(数字)  string(字符串)  boolean(布尔) null  undefined
+    // 引用数据类型： 对象数据类型和函数数据类型
+    // 对象数据类型： 对象（{}） 、数组 、正则 、Math\    Date的实例...
+    // 函数数据类型： 函数和类；
+
+    // 基本数据类型
+    var num = 1.1;
+    var  str = "sds45{}ds"
+    var  bol  =true;
+    // null undefined
+
+    //引用数据类型
+    var obj = {a:1}
+    var  ary = [1,2,3];
+    var  reg = /\d/;
+    //Math.abs
+    var time = new Date();
+
+    // 基本数据类型和引用数据类型的区别
+
+    // 1. 堆栈内存： 在浏览器加载页面时，浏览器会形成两个虚拟的内存；
+    // 栈内存： 1) :提供代码运行环境  2） 存储基本数据类型的值；
+    // 堆内存： 存储引用数据类型的值；
+
+    // 2. 基本数据类型是操作值的，引用数据类型操作的是空间地址；
+    /*var na = "ads"
+    var  obj = {name1:"董凯凯",name2:"任保森"};
+    var  a = b = c = 100;
+    c = 109;
+    console.log(a);*/// 100
+    var a = b = c = d = {};
+    d = {h:xxxfff};
+    d.h = {};// xxxfff
+    console.log(a);// {}
+
+
+</script>
+</body>
+</html>

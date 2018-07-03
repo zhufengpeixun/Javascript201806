@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 数组的方法   15个
+    // push  :
+    // pop :
+    // unshift :
+    // shift :
+    // slice : 截取；
+    // slice(m,n) :
+    // slice(m)
+    // splice: splice(m,n)
+    // splice(m)
+    // splice(m,x,n)
+    // splice(m,0,n): 把n放在索引m前面；
+
+    // sort : 排序
+    /*ary.sort();
+    ary.sort(function (a,b) {
+        return a-b;
+    });// 从小到大
+    ary.sort(function (a,b) {
+        return b-a;
+    })*/// 从大到小
+
+    // reverse(): 把数组颠倒过来；
+    // join :
+    // concat : 数组的拼接
+    //ary.concat([],10,"23")
+    // indexOf :
+    // lastIndexOf :
+    // map :
+    // forEach
+    // 展开运算符
+    var ary = [12,78,99,90];
+    var ary1 = [88,97,66];
+    //ary.concat(ary1);
+    var newAry = [...ary,...ary1];
+    var obj = {a:1};
+    var obj1 = {b:2,c:3,d:4};
+    /*for(var key in obj1){
+        obj[key] = obj1[key];
+    }
+    console.log(obj);
+*/
+    var o = {...obj,...obj1};
+    console.log(o);
+    //console.log(newAry);
+    //console.log(ary);
+    /*var  ary = [];
+    ary.unshift();
+    console.log(ary);*/
+
+    // 删除数组的末尾一项：
+    // ary.pop()
+    // ary.splice(ary.length-1,1)
+    // ary.length--;
+    var  a = [13,99,7,67];
+    var  m = [];
+    var  r = a.forEach(function(item,index){
+        // 函数执行次数和数组成员的个数有关；
+        console.log(item);
+        console.log(index);
+        if(item>60){
+            m.push(item);
+        }
+        return 18;
+    });
+    // map : 映射 ： 一一对应；
+    var yy = a.map(function (item,index) {
+        return 12;
+    });
+    console.log(yy);// [12,12,12,12]
+    function fn(num) {
+        return 19;
+    }
+    var f = fn();
+    console.log(f);
+
+    // 去重： 1.indexOf
+    //       2.对象的属性名不能重复；
+
+
+</script>
+</body>
+</html>

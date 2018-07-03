@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 布尔类型有且只有两个值；true 和false；
+    //  true  false
+    // Boolean : 把其他数据类型强制转换成布尔类型；结果只有true和false；
+    console.log(Boolean(1));// true
+    console.log(Boolean("1"));// true
+    console.log(Boolean(null));// false
+    console.log(Boolean(undefined));// false
+    console.log(Boolean(NaN));// false
+    console.log(Boolean({}));// true
+    console.log(Boolean([]));// true
+
+    // 在JS中有且只有五个值转布尔是false；
+    // 0  ""  NaN  null undefined 转布尔是false；
+    Boolean(0)// false
+    Boolean("")// false
+
+    var obj = {a:1};
+    Boolean(obj.b)// false
+    Boolean(isNaN("true"))// true
+    Boolean(false)// false
+
+    // 2.逻辑运算符
+    // ||  &&;
+    // 1.在条件语句中，||两边至少有一个为true，整体结果就是true；
+    // &&: 只有有一个是false，整体结果就是false；
+    /*if(1<2||2>8){
+
+    }
+    if(true&&false){
+
+    }*/
+    // 2.赋值：
+    // 如果||前面值转布尔是true，直接取这个值；如果是false，直接取后面的值；
+    // && :如果&& 前面值转布尔是false，直接取第一个；是true，直接取后面的值；
+
+    var  a = ""||NaN;
+    console.log(a);// 19
+
+    // 3. ！ ：取反； 首先会把后面的值转布尔，然后再取反
+    console.log(!true);// false
+    console.log(!"");// true
+    console.log(!{});// false
+    console.log(![] == true);// false
+    //  !! : 直接取布尔值
+    console.log(!![]);// true
+
+
+</script>
+</body>
+</html>

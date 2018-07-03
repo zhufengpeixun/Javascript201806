@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   // JS 中的定时器
+   // setTimeout : 到了设置的时间之后执行回调函数；
+   // 定时器开始时间： 当代码运行到这一行时，浏览器会默认记录一个开始的时间；到了指定时间之后，马上让函数运行；
+   // JS 是单线程： 同一时间只能做一件事情；
+   // 定时器是异步的；
+   // 每个浏览器的最小识别时间是不同的；谷歌浏览器最小识别时间6-8ms之间；火狐浏览器的识别时间是8-10;IE最小识别时间是 13--15ms;
+
+   /*setTimeout(function () {
+       console.log(1);
+   },1);
+   console.log(100);*/
+
+   /*for(var i=0;i<10000000;i++){
+
+   }// 200
+   console.log(2);//*/
+
+   // setInterval : 每隔一段时间执行一次
+   /*function fn() {
+       setTimeout(function () {
+
+       },1000)
+   }*/
+    /*var num = setInterval(function () {
+        // 让函数体中的代码运行
+        console.log(12);
+    },1000);
+    num = null;*/
+   /*var num1 = setInterval(function () {
+       console.log(12);
+   },1000);
+   var num2= setTimeout(function () {
+
+   })
+   console.log(num);
+   console.log(num1);
+   console.log(num2);*/
+   // 定时器的返回值: 代表当前定时器在页面中第几个；
+   // 清除定时器  clearInterval
+   //clearInterval(1);
+   //clearTimeout()
+
+    // 设置定时器 、清除定时器、定时器返回值；
+
+
+
+
+</script>
+</body>
+</html>

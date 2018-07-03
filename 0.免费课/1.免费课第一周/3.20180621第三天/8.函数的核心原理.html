@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.函数分为两部分： 定义和执行；
+    function fn() {
+        var  a = {}
+        a.b = 10;
+        console.log(1);
+    }
+    // 函数属于引用数据类型；空间地址类型
+    // 1. 会开辟一个新的空间地址；
+    // 2. 把函数体中的代码当做字符串存储到堆内存中；
+    // 3. 把空间地址赋值给函数名；
+    //console.log(fn);// 整个函数；
+    //fn()// fn is not  a  function;
+    // 函数的执行
+    fn();
+    // 1.首先会形成一个私有的作用域；
+    // 2.形参赋值
+    // 3.变量提升
+    // 4.代码从上到下运行；
+    // 5.作用域的销毁；
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // number  : 数字 正数  负数  0  NaN;
+    // NaN : not a number; 不是一个数字，但是属于数字类型的；
+    // typeof  : 检测当前的数据类型的；首先返回一个字符串，字符串中包含当前值所对应的数据类型；
+    // 只能检测基本数据类型，不能区分对象数据类型下具体的对象数组正则；
+   /* console.log(typeof  1);// "number"
+    console.log(typeof  "1");// "string"
+    console.log(typeof  true);// "boolean"
+    console.log(typeof  null);// "object"
+    console.log(typeof  undefined);// "undefined"
+    console.log(typeof  {});//"object"
+    console.log(typeof  []);//"object"
+    console.log(typeof  /\d/);//"object"
+    console.log(typeof  function(){});//"function"
+*/
+   // isNaN : isNaN 这个方法执行时，会先把要校验的值强制转换成number类型的；然后再进行判断；
+    // 如果当前是一个有效的数字，那么返回false；
+    // 如果不是一个有效的数字，返回结果true；
+/*    console.log(isNaN(17));
+    console.log(isNaN(1));
+    console.log(isNaN(NaN));
+    console.log(isNaN("1px"));
+    console.log(isNaN("1"));*/
+
+    // Number :将其他数据类型的值强制转换成number类型；
+    // 要把其他数据类型转换成number时，首先会调用toString；
+    /*console.log(Number("1px"));
+    console.log(Number("1"));*/
+    //
+   /* console.log(Number({}));//NaN
+    console.log(Number(null));// 0
+    console.log(Number(undefined));// NaN
+    console.log(Number([]));// 0
+    console.log(Number(""));// 0
+    console.log(Number(true));// 1
+    console.log(Number(false));/*/
+
+
+    // parseInt :经常用于字符串提取数字的方法； 把字符串中从左到右依次识别，直到遇到一个非有效数字，停止，把找到的数字返回；
+    //如果第一个字符是非有效数字，那么直接返回NaN;
+    console.log(parseInt("12px12"));// 12
+    console.log(parseInt("12.666.777px12"));// 12
+    console.log(parseInt("px12.666px12"));// NaN
+    console.log(parseInt(""));// NaN
+    console.log(parseInt(true));// NaN
+    console.log(parseInt({}));// NaN
+    console.log(parseInt([]));// NaN
+    console.log(parseInt(null));// NaN
+    console.log(parseInt(undefined));// NaN
+
+
+    // parseFloat : 和parseInt 用法一样；区别是多识别一位小数点
+    console.log(parseFloat("12.666.7777px12"));
+
+
+    // toFixed : 保留小数点位数的方法;返回值是一个字符串；
+
+    var  num = 4.5;
+    console.log(4.56.toFixed(2));
+    console.log(num.toFixed(0));
+
+</script>
+</body>
+</html>

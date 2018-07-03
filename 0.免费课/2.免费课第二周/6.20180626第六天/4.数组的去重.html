@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 数组的去重：把数组中重复项只留下一项；
+    var ary = [12,8,88,12,99,88,66,77,66];
+    //var a = [12,8,88,99,66,77];
+    //var newAry = [];
+    // forEach  map ;
+    // 1.indexOf: 判断当前项在数组中是否存在，不存在返回-1；
+    /*for(var i=0;i<ary.length;i++){
+        var  cur = ary[i];
+        // 判断当前项在新数组中是否存在，不存在返回-1；
+        if(newAry.indexOf(cur)===-1){
+            newAry.push(cur);
+        }
+    }
+    console.log(newAry);*///[12, 8, 88, 99, 66, 77]
+
+    // 2.对象的属性名不能重复；
+    /*var obj = {1:10,1:16};
+    console.log(obj);*/
+    /*var ary = [12,8,88,12,99,88,66,77,12];
+    var obj = {};// {12:12,8:8,88:88}
+    for(var i=0;i<ary.length;i++){
+        var cur = ary[i];// 12
+        if(obj[cur]===cur){
+            //ary.splice(i,1);  缺点: 数组塌陷；删除这一项后面的所有项的索引都要进行重新计算；
+            ary[i]  = ary[ary.length-1];// 把数组最后一项赋值给当前项
+            ary.length--;// 删除最后一项；
+            i--;
+            continue;// 结束本轮循环
+        }
+        obj[cur] = cur;// 新增键值对；当属性名不存在时，执行此处代码
+    }
+    console.log(obj);//
+    console.log(ary);*/
+
+    // 3.
+    var ary = [12,8,88,12,99,88,66,77,12];
+    var obj = {};// {12:12,8:8,88:88}
+    for(var i=0;i<ary.length;i++){
+        var cur = ary[i];// 12
+        obj[cur] = cur;// 新增键值对；当属性名不存在时，执行此处代码
+    }
+    //转换成数组
+    var  newAry = [];
+    for(var key in obj){
+        newAry.push(obj[key])
+    }
+    console.log(newAry);
+
+
+</script>
+</body>
+</html>

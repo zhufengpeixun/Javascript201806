@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Date 的实例属于对象数据类型
+    //console.log(typeof Date);// "function"
+    //console.log(typeof new Date());// "object"
+    // new 在js中是一个关键字；new + function就会创建出一个实例；
+    //console.log(new Date());
+    // new Date: 返回是当前电脑的系统时间；
+    var  time = new Date();
+    console.log(time);
+    console.log(time.getFullYear());// 2018 获取时间年
+    console.log(time.getMonth());// 获取时间月 【0-11】
+    console.log(time.getDate());// 获取时间日 【1-31】
+    console.log(time.getDay());// 获取星期几【0-6】星期日是0；
+    console.log(time.getHours());// 获取当前是几点
+    console.log(time.getMinutes());// 获取分钟数
+    console.log(time.getSeconds());// 获取时间秒
+    console.log(time.getMilliseconds());// 获取时间毫秒 1秒=1000毫秒
+    var curTime = new Date("2018/07/01 16:00:00")
+    console.log(curTime-time);// 两个Date的实例的差是时间的毫秒差；
+
+    // getTime() :Date的实例调用getTime ;是获取当前时间距离1970-1-1上午八点的毫秒差
+    console.log(time.getTime());
+    //console.log("2018/07/01 16:00:00".getTime());
+
+    // Date.now() : 获取当前时间距离1970-1-1上午八点的毫秒差； 时间戳；
+    console.log(Date.now());
+
+
+</script>
+</body>
+</html>

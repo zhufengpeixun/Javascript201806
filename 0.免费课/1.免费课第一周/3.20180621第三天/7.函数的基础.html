@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数的基础；
+    // 函数：引用数据类型；
+    //var a = 10;
+    //function : 关键字：声明定义一个函数；
+    //function 函数名(){}
+    // function : 功能；方法；
+    // 函数分为定义和执行；
+    /*function fn1() {
+        console.log(100);
+    }*/
+    // 函数执行； 让里面的代码运行；
+    /*fn1();
+    console.log(200);*/
+
+    // 求两个数字，并且保留两位小数；
+    /*var num1 = 12.8349;
+    var num2 = 13.9417;
+    var total = Number((num1+num2).toFixed(2))
+    console.log(total);
+    var num3 = 102.349;
+    var num4 = 131.97;
+    var total1 = Number((num3+num4).toFixed(2))
+    console.log(total1);*/
+    function sum(num1,num2) {// 形参；
+        var total = Number((num1+num2).toFixed(2));
+        console.log(total);
+    }
+    sum(12.8349,13.9417);
+    sum(102.349,131.97);
+    sum(1,1.09938);
+    // 函数： 把实现相同功能的代码放到一个函数体中，当想实现这个功能时，直接执行这个函数即可；减少了的冗余；高内聚，低耦合--> 函数的封装；
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #tab{
+            width:500px;
+            height:500px;
+            margin:30px auto;
+            list-style: none;
+        }
+        #tab li{
+            width:100%;
+            height:40px;
+            text-align: center;
+            line-height: 40px;
+            border:1px dashed red;
+        }
+    </style>
+</head>
+<body>
+<ul id="tab">
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路1</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路2</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路3</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路4</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路5</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路6</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路7</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路8</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路9</li>
+    <li>从浙江实践到中国答卷：习近平引领“赶考”路10</li>
+</ul>
+<script>
+    // 获取所有的Li;
+    // 通过标签名来获取元素集合；
+    var  oLis = document.getElementsByTagName("li");
+    //console.log(oLis);
+    //[{},{},{},{}...]
+    // onmouseover : 当鼠标划上这个元素时，触发这个函数；
+    // onmouseout : 当鼠标移出时，触发这个函数；
+    for(var i=0;i<oLis.length;i++){
+        if(i%2===0){
+            // 奇数行
+            oLis[i].style.background = "red";
+        }else{
+            oLis[i].style.background = "blue"
+        }
+        // 新增一个自定义属性；
+        // 把原有的颜色存储起来；存储到当前这个元素的bg的属性上；
+        oLis[i].bg = oLis[i].style.background;
+        oLis[i].onmouseover = function () {
+            // 当鼠标滑上执行
+            // i =10: 当函数执行时，for循环早已经循环完成；i变成10；
+            // console.log(i);// 10;
+            // this --> 函数中的this代表被绑定这个元素；
+            console.log(this);
+            this.style.background = "yellow";
+        }
+        oLis[i].onmouseout = function () {
+            this.style.background = this.bg;
+        }
+    }
+    /*console.log(i);
+    // 鼠标滑过变高亮；
+    var  obj = {a:1,b:2};
+    obj.c = obj.b;
+    console.log(obj);*/// {}
+</script>
+</body>
+</html>

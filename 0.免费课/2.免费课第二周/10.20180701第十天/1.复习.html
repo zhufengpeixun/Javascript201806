@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div></div>
+    <div></div>
+    <div id="box"></div>
+</div>
+<script>
+    // 数组： 数组的方法   数组的算法；
+    var  ary = [12,78,88,12,88,78,99];
+    // {12:2,88:2,78:2,99:1}
+    var obj = {12:2,78:2,88:2,99:1};
+    for(var i=0;i<ary.length;i++){
+        var  cur  = ary[i];
+        if(obj[cur]){
+            obj[cur]++;
+        }else{
+            obj[cur] = 1;
+        }
+    }
+    //  DOM ： DOM的获取  DOM的节点  和属性  动态操作DOM；
+    // 获取兄弟节点
+    var oBox = document.getElementById("box");
+    function getSibling(curEle) {
+        var  siblings = curEle.parentNode.childNodes;
+        var  ary = [];
+        for(var i=0;i<siblings.length;i++){
+            var cur = siblings[i]
+            if(cur.nodeType===1 && cur!==curEle){
+                ary.push(cur);
+            }
+        }
+        return ary;
+    }
+    console.log(getSibling(oBox));
+
+
+</script>
+</body>
+</html>

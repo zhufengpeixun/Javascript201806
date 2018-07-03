@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS是单线程的，每次只能执行一行代码；for循环是同步，需要等待for循环完成，才继续往下执行；
+    // for 循环
+    /*for(var i=0;i<5;i++){
+        //此处的代码都是循环体的代码；
+        // i=0 0<100
+        // i=1
+        //...
+        // i=2
+        // i=3
+        // i=4
+        // i=5  不再执行循环体；
+        console.log(i);
+        console.log(100);
+    }
+    console.log(i);*/
+    // for 循环的四步曲：
+    // 1. 初始化变量
+    // 2. 条件判断
+    // 3.执行循环体中的代码；
+    // 4.执行i++;
+    // 1-->2-->3-->4-->2-->3-->4-->2...
+
+    // i ++ : 在自身基础上+1；
+    /*var  a = 0;
+    console.log(a++);// 先输出a的值，然后再+1；
+    console.log(a);*/
+    // 求1到100的数字的和；[是3倍数的和]
+    // % : 取模；取余数；
+    /*var  total = 0;
+    for(var i=1;i<101;i++){
+        if(i%3===0){
+            total +=i;// total 在自身基础+i;
+        }
+
+    }*/
+    /*var w = 10;
+    w+=2;
+    console.log(w);*/// 12
+    /*console.log(total);*/
+
+    // continue；
+
+    /*for(var i=0;i<10;i++){
+        if(i%2===0){
+            continue;// 结束本轮循环；for循环下面的代码都不再执行；
+        }
+        console.log("天很热")
+    }*/
+    // break: 结束整个循环；i++ 不再执行；
+    /*for(var i=0;i<10;i++){
+        if(i>3){
+            break;
+        }
+        console.log("心静自然凉")
+    }
+    console.log(i);*/
+//    for(var i=0;i<11;i++){
+//        if(i<5){
+//            i+=2;
+//            continue;
+//        }
+//        if(i>8){
+//            i++;
+//            break;
+//        }
+//        i++;
+//    }
+//    console.log(i);
+    for(var i=0;i<11;i++){
+        if(3<=i<5){
+            i+=2;
+            continue;
+        }
+        if(6<i<8){
+            i++;
+            break;
+        }
+        i++;
+    }
+    console.log(i);
+
+    var  str= "hellowords";
+    for(var i=0;i<str.length;i++){
+        console.log(str[i]);
+    }
+    var  ary = [12,3,4,"hdsu",{}];
+    var  len = ary.length;
+    for (var i = 0; i < len; i++) {
+        console.log(ary[i]);
+    }
+
+</script>
+</body>
+</html>

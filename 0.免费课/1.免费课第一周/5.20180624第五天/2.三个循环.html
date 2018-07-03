@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  for   function
+    // 让代码执行多次
+    // JS 是单线程的；每次只能执行一行；是同步的；
+    /*for (var i=0;i<10;i++){
+        // 循环体
+        console.log(1);
+    }
+    console.log(100);*/
+    // for循环的四步曲
+    // 1. 初始化变量i
+    // 2. 判断条件是否成立
+    // 3.条件成立，执行循环体
+    // 4.执行i++;
+    // 1-->2-->3-->4-->2-->3--->4
+
+    // ++: 先取值，再运算；
+   /* var  n = 0;
+    console.log(n++);// 在自身的基础上+1；
+    console.log(n);/*/
+
+
+    // ++i:
+    /*var  n =0;
+    console.log(++n);// 先运算，后取值；
+    console.log(n);*/
+
+    //var i=0;
+    //    0   1   2   2
+    //  (i++)+i+(++i)+i  // 5
+   // var  i=0;
+    /*console.log(i--);// 0
+    console.log(i);*/// -1
+
+    /*console.log(--i); //-1
+    console.log(i);//*/ //-1
+
+
+    //  continue  break
+    //
+    /*for(var i=0;i<10;i++){
+        if(i==8){
+            continue;// 在for循环中，遇到continue。下面的代码不再运行；但是执行i++;
+        }
+        console.log(i)
+    }*/
+
+    // break : 结束整个循环；并且不再执行i++;
+
+   /* for(var i=0;i<10;i++){
+        if(i==8){
+            break;// 在for循环中，遇到continue。下面的代码不再运行；但是执行i++;
+        }
+        console.log(i)
+    }*/
+    // 在0-100找出第一个比88大的数字；
+   /* for(var i=0;i<101;i++){
+        if(i>88){
+            console.log(i);
+            break;
+        }
+        console.log(1);// 101
+    }*/
+
+ /*   for(var i=0;i<11;i++){
+        if(i<5){
+            continue;
+            i+=2;
+        }
+        if(i>3&&i<7){
+            i++;
+            break;
+        }
+        if(i>9){
+            i++;
+        }
+    }
+    console.log(i);*/
+    var  obj = {a:1,b:2}
+
+
+    // for  in  : 循环对象；遍历数组，还可以遍历字符串
+    //键
+    // 先获取属性名是数字的键值对；并且会按照从小到大的顺序；
+    // 不允许写对象名.属性名；
+    for(var key in obj){
+        console.log(key+":"+obj[key]);// key  对象的属性名，并且是一个字符串；
+        //  "a"  "b"
+    }
+    var ary = [12,34,57,7,8,99,0];
+    for(var key in ary){
+        console.log(key);//
+        console.log(ary[key]);
+    }
+    var str = "123hdhsgyd";
+    for(var key in str){
+        console.log(str[key]);
+    }
+
+
+    // while : 一般用于不知道循环多少次；一般用于阻塞线程；
+    // 0-10
+    var  i=0;
+    while(i<8){
+
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

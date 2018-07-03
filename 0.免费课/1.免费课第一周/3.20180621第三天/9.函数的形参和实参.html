@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 在函数括号中的参数是形参
+    var num = 10;
+    function sum(num1,num2) {//函数的入口；
+       /* console.log(num1);// 1
+        console.log(num2);*/// 2
+        // 如果有形参，没有对应的实参，那么形参默认存储的值是undefined；
+        // 形参属于私有变量； 只存在当前的作用域下；
+        // 在函数体中被var 也是私有变量；
+        num1 = 100;
+        var a = 101;
+
+    }
+    // 函数执行时传的参数是实参；
+    /*sum(1,2,3);
+    sum(10,20);*/
+    /*sum(num);
+    console.log(num);
+    console.log(num1);
+    console.log(a);*/
+    // 当函数执行时，首先会形成一个私有的作用域，这个私有作用域保护了里面的私有变量不受外界的干扰；这种机制--> "闭包"；
+
+
+</script>
+</body>
+</html>

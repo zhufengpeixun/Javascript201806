@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 布尔类型： true  false；
+   // console.log(typeof true);// "boolean"
+    //Number : true -->1  false -->0
+    //console.log(Number(true));
+    //console.log(Number(false));
+    // Boolean : 把其他数据类型转换布尔值；
+    /*console.log(Boolean(12));
+    console.log(Boolean(10));
+    console.log(Boolean(0));
+    console.log(Boolean("{}"));
+    console.log(Boolean("12px"));
+    console.log(Boolean([]));
+    console.log(Boolean({}));
+    console.log(Boolean(null));
+    console.log(Boolean(undefined));
+    console.log(Boolean(NaN));
+    console.log(Boolean(/\d/));*/
+    // 其他数据类型转布尔类型是false有且只有五个值： 0  ""  NaN null  undefined;
+
+    // 逻辑运算符： ||： 或  &&： 并且；
+    // 1.放在if条件中；
+    // || : 只要其中有一个为true，整体结果是true；
+    // && : 只要有一个是false，整体结果是false；
+    if(""||0){
+        console.log(100)
+    }
+    if(99&&0){
+        console.log(0);
+    }
+    // 2. 赋值作用：
+   //  如果前面这个值转布尔是true，直接取前面这个值；如果转布尔是false，直接取后面的那个值；
+    /*var  abc = "12px" || undefined;
+    console.log(abc);*/
+    // 如果前面转布尔是true，直接取后面那个值；如果转布尔是false，直接前面的值；
+    var bcd = null && 17;
+    console.log(bcd);
+
+    // 数据类型之间的比较： true /false;
+    // ! : 取反； 首先会把后面的值转换成布尔值，然后再取反；
+    console.log(!1);// true
+    // !! : 直接把当前转成布尔值；
+    console.log(!!"");
+
+
+
+</script>
+</body>
+</html>

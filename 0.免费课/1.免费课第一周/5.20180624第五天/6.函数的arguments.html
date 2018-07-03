@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function sum(a,b,c,d,e,f) {
+        // 函数体中参数集合arguments； 函数天生自带参数集合；
+        // 不是一个数组，是对象数据类型的；类数组；
+        /!*console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+        console.log(arguments[3]);*!/
+        var total = null;
+        console.log(arguments);// 跟实参有关；
+        // arguments.callee : 函数本身
+        for (var i = 0; i < arguments.length; i++) {
+            var  cur = arguments[i];
+            total += cur;
+        }
+        console.log(total);
+
+    }
+    sum(100,288,990,79);*/
+
+    // 任意数求和
+    //isNaN("12")// false;
+    function sum() {
+        var total =null;
+        for(var i=0;i<arguments.length;i++){
+            var cur =arguments[i];
+            if(!isNaN(cur)){
+                total += Number(cur);
+            }
+        }
+        console.log(total);
+
+    }
+    sum(12,"12","12px",true,[],undefined,NaN,{},100)
+
+
+
+
+
+</script>
+</body>
+</html>

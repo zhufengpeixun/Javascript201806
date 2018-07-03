@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 变量  数据类型  操作语句（三个判断，三个循环）  函数   数组；
+    // JS 的数据类型分为两类： 基本数据类型和引用数据类型；
+    //Uncaught ReferenceError: a is not defined  : a 没有被定义过；
+
+    /*var  num = "a";
+    var  n = "1";*/
+   // 基本数据类型： number(数字)  string(字符串) boolean(布尔) null  undefined；
+    // 堆内存、栈内存是浏览器形成的虚拟内存；
+    //基本数据类型都存储到栈内存中
+    var  num = 12;//number
+    var  str = "1" // 字符串
+    var   bol = true;// false  布尔类型；
+    // null
+    // undefined；
+
+    // 引用数据类型：对象数据类型和函数数据类型；
+    // 都存储到堆内存中；
+    // 对象数据类型： 普通的对象、数组 、正则 、Date的实例、Math...
+    var  obj = {a:1,abc:"2"};
+    var  ary = [1,2,3,4,"abc",{},[],true,new Date()];
+    var  reg = /\d/;
+    var  time = new Date();// Date 的实例；
+    //Math
+    // 函数数据类型 普通函数、类；
+    var  a = 10;
+    function fn(){
+    }
+    // 基本数据类型和引用数据类型的区别：
+    // 1. 基本数据类型存储到栈内存中，引用数据类型存储到堆内存中
+    // 2. 基本数据类型操作值的，引用数据类型操作的是空间地址；
+
+
+
+
+
+</script>
+</body>
+</html>

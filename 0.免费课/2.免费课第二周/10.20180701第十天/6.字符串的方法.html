@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str = "1Aazhufengpeixun";
+    // 1.有索引   2.length    3.字符串的运算
+    //"15"-"8" = 7
+    // "15"+"8" = "158": 字符串的拼接；
+
+    // 1. charAt: 通过索引获取对应的字符
+    //console.log(str.charAt(3));
+
+    // 2.charCodeAt : 通过索引获取对应的字符Unicode编码；
+   // 0-9  48-57  a-z :97--122  A-Z : 65-90
+    //console.log(str.charCodeAt(1));
+
+    // 3. toUpperCase: 将小写字母转大写字母
+    //console.log(str.toUpperCase());
+    // 4.toLowerCase: 将大写字母转换成小写字母
+    //var str = "ABC";
+    //console.log(str.toLowerCase());
+    var str = "1Aazhufengpeixun";
+    // 5.slice :slice(m,n): 从索引m开始，截取到索引n，不包含n;
+   /* console.log(str.slice(1));// 截取到末尾
+    console.log(str.slice(1,6));
+    console.log(str.slice(1,-1));
+    */
+    // 6.substr :substr(m,n): 从索引m开始，截取n个；
+    //console.log(str.substr(2, 0));
+    // 7.substring: 从索引m开始，截取到n;不包含n;
+    //console.log(str.substring(2, 1));//
+
+    // 8.split : 将字符串按照特定的字母分隔成数组中的每一项；
+   /* console.log(str.split(" "));
+    console.log(str.split(""));*/
+
+    // 9.concat : 字符串的拼接；
+    //console.log(str.concat("123"));// "1Aazhufengpeixun123"
+    // 10.indexOf : 检测当前字符在字符串中第一次出现的索引位置；如果不存在，返回-1；
+    //console.log(str.indexOf("u"));
+
+    //11.lastIndexOf : 检测当前字符在字符串中最后一次出现的索引位置；如果不存在，返回-1；
+    // 12.replace :替换;原有字符不发生变化；
+    // replace(oldStr,newStr)
+   /* console.log(str.replace("A", "a"));
+    console.log(str);*/
+   var str = "   88uuyy "
+    // 13.trim : 去掉字符串左右两边的空格；不能字符中间的空格
+   // trimLeft ： 去掉字符串中左边的空格
+    // trimRight ： 去掉字符串右边的空格
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="container">
+    <div id="bus"></div>
+</div>
+<script>
+    // ID : 不能重名；唯一的；
+    // DOM : document ： 文档
+    // get : 获取
+    // element : 元素
+    // By : 通过
+    // Id :id名：
+    // 要操作谁，就要获取谁；
+    /*var  oBox = document.getElementById("box");// 元素对象
+    console.log(typeof oBox);// "object"{}
+    console.log(oBox);
+    console.dir(oBox);
+    oBox.className = "container";*/
+    // getElementById : 上下文只能是document；
+    var  oBox = document.getElementById("box");
+    var b =  document.getElementById("bus");
+    console.log(b);
+
+
+</script>
+</body>
+</html>

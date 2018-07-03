@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   // 定时器：
+   // setTimeout : 到了指定的时间，执行一次函数中的代码；
+   // 当浏览器加载代码遇到定时器时，会马上记录当前定时的开始时间；到了指定时间之后，马上让其执行；
+   // 不同的浏览器识别最小的时间是不同的；谷歌识别的最小时间是5-6ms;火狐8-10ms;  IE : 13-16ms;
+   // 定时器的返回值： 代表当前JS中是第几个定时器；
+   // 从第三个参数开始，依次是回调函数中的参数；
+
+   //console.log(1);
+   // 等待3000毫秒之后，在执行这个函数；
+   // 定时器是异步的；
+   /*setTimeout(function () {
+       console.log(2);
+   },1000);
+   setTimeout(function () {
+       console.log(4);
+   },1000);*/
+
+   //
+  /* var  a = setTimeout(function () {
+       console.log(arguments);
+       console.log(2);
+   },1000,100,88);*/
+   /*var b = setTimeout(function () {
+       console.log(3);
+   },1000);*/
+   //console.log(a);// 1
+   //console.log(b);
+   //console.log(3);
+
+    // setInterval: 每隔一段时间执行一次；
+    /*var a = setInterval(function () {
+        console.log(100);
+    },10);
+   var b = setInterval(function () {
+       console.log(1);
+   },10);
+   console.log(a);
+   var c = setTimeout(function () {
+
+   },199)*/
+   // 清除定时器 :
+    /*clearInterval(a);
+    clearTimeout(c);*/
+    setTimeout(function () {
+        console.log(12);
+    },10);
+    var  time = new Date();
+    for(var i=0;i<100000000;i++){
+    }
+    for(var i=0;i<10;i++){
+    }
+    console.log(new Date() - time);
+
+
+</script>
+</body>
+</html>

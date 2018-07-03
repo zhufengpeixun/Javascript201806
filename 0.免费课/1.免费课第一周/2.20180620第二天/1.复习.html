@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // JS的三部分组成 ：
+    // ECMAScript (es6/7): JS的语法 数据类型  变量  操作语句  函数
+    //var  a = 199;
+    // DOM : document object  model : 提供了JS操作页面元素的方法和属性；
+    // BOM : 操作浏览器的一些方法和属性；
+    var  a = document.getElementById("box");// 元素对象
+    //console.log(a);
+    //a.style.width = "100px";
+    // JS 的引入方式： 四种；
+
+    // JS 的输出方式： 开发人员调试的方法；
+    console.log(a)
+    // console.dir:
+    console.dir(a)
+
+    // document.write()
+    // alert :
+    // confirm :
+    // prompt :
+
+
+    // innerHTML innerText:
+//    a.innerText="<a href='https://www.baidu.com/?tn=78040160_26_pg&ch=1'>百度一下</a>";
+
+    // 变量：
+    // 如果在JS中是作为一个值存在，一定是数据类型中的一种；
+    // 等号右边的是值；对象的属性名对应的属性值,数组成员是值类型的；
+    // 如果变量没有被赋值，那么默认存储值是undefined；
+   /* console.log(obj);// undefined;
+   var obj = {a:12}
+    var  w = yyy;
+    var v;
+    console.log(a);*/
+    // let  a =10;
+//    var  a = 10;
+//    console.log(a);
+
+    // 数据类型：
+    // 基本数据类型和引用数据类型
+    // 1.基本数据类型存储到栈内存中，引用存储到堆内存中；
+    // 2.基本数据类型是操作值的，引用数据类型操作的是空间地址；
+    // 基本： number  string  boolean  null undefined
+    // 引用： 对象数据类型和函数数据类型
+    // 对象数据类型: 对象 数组  正则 Math Date的实例...
+    // 函数数据类型： 函数 、类
+
+    // 数据类型--number
+    // NaN : 不是一个数字，但属于number类型的；
+    // isNaN  :判断是一个非有效数字；返回一个布尔类型；
+    //isNaN("12px")
+    //Number : 把其他数据类型强制转换成number类型；
+    console.log(Number("123.6"));
+    // parseInt
+    // parseFloat: 多识别一位小数点
+    parseInt("12px")// 12
+    parseInt("")// NaN
+    // toFixed :保留小数点位数;四四舍五入的机制；返回一个字符串；
+
+    console.log(1.5555.toFixed(2) + 888);
+
+    //string
+    var  str = "dhgsugyds'd{]"
+    // 1.索引：
+    // indexOf :
+    // 2.length :
+    // 3.字符串运算
+    // - *  / :
+    // + : 字符串的拼接；
+
+
+    // typeof : 数据类型检测的方法； 返回一个字符串；字符串中的内容代表的当前值对应的数据类型；
+    /*typeof [{a:1}]// "object"
+    typeof function () {} // "function"
+    typeof  null *///--> "object"
+    // instanceOf
+    // constructor
+    // Object.prototype.toString.call();
+
+
+
+
+
+</script>
+</body>
+</html>

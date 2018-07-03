@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 对象数据类型
+    // 对象： {};
+    // 对象由键值对组成，键值对由属性名[key]和属性值(value)组成；属性名和属性值中间用冒号隔开；键值对用逗号隔开；
+    /*var obj = {a:1,b:"hh"};
+    var  o = {};
+    var  b = {};
+    o.a = 10;*/
+    // 在JS中，遇到{}、[] 都是开辟一个新的空间地址；
+
+    // 定义对象的过程：
+      // 1) : 首先会开辟一个新的空间地址，堆内存；
+      // 2) : 把对象的键值对存储到当前这个空间下；
+      // 3) ：把这个空间地址赋值给对象名；
+   /* var obj = {
+        num:10,
+        fn : function () {
+            console.log(1);
+        }
+    }
+    console.log(obj.num);*/
+
+    // 定义的变量名存储的是一个空间地址；
+
+    // 1.增删改查
+    var obj = {a:1,b:"hh",d:10};
+    // 1. 新增键值对  对象名.属性名【以前不存在】 = 属性值；
+    //  对象名["属性名"] = 属性值；
+    // 对象的属性名默认是字符串类型的
+    // 属性名是数字的会按照数字的大小放在对象的前面；
+    //obj.c = "hello";
+    /*obj[3] = "world";
+    obj[1] = "hello";*/
+    /*var c = "d";
+    obj[c] = "hello";
+    console.log(obj);*/
+
+    // 2. 修改
+    // 1. 对象的属性名不能重复
+    // 2. 如果属性名存在，那么就是修改；如果不存在，就是新增；
+    // 3.新增属性名是数字的话，那么必须采用obj[]= 100;去新增；
+    /*obj.a = 19;
+    obj["a"] = 190;
+    obj[10] = 100;
+    console.log(obj);*/
+    //var obj = {a:1,b:"hh",d:10};
+     // 3.查询
+    // // 获取obj中属性名是b的属性值；
+    // 如果属性名不存在，那么获取的结果就是undefined；
+    /*console.log(obj);
+    var h = obj.b;// 获取obj中属性名是b的属性值；
+    var g = obj["b"];
+    console.log(obj["c"]);
+    var ary = [12,89];
+    console.log(ary[3]);// undefined
+    var str = "12344";
+    console.log(str[str.length]);*///undefined
+
+    // 4.删除
+    // 假删除
+    /*obj.d = null;
+    console.log(obj);*/
+    // delete 对象名.属性名；
+    /*delete obj.b;
+    console.log(obj);*/
+
+
+    // 5.in  检测当前属性名是否在对象中存在，存在返回true，不存在返回false；
+    /*var obj = {a:1,b:"hh",d:10};
+    console.log("a" in obj);// true
+    console.log("c" in obj);*/// false
+    // window: 是全局下的一个内置的大对象；
+    /*console.log(window);
+    alert()*/
+    /*if(!("a" in window)){
+        console.log("a")
+    }*/
+    console.log("abc" in window);
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script>
+    // 递归： 针对的是函数； 是JS中一种重要的思想；
+    // 函数： 分为定义和执行
+    // 函数递归： 在函数体内部，调用函数自己本身，让其执行；这就是递归；
+    /*var i=0;// 1  2
+    function fn() {
+        if(i>100){
+            return;
+        }
+        console.log(i);
+        i++;
+        fn()
+    }
+    fn();*/
+
+    // 求1-100之间是3倍数的和
+    // % : 取模；取余数
+    /*var  total = 0;
+    for(var i=0;i<100;i++){
+        if(i%3===0){
+            total += i;
+        }
+    }*/
+
+    // 递归
+    function sum(num) {
+        if(num === 0){
+            return num;
+        }
+        if(num%3===0){
+            return num + sum(num-1);
+        }
+        if(num%3!==0){
+            return sum(num-1);
+        }
+        // return sum(99)
+        //return   99 + sum(98)
+        // return  99 + sum(97)
+        // return  99 + sum(96)
+        // return 99 + 96 + sum(95)....
+        // return 99 + 96 +... + 3 + sum(2)
+        // return 99 + 96 +... + 3 + sum(1)
+        // return 99 + 96 +... + 3 + 0
+    }
+    console.log(sum(100));
+    console.log(sum(200));
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

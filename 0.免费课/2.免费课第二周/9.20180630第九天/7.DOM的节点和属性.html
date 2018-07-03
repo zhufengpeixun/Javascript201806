@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent">
+    yyyyy
+    <div>11</div>
+    <!---->
+    <div id="second">22</div>
+    <!--hello-->
+    <span></span>
+</div>
+确实是
+<!--你很帅-->
+<script>
+    //var  div = document.getElementsByTagName("div")[0];
+
+    // DOM 的节点
+     //             nodeType       nodeName       nodeValue
+    // 元素节点        1              大写标签名            null
+    // 文本节点        3               #text             文本内容
+    // 注释节点        8               #comment           注释内容
+    // document :     9              #document           null
+    // 换行和空格都是文本节点；
+    var parent = document.getElementById("parent");
+    var second = document.getElementById("second");
+    // 1.childNodes：获取元素的所有子节点；
+    //console.log(parent.childNodes);
+    // 2.children : 获取当前元素所有的子元素节点
+    //console.log(parent.children);
+    /*function children(curEle) {
+        var  childList = curEle.childNodes;
+        var  ary = [];
+        for(var i=0;i<childList.length;i++){
+            if(childList[i].nodeType ===1){
+                ary.push(childList[i])
+            }
+        }
+        return ary;
+    }
+    children(parent)*/
+
+    // 3.parentNode : 获取当前元素的父亲节点
+
+    //console.log(second.parentNode);
+    //console.log(document.parentNode);// null
+    // 4. previousSibling  ： 获取上一个哥哥节点
+    //console.log(second.previousSibling.previousSibling);
+       //previousElementSibling ： 获取上一个哥哥元素节点; 在IE8以下不兼容
+    //console.log(second.previousElementSibling);
+    // 5.nextSibling : 获取下一个弟弟节点
+       // nextElementSibling  ：获取下一个弟弟元素节点
+    // 6.firstChild : 获取第一个子节点
+    // firstElementChild :获取第一个子元素节点
+    ///console.log(parent.firstChild);
+
+    // 7.lastChild : 获取最后一个子节点
+    //lastElementChild : 获取最后一个子元素节点；
+    //console.log(parent.lastElementChild);
+
+
+</script>
+</body>
+</html>
