@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.let 不进行变量提升；
+    //2.let 定义的变量不能重复声明；
+    //3.let定义的变量不能给window新增键值对；
+    //4.let和function定义的函数同样不能重名
+
+    /*console.log(num);
+    var  num = 10;
+    console.log(num);// 10
+    var  num =19;
+    console.log(num);*/// 19
+    //console.log(a);
+
+    //let  a  = 9;
+    /*function b() {
+        let  a = 11;
+    }
+    function c() {
+        let  a = 11;
+    }
+    console.log(b());
+    c()*/
+
+    /*let  num =0;
+    if(true){
+        console.log(num);// num is  not defined
+        let num = 100;
+    }*/
+    // const : 定义一个常量；
+    /*console.log(n);
+    let n = 10;
+    const  n  = "str";
+    console.log(n);*/
+    console.log(sum);// undefined
+    for(let  i=0;i<10;i++){// for循环形成的块级作用域；
+        function sum() {
+        }
+    }
+    var  obj = {}
+    //console.log(i);// 10
+
+
+</script>
+</body>
+</html>

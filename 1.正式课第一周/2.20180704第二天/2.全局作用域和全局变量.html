@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="1.css">
+    <style type="text/css">
+        *{
+
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<script>
+    // 全局作用域：提供代码运行的环境；
+    // DOM的回流和重绘；
+    // 浏览器的渲染机制： 先形成DOM树，再形成CSS树，最后两个树形成render树；
+
+    // 全局对象window ： 内置的属性；
+    //Math
+
+    // 全局作用域： 1.环境  2.存储
+
+
+    // 全局变量： 在全局作用域下定义的变量是全局变量；
+    // 1. 会给window新增一个键值对
+    // 2. 全局下定义的函数相当于给window新增键值对；属性名是函数名，属性值是整个函数；
+    /*var  num =10;
+    a =1;*/
+
+    //性能优化 ---> 用户体验；
+
+    /*function fn() {
+        var  total  = 0;
+        var  len = arguments.length;
+        for(var i=0;i<len;i++){
+           var  cur = arguments[i];
+            if(!isNaN(cur)){
+                total +=cur;
+            }
+        }
+        window.t = total;// 给window新增一个属性名t;属性值是total存储的值；
+        //return  total;
+    }
+    fn(12, 34, 56, 7);
+    console.log(t);*/
+
+    /*function  fn(){
+
+    }
+    console.log("f" in window);/*/// true
+
+    /*var  a,b,fn = function () {
+        var a= b =10;
+        var a=10;
+        b = 10;
+    }
+    fn();
+    console.log(a,b);*///  undefined   10
+
+    /*var  a,b,c;
+    var  a;
+    var b;
+    var c;*/
+    /*var  a = b = c= 10;
+    var  d = e =f = {};
+    c = 11;
+    console.log(a);//  10
+    f.a = 0;
+    console.log(d);// {a:0}*/
+    console.log(a);// undefined
+    console.log(b);// 报错；
+    var  a  = 10;
+    b = 50;
+
+
+
+</script>
+
+
+</body>
+</html>

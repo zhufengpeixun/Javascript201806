@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 当变量提升阶段，给window新增的键值对；
+    //console.log(a);// undefined
+    //console.log(b);// b  is not  defined
+    //debugger
+    //var a = 10;
+    //b = 100;
+
+    // 变量提升：在当前作用域下，在代码从上到下运行之前，浏览器会对带有var 关键字和带有function的关键字的变量进行提前声明；带var是只声明，不定义；带function不仅声明，而且需要定义；
+    // 函数定义开辟堆内存都是发生在变量提升阶段；当代码真正从上到下运行的时候，遇到function，直接跳过；
+    // 声明： 通知一下当前作用域有这么一个变量；
+    // 如果变量只声明，没被定义，那么默认存储值是undefined；
+
+    // 形成作用域 --> 变量提升 ---> 代码从上到下运行；
+    var a =10;
+    console.log(fn);// eeefff000
+    function fn() {
+
+    }
+    function g() {
+
+    }
+    console.log(1);
+    // 函数分为定义和执行；
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

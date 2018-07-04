@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 全局作用域
+    // 私有作用域
+    // 块级作用域
+
+    // 函数执行首先会形成一个私有的作用域；
+    // 函数体中的变量发生在私有作用域形成之后；
+    /*function fn() {
+        console.log(a);// undefined
+        //console.log(b);// 整个函数
+        var  a = 10;
+        b = 100;
+        function b() {
+            console.log(15);
+        }
+        //b();
+    }
+    fn();
+    console.log(b);*/
+
+    // 私有变量：1. 在函数体中被var,被function过，就是一个私有的变量；
+    //         2. 函数的形参也是私有变量；
+    function fn(m,n) {
+        console.log(m);//
+        /*function m() {
+
+        }*/
+        var  m = 19;
+    }
+    fn(100,200)
+    //fn(12)
+    //console.log(m);//  m is not defined
+    // 函数执行的过程：
+    // 1.首先形成一个私有作用，开辟一个栈内存
+    // 2.形参赋值
+    // 3.变量提升
+    // 4.代码从上到下运行
+    // 5.作用域是否销毁；
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 全局作用域
+    // 私有作用域
+    // 在当前作用域下输出变量值时，首先观察是否是私有变量；
+    // 1.如果判断一个变量是私有的？
+        // 1. 当前变量有没有被var过，function过；
+        // 2. 形参也是私有变量；
+    // 2.如果变量不是私有的，向上一级作用域查找；
+    /*var total = 100;
+    function sum() {
+        console.log(total);// undefined
+        var total = 10;
+        return function () {
+            console.log(total);
+        }
+    }
+    sum()*/
+
+
+    //var  total = 100;
+    /*function sum(){
+        // 当前函数的上一级作用域是全局作用域；
+        console.log(total);
+        /!*var  total = 10;
+        function total() {
+
+        }*!/
+    }*/
+    //sum(1);
+
+    /*var  total = 100;
+    function  sum() {
+        //var  total = 10;
+        return function () {
+            console.log(total);//
+            //var total = 0;
+        }
+    }
+    var  f  = sum();
+    f();*/
+    // 上一级作用域判断函数在哪定义的，函数上一级作用域就是谁；跟函数执行没有任何关系；
+
+
+    // 当获取变量值时，首先看是否是私有变量，如果不是会向上一级作用域查找，如果上一级作用域也没有，那么会继续向上查找，直到找到window为止，如果window也没有，那么就会报错；这样一级一级向上查找形成的作用域就是作用域链；
+    var  num = 100;// 99
+    function sum(num) {
+        num = 99;
+        /*var num = 10;
+        function num() {
+        }*/
+    }
+    sum();
+    console.log(num);//
+
+
+</script>
+</body>
+</html>

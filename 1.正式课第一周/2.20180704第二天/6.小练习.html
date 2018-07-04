@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*console.log(fn);// undefined
+    if(![]==[]){
+        console.log(fn);//函数
+        function fn() {
+        }
+        console.log(fn);//函数
+        console.log(100);
+    }*/
+    // in ： 检测属性名是否属于这个对象
+    // 变量提升： 给window新增的键值对；
+   /* console.log(a);// undefined
+    if(!("a" in window)){
+        var a = 100;
+    }
+    console.log(a);*/// undefined
+
+    /*var  obj = {
+        num : 10,
+        fn: function () {
+            console.log(num);// undefined
+            var  num = 10;
+            return function () {
+                console.log(100)
+            }
+        }
+    };
+    console.log(obj.fn()());*/
+    //var num = 10;
+   /* var  obj = {
+        num :100,
+        fn:(function (num) {
+            console.log(num);
+            var num = 10;
+            //console.log(100);
+            return function(){
+                console.log(1);
+            }
+        })(num)
+    }*/
+    //console.log(obj.fn);
+
+    // 对象的定义：
+    // 1.开辟一个空间地址；堆内存
+    // 2.把键值对存储到堆内存下
+    // 3.把空间地址赋值给对象名；
+
+
+
+    // 3.
+    /*function a() {
+        console.log(b);// 函数
+        b();
+        var b = 1;
+        function b() {
+            console.log(300);
+        }
+        b()
+        console.log(b);// 1
+        console.log(c);// undefined
+        return function () {
+
+        }
+        var  c = 10;
+        console.log(b);
+    }
+    a();*/
+
+    console.log(f);
+    function f() {
+        console.log(1);
+    }
+    f()//88
+    function f() {
+        console.log(2);
+    }
+    function f() {
+        console.log(3);
+    }
+    f()// 88
+    f= 99;
+    function f() {
+        console.log(88);
+    }
+    f()// f  is not  a  function;
+    console.log(f);
+    // 5.
+    function sum() {
+        var  num = 1;
+        (function (m,n) {
+            var num =19;
+
+        })(num);
+    }
+    sum();
+
+
+
+
+</script>
+</body>
+</html>

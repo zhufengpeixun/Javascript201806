@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 不管条件是否成立，都要进行变量提升；
+    // 在最新版本的浏览器中，带function的只进行声明，不进行定义；
+    // 在老版本浏览器中，带function 不仅声明，而且定义；
+    /*console.log(str);
+    console.log(fn);
+    if(true){
+        // 在块级作用域形成之后，先对带function进行定义；
+        var  str = "zhufeng";
+        console.log(fn);
+        function fn() {
+            console.log("hello");
+        }
+    }
+    fn();*/
+
+    // 2. 变量提升只发生等号的左边
+
+    /*var fn  = function f() {
+
+    };
+    var  obj = {
+        num:1,
+        fn:function () {
+
+        }
+    }
+    oBox.onclick = function () {
+
+    }
+    console.log(fn);*/
+
+
+    // 3. 函数体中，return后面的代码不进行变量提升，但是return下面的代码要进行变量提升
+    /*var  a = 100;
+    function sum() {
+        console.log(a);// undefined
+        var a = 10;
+        console.log(b);
+        console.log(yy);// undefined
+        return  function () {
+
+        };
+        // return ： 1. 返回值  2. 中止代码运行
+        function b() {
+
+        };
+        var yy = "ww";
+    }
+    sum();*/
+
+
+    // 4.如果变量名字发生重复，那么不再重复声明，但是要重新定义；
+    /*console.log(num);
+    var  num = 10;
+    console.log(num);
+    var  num =100;
+    console.log(num);
+
+    function s() {
+        console.log(f);//函数
+        var f = "uu";
+        function f() {
+        }
+        console.log(f);// "uu"
+    }
+    s()*/
+
+    // 5.匿名函数不进行 变量提升；
+    var  f = function () {
+    };
+    // 自执行函数： 当代码运行到这一行时，定义和执行一块完成；
+    (function sum() {
+
+    })()
+    var obj = {
+        fn:function () {
+
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>
