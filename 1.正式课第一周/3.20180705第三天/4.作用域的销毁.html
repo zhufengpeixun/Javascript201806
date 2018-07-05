@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 全局作用域和私有作用域；
+    // 全局作用域的销毁： 只有当关闭页面时，或关闭浏览器时，全局作用域才会销毁；不销毁的作用域；
+
+    // 私有作用域的销毁：
+    // 函数执行：形成一个私有作用域；提供代码运行环境；存储基本数据类型值；
+    // 闭包： 1.保护了里面的私有不受外界的干扰；
+          // 2.存储值；
+
+/*    function fn() {
+        var  num = 10;
+    }
+    fn();
+    fn();
+    console.log(num);*/
+
+
+    // 一般情况下，函数执行完成之后，当前的作用域会立即销毁；
+    // 函数每执行都会开辟一个新的私有作用域；并且新的私有作用域跟之前的作用域没有关系；是两个不同的栈内存；
+
+    // 不销毁的作用域：1.函数执行return出一个引用数据类型的值 2. 函数执行return出的引用数据类型值并且被外界接收；【被占用】
+
+    function fn() {
+        var  t = 10;
+        return  function () {
+            console.log(t)
+        }
+    };
+    var f = fn();
+    f()
+    f()
+
+
+    // 不立即的销毁：需要等待里面的小函数执行完成之后，那么外层作用域才会随着销毁；
+
+    function fn() {
+        var  t = 10;
+        function f() {
+            console.log(t)
+        }
+    };
+    fn()();
+
+
+    /*var obj = {
+        fn:(function () {
+            // 自执行函数属于不销毁的作用域；
+            var hh = 100;
+            return function () {
+                hh++;
+            }
+        })()
+    };
+    obj.fn()*/
+
+
+    function fn() {
+        var i=10;// 11
+        return function (n) {
+            console.log(n + (++i))
+        }
+    };
+    var f = fn();
+    f(15);// 26
+    fn()(20);// 31
+    f(20);// 32
+    fn()(15);// 26
+
+
+
+</script>
+</body>
+</html>

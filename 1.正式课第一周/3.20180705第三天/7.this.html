@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // this --> 关键字； 在JS有特殊意义；
+    // var a = 10;
+    /*console.log(this);
+    window.a = 10;
+    this.b = 18;*/
+    // 函数中的this，指的是当前函数的执行主体；谁让函数执行的，那么this就指向谁；
+    // 1. 在全局作用域下，this指向window；
+    // 2. 函数体中的this，看函数执行前有没有".",如果有，那么点前面是谁，this就指向谁；如果没有“.”，那么会指向window;
+    // 3. 如果给元素的事件行为绑定方法，那么方法中的this，就会指向当前被绑定的那个元素；
+    // 4.回调函数中的this指向window；
+    // 5.自执行函数中的this永远指向window；
+
+
+    //
+    /*function b() {
+        console.log(this);
+    }
+    window.b();*/
+   /* var  obj = {
+        num:1,
+        fn : function () {
+                console.log(this);// obj
+                function m() {
+                    console.log(this);// window;
+                }
+                m()
+        }
+    }
+    /!*var f = obj.fn;
+    f();/!*!/// window
+    obj.fn();// obj*/
+
+   /*var  obj = {
+       num:1,
+       f:{
+           num:2,
+           fn:function () {
+               console.log(this);// obj.f
+           }
+       }
+   }
+   obj.f.fn()*/
+
+
+   //回调函数：
+    /*function A(h) {
+        h()
+
+    }
+    A(B)
+    function B() {
+        console.log(this);
+    }*/
+    /*setInterval(function () {
+        console.log(this);// window
+    },1000)*/
+
+    //
+    /*(function () {
+        console.log(this);
+    })()*/
+
+    var  obj = {
+        fn: (function () {
+            console.log(this);
+        })()
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

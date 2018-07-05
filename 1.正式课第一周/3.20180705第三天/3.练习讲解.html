@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 空间地址
+    var ary = [1,2,3,4];
+    function sum(ary) {// 私有的；
+        ary[0] =100;
+        ary = [];// 在JS中，遇到{}、[]都会开辟一个新的空间地址‘；
+        ary[0] = 10;
+        console.log(ary)// [10]
+    }
+    sum(ary);
+    console.log(ary);// [100,2,3,4]
+</script>
+</body>
+</html>

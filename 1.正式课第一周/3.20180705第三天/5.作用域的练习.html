@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+        var  i =0;
+        function fn(i) {
+            // i =5   6
+            return function (n) {
+                console.log(n + i++);
+            }
+        };
+        var f  = fn(5);
+        f(10);// 15
+        f(20);// 26
+        fn(8)(12);// 20
+        fn()(18)// NaN
+
+
+
+        var  obj= {
+            i : 10,
+            fn:(function () {
+                var i = 0;
+                return function (n) {
+                    console.log(n + i++)
+                }
+            })()
+        };
+        var  f = obj.fn;
+        f(10);//  10
+        f(20);// 21
+        obj.fn(30);// 32
+        obj.fn(40);// 43
+
+</script>
+</body>
+</html>

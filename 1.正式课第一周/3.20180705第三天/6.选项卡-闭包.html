@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab {
+            width: 500px;
+            height: 350px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -250px;
+            margin-top: -175px;
+        }
+
+        #tab ul {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        #tab ul li {
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid lightcoral;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        #tab ul li.select {
+            background: lightcoral;
+        }
+
+        #tab div {
+            display: none;
+            width: 500px;
+            height: 320px;
+            text-align: center;
+            line-height: 320px;
+            font-size: 30px;
+            color: lightcoral;
+            border: 1px solid lightcoral;
+        }
+
+        #tab div.select {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <ul>
+        <li class="select">世界杯</li>
+        <li>综艺</li>
+        <li>电影</li>
+    </ul>
+    <div class="select">梅西</div>
+    <div>跑男</div>
+    <div>复联3</div>
+</div>
+
+<script>
+    var tab = document.getElementById("tab");
+    var oLis = tab.getElementsByTagName("li");
+    var divs = tab.getElementsByTagName("div");
+
+    /*for(var i=0;i<oLis.length;i++){
+     // 自定义属性
+     oLis[i].index = i;
+     oLis[i].onclick = function () {
+     for (var j = 0; j < oLis.length; j++) {
+     oLis[j].className = "";
+     divs[j].className = "";
+     }
+     this.className = "select";
+     divs[this.index].className = "select"
+     }
+
+     }*/
+
+    // 闭包：存储值；
+    // 比较： 闭包形成了三个不销毁的作用域，栈内存不能被释放，相对于自定义属性，自定义属性会更优化一些；
+    /*for (var i = 0; i < oLis.length; i++) {
+        oLis[i].onclick = (function (j) {
+            // i : 私有变量
+            // i =0;
+            // i = 1
+            // i = 2
+            // 一共形成三个不销毁的私有作用域，每个作用域存储一个私有变量i;并且i不一样；
+            // 1. 当代码加载到这一行时运行；
+            return function () {
+                for (var j = 0; j < oLis.length; j++) {
+                    oLis[j].className = "";
+                    divs[j].className = "";
+                }
+                this.className = "select";
+                divs[j].className = "select"
+            }
+        })(i)//实参
+
+    }*/
+
+
+    // es6的let
+
+    for (let i = 0; i < oLis.length; i++) {
+        // 块级作用域；
+        // for 循环中用let ,会形成父作用域；每循环一次，都会形成一个子作用域；在子作用域中会把当前的i进行保存；
+        oLis[i].onclick =function () {
+            console.log(i);
+            for (var j = 0; j < oLis.length; j++) {
+                oLis[j].className = "";
+                divs[j].className = "";
+            }
+            this.className = "select";
+            divs[i].className = "select";
+        }
+    }
+
+
+</script>
+</body>
+</html>
