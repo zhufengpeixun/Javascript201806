@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 变量提升：
+    /*console.log(num);// undefined
+    var num = 10;
+    console.log(fb);// 整个函数
+    function fb() {
+        var  num = 10;
+    }*/
+
+    // 1. 不管条件是否成立，都要进行变量提升；
+         //  es6 : function的只声明不定义；
+    // 2.等号右边不进行变量提升；
+    // 3. return 后面的不进行变量提升，但是return下面的要进行变量提升
+    // 4. 如果变量名字重复，不再重复声明，但要重新定义
+    // 5.匿名函数不进行变量提升
+    // 6. let const  块级作用域
+    /*console.log(y);
+    let y = 0;
+    let y =9;*/
+
+    // if    for   while
+//   if(isNaN("fn")){
+//       fn();
+//       function fn() {
+//           console.log(12);
+//       }
+//   }
+//   fn();
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

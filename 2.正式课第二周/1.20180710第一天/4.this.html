@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" style="width:100px;height:100px;background: red"></div>
+<script src="index.js"></script>
+<script>
+    // this --> 关键字；在作用域下有特殊意义；
+    //console.log(this);// 全局作用域下的this（对象空间地址）
+    // 1.全局下的this指向window；（this和window的空间地址一样）
+    // 2.自执行函数中的this永远指向window；
+    // 3.看函数执行前有没有点，有点，前面是谁，this就指向谁；没有点，指向window；
+    // 4.给元素的事件行为绑定方法（函数）,那么方法中的this指向当前被绑定的那个元素
+    // 5.回调函数中的this，指向window
+    // 6.构造函数中的this指向当前类的实例；
+    // 7.call 、apply、bind可以改变this关键字；
+
+   /* var obj = {
+        fn : (function () {
+            console.log(this);//window
+            return function () {
+                console.log(this);// obj
+            }
+        })
+    }
+    obj.fn();
+    var  r = obj.fn;
+    r()*/
+   /*box.onclick = function () {
+       console.log(10)
+   };*/
+   var ary = [12,3,57,8];
+   // forEach 中的this指向数组ary;
+   ary.forEach(function (item,index) {
+       //
+       ary[index] = this;
+   })
+    console.log(ary);
+   function A() {
+       console.log(this);// obj
+       function B() {
+           console.log(this);// window
+   }
+       B();
+   }
+   var obj = {};
+   obj.A =A;
+   obj.A();
+</script>
+</body>
+</html>

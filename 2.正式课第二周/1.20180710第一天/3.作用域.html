@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<script src="index.js"></script>-->
+<!--当代码解析到script的src属性时，会去外链式JS中解析代码；然后再从上到下运行-->
+<script>
+    // 作用域  ： 全局作用域域 私有作用域
+    // 全局作用域：提供代码运行环境；存储基本数据类型值；
+    // 私有作用域：
+    //console.log(a);
+    /*function a(){
+        function b() {
+
+        }
+    }
+    var  r = 1;*/
+
+ /*   var  obj = {
+     num:10,
+     fn : function(){
+     var num = 0;
+     (function (m) {
+     console.log(m);
+     })(this.num)
+     }
+     }
+     //obj.fn()    // this -> obj
+     var  f = obj.fn;
+     f()*/
+
+
+    // 全局作用域： 当打开页面时，形成全局作用域
+    // 私有作用域：
+    // 1.当函数运行首先形成私有作用域
+    // 2.形参赋值
+    // 3.变量提升
+    // 4.代码从上到下运行
+    // 5.作用域是否销毁
+
+    // 作用域的销毁： 栈内存；
+    /*function fn() {
+
+    }
+    fn()*/
+
+    // 不销毁
+    var  num =100;
+    function f() {
+        var  num = 0;
+        return {
+            num :1,
+            fn :function () {
+                console.log(num)
+                /*私有变量
+                * 是不是形参
+                * 有没有带var和function*/
+                /*上一级作用域： 看函数在哪定义的*/
+            }
+        }
+    }
+    var  fn = f();
+    fn.fn();
+
+
+    /*var n = 0;
+    function a() {
+        var n = 10;
+        function b() {
+            n++;
+            console.log(n);//11  12
+        }
+        b();
+        return b;
+    }
+    var c = a();
+    c();
+    console.log(n);/*// 0
+
+
+
+    /*var a=9;// 0
+    function fn(){
+        a=0;// 1  2
+        return function(b){
+            return b+a++;
+        }
+    }
+    var f=fn();
+    console.log(f(5));//   5
+    console.log(fn()(5));//  5
+    console.log(f(5));// 6
+    console.log(a); //2 */
+
+
+    // 不立即销毁
+
+    function fn() {
+        return  {}
+    }
+    fn()
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="index.js"></script>
+<script>
+    // 1.单例模式--> "单独的实例";
+    /*var name = "董凯凯";
+    var  age = 16;
+    console.log(name);// "董凯凯"
+
+    var  name = "魏震东";
+    var age = 15;
+    console.log(name);// "魏震东"
+
+    var  person1 = {name:"董凯凯",age:16};
+    var  person2 = {name:"魏震东",age:15};
+    console.log(person1.name);*/
+    // 单例模式： 把描述同一件事物的不同属性放在同一个空间下,避免了全局变量的干扰；这种模式就是"单例模式";
+   var  ary = [1,2,3,3,2];
+
+    // 高级单例模式
+    console.log(utils.unique(ary));
+    console.log(utils.sortMy(ary));
+
+    /*var  utils = (function(){
+        function sort() {
+        }
+        function a() {
+        }
+        return {
+            sort:sort,
+            a:a
+        }
+    })()
+    var  obj = {
+        sort : function () {
+
+        },
+        a:function () {
+
+        }
+    }
+    obj.sort()*/
+    // $()
+    /*(function () {
+        function jQuery() {
+        }
+        jQuery.prototype.addClass  = function () {
+        }
+        // 函数的三种角色： 函数 类  对象；
+        jQuery.ajax = function () {
+        }
+        window.$ = window.jQuery = jQuery;
+    })();*/
+
+
+
+</script>
+</body>
+</html>

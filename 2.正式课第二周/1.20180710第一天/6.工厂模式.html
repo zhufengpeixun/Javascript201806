@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 单例模式---> 手工作业模式；
+    // 工厂模式
+    function createPerson(name,age) {
+        var  obj = {};
+        obj.name = name;
+        obj.age = age;
+        return obj;
+    };
+    createPerson("董凯凯",18);
+    createPerson("魏震东",16);
+
+    //把实现同一种功能的代码放进一个函数中，当实现类似功能时，只需要执行这个函数即可，传参数不同就可以；减少了代码的冗余；"高内聚，低耦合"---> 函数的封装；
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function fn() {
+
+    }
+    fn()*/
+    // 工厂模式
+    /*function fn(name,age) {
+        var obj= {};// 初始化一个空对象
+        obj.name = name;
+        obj.age = age;
+        return obj;//把初始化的对象return出来；
+    }
+    fn("董凯凯",12);*/
+  /*  function fn() {
+        /!*var obj = {};
+        this = obj*!/
+        this.a = 100;
+        console.log(1);
+//       return  this;
+    }
+    var f = new fn();// {}  // new 是关键字：放在函数的前面，函数就变成一个构造函数；
+    fn();*/
+    // 构造函数被new，那么就会创建出一个实例；
+
+    // 普通函数和构造函数的区别：
+    // 1.相同点：形成私有的作用域-->形参赋值--->变量提升-->从上到下运行-->作用域销毁；
+    // 不同点：1. 构造函数运行时，形成作用域之后，在代码运行之前，首先会给当前作用域初始化一个对象；并且让当前作用域下的this指向当前这个空对象；当代码运行结束，构造函数把函数体中this返回；
+    // 2.构造函数如果不需要实参，可以省略执行的小括号；
+    // 3.构造函数中的this，指向当前的实例；
+    // 4.在构造函数中，return一个基本数据类型值，那么对实例没有任何影响；如果return出一个引用数据类型值，那么会把默认return的this给替换掉；
+    // 5.instanceof 检测当前实例是否属于某个类的，如果属于返回true；不属于返回false；
+    // 6.in  : 检测属性是否属于某个对象的；是返回true，不是返回false；
+    // 7.hasOwnProperty : 检测是否是私有属性的；
+    // 8.检测属性是否是公有属性；
+    function Fn(num) {// 构造函数就是一个自定义的类；
+        // this -->实例
+        var b = 100;
+        //return 10;
+        this.a = 10;
+        this.obj = {
+            fn:function () {
+            }
+        }
+        //return 10;
+    }
+    function F() {
+    }
+    Fn();
+    var  f = new Fn;//{a:10,obj:{}}
+    console.log("a" in f);
+    console.log(f instanceof Fn);// true
+    console.log(f instanceof Object);// true
+    var  f1 = new Fn;
+    console.log(f1===f);// false;
+    console.log(f);
+
+
+    var  obj = {a:8,__proto__:{}};
+    var  o = {}
+    console.log(obj.toString === o.toString);
+    console.log(obj.toString);
+    console.log("toString" in obj);
+    console.log(obj.hasOwnProperty("a"));
+    console.log(obj.hasOwnProperty("toString"));// false;
+
+    // 如果是公有属性返回true；如果不是返回false；
+    function hasPublicProperty(obj,attr) {
+        // attr 是obj的一个属性并且不是私有的；
+        /*if(attr in obj){
+            if(!obj.hasOwnProperty(attr)){
+                return true;
+            }
+        }else{
+            return false;
+        }
+        return false;*/
+        return attr in obj && !obj.hasOwnProperty(attr);
+    }
+    console.log(hasPublicProperty(obj, "toString"));
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   /* function Fn(name) {
+        //a ,b 都是实例的私有属性
+        this.a = name;
+        this.b = 10;
+        /!*this.eat = function () {
+            console.log("两碗米饭")
+        }*!/
+    }*/
+    /*Fn.prototype.eat = function () {
+        console.log("两碗米饭")
+    }*/
+    /*var f = new Fn("董凯凯");
+    console.log(f);
+    var f1 = new Fn("魏震东");
+    console.log(f ===f1);// false;
+    console.log(f.a === f1.a);
+    console.log(f.b === f1.b);
+    console.log(f.eat === f1.eat);// true
+    f.eat()
+    f1.eat();*/
+    // 构造函数解决了实例私有属性问题；
+    // 原型模式解决了属性的公有问题；
+    // 原型模式：
+    // 1.每一个函数数据类型（函数、类）都天生自带一个prototype属性，prototype的属性值是一个对象数据类型的；
+    // 2. prototype 属性中天生自带一个constructor属性，属性值是当前原型所属的类；
+    // 3.每一个对象数据类型值（对象、数组、arguments...）天生自带一个__proto__属性，属性值指向当前实例所属类的原型；
+    function Fn(a,b) {
+        this.a = a;
+        this.b = b;
+        this.getA = function () {
+            console.log(200);
+        }
+    }
+    Fn.prototype.getA = function () {
+        console.log(100)
+    }
+    var  f = new Fn;// 实例--->对象
+    f.__proto__.getA();
+    f.getA();
+    console.log(f.getA === f.__proto__.getA);//
+   /*var obj = {};
+    console.log(obj.prototype);
+    console.log( typeof Fn.prototype);// {constructor:Fn}
+   console.log(Fn.prototype.constructor === Fn);// true
+   console.log(f.__proto__ === Fn.prototype);*/// true
+    //数组类： Array;内置的类；
+    var  ary = [12,38];
+    //ary.push(100);
+    console.log(ary.hasOwnProperty);
+
+   // 当获取对象属性名对应的属性值时，首先会看是否是私有属性，如果不是，那么会通过__proto__ 属性继续向上查找，如果上一级原型中也不存在，那么会通过原型中__proto__继续向上查找，直到找到Object的原型为止；如果也没有，那么会输出undefined；这样一级一级向上查找就会形成"原型链";
+
+    // 公有属性： 所有的实例都可以使用公有属性中的方法；
+   console.log(Object);// Object 是一个内置的类；
+    //内置类： Number  String  Boolean  Null Undefined  Object
+    // Array  RegExp  Date  Function
+
+   console.log(Fn.prototype instanceof Object);
+
+
+
+
+</script>
+</body>
+</html>
