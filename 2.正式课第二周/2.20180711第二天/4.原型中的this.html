@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Fn() {
+        // 构造函数中 this指向实例；
+        var num = 0;
+        this.x = 10;
+        this.y = 100;
+        this.sum = function () {
+            //this --》
+            console.log(this);
+            console.log(this.x + this.y);
+        }
+    }
+    /*Fn.prototype.x = 8;
+    Fn.prototype.sum= function () {
+        console.log(this.x + this.y)//
+    };*/
+    Object.prototype.sum = function () {
+        console.log(100);
+    }
+    // 当前作用域this跟函数执行有关；
+    var  f = new Fn;
+   /* f.sum()// sum
+    var b = f.sum;// 把f的实例sum属性值空间地址赋值全局变量b;
+    b();*/
+    //console.log(f.num);// undefined
+    // 如果私有属性存在，那么会直接执行私有属性，不存在继续向公有属性查找；
+    f.sum();// 110;
+    f.__proto__.sum();// NaN;this--> f.__proto__
+    Fn.prototype.sum()// NaN;this--> Fn.prototype
+    console.log(f.__proto__ === Fn.prototype);//true : 指向同一个空间地址；
+    console.log(f.sum === Fn.prototype.sum);// false
+    var  t = Fn.prototype.sum;
+    t();
+    // 原型中this：需要看函数执行前有没有点，点前面是什么，this就是什么；
+    console.log(f.sum === f.__proto__.__proto__.sum);// true
+    console.log(f.sum === f.__proto__.sum);// true
+    console.log(f.sum === Fn.prototype.sum);// true
+
+
+</script>
+</body>
+</html>

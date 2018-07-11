@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 自定义类 和内置类
+    function Fn() {
+        this.x = 10;
+    }
+    Fn.prototype.getX = function () {// 公有的属性
+    }
+    Fn();
+    var f =new Fn();// 实例
+    console.log(f);
+    f.getX()
+    console.log("getX" in f);// true
+
+    // 所有的实例都是对象数据类型的；
+    // 内置类 ： 数据类型；
+    // 内置类： Number String Boolean  Null Undefined Object Array  RegExp  Date  Function;
+    // 在浏览器中，禁止调用Null类和Undefined；
+    //console.log(Number);
+    //console.log(Null);
+    //console.log(Undefined);
+    /*var num1 = 1;
+    var ary =[];
+    var  num = new Number(10);
+    console.log(typeof num);// "object"
+    console.log(num);
+    console.log(num1 < num);
+    console.log(num1 instanceof Number);// false
+    console.log(num instanceof Number);*/// true
+
+    // 定义变量： 字面量方式创建 实例创建；
+    // 通过字面量方式创建的基本数据类型值不是一个标准的实例；但是可以调用Number原型上的方法；
+    //console.log(1.1.toFixed(2));
+    // 在内置类的方法中，如果数组类接收一个参数，那么当前参数会作为实例的length属性值；如果大于等于两个，那么就会成为数组成员；如果没有参数就得到一个空数组；
+
+    // 1.instanceof  : 只能校验标准的实例是否属于某个类
+    // 2.字面量方式创建的值也可以调用内置类原型上的方法；
+    var  ary = new Array(18,89,90);
+    console.log(ary.push());
+    function fn() {// fn 是Function的实例；
+    }
+    console.log(fn instanceof Function);
+    var f  = new Function;
+    var obj = new Object;
+    console.log(obj);
+    console.log(f);
+
+
+</script>
+</body>
+</html>

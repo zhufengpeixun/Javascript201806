@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  Array : 内置的类
+    /*console.log(Array);// pop  push
+    Array.prototype.quchong = function () {
+        // 对象属性名不能重复；
+        // 循环每一项；
+        // 让每一项给对象新增属性名和属性值相同的键值对；
+        // 在新增之前判断是否存在过；
+        var obj = {}
+        for(var i=0;i<this.length;i++){
+            var   cur = this[i];
+            if(obj[cur] === cur){
+                this[i] = this[this.length-1];
+                this.length--;
+                i--;
+                continue;
+            }
+            obj[cur] = cur;// 新增键值对
+        }
+        return this;
+    }
+    var  ary = [12,3,4,5,5,3,4];
+    var a = [73,88,88,73]
+    console.log(ary.quchong());
+    console.log(a.quchong());*/
+    // 自定义类原型 的扩展
+    /*function Fn() {
+
+    }
+    Fn.prototype.sum = function () {
+
+    }
+    var f  = new Fn;
+    f.sum()
+    console.log(Fn.prototype);*/// constructor  __proto__
+
+    // 第二种原型扩展方式；
+    // 用新的空间地址覆盖原有的空间地址，那么空间下天生自带的constructor属性就会消失；如果需要，需要手动新增constructor；如果不手动新增，那么constructor属性值就会指向Object；但是__proto__不会消失；
+
+   /* function Fn() {
+        this.num = 100;
+    }
+    var a = new Fn;
+    a.sum();
+    Fn.prototype={
+        constructor:Fn,
+        num :10,
+        sum : function () {
+            console.log(this.num);
+        }
+    }
+    var  f = new Fn;
+    console.log(f.constructor);*/
+
+    // Array : 内置类原型不允许重新修改它的空间地址，但是可以给其新增方法；
+   /* Array.prototype = {
+        quchong :function () {
+            var obj = {}
+            for(var i=0;i<this.length;i++){
+                var   cur = this[i];
+                if(obj[cur] === cur){
+                    this[i] = this[this.length-1];
+                    this.length--;
+                    i--;
+                    continue;
+                }
+                obj[cur] = cur;
+            }
+            return this;
+        }
+    }
+    var ary = [100,100,100]
+    ary.quchong(100)// 报错；
+
+    function g() {
+        Array.prototype.getX = function () {
+
+        }
+    }
+    g();
+    ary.getX();*/
+
+
+    //push : 向数组末尾新增一项，返回一个新数组的length；
+    Array.prototype.myPush = function () {
+        // arguments
+        for(var i=0;i<arguments.length;i++){
+            this[this.length] = arguments[i];
+        }
+        return this.length;
+    }
+    var  ary = [0,0,0];
+    console.log(ary.myPush(1, 2));
+    console.log(ary);
+
+    // pop unshift  shift  slice   indexOf reverse concat join;
+
+
+
+
+</script>
+</body>
+</html>

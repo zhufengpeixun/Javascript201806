@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<!---->
+<!---->
+<div></div>
+<script>
+    // sort(function(a,b){return b-a})
+    //ary.length--   ary.pop  ary.splice(ary.length-1,1)
+    // slice(n-1,m)
+    // document.documentElement.clientWidth || document.body.clientWidth
+    // document.createElement()
+    // appendChild()
+    // insertBefore(new,old)
+    // removeChild
+    // replaceChild
+    // cloneNode
+    // set/get/removeAttribute
+    // classList : add  remove  replace:
+
+    var ary = [12,73,7,88];
+    var a = [[2,3,9],["de"]];
+
+    // previousElementSibling :
+    // previousSibling
+    // nodeType :   1 3 8  9
+    // 获取上一个哥哥元素节点
+
+    function getBrother(curEle) {// curEle : 要获取谁的哥哥元素节点；
+        if("previousElementSibling" in  curEle){
+            return curEle.previousElementSibling;
+        }
+         var pre = curEle.previousSibling;// null
+         //  如果条件中只有一个值，那么直接转布尔；
+         while(pre){
+             if(pre.nodeType===1){
+                return pre;
+             }
+             pre = pre.previousSibling;
+         };
+         return null;
+
+    }
+    getBrother()
+   // 1. var  oDiv =document.createElement("div");document.body.appendChild(oDiv)
+   /*var  diva =  oDiv.cloneNode();
+    document.body.insertBefore(diva,oDiv)*/
+   // Number  parseInt  parseFloat
+    // ary.slice(0) ary.splice(0)  ary.concat()
+
+
+    // 1.let  
+    // 2.自定义属性
+    // 3.闭包： 
+    for(let i=0;i<inputList.length;i++){
+        inputList[i].onclick = function () {
+            document.body.style.backgroundColor = ary[i]
+        }
+    }
+    for(var i=0;i<inputList.length;i++){
+        inputList[i].index = i;
+        inputList[i].onclick = function () {
+            document.body.style.backgroundColor = ary[this.index]
+        }
+    }
+    for(var i=0;i<inputList.length;i++){
+        inputList[i].onclick = (function (i) {
+            // 作用域不销毁 i
+            return function () {
+                // 上一级作用域是自执行函数形成的不销毁的作用域；
+                document.body.style.backgroundColor = ary[i]
+            }
+        })(i);
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

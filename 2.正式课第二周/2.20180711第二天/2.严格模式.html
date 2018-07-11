@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+    // 当前作用域使用严格模式
+    // 在严格模式下；形参和arguments脱离映射的关系；
+    // arguments : 实参集合；
+    // 在非严格模式下，arguments和形参存在映射关系；一个发生变化，另一个也发生变化；
+    function sum(a,b) {
+        a=10;
+        console.log(arguments);
+    }
+    sum(1,2)
+
+
+
+</script>
+</body>
+</html>

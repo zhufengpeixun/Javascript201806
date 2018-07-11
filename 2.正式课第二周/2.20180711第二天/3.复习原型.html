@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var name= ""
+    // 单例模式 ：
+    // 工厂模式 ：function
+    // 构造函数模式：
+    // 由于类一般首字母都是大写的；
+    function Fn() {
+        // 构造函数中的this指向实例；
+        var num = 10;
+        if(true){
+
+        }
+        this.name = "";
+        /*this.hobby = function () {
+            console.log("play footBall")
+        }*/
+    }
+    Fn.prototype.hobby = function () {
+        console.log("play footBall")
+    }
+    Fn();
+    var f = new Fn();// 创建一个实例；是一个对象数据类型；
+    var f1 = new Fn();
+    f.hobby()
+    // instanceof :
+    // hasOwnProperty:
+
+    // 原型模式: 解决了实例的公有属性问题；
+    // 1. 2. 3.
+
+    var ary = [18,9,90];// 数组类的实例；
+    var a = [293.8,9,9];
+    console.log(ary instanceof Array);// true
+    var obj = {}//
+    //ary.__proto__ === Array.prototype  // true;
+    ary.pop();
+    a.pop();
+
+
+    function Fn(){}
+    Fn.prototype = new Fn();
+    var f = new Fn();
+    console.log(f.constructor);
+
+    function Fn(){}
+    var f = new Fn();
+    Fn.prototype = new Fn();
+    console.log(f.constructor);
+
+    function Fn(){}
+    var f = new Fn();
+    Fn.prototype = {};
+    console.log(f.constructor);
+
+    function Fn(){}
+    Fn.prototype = {};
+    var f = new Fn();
+    console.log(f.constructor);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

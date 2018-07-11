@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // 1.所有的实例都是对象数据类型的；
+
+    // 1.每一个函数数据类型（函数、类）都天生自带一个prototype属性，prototype的属性值是一个对象数据类型的；
+    // 2. prototype 属性中天生自带一个constructor属性，属性值是当前原型所属的类；
+    // 3.每一个对象数据类型值（对象、数组、arguments...）天生自带一个__proto__属性，属性值指向当前实例所属类的原型；
+
+    // 4.所有的函数数据类型（普通函数、类（内置的、自定义））都是Function的一个实例；Function是所有函数的基类；
+    //5.所有的对象数据类型（实例、prototype、对象）都是Object的一个实例；Object是所有对象数据类型的基类；
+    // Function 首先是自己的一个实例；
+
+    function fn() {
+
+    }
+    console.log(fn instanceof Function);// true
+    console.log(Array instanceof Function);// true
+    console.log(fn instanceof Object);
+    console.log(Object instanceof Function);// true
+    console.log(Function instanceof Object);// true
+    console.log(Function instanceof Function);// true
+
+    // Object.prototype.__proto__ : null ; Object的原型中没有__proto__;
+
+    // instanceof : 只要当前类在当前实例的原型链，那么就会返回true；
+    var  obj = {}
+    console.log(fn instanceof Object);// true
+    //fn.hasOwnProperty()
+    console.log(obj instanceof Function);// false
+    var  num = new Number(1);
+    console.log(num instanceof Object);// true
+    var ary = [];
+    console.log(ary instanceof Function);//false
+    console.log(ary instanceof Array);// true
+    console.log(ary instanceof Object);// true
+
+    //obj.call()
+    Object.call()
+</script>
+</body>
+</html>

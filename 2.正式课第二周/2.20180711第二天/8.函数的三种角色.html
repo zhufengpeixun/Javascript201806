@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.普通函数： 定义和执行
+    // 定义--> 开辟一个堆内存
+    // 执行--> 私有作用域-->形参赋值---> 变量提升--> 代码从上到下运行--> 作用域销毁；
+
+    function fn() {
+        /*this.a = 10;
+        this.b = "n";*/
+        console.log(fn.a);// undefined
+        return {};
+    }
+    fn();
+    fn.a = 100;
+
+    //new fn;
+    //2. 构造函数【类】
+    //执行： 代码运行之前初始化一个空对象，并且让这个作用域下的this指向当前这个空对象；当代码运行完成，把对象return出去；默认返回一个实例；
+    // return出基本数据类型，不会影响创建的实例；如果return引用的，那么实例会被新的引用代替；
+
+
+    /*// 3.对象；有键值对，并且有__proto__
+    fn(1,2,3)
+    console.log(fn.name);// 函数名
+    console.log(fn.length);*/// 行参的个数；
+
+    var num = 0;// 20
+    function Fn(num) {
+        arguments[0] = 10;
+        this.num = 20;// this-->实例
+        return num;// 10
+    }
+    Fn.num = 40;// 对象；
+    Fn.prototype.num = 30;// 函数
+    Fn.prototype.getNum = function () {
+        console.log(this.num);// f
+    };
+    var f = new Fn(num);// 类；{num:20}
+    console.log(f.num);// 20
+    f.getNum();// 20
+    Fn.prototype.getNum();// 30
+    console.log(num)// 0
+    var n = Fn(num);// 普通函数
+    console.log(n);// 10
+    console.log(num);// 20
+
+
+
+
+
+</script>
+</body>
+</html>
