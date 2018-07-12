@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function C1(name) {
+        if (name) {
+            this.name = name;
+        }
+        ;
+    }
+    function C2(name) {
+        this.name = name;
+    }
+    function C3(name) {
+        this.name = name || 'join';
+    }
+    C1.prototype.name = 'Tom';
+    C2.prototype.name = 'Tom';
+    C3.prototype.name = 'Tom';
+    console.log(new C1().name)// "Tom"
+    console.log(new C2().name)//{name:undefined}
+    console.log(new C3().name)// {name:"join"}
+
+
+    function fun() {
+        this.a = 0;
+        this.b = function () {
+            alert(this.a);
+        }
+    }
+    fun.prototype = {
+        b: function () {
+            this.a = 20;
+            alert(this.a);
+        },
+        c: function () {
+            this.a = 30;
+            alert(this.a)
+        }
+    }
+    var my_fun = new fun();
+    my_fun.b();//0
+    my_fun.c();//30
+
+
+    /*function Foo() {
+     getName = function () {
+     console.log(1);
+     };
+     // this-->window
+     return this;
+     }
+     Foo.getName = function () {
+     console.log(2);
+     };
+     Foo.prototype.getName = function () {
+     console.log(3);
+     };
+     var getName = function () {
+     console.log(4);
+     };
+     function getName() {
+     console.log(5);
+     }
+
+     Foo.getName();//2
+     getName();//4
+     Foo().getName();//1
+     getName();//1
+     new Foo.getName();//2
+     new Foo().getName();//3*/
+
+
+    /*function Fn() {
+     this.x = 100;
+     this.y = 200;
+     this.getX = function () {
+     console.log(this.x);
+     }
+     }
+     Fn.prototype.getX = function () {
+     console.log(this.x);
+     };
+     Fn.prototype.getY = function () {
+     console.log(this.y);
+     };
+     var f1 = new Fn;
+     var f2 = new Fn;
+     console.log(f1.getX === f2.getX);// false
+     console.log(f1.getY === f2.getY);// true
+     console.log(f1.__proto__.getY === Fn.prototype.getY);// true
+     console.log(f1.__proto__.getX === f2.getX);// false
+     console.log(f1.getX === Fn.prototype.getX);// false
+     console.log(f1.constructor);// Fn
+     console.log(Fn.prototype.__proto__.constructor);// Object
+     f1.getX();// 100
+     f1.__proto__.getX();// undefined
+     f2.getY();//200
+     Fn.prototype.getY();// undefined*/
+
+
+    /* var name = 'zhufengpeixun';
+     var Fn =function (name) {
+     var name = 'world';
+     this.name = 'zhufeng';
+     this.sex = function () {
+     this.name = 'hello';
+     }
+     }
+     var f1 = new Fn(name);//{name:"hello",sex:function(){this.name = 'hello';}}
+     var f2 = new Fn('age');//{name:"zhufeng",sex:function(){this.name = 'hello';}}
+     console.log(f1.name);// "zhufeng"
+     console.log(f2.age);// undefined
+     f1.sex();
+     console.log(f1);
+     f1.sex === f2.sex// false
+     Fn.name == f1.name/*/// false
+
+
+    function Fn() {
+        var a = 1
+        this.a = a
+    }
+    Fn.prototype.say = function () {
+        this.a = 2
+    }
+    Fn.prototype = new Fn;
+    var f1 = new Fn;//{a:1}
+    f1.__proto__.b = function () {
+        this.a = 3
+    };
+    console.log(f1.a)// 1
+    console.log(f1.prototype)// undefined
+    console.log(f1.b)//
+    //f1.hasOwnProperty('b')// false
+    //'b' in f1// true
+    console.log(f1.constructor == Fn);// true
+
+
+</script>
+</body>
+</html>

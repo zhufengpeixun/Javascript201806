@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JSON : 是一种数据格式，不是新的数据类型；
+    // 后端经常以JSON格式的数据返回给前端；
+   // var  obj = {name:"ygsg"};// 普通的对象；
+    var  JSONObj = {"name":"ygsg"};// JSON格式的对象
+    var  JSONStr = '{"name":"ygsg"}';// JSON格式的字符串
+
+    // JSON.parse : 把JSON格式的字符串转换成JSON格式的对象
+    // JSON.stringify ：把JSON格式的对象转换成JSON格式的字符串；
+    //console.log(JSON.stringify(JSONObj));
+    /*var obj =JSON.parse(JSONStr);
+    console.log(obj["name"]);*/
+    //var obj = JSON.parse(JSONStr);// 在IE8以下是不兼容的；
+    ///console.log(obj);
+    // eval : 在IE7及以下，可以把JSON格式的字符串转换成JSON格式的对象；
+    //console.log(eval("("+JSONStr+")"));
+    //console.log(eval(JSONStr));
+    // 把JSON格式的字符串转换成JSON格式的对象；
+    function toJSON(value) {
+        return "JSON"  in window ?JSON.parse(value):eval("("+value+")");
+    }
+    toJSON(JSONStr);
+</script>
+</body>
+</html>

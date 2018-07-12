@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+<script>
+    // 通过className和tagName获取到的是一个类数组集合；
+    var divs = document.getElementsByTagName("div");
+    var spans = document.getElementsByTagName("span")
+    function toArray(likeAry) {
+        var  ary = [];
+        // 1.通过改变数组中slice的this指向
+        // 在IE8以下是不兼容的；
+       // console.log("previousElementSibling" in divs[0]);
+        if("previousElementSibling" in divs[0]){
+            // 如果可以进来，说明是标准的浏览器；
+
+            ary = Array.prototype.slice.call(likeAry);
+        }else{
+            for (var i = 0; i < likeAry.length; i++) {
+                var cur = likeAry[i];
+                ary.push(cur);
+            }
+        }
+        // 2.通过循环把类数组中的每一项放到新数组中；
+        return ary;
+    }
+    console.log(toArray(divs));
+    console.log(toArray(spans));
+
+</script>
+</body>
+</html>

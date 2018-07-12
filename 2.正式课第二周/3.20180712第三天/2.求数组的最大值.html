@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.排序方法
+    var ary = [12,78,8,9,6,109,108];
+    /*ary.sort(function (a,b) {// 从小到大 原有数组发生改变；
+        return a-b;
+    });
+    console.log(ary[0]);*/
+
+    // 2.假设法:假设数组中第一项就是最大值,然后让数组中的每一项，都和这项进行比较，如果比这一项大，直接用最新的项覆盖；
+    /*var max = ary[0];//
+    var min = ary[0];//
+    for (var i = 1; i < ary.length; i++) {
+        var cur = ary[i];
+        /!*if(max<cur){
+            max = cur;
+        }
+        if(min>cur){
+            min = cur;
+        }*!/
+        max<cur ?max=cur:null;
+        min>cur ?min=cur:null;
+    }*/
+    //console.log(max);
+
+    // 3.Math.max
+    //console.log(Math.max.apply(null,ary));// null : 占位；
+
+
+    // 4. es6的扩展运算符；
+    console.log(Math.max(...ary));
+    // 剩余运算符；
+    /*function sum(m,n,...yy) {//把多余的参数放到一个参数中；
+        console.log(yy);
+        console.log(...yy);
+    }
+    sum.call([10,38,78,99,100,10]);*/
+
+    function sum() {//把多余的参数放到一个参数中；
+        console.log(...this)
+    }
+    sum.call([10,38,78,99,100,10]);
+    var  obj ={a:1}
+    var  obj1 ={b:1}
+    var o = {...obj,...obj1}
+    console.log(o);
+
+</script>
+</body>
+</html>

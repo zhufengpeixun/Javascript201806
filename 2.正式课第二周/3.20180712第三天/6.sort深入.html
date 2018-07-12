@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary = [12,83,78,56,99,101,78,66];
+    var a = [{c:12},{c:83,d:19},{c:66,d:100},{c:89}];
+    var a = [[12],[6],[3],[24]];
+    // sort排序的原理： 让相邻两项进行比较，如果return 的数字【回调函数的返回值】 大于0；那么会让这两项交换位置；如果return的结果小于0；那么不交换；
+    /*ary.sort(function (a,b) {
+        // 回调函数执行次数跟数组的成员个数，还跟数组的成员大小有关；
+    console.log(a,b);
+    return a-b;
+    });*/
+    /*ary.sort(function (a,b) {
+        return b-a;
+    });*/
+   // console.log(ary);
+    // sort排序是交换的整个数组成员而不是某一个具体值；
+   /* a.sort(function (a,b) {
+        return a.c-b.c;
+    });
+    console.log(a);*/
+
+    var ary = [{name:"肖琦",age:299},{name:"许琦",age:19},{name:"郭亚飞",age:1990}];
+    ary.sort(function (a,b) {
+        return a.age-b.age;
+    })
+    console.log(ary);
+
+
+</script>
+</body>
+</html>

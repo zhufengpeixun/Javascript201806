@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #oUl{
+            width:500px;
+            margin:30px auto;
+        }
+        #oUl li{
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            border-bottom: 1px dashed red;
+            list-style: none;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<ul id="oUl">
+    <li>23</li>
+    <li>45</li>
+    <li>18</li>
+    <li>32</li>
+</ul>
+<div></div>
+<script src="utils.js"></script>
+<script>
+    var oLis = document.getElementsByTagName("li");
+    var oUl = document.getElementById("oUl");
+    var li = document.createElement("li");
+//    console.log(oLis);
+//    oUl.appendChild(li);
+//    console.log(oLis);
+    var  ary = utils.toArray(oLis);
+    ary.sort(function (a,b) {
+        return a.innerHTML -b.innerHTML;
+    });
+
+    for(var i=0;i<ary.length;i++){
+        // debugger// 断点
+        oUl.appendChild(ary[i]);
+    }
+    // DOM 映射：在JS中的元素对象和页面中的DOM元素存在一一映射关系，当JS中元素顺序发生改变，那么不会重新创建一个新的元素，而是直接操作页面那个元素；
+
+    // DOM 的回流：在页面中的某个元素的位置、大小发生变化，那么会影响浏览器对其他元素的位置进行重新计算；这样是非常消耗性能的；
+
+    // DOM 的重绘： 当页面中元素的背景，或者字体颜色发生改变，那么浏览器要对元素进行重新的描绘；这种现象就是“重绘”；
+
+
+</script>
+</body>
+</html>

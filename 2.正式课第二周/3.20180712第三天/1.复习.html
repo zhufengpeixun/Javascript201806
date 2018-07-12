@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型模式： 解决了属性的公有问题；
+   /* function Fn(){
+
+    }
+    Fn.prototype.sum = function () {
+
+    }
+    //Fn.prototype = {};
+    var f2 = new Fn;
+    //f1.sum()
+    f2.sum()
+    f2.constructor // Object
+    f2.call()
+    var  obj = {};// Object
+    var  num = new Array;*/
+
+    // 原型的扩展
+    /*类.prototype.属性名=属性值；: 不会改变原有的空间地址
+    类.prototype = {} ：让原型指向新的堆内存；原型丢失了constructor；
+    */
+
+
+    // 原型中this
+
+    // 原型的深入
+    // Function  Object
+   /* Function.hasOwnProperty()
+    console.log(Function instanceof Function);// true
+    console.log(Function instanceof Object);// true
+    console.log(Object instanceof Function);// *///true
+
+
+    // 函数的三种角色： 函数   类   对象；
+    // Fn.yy = 99;
+
+
+    // call apply  bind : 改变this指向；都在Function的原型，只有函数能调用这个方法；
+    //Array.call()
+    "use strict";
+    // 严格模式：
+    // 1.如果call方法中不传参数，那么fn中的this指向undefined；
+    // 2.在严格模式下，传null ，this就指向null；传undefined，。this指向undefined；
+    //非严格模式
+    // 1.如果传null，或undefined，或不传，那么fn中this都指向window；
+    function fn(num) {
+        console.log(this);
+        console.log(arguments);
+        console.log(1);
+    }
+    /*fn.call({},37);
+    fn.call(null)
+    fn.apply(18,[29,8,98])
+    var newFn = fn.bind("yy")
+    newFn()*/
+    // apply : 传参要求第二个参数是一个数组；把参数作为一个整体传过去；fn是一个个接收
+
+    // bind : 预处理this；
+    function fn(num) {
+        console.log(1);
+    }
+    function fn2() {
+        console.log(2);
+    }
+    // 改变this中的this指向，并且让this执行；
+    fn.call.call.call.call(fn2);
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   /* function avge() {
+        console.log(arguments);
+        /!*var  ary = [];
+        // 1.把类数组转数组；
+        for (var i = 0; i < arguments.length; i++) {
+            var cur = arguments[i];
+            ary.push(cur)
+        }*!/
+        // 改变了原型slice中this指向；让其指向arguments；
+        var ary = Array.prototype.slice.call(arguments,0)
+        var ary = [].slice.call(arguments)
+        // 2.排序，找出最大最小值
+        ary.sort(function (a,b) {
+            return a-b;
+        });
+        // 3.删除最大值最小值
+        ary.pop();
+        ary.shift();
+        // 4.求和
+        // eval : 方法；是window下的一个方法；把字符串转换JS表达式；
+        console.log(Number((eval(ary.join("+"))/ary.length).toFixed(1)));
+    }
+    avge(98,93,89,95,99,100,90,94,98,99);*/
+
+   /* Array.prototype.slice = function () {
+        var  a = [];// 新数组
+        // this-->ary
+        for(var i=0;i<this.length;i++){
+            a.push(this[i])
+        }
+        return a;
+    }
+    ary.slice();*/
+
+
+   function avge() {
+       // 通过[]数组去调用原型上的方法；并且通过call改变其中this指向；同时让原型上的方法执行；
+       [].sort.call(arguments,function (a,b) {
+           return a-b;
+       });
+       [].pop.call(arguments);
+       [].shift.call(arguments);
+       console.log(eval([].join.call(arguments, "+"))/arguments.length);
+       console.log(arguments);
+   }
+   avge(98,93,89,95,99,100,90,94,98,99);
+
+    /*ary.sort(function (a,b) {
+        return a-b;
+    })*/
+
+    // Array.prototype
+
+    Array.prototype.push = function () {
+
+        this[this.length] = arguments[0]
+    }
+    ary.push(10)
+    a.push()
+
+</script>
+</body>
+</html>

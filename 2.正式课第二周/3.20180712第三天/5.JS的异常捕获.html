@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script src="utils.js"></script>
+<script>
+    // 通过className和tagName获取到的是一个类数组集合；
+    var divs = document.getElementsByTagName("div");
+
+   /* function toArray(likeAry) {
+        var  ary = [];
+        try{
+            ary = Array.prototype.slice.call(likeAry);
+        }catch(e){
+            for (var i = 0; i < likeAry.length; i++) {
+                var cur = likeAry[i];
+                ary.push(cur);
+            }
+        }
+        return ary;
+    }*/
+    console.log(utils.toArray(divs));
+    // try  catch  finally
+    try{
+        // 如果这里面的代码有报错；那么会执行catch中的代码；
+        // 如果不报错，那么catch中不再运行；
+        console.log(a);
+    }catch(e){
+        //console.dir(e);// 显示报错信息；
+        //throw new Error(e.message);// 一旦抛出错误,下面代码不再执行；
+        console.log(200);
+    }finally {
+        // 不管上面报错与否，都会执行此处代码；
+        console.log(12);
+    }
+    console.log(100);
+
+
+</script>
+</body>
+</html>

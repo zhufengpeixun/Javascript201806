@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="ul">
+
+</ul>
+<div>2222</div>
+<script>
+    var ary = ["习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代携手构建人类命运共同体", "习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体", "习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体", "习近平2017达沃斯日内瓦主旨演讲的世界意义", "共同开启中拉关系新时代 携手构建人类命运共同体"];
+    var ul = document.getElementById("ul");
+    // 1.创建元素;
+    /*for (var i = 0; i < ary.length; i++) {
+        // 缺点: 每循环一次，都会引发一次回流；浏览器要对其他元素的位置进行重新计算；
+        var cur = ary[i];
+        var curLi = document.createElement("li");
+        curLi.innerHTML = cur;
+        ul.appendChild(curLi);
+    }*/
+
+    // 2.文档碎片
+    // JS给浏览器提供了一个临时存储DOM元素的容器；
+
+ /*   var frg = document.createDocumentFragment();
+     for (var i = 0; i < ary.length; i++) {
+     // 每创建一个元素，都会放到文档碎片中，最后一次性放回页面，只引发一次回流；
+     var cur = ary[i];
+     var curLi = document.createElement("li");
+     curLi.innerHTML = cur;
+     frg.appendChild(curLi);
+     }
+     ul.appendChild(frg);
+     frg = null;*/
+
+    // 3.字符串拼接
+   /* var  str ="";
+    for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i];
+        str+="<li>"+cur+"</li>";
+    }
+    ul.innerHTML = str;
+    console.log(str);*/
+
+    // 4.es6模板字符串
+    var  str =``;
+    for(var i=0;i<ary.length;i++){
+        var cur = ary[i]
+        str+=`<li>${cur}
+                 <div>
+                    <div></div>
+                 </div>
+              </li>`
+    }
+    ul.innerHTML = str;
+    // ${变量名}
+
+
+
+</script>
+</body>
+</html>
