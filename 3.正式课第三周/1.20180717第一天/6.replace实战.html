@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 把首字母换成大写的；
+    var str = "my name is niuniu,i am 28 year old,i like play code";
+    // 1.如何找到第一个首字母
+    // 2.把找到的字母转大写--> toUpperCase;
+    // 3.把原有的替换掉；
+    var newStr = str.replace(/\b[a-z]/g,function () {
+        //console.log(arguments);// 捕获到的内容；取其中的第一项；
+        return arguments[0].toUpperCase();
+    })
+    console.log(newStr);
+
+    // 2.格式化时间字符串；
+    /*var  str = "2018-07-17 15:24:30";
+    var ary = ["年","月","日","时","分","秒"];
+    //var newStr  = "2018年07月17日15时24分30秒";
+    var newStr = "";
+    var i = 0;// 临时存储值的作用；
+    str.replace(/\d+/g,function () {
+        // arguments[0];
+        newStr += arguments[0] +ary[i];
+        i++;
+    })
+    console.log(newStr);*/
+
+    // 3.把小写的数字统统换成大写的数字；
+    var str = "201807171540";
+    var  ary = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+    var newStr =  str.replace(/\d/g,function () {
+        // arguments:2  0   1   8
+        return ary[arguments[0]];
+    })
+    console.log(newStr);
+
+    // 作业；
+    //4.加千分符  "1278323024927483"
+    // var  str = "1,278,323,024,927,483";
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 正则的捕获： 把字符串中符合正则内容的字符串找出来；捕获不到返回null；
+    //var  reg = /\d+/;
+    //reg.test("zf123");
+    //var  str = "zf123px456";
+    //console.log(reg.exec(str));//["123", index: 2, input: "zf123"]
+    //console.log(reg.exec(str));//["123", index: 2, input: "zf123"]
+
+    // 1. 正则捕获到的内容
+    // 2. index：开始捕获位置的索引
+    // 3. input : 要捕获的字符串；
+
+    //正则的修饰符：放在正则的后面；
+    // g : global: 全局，取消捕获的懒惰性；
+    // i: ignoreCase： 忽略大小写
+    // m : multiLine : 多行匹配；
+    // 1.懒惰性：g取消捕获的懒惰性；加g之后，每当捕获一次，都会改变当前reg的lastIndex属性；下一次捕获会从上一次捕获结束的位置开始；
+    /*var  reg = /\d+/g;
+    var  str = "zf123px456";
+    console.log(reg.lastIndex);
+    console.log(reg.exec(str));
+    console.log(reg.lastIndex);
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));*/
+    // 2.贪婪性:把问号放在量词的后面，取消捕获的贪婪性；
+    /*var  reg = /^\d+$/g;
+    var  str = "123456";
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));
+    console.log(reg.exec(str));*/
+    // 3.分组捕获：大正则捕获，小正则也要捕获一次；
+    var  reg = /^-?(\d|([1-9]\d+))(\.\d+)?$/;
+    console.log(reg.exec("12.55px"));
+
+
+
+</script>
+</body>
+</html>

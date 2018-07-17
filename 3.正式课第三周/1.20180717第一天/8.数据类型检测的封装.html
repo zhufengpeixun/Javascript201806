@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 检测数据类型的方法
+    //isNumber(12)//--> true
+    //isObject({})// true
+    //isArray()
+    (function () {
+        var obj = {
+            isNumber:"Number",
+            isString :"string",
+            isBoolean:"Boolean",
+            isNull : "Null",
+            isUndefined:"Undefined",
+            isObject:"Object",
+            isArray:"Array"
+        };
+        var checkType = {};
+        for(var key in obj){
+            // 遍历obj；key : 是obj中的属性名
+            checkType[key] = (function () {
+                // 每循环一次，把当前key对应的属性值存储到当前不销毁的作用域下；
+                // 利用了闭包存储值的作用；
+                var curType = obj[key];
+                // 实例创建正则；初始化checkType执行；字面量方式创建的正则不能传变量；所以只可以采用实例创建方式
+                var reg = new RegExp("\\[object "+curType+"\\]");
+                //console.log(reg);
+                return function (val) {
+                    // 通过curType创建的正则；
+                    return reg.test(Object.prototype.toString.call(val)); // "[object Number]"
+                }
+            })();
+        }
+        window.checkType = checkType;
+    })();
+
+    //console.log(checkType);
+    console.log(checkType.isNumber(18));
+    console.log(checkType.isNumber("123"));
+    console.log(checkType.isObject("123"));
+    console.log(checkType.isObject({}));
+
+
+    var  name = "aa";
+    //var reg = /name/
+    //console.log(new RegExp(""+name));
+    //console.log(new RegExp("\\d"));
+
+    var reg = /${}/;
+    console.log(reg);
+
+
+</script>
+</body>
+</html>

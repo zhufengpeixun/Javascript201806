@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.typeof
+    // 2.instanceOf
+    // 3.constructor
+    // 4.Object.prototype.toString.call()
+
+    // 1.typeof : 返回一个字符串
+    // 1.局限性： typeof null -->"object"
+    // 2.只能检测通过字面量方式创建的基本数据类型值，不能细分对象数据类型下具体的数据类型；
+    /*var num = new Number(1);
+    console.log(typeof num);// "object"
+    var num = 100;
+    function fn() {}
+    console.log(typeof fn);*/// "function"
+    //var ary = [12,3,4];
+    //console.log(ary.forEach(12));
+    /*function A(b) {
+        if(typeof b==="function"){
+            b();
+        }
+    }
+    A(100);*/
+    //console.log(typeof Array);
+    //console.log(typeof Object);
+
+    // 2.instanceOf: 检测当前实例是否属于某个的方法；
+    // 局限性： 只要当前类在当前的实例原型链上，都返回true；
+
+    /*var ary = [];
+    console.log(ary instanceof Array);// true
+    function fn() {}
+    console.log(fn instanceof Function);//true
+    console.log(fn instanceof Object);//true
+    console.log({} instanceof Function);*///false
+    //function fn() {
+        //console.log(arguments instanceof Array);
+        /*[].sort.call(arguments,function (a,b) {
+            return a-b;
+        })*/
+        /*arguments.__proto__ = Array.prototype;
+        arguments.sort(function (a,b) {
+            return a-b;
+        });
+        arguments.constructor === Array
+        console.log(arguments instanceof Array);*/
+    //}
+    //fn();
+
+    // 3.constructor : 构造函数
+    // 局限： 一旦原型指向发生改变，constructor会指向改变后的类；
+    /*var  ary = [];
+    console.log(ary.constructor === Object);// false;
+    var obj = {};
+    console.log(obj.constructor === Object);// true
+    var num =1;//
+    console.log(num.constructor === Number);*/// true
+    // 在浏览器中，禁止调用Null和Undefined这个类；
+    // console.log(num.constructor === Null);
+
+    // 4.Object.prototype.toString.call();
+    //Object.prototype.toString : 返回值是一个字符串，"[object 类]"
+    // 一般用于区分对象 数组 正则；
+    console.log(Object.prototype.toString.call(1));// "[object Number]"
+    console.log(Object.prototype.toString.call("abc"));// "[object String]"
+    console.log(Object.prototype.toString.call(true));// "[object Boolean]"
+    console.log(Object.prototype.toString.call(null));// "[object Null]"
+    console.log(Object.prototype.toString.call(undefined));// "[object Undefined]"
+    console.log(Object.prototype.toString.call({}));// "[object Object]"
+    console.log(Object.prototype.toString.call([]));// "[object Array]"
+    //
+   /* var obj = {a:1};
+    obj.toString()// "[object Object]";
+    var ary = [];
+    ary.toString() */// ""
+    console.log(toString.call([]));
+
+</script>
+</body>
+</html>

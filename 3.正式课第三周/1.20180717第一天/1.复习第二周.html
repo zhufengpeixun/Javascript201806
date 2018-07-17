@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent">
+    <div id="box"></div>
+</div>
+
+<script>
+    // 原型的深入     商品排序（JSON、数据绑定、DOM映射、回流、sort深入、ajax、调试bug）    正则；
+    /*1.原型深入
+     * 1.原型中的this
+    *
+    * */
+   /* var parent = document.getElementById("parent");
+    console.log(parent.getElementById("box"));
+    // getElementById只在document的原型链上，普通的元素对象原型上不存在这个方法
+    function Fn(){
+        //console.log(this);
+        var  obj = {};
+        return 100;
+    }
+    new Fn;
+    Fn()*/
+    // 类： 内置类和自行定义类
+    // Number String  Boolean Null Undefined  Object Array RegExp Date
+    // HTMLDIVElement
+    // div-->HTMLDIVElement-->HTMLElement-->Element-->Node-->EventTarget--->Object
+    //document -->HTMLDocument-->Document(getElementById) -->Node -->>EventTarget--->Object;
+
+
+    // 内置类： 原型只能新增方法，不能用新的地址覆盖；
+    /*Array.prototype.getX = function () {
+
+    }
+    Array.prototype = {};*/
+    //
+    /*var ary = [];
+    var a = [];
+    ary.push(12);// Array 原型上的方法
+    a.push(12);*/// Array 原型上的方法
+    /*Array.prototype.push= function () {
+        // this -->
+    }*/
+    // 不存在返回-1；存在返回索引；
+    // indexOf : 1.方法的作用：1)返回第一次出现的索引  2)参数  3)返回值  4)原有数组发生变化;
+
+    /*Array.prototype.indexOf1 = function (cur) {
+        for (var i = 0; i < this.length; i++) {
+            if(cur === this[i]){
+                return i;
+            }
+        }
+        return -1;
+    };
+    var newAry = [23,45];
+    console.log(newAry.indexOf1(23));*/
+
+    //
+    //var num =1;// Number 的一个实例；
+    // Function Object :
+
+
+    //商品排序
+    // sort JSON   DOM的映射 回流 重绘  数据绑定    call apply  bind
+    // this -->
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

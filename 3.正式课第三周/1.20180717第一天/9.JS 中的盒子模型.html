@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            width: 0;
+            padding: 0px;
+        }
+        #box{
+            /*width: 内容区域的宽度*/
+            margin:20px auto;
+            width:100px;
+            height:100px;
+            padding:20px;
+            border:10px solid red;
+            background: lightseagreen;
+            /*margin:10px;*/
+            /*box-sizing: border-box;*/
+            /*从border-box开始计算： 默认就是content-box
+            content-box : 内容开始计算
+            inherit : 继承父亲的这个属性；
+            */
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    我爱你中国
+</div>
+<script>
+    var  oBox = document.getElementById("box");
+    //
+    // 1.clientWidth :内容的宽度+ 左右的padding；
+    // clientHeight ： 内容 的高度 + 上下的padding；
+    console.log(oBox.clientWidth);
+    // 浏览器可视窗口的宽度
+    // document.documentElement.clientWidth : 在IE6及以下不兼容
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var winW = document.documentElement.clientHeight || document.body.clientHeight;
+
+    // 2.clientLeft: 左边框的宽度
+    // clientTop： 上边框的高度；
+    console.log(oBox.clientLeft);
+
+    // 3.
+
+</script>
+<script>
+
+
+
+</script>
+</body>
+</html>

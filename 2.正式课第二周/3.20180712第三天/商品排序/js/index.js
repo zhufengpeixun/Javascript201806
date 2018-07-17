@@ -64,7 +64,7 @@ function sortList() {
     ary.sort(function (a,b) {
         // getAttribute : 获取行内的自定义属性值；
         // li的整个对象
-        var curLi = a.getAttribute(newAry[that.index])
+        var curLi = a.getAttribute(newAry[that.index]);
         var nexLi = b.getAttribute(newAry[that.index]);
         if(that.index ===0){
             // 如果that.index 是0；则是获取的时间，需要去掉中间的-；
@@ -72,8 +72,8 @@ function sortList() {
             nexLi = nexLi.replace("-","").replace("-","");
         }
         // that.flag : 正负1 ，切换，改变排序方式
+        //console.log(curLi-nexLi);
         return (curLi-nexLi)*that.flag;
-
     });
     var frg = document.createDocumentFragment();
     for(var i=0;i<ary.length;i++){

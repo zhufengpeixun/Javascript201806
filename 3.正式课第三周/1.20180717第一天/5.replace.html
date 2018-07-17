@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var  str = "zhufeng2009zhufeng2018zhufeng2025";
+    // replace : 字符串方法；替换；
+    // replace(oldStr,newStr)，每次只能替换一个；
+    //console.log(str.replace("zhufeng", "zhufengpeixun").replace("zhufeng", "zhufengpeixun"));
+    //1. replace : replace(reg,str): 把正则捕获到的内容用新的字符串进行替换；
+    //console.log(str.replace(/zhufeng/g, "zhufengpeixun"));
+   // 2. replace(reg,function(){})
+   var newStr =  str.replace(/zhufeng/g,function () {
+        //console.log(1);
+        // 1.捕获一次，执行一次；
+        // 2. arguments : 类数组；是代表捕获的内容；
+        // arguments[0]: 代表捕获到的内容
+        // arguments[1] : 捕获内容索引开始的位置
+        // arguments[2] : 要捕获整个字符串；
+        //console.log(arguments);// ["zhufeng", 0, "zhufeng2009zhufeng2018zhufeng2025", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+        // 3.return : 把捕获到的内容进行替换；
+       return "珠峰";
+    })
+    console.log(newStr);
+
+
+</script>
+</body>
+</html>
