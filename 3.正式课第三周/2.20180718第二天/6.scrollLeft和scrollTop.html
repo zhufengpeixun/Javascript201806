@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            position: relative;
+            margin: 850px auto;
+            width:300px;
+            height:300px;
+            background: lightgreen;
+            border:10px solid red;
+        }
+        </style>
+</head>
+<body>
+<div id="outer"></div>
+<script>
+    // client系列：
+    // clientWidth clientHeight
+    // clientLeft  clientTop
+
+    // offset系列
+    // offsetWidth offsetHeight
+    // offsetParent offsetLeft  offsetTop
+
+    // scroll 系列
+    // scrollWidth scrollHeight
+    // scrollLeft  scrollTop
+    // 以上11个属性都是只读属性
+    var  outer = document.getElementById("outer");
+    //outer.offsetWidth= 500;
+
+    //scrollLeft  scrollTop: 读写属性；
+    // scrollLeft : 横向滚动条卷去的宽度
+    // scrollTop : 纵向滚动条卷去的高度；
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //console.log(scrollTop);
+    // onscroll 事件；
+    window.onscroll = function () {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollTop>750){
+            outer.style.background = "red";
+        }
+    }
+    // 既可以设置当前页面的滚动条卷去高度或宽度，又可以获取页面滚动条卷起的高度或宽度
+    function win(attr,value) {
+        // 1.参数不同，功能不同；
+           // 1):undefined
+           // 2)：arguments的长度；
+        if(value === undefined){
+            // 是获取卷去的高度或宽度
+            return document.documentElement[attr]||document.body[attr];
+        }
+        // 设置卷去的高度或宽度
+        document.documentElement[attr] = value;
+        document.body[attr] = value;
+    }
+    win("scrollTop");
+    win("scrollTop",500);
+
+
+
+</script>
+</body>
+</html>

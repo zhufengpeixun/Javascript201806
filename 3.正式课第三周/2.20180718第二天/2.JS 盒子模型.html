@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            padding: 20px;
+            margin:50px auto;
+            border:10px solid lightseagreen;
+            background: lightgreen;
+        }
+        #box div{
+            border:1px solid red;
+            width:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    在JS中，元素是个对象数据类型的；这个对象中有好多属性，这些属性的属性值代表盒子的宽高，border宽高；内容的宽高；整个盒子的宽高；
+    在JS中，元素是个对象数据类型的；这个对象中有好多属性，这些属性的属性值代表盒子的宽高，border宽高；内容的宽高；整个盒子的宽高；
+    在JS中，元素是个对象数据类型的；这个对象中有好多属性，这些属性的属性值代表盒子的宽高，border宽高；内容的宽高；整个盒子的宽高；
+</div>
+<script>
+    // 盒子模型： 在JS中，元素是个对象数据类型的；这个对象中有好多属性，这些属性的属性值代表盒子的宽高，border宽高；内容的宽高；整个盒子的宽高；
+
+    let  oBox = document.getElementById("box");
+    // 1.clientWidth  ： 内容宽+左右padding
+    // 2.clientHeight :内容高度+ 上下padding；//240
+
+    // 3.clientLeft : 左边框的宽度
+    // 4.clientTop : 上边框的高度
+    //console.log(oBox.clientTop);//
+
+    // 5.offsetWidth : 盒子的总宽度
+    //6.offsetHeight ：盒子的总高度
+    //console.log(oBox.offsetWidth);
+    //console.log(oBox.offsetHeight);
+
+    // 1.有溢出的情况下
+    // 7.scrollWidth：一个左padding+ 内容的真实宽度
+    // 8.scrollHeight : 一个上padding+ 内容的真实高度；
+    //  2.没有溢出：
+    // scrollWidth和clientWidth 相等；
+    // scrollHeight和clientHeight 相等；
+    //console.log(oBox.scrollHeight);
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            /*height:200px;*/
+            padding: 20px;
+            /*margin:50px auto;*/
+            border:10px solid lightseagreen;
+            background: lightgreen;
+            opacity: 0.5;
+        }
+        #box div{
+            border:1px solid red;
+            width:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    在JS中，元素是个对象数据类型的；这个对象中有好多属性，这些属性的属性值代表盒子的宽高，border宽高；内容的宽高；整个盒子的宽高；
+</div>
+<script>
+    // 1. 元素.style.属性名 ：只能获取元素行内的样式；获取不到css 中 的样式；
+    var oBox = document.getElementById("box");
+    //console.log(oBox.style.width);
+    /*console.log("width" in oBox);// false
+    console.log("clientWidth" in oBox);/*///false
+    // oBox.style.background = "red";
+   // 2.getComputedStyle :获取浏览器的计算样式；是window的一个属性
+    // 在IE8及以下，getComputedStyle不存在；
+    //console.log(getComputedStyle(oBox).width);// "200px"
+
+   // 3.currentStyle :在IE中是元素的一个属性；属性值是包含了CSS设置的样式；在谷歌不存在这个属性；
+   // console.log(oBox.currentStyle.width);
+
+    // 获取元素的属性；兼容所有的浏览器；
+    function getCss(curEle,attr) {
+        // 如果getComputedStyle在window中存在，那么用getComputedStyle；
+        // 否则用currentStyle;
+        var  val;
+        if("getComputedStyle" in window){
+            // 这是标准浏览器； IE9及以上
+           val = getComputedStyle(curEle)[attr];
+        }else{
+            val = curEle.currentStyle[attr];
+        }
+        // 如果是非空字符串，才进行parseFloat;
+        var  reg = /^width|height|fontZise|margin|padding|top|left|right|bottom$/;
+        if(reg.test(attr)){
+            // 正则匹配要处理去单位的属性
+            if(!isNaN(parseFloat(val))){
+                // 排除是空字符串的情况
+                val = parseFloat(val);
+            }else{
+                return ""
+            }
+        }
+        return val;
+    };
+    console.log(getCss(oBox, "opacity"));// "200px"  200
+
+
+</script>
+</body>
+</html>

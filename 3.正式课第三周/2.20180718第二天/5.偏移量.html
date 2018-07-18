@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            position: relative;
+            margin: 50px auto;
+            width:300px;
+            height:300px;
+            background: lightgreen;
+            border:10px solid red;
+        }
+        #inner{
+            position: relative;
+            margin:auto;
+            width:200px;
+            height:200px;
+            background: lightyellow;
+        }
+        #center{
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: lightblue;
+            border:10px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center">
+        </div>
+    </div>
+</div>
+<script>
+    //1.
+    var center = document.getElementById("center");
+    var inner = document.getElementById("inner");
+    var outer = document.getElementById("outer");
+    var hh = document.documentElement;
+    console.log(hh.parentNode.parentNode);// null;
+    // 1.parentNode : 父亲节点
+    // 2.children
+    // 3.childNodes
+    // 4.firstChild
+    // 5.lastChild
+    // 6.previousSibling
+    // 7.nextSibling
+
+    // 1.父级参照物: 默认情况下，页面中元素的父级参照物都是body；position的属性可以改变当前元素子孙元素的父级参照物；position:relative,absolute,fixed;
+    // 1.offsetParent
+    // 2.offsetLeft: 左偏移量;当前元素的外边框距离父级参照物左(内)边框的距离；单位（px）
+    // 3.offsetTop :上偏移量；当前元素的上（外）边框距离父级参照物上(内)边框的距离；
+    console.log(center.offsetParent);
+    console.log(center.offsetLeft);
+    console.log(inner.offsetLeft);
+    console.log(outer.offsetLeft);
+    console.log(document.body.offsetParent);// null
+    // 获取当前元素距离body的左边的距离；和上边的距离；
+    /*参数
+    1.当前元素；
+    * */
+    function offset(curEle) {
+        // 当前元素的父级参照物
+        // 把当前的父级参照物的左边框的宽度和左偏移量加起来；一直向上循环查找父级参照物的父级参照物；
+        var parent = curEle.offsetParent;
+        var left = curEle.offsetLeft;
+        var top = curEle.offsetTop;
+        // while
+        // 父级参照物左边框的宽度，父级参照物左偏移量；
+        while(parent){
+            // 在真核的IE8中，父级的参照物的左偏移量会把自己border算进去；
+            if(!/MSIE 8\.0/.test(navigator.userAgent)){
+                // 利用正则排除IE8；
+                // 在不是IE8时，需要加上父级参照物的border的宽度；
+                left += parent.clientLeft;
+                top += parent.clientTop;
+            }
+            left += parent.offsetLeft;
+            top +=parent.offsetTop;
+            parent = parent.offsetParent;
+        }
+        return {left:left,top:top};
+    }
+    //console.log(offset(center).left);
+    console.log(navigator.userAgent);// 当前浏览器的内核信息；属性值是字符串；
+</script>
+</body>
+</html>

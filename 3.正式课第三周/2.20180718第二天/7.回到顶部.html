@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        img{
+            width: 100%;
+        }
+        #topBack{
+            display: none;
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+            background: lightcoral;
+            text-align: center;
+            line-height: 100px;
+            color:white;
+            cursor: pointer;
+            position: fixed;
+            bottom :20px;
+            right:20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <img src="1.png" alt="">
+    <div id="topBack">回到顶部</div>
+<script src="utils.js"></script>
+<script>
+   var topBack = document.getElementById("topBack");
+   var winH = utils.win("clientHeight");
+   //1.京东
+   /*topBack.onclick = function () {
+       utils.win("scrollTop",0);
+   }*/
+   // 2.淘宝；
+    topBack.onclick = function () {
+        var timer = setInterval(function () {
+            // 获取当前页面最新的纵向滚动条卷去的高度；
+            var  curTop = utils.win("scrollTop");
+            curTop-=100;
+            if(curTop<=0){
+                // 如果得到的值小于等于0；直接清除定时器，设置当前页面的scrollTop为0；
+                utils.win("scrollTop",0);
+                clearInterval(timer);
+                return;
+            }
+            utils.win("scrollTop",curTop);
+        },50);
+    };
+    // onscroll
+    window.onscroll = function () {
+        var cur = utils.win("scrollTop");
+        // 当浏览器卷去的高度大于浏览器可视窗口的高度时，让盒子显示
+        if(cur>=winH){
+            topBack.style.display = "block";
+        }else{
+            topBack.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

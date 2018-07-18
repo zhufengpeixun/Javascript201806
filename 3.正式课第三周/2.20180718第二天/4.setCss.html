@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            padding: 20px;
+            margin:50px auto;
+            border:10px solid lightseagreen;
+            background: lightgreen;
+            /*标准浏览器*/
+            opacity: 0.5;
+            /*filter:alpha(opacity=50);*/
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+   // 1.设置行内样式；
+    var oBox = document.getElementById("box");
+    oBox.onclick = function(){
+        /*setCss(oBox,"opacity",0.5);
+        setCss(oBox,"width",300);
+        setCss(oBox,"border","10px solid red");*/
+        /*setGroupCss(oBox,{opacity:0.5,width:300,border:"10px solid red"})*/
+
+        //console.log(css(oBox, "width"));
+         //css(oBox,"width",300)
+        css(oBox,{opacity:0.5,width:300,border:"10px solid red"})
+    }
+    // 设置元素的行内样式
+   /*参数：
+    * 1.设置谁
+    * 2.什么属性
+    * 3.属性值
+    * */
+     function setCss(curEle,attr,val) {
+         // opacity 在IE8及以下是不兼容的；所以要设置filter属性；
+         if(attr === "opacity"){
+             curEle.style[attr] = val;
+             curEle.style["filter"] = "alpha(opacity="+val*100+")";
+             return;
+         }
+         //正则匹配width、height、fontSize、margin、padding...
+         var  reg = /^width|height|fontSize|(margin|padding)?(top|left|bottom|right)?$/i;
+         if(reg.test(attr)){
+             if(typeof val==="number"){// 如果是number，需要拼接上“px”;
+                 val = val +"px";
+             }
+         }
+         curEle.style[attr] =val;
+     }
+     // 设置一组样式；
+     function setGroupCss(curEle,obj) {
+        // 遍历所有的键值对；
+         for(var key in obj){
+             setCss(curEle,key,obj[key])
+         }
+     }
+     //
+   function getCss(curEle,attr) {
+       // 如果getComputedStyle在window中存在，那么用getComputedStyle；
+       // 否则用currentStyle;
+       var  val;
+       if("getComputedStyle" in window){
+           // 这是标准浏览器； IE9及以上
+           val = getComputedStyle(curEle)[attr];
+       }else{
+           val = curEle.currentStyle[attr];
+       }
+       // 如果是非空字符串，才进行parseFloat;
+       var  reg = /^width|height|fontZise|margin|padding|top|left|right|bottom$/;
+       if(reg.test(attr)){
+           // 正则匹配要处理去单位的属性
+           if(!isNaN(parseFloat(val))){
+               // 排除是空字符串的情况
+               val = parseFloat(val);
+           }else{
+               return ""
+           }
+       }
+       return val;
+   };
+     // 根据参数的个数和参数类型不同，调用不同的方法；
+      function css(...argu) {// 把多余的参数放到一个数组中
+         if(argu.length===3){
+             setCss(...argu);// 展开运算符
+         }else if(argu.length===2){
+             if(toString.call(argu[1])==="[object Object]"){
+                 setGroupCss(...argu)
+             }else{
+                 return getCss(...argu);
+             }
+         }
+         // arguments
+//         var curEle = arguments[0],
+//             attr = null,
+//             val = null;
+//         if(arguments.length===3){
+//              attr = arguments[1];
+//              val = arguments[2];
+//              setCss(curEle,attr,val)
+//         }else if(arguments.length===2){
+//
+//         }
+     }
+     /*var ary = [123,4,55];
+     function fn(m,n,o) {
+         console.log(m);
+         console.log(n);
+         console.log(o);
+
+     }
+     fn(...ary)*/
+
+</script>
+</body>
+</html>
