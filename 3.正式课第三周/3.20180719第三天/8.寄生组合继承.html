@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Object:Object.create() 函数执行会默认创建一个空对象；空对象的__proto__指向了这个函数传进的实参；
+    // 这个参数必须是一个对象；
+    /*var obj = {a:1,b:2,sum:function () {
+        console.log(2);
+    }};
+    var o = Object.create(obj);
+    console.log(o);
+    o.sum();*/
+    // 寄生组合继承；
+    function A() {
+        this.a = 100;
+        this.b = 200;
+    }
+    A.prototype.getX = function () {
+        console.log(this.a)
+    }
+    function B() {
+        A.call(this);// 只继承私有属性；
+        this.a = 300;
+    }
+    B.prototype.a = function () {
+    }
+    // 寄生组合继承： 利用call继承，解决类A的私有属性；利用了Object.create把类A的公有属性也给类B的原型；
+    B.prototype=Object.create(A.prototype);
+    B.prototype.constructor = B;
+    var b = new  B;
+    b.getX();
+    //b.a();
+
+    // es6继承；
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function Fn() {
+        this.x = 100;
+        this.y  = 200;
+        this.arr = function () {
+        }
+    }
+    Fn.prototype.sum = function () {
+        console.log(100);
+    };
+    var f  = new Fn;// f的__proto__指向了Fn 原有的原型prototype；所以不能销毁；
+    Fn.prototype = {};
+    var f1  = new Fn;
+    f.arr();
+    f.sum();
+    f1.sum();*/
+/*
+    function Fn() {
+
+    }
+    Fn.prototype.sum= function () {
+
+    };
+    // 把数组原型的空间地址赋值给Fn的原型；那么产生的实例__proto__，都指向Array的原型；
+    Fn.prototype  = new Array;// []
+    var f = new Fn;
+    f.sort();*/
+    //f.sum();
+    //console.log(f.__proto__.__proto__.__proto__.toString());
+
+    function A() {
+    }
+    function B() {
+        this.sum = function () {
+            console.log(1);
+        }
+    }
+    B.prototype.s = function () {
+        console.log(2);
+    }
+    // 原型继承： 把类B的实例赋值给类A的原型，那么通过类A创建的实例，就可以调用类B的原型上的公有方法，并且可以调用类B实例的私有属性；
+    A.prototype = new B;
+    var a = new A;
+    a.s();
+    a.sum();
+    function sum() {
+        arguments.__proto__ = new Array;
+        arguments.sort();
+    }
+
+
+</script>
+</body>
+</html>

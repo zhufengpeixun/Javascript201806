@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function avge() {
+        // arguments : 类数组集合，__proto__指向Object的原型，所以不能调用数组上的方法；
+        // 不兼容IE10以下;
+        arguments.__proto__ =Array.prototype;
+        arguments.pop();
+        console.log(arguments);
+    }
+    avge(1,2,4,6,7,9);
+    var obj = {a:2,b:3};
+    obj.__proto__ = Array.prototype;
+    obj.pop();
+    console.log(obj);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function A() {
+        this.x = 100;
+        this.sum = function () {
+        }
+    }
+    A.prototype.getX = function () {
+        console.log(this.x);
+    }
+    function B() {
+        // this-->g
+        // call执行改变了A中this指向，让其指向类B中的this；
+        // B 的原型链没有任何变化；
+        A.call(this);
+    }
+    // call 继承： 让类A在类B中执行，并且通过call改变了类A中的this指向；指向了类B的实例；【只继承私有，不继承公有】;
+    // A 中的私有属性都变成了B中的私有属性；
+    // 类B的实例不能喝继承类A的公有属性；
+    var g = new B;
+    console.log(g.sum());
+    console.log(g.x);
+    //g.getX();
+
+
+</script>
+</body>
+</html>

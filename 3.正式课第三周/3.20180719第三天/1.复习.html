@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div></div>
+</div>
+<script>
+    // JS 的盒子模型 13个属性；
+    // client:
+    // clientHeight  clientWidth  clientLeft  clientTop
+    // offset : offsetWidth offsetHeight  offsetLeft offsetTop offsetParent
+    // scroll :scrollWidth scrollHeight  scrollLeft scrollTop
+    // getCss  setCss  setGroupCss   css
+
+    // 1. 元素.style.width : 只能获取行内样式
+    // 2. getComputedStyle  在IE8 及以下不兼容；
+    // currentStyle  :
+    // getComputedStyle(curEle).background
+    // curEle.currentStyle.width
+
+    //偏移量
+    // offsetParent : 父级参照物
+    // 一般情况下，元素父级参照物是body；body的offsetParent是null；body的parentNode 是HTML；HTML的父亲节点是document；document的parentNode 是null;
+    // offsetLeft : 左偏移量；当前元素的左外边框距离父级参照物的左内边框；
+    // offsetTop : 左偏移量；当前元素的上外边框距离父级参照物的上内边框；
+
+    //获取当前元素距离body左边框的距离；
+    function offset(curEle) {
+        var parent=curEle.offsetParent,
+            left=curEle.offsetLeft,
+            top=curEle.offsetTop;
+        while(parent){
+            // 真核IE8中offsetLeft 会把边框算进去；
+            if(!/MSIE 8\.0/.test(navigator.userAgent)){
+                left+=parent.clientLeft
+                top+=parent.clientTop
+            }
+            left+=parent.offsetLeft;
+            top+=parent.offsetTop;
+            parent=parent.offsetParent;
+        }
+        return {left,top};
+    }
+    offset();
+    // getCss
+    // push  shift  unshift  shift  slice  concat  reverse  indexOf  lastIndexOf  forEach splice;
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

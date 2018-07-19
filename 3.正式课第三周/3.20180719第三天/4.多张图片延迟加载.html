@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #list{
+            width:100%;
+            list-style: none;
+        }
+        #list li{
+            height:80px;
+            border-bottom:1px dashed lightblue;
+            padding-top:10px;
+            padding-left :10px;
+        }
+        #list li img{
+            width:75px;
+            height:65px;
+            float:left;
+            margin-right:10px;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <img src="img/1.jpg" alt="">
+        <div>
+            <h3>网络强国战略习近平与“十三五”十四大战略</h3>
+            <p>互联网是二十世纪人类最大的发明互联网是二十世纪.</p>
+        </div>
+    </li>
+</ul>
+<script src="utils.js"></script>
+<script>
+    // 1.ajax获取数据
+    var data;
+    var oUl = document.getElementById("list");
+    var imgs = document.getElementsByTagName("img");
+    var xhr = new XMLHttpRequest();
+    xhr.open("get","newList.json",false);
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState==4&&/^2\d{2}$/.test(xhr.status)){
+            data = JSON.parse(xhr.responseText);
+        }
+    }
+    xhr.send();
+    //2.绑定数据：
+    function bindHtml() {
+        //var str = ``;
+        var  str = "";
+        data.forEach(function (item) {
+            /*str+=`<li>
+                    <img src="img/default.jpg" trueImg="${item.img}" alt="">
+                    <div>
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                </li>`*/
+            str +="<li>"
+                    +"<img src='img/default.jpg' trueImg="+item.img+"/>"
+                    +"<div>"
+                       +"<h3>"+item.title+"</h3>"
+                       +"<p>"+item.desc+"</p>"
+                    +"</div>"
+                  +"</li>"
+        });
+        oUl.innerHTML = str;
+    }
+    bindHtml();
+    // 循环所有的图片，执行delayImgCode ;
+    var tt =0
+    function delayImg() {
+        for (var i = tt; i < imgs.length; i++) {
+            var cur = imgs[i];
+            // 给每一张图片新增自定义属性；当前图片的索引；
+            imgs[i].index  = i;
+            // cur是每一张图片；对象数据类型；
+            delayImgCode(cur);
+        }
+    }
+    // 是判断当前这一张图片是否应该延迟；
+    var winH = utils.win("clientHeight");
+    function delayImgCode(img) {
+        if(img.load){
+            return;
+        }
+        // 获取当前图片的总高度和当前图片距离body的距离；
+        var curH = img.offsetHeight;
+        var curT = utils.offset(img).top;
+        //console.log(curT);
+        // 获取滚动卷起的高度
+        var winT = utils.win("scrollTop");
+        // 获取当前img的真实路径地址
+        var trueAddress = img.getAttribute("trueImg");
+        // debugger
+        if(winH +winT >curH +curT){
+            //console.log(1);
+            // var mg = new Image;
+            var mg = document.createElement("img");
+            mg.src =trueAddress;
+            // 当图片加载成功，执行onload绑定的函数；
+            mg.onload = function () {
+                img.src = trueAddress;
+                mg = null;
+                fadeIn(img)
+                tt=img.index+1;
+                img.load = true;
+            }
+        }
+    }
+    // 逐渐改变图片透明度；
+    function fadeIn(curEle) {
+        // 初始透明度
+        utils.setCss(curEle,"opacity",0.3);
+        // 通过定时器不断改变其透明度
+        var timer = setInterval(function () {
+            // 获取最新的透明度
+            var curOp = utils.getCss(curEle,"opacity");
+            curOp+=0.01;
+            // 当透明度大于等于1时，清除定时器；
+            if(curOp>=1){
+                clearInterval(timer);
+                utils.setCss(curEle,"opacity",1);
+                return;
+            }
+            utils.setCss(curEle,"opacity",curOp);
+        },10);
+    }
+    delayImg();
+    // 当页面滚动条滚动，触发delayImg;判断每一张图片是否应该加载；
+    window.onscroll = delayImg;
+</script>
+</body>
+</html>
