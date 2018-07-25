@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box" class="box  mn yy"></div>
+<script>
+    // 第二周： DOM  数组的算法  定时器；
+    // DOM : 节点---> 对象
+    // 四种节点    nodeType     nodeName       nodeValue
+    // 元素节点     1          大写的标签名    null
+    // 文本节点     3            #text      文本内容
+    // 注释节点     8           #comment    注释内容
+    // document；  9           #document    null；
+
+    //1.节点属性：
+    // 1.childNodes : 所有的子节点
+    // 2.children
+    // 3.lastChild
+    // 4.firstChild
+    // 5.previousSibling
+    // 6.nextSibling
+    // 7.parentNode
+
+    // children : 获取所有子元素节点；
+    var box = document.getElementById("box");
+    console.log(box.children);// 在真核IE8以下，children是不兼容的；
+    // 兼容的子元素节点
+    function myChildren(curEle) {
+        var ary = [];
+        if(curEle.children){
+            ary = curEle.children;
+            return;
+        }
+        // 获取所有的子节点
+        var all = curEle.childNodes;
+        var len = all.length;
+        for(var i=0;i<len;i++){
+            var cur = all[i];
+            if(cur.nodeType ===1){
+                ary.push(cur);
+            }
+        }
+        return ary;
+    }
+    myChildren(box);
+
+
+    // 2.动态操作DOM
+    // 1.appendChild
+    // 2.removeChild
+    // 3.insertBefore
+    // 4.classList  add  remove  replace;
+    // 5.cloneNode
+    // 6.document.createElement()
+    // 7.replaceChild;
+    //
+    // addClass  removeClass toggleClass   replaceClass("box","box1")
+    // insertAfter
+
+    // setTimeout
+    // setInterval(function(a){},1000,10)
+   /*setTimeout(function () {
+       console.log(1);
+   },0);*/
+   // 返回值：
+   /* setInterval(function () {
+
+    },100);
+    for (var i = 0; i < 3; i++) {
+        setInterval(function () {
+
+        },10);
+    }
+    var a =  setInterval(function () {
+    },1000);
+    console.log(a);*/
+   // clearInterval  clearTimeout
+    // 动画；
+    // 左上角有个盒子，点击盒子，让盒子逐渐运动右下角；
+
+
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@ var navs = document.getElementsByTagName("a");
 // 1.ajax获取json文件中的数据
 var xhr = new XMLHttpRequest();// 创建一个ajax对象；
 // 打开路径
-xhr.open("get",'json/product.json',false);// 同步；
+xhr.open("get",'json/product.json',true);// 同步；
 // 监听
 xhr.onreadystatechange = function () {
    // 2  3  4
@@ -12,6 +12,7 @@ xhr.onreadystatechange = function () {
         // 如果上面的条件成立，前端接收到后端发来的数据;
         // 通过ajax请求到的数据是一个JSON格式的字符串；
         data = utils.toJSON(xhr.responseText);
+        bindHtml();
     }
 }
 // 发送请求；

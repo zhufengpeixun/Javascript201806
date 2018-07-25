@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div></div>
+<script>
+    // 1.数据类型     操作语句    function   数组方法
+    //   1) 基本数据类型 （number  string  boolean  null undefined） 引用数据类型(对象、数组、正则、Date的实例、Math、function...)；
+    //  2) ：基本数据类型是操作值的，引用数据类型操作空间地址；基本数据类型存储到栈内存，引用存储到堆内存；
+    var ary = [1,2,3,4];
+    function fn(ary){
+        ary[0] = 100;// 外层作用域的第一项改变成100；
+        ary = [];// 在JS中遇到{}、[];重新开辟一个堆内存
+        ary[0] = 1;//
+        return ary;
+    }
+    console.log(fn(ary));// 传进去空间地址；[1]
+    console.log(ary);// [100,2,3,4]
+
+    //Number : 内置类；
+    var num = 1;
+    var n = new Number(1);
+    // isNaN  parseInt  parseFloat  toFixed();
+    //parseFloat("1");
+    //1.12.toFixed();//
+    Number([])// 0
+    parseInt([])// NaN
+    parseInt("")// NaN
+    parseInt("px")// NaN
+    // toFixed(): 返回值是一个字符串；
+    //(6).toFixed(2);
+    //isNaN("");// 调用Number方法，转数字0;
+
+    // String
+    //
+    var str = "{}";
+    // 1.索引  2.length  3.字符串运算  4.方法
+    // +  -  *  /;
+    // + : 字符串拼接
+    /*var name = "zf";
+    var s = "peixun";
+    var str = name+s;
+    var  str =  "<div n="+name+"></div>"*/
+    // 方法：
+    // 1. charAt  charCodeAt toUpperCase  toLowerCase  slice substring  substr  replace   split  concat  trim  indexOf lastIndexOf
+
+    // 3.布尔 ： true false；
+    // Boolean();
+    // 转布尔是false： 0  NaN "" null undefined;
+    // 数据类型比较
+    // =:赋值  ==：会数据类型的转换再比较   ===：绝对比较；
+    //[12,2].toString()// "12,2"
+    //({}).toString()// "[object Object]";
+    // ! : 取反
+    //console.log(![]);// false
+    // ![] == [] true    ![] == ""  [] == !0 false;
+    // [] !== [] true;
+    // null和 undefined；
+
+    // 引用数据类型： 对象数据类型函、数数据类型
+    // 1.对象：获取
+    //  1）： 由键值对组成；键值对由属性名属性值组成；
+    // for in
+    // 增删改查
+    //对象中属性名不能重复；
+   /*var  obj = {a:1};
+   //obj.a = "b";
+   var a = "name";
+   obj["a"] = "b";
+   // delete :
+    delete obj.a;
+   var n = obj.a;
+   var m = obj['a'];*/
+   // 数组去重：
+    // 对象属性名不能重复；
+   /* var ary = [1,2,2,4];
+    var  obj= {};//{1:1,2:2}
+    for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i];
+        if(obj[cur]==cur){
+            ary[i]=ary[ary.length-1];
+            ary.length--;
+            i--;
+            continue;
+        }
+        obj[cur]=cur;// 新增键值对；
+    }
+    console.log(ary);*/
+
+    // 数组：
+    // 1.有索引  2.有length  3.方法
+    //方法： push  pop unshift  shift  slice  splice  sort  reverse  indexOf  lastIndexOf concat  join   forEach map toString
+
+    // [1,true,{},function(){}]
+
+    // 正则 ： 处理字符串的规则；正则由元字符和修饰符；
+    //var reg = /^\d+$/;// 是否包含一个0-9的数字
+    // test  : 返回值true或false；
+    // exec
+    //reg.test("123");
+    //console.log(reg.exec("1223"));// 返回值数组
+    // 懒惰性 g 贪婪性: 把？放在量词，取消捕获的贪婪性；
+    // 修饰符i  g  m
+    // ?=  ?!
+    // 60-90
+    // Math  : 对象
+    // Math.round()
+    // Math.random()// [0,1)
+    // Math.round(Math.random()*(n-m)+m);
+    // Math.floor()
+    // Math.ceil()
+    // Math.max()
+    // Math.min()
+    // Math.sqrt():
+    // Math.pow()
+    // Math.abs()
+
+    // Date:
+    // new Date();创建时间的实例；
+    // new Date()
+    // new Date("2018/08/01 12:00:00")-new Date();
+    //new Date().getTime() : 获取当前时间1970-1-1 上午八点的毫秒差；
+    //Date.now();// 时间戳；产生一个永远不重复的数字；
+    // Symbol : 类；创建的实例永远不相等；
+    // console.log(new Number(1) == new Number(1));
+
+
+    // 数据类型检测：
+    // 1.typeof  instanceof  constructor  Object.prototype.toString.call(1)
+    //toString.call([])
+    //[] instanceof  Array// true
+    //[] instanceof Object// true
+
+    //var obj ={};
+    //obj.constructor===Object
+    /*function Fn() {
+    }
+    // 原型扩展
+    Fn.prototype= {
+        // 导致constructor 丢失；
+        getX:function () {
+
+        }
+    };
+    var f =  new Fn;
+    f.getX()
+    console.log(f.constructor);//*/// Object
+
+
+</script>
+</body>
+</html>

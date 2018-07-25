@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div id="box1">
+       <div id="box"></div>
+   </div>
+<script>
+    var box = document.getElementById("box");
+    var box1 = document.getElementById("box1");
+    box1.appendChild(box);
+    // call、apply、bind  商品排序   正则；
+    /*function A(m,n) {
+        // this---> window
+    }
+    A()
+    A.call(10,20,20);//call 中的this-->A;
+    A.apply(10,[20,20])
+    A.bind(19,16,1)*/// 预处理this；
+    // 求数组中的最大值；
+    //商品排序
+    // 1.JSON
+    //  JSON.stringify  JSON.parse
+    // 2.ajax
+    // 1 2 3 4
+    // 3.数据绑定
+
+    // DOM的映射回流重绘：
+    /*var  frg = document.createDocumentFragment();
+    frg.appendChild(box);*/
+
+    // 第三周 ： 盒子模型 13个属性  封装utils 延迟加载；
+
+</script>
+</body>
+</html>

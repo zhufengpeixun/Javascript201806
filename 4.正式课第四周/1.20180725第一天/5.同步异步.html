@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS ： JS 是单线程，JS每次只能执行一个任务；不可嫩能同时运行两行代码；
+    // 线程： 就是一个应用程序；
+    // 定时器 ： 异步的；不会等待当前任务结束才向下，而是直接向下运行；
+    // 当浏览器解析到第11行时，浏览器会默认记录一个时间，当过了10ms毫秒之后，运行setTimeout 回调函数中的代码；
+    // 浏览器会把任务：主任务队列和等待任务队列；
+    // 等待任务队列需要等待所有的主任务队列中的代码执行完成之后，才会去执行等待任务队列；
+
+    //1. 如果等待任务都在主任务队列的前面，那么谁的时间小，谁先执行
+    //2. 如果等待任务队列在主任务队列的后面，那么主任务队列前面的异步任务如果时间也到达，那么先指向主任务队列之前的任务；
+
+   /* setTimeout(function () {
+        console.log(10)
+    },2000);
+    setTimeout(function () {
+        console.log(20);
+    },19);
+    var cur = new Date;
+    for (var i = 0; i < 99999999; i++) {
+    }*/
+//    function fn() {
+//        console.log(1);
+//        console.log(1);
+//        console.log(1);
+        /*setTimeout(function () {
+            console.log(999);
+        },1000);*/
+//    }
+    /*fn();
+    console.log(1000);
+    fn();
+    for (var i = 0; i < 99999999; i++) {
+
+     }
+    console.log(new Date - cur);
+    setTimeout(function () {
+        console.log(30);
+    },1);*/
+
+    setTimeout(() => {
+        console.log(1);
+    }, 20);
+    console.log(2);
+    setTimeout(() => {
+        console.log(3);
+    }, 10);
+    console.log(4);
+    for (let i = 0; i < 90000000; i++) {
+    }
+    console.log(5);
+    setTimeout(() => {
+        console.log(6);
+    }, 8);
+    console.log(7);
+    setTimeout(() => {
+        console.log(8);
+    }, 15);
+    console.log(9);
+
+    // 2  4  5  7  9  3  1  6  8
+    var val;
+    function buy() {
+        setTimeout(function () {
+            val = "黄瓜";
+            console.log("拍"+val);
+        },2000)
+        console.log(1);
+    }
+    buy();
+    function cookie(callBack){
+        if(Math.random()>0.5){
+            callBack();
+        }
+    }
+    cookie(buy);
+
+
+
+</script>
+</body>
+</html>

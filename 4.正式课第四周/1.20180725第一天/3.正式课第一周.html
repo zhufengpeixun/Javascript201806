@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 第一周 ： 变量提升  作用域  this  原型；
+    // 变量提升：在当前作用域下，把带var和function进行提前声明....
+    // 如果只声明不定义，存储值是undefined；
+    /*console.log(num);// undefined
+    var  num = 10;
+    var a;
+    console.log(a);*/// undefined
+    /*console.log(a);
+    var a = 10;
+    b = 100;
+    console.log(b);*/
+    /*console.log(fn);
+    function fn() {
+
+    }*/
+    // 定义：1. 开辟一个堆内存 2.把函数体中代码当做字符串存堆内存中，3
+    // 把空间地址赋值给函数名；
+    // fn存储的是空间地址；
+    /*fn();
+    function fn() {
+
+    }
+    console.log(m);
+    var m = 10;*/
+    //let :
+    // 1.变量特殊情况
+    // 1) : 等号右边不进行变量提升
+    // 2) : return 后面的不进行提升，但是下面需要
+    // 3) : 不管条件是否成立，都要进行变量提升
+    // 4) : let const不进行变量提升
+    // 5) : 变量名如果相同，不再重复，但是要重新定义
+    // 6) : 匿名函数不进行变量提升
+
+   /* if(true){
+        fn();
+        var num = 1;
+        function fn() {
+
+        }
+        fn()
+    }
+    if(!("a" in  window)){
+        var a = 100;
+    }
+    console.log(a);*/// undefined
+
+ /*   var num =0;
+    var obj = {
+        num:10,
+        fn:(function (num) {
+            console.log(num);// 0
+            num = 1;
+            console.log(num);// 1
+            return function () {
+            }
+        })(this.num)//this-->window
+    };
+    console.log(num);*/// 0;
+    // 如何判断是私有变量？
+    // 1. 在当前作用域下有没有被var 2.形参  3.有没有被function
+    // 如何判断当前作用域的上一级作用域：看函数在哪定义的，上一级作用域就是谁，跟函数在哪执行没有关系；
+    var total = 100;
+    function sum() {
+        var  total = 10;
+        return function () {
+            console.log(total);
+        }
+    }
+    var f = sum();
+    f();
+    // 作用域：1.提供代码运行环境  2.存储基本数据类型值；
+    // 全局作用域和私有作用域
+    // 全局变量和私有变量；
+    // 给window新增一个键值对
+    /*var f = 1;
+    function g() {
+
+    }
+    h = 10;*/
+
+    // 全局作用域 ： 属于不销毁的作用域；
+    // 私有作用域：闭包：1.可以保护里面的私有变量不受外界的干扰 2.存储值；
+    // 函数执行的一瞬间就会形成闭包；
+    // 1 形成私有作用域--> 形参赋值-->变量提升--->代码从上向下运行-->作用域是否销毁；
+    /*function fn() {
+        var a = 19;
+    }
+    fn();
+
+    var utils = (function () {
+        function fn() {
+
+        }
+        return {fn}
+    })()*/
+
+    // 立即销毁的作用域：函数每执行一次，都会重新开辟一个新的栈内存；、
+    // 不销毁的： 1.return 出一个引用数据类型的值；
+    //          2.return的值被外界接收；
+    // 不立即销毁
+    function fn() {
+       return function () {
+
+       }
+    }
+    var f = fn();
+    f();
+    fn()();
+
+
+    // this-->关键字：在JS中有特殊意义；代表一个空间地址；
+    /*console.log(this)// this--->window的空间地址
+    window.obj = 100;
+    this.obj = 100;*/
+
+    // this的常用情况：
+    // 1. 全局下的this指向window；
+    // 2. 自执行函数中this永远指向window
+    // 3. 给元素的事件绑定方法，方法中的this指向被绑定的那个元素
+    // 4. 回调函数中的this一般指向window；
+    // 5. 看函数指向前有没有".",点前面是谁，this就是指向谁
+    // 6. 构造函数中的this，指向实例
+    // 7. call、apply、bind可以改变this指向；
+
+    /*var obj = {
+        fn : (function () {
+           // this--window
+            return function () {
+                console.log(this);// obj
+            }
+        })(num);
+    };
+    obj.fn();
+    var g = obj.fn;
+    g();// window*/
+
+    /*Array.prototype.indexOf = function(){
+        // this --->a;
+        for (var i = 0; i < this.length; i++) {
+            var obj = this;
+
+        }
+    }
+    ary.indexOf(10)
+    a.indexOf(12)*/
+
+    // 原型 ：
+    // 原型的深入图；
+
+    /*function Fn() {
+        this.x = 100;
+        this.y = 10;
+        /!*this.sum = function () {
+            console.log(this.x);
+        }*!/
+    }*/
+    //
+    /*Fn.prototype.sum = function () {
+        console.log(this.x);
+    }
+    var f = new Fn;
+    var f1 = new Fn;
+    f.x === f1.x
+    f.sum() === f1.sum()
+    var a = []
+    var b = [];
+    a.pop === b.pop// true*/
+
+    // Function  Object
+    /*console.log(Function instanceof Object);
+    console.log(Object instanceof Function);*/
+
+
+
+</script>
+</body>
+</html>
