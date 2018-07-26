@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:0;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+<script src="animate.js"></script>
+<script>
+    var box =document.getElementById("box");
+    var maxL = utils.win("clientWidth")-box.offsetWidth;
+    box.onclick = function () {
+        zfAnimate(box,{left:maxL,top:300,width:10,height:10,opacity:0.2},1000,1);
+    }
+    // 匀速运动公式
+    function linear(t,b,c,d) {
+        // c: 变化的状态值
+        return t/d*c+b;
+    }
+    function changeBig() {
+        this.style.width = "100px";
+        this.style.height = "100px";
+    }
+    /*
+    * curEle: 要运动的这个元素
+    * target: 目标位置的状态
+    * duration： 运动的总时间；
+    * callBack : 回调函数，当动画运动结束，开始执行回调
+    * */
+    function move(curEle,target,duration,callBack) {
+        // 初始化begin、change、时间；
+        var begin = {},
+            change = {},
+            interval = 0;
+        // 遍历target，查看要变化的属性
+        for(var key in target){
+            begin[key] = utils.css(curEle,key);
+            change[key] = target[key]-begin[key];
+        }
+        // 定时器；
+        curEle.timer = setInterval(function () {
+            // interval : 代表动画运动的时间；
+            interval+=17;
+            // 清除定时器
+            if(interval>=duration){
+                clearInterval(curEle.timer);
+                utils.css(curEle,target);
+                if(typeof callBack==="function"){
+                    callBack.call(curEle);
+                }
+                return;
+            }
+            // 获取当前最新的状态；
+            for(var  key  in target){
+                // 每循环一次，获取当前key所对应的最新值；
+                var curPo = linear(interval,begin[key],change[key],duration);
+                utils.css(curEle,key,curPo);
+            }
+        },17);// 17
+
+
+
+    }
+
+
+</script>
+</body>
+</html>

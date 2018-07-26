@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#outer{
+    position: relative;
+    width:1000px;
+    height:300px;
+    margin:30px auto;
+    overflow: hidden;
+}
+#swiper{
+    position: absolute;
+    left:0;
+    width:5000px;
+    height:300px;
+}
+#swiper div{
+    width:1000px;
+    height:300px;
+    float: left;
+}
+#focus{
+    width:120px;
+    height:30px;
+    position: absolute;
+    left:50%;
+    bottom :15px;
+    margin-left:-60px;
+}
+#focus li{
+    width:25px;
+    height:25px;
+    margin-right:5px;
+    float:left;
+    border-radius: 50%;
+    background: #ffffff;
+}
+#focus li.select{
+    background: lightcoral;
+}

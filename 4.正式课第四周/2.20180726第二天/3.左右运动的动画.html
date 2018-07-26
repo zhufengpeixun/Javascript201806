@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:100px;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        input{
+            position: absolute;
+            top:300px;
+            width:200px;
+            height:40px;
+            display: inline-block;
+            background: lightgreen;
+
+            border:none;
+        }
+        #left{
+            left:100px;
+        }
+        #right{
+            left:500px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="button" id="left" value="向左走">
+<input type="button" id="right" value="向右走">
+<script src="utils.js"></script>
+<script>
+    var box = document.getElementById("box");
+    var left =document.getElementById("left");
+    var right =document.getElementById("right");
+    // 点击left时，让其left不断减小；点击right时，让left不断增大；
+    var targetLeft  =0;
+    var targetRight = utils.win("clientWidth")-box.offsetWidth;
+    console.log(targetRight);
+    function move(target) {
+        // 如果当前的最新位置left大于target,一定点击的是向左的按钮；
+        var  newLeft = utils.css(box,"left");
+        // 点击向左
+        if(newLeft>target){
+            clearInterval(box.timer);
+            //把定时器的返回值放在当前运动盒子自定义上；
+            box.timer=setInterval(function () {
+                var curLeft = utils.css(box,"left");// 5
+                curLeft-=10;
+                if(curLeft<=0){
+                    // 当运动到最左端时，清除box自定义属性的属性值；
+                    clearInterval(box.timer);
+                    utils.css(box,"left",0);
+                    return;
+                }
+                utils.css(box,"left",curLeft);
+            },10)
+        }
+        // 点击向右；
+        if(newLeft<target){
+            clearInterval(box.timer);
+            box.timer=setInterval(function () {
+                var curLeft = utils.css(box,"left");// 5
+                curLeft+=10;
+                if(curLeft>=target){
+                    // 当运动到最左端时，清除box自定义属性的属性值；
+                    clearInterval(box.timer);
+                    utils.css(box,"left",target);
+                    return;
+                }
+                utils.css(box,"left",curLeft);
+            },10)
+        }
+    }
+    left.onclick = function () {
+        // targetLeft : 0
+        move(targetLeft);
+    }
+    right.onclick = function () {
+        // targetRight:1422
+        move(targetRight)
+    }
+</script>
+</body>
+</html>

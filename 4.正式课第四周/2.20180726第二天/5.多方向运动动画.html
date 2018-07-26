@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+    var box = document.getElementById("box");
+    var maxL = utils.win("clientWidth") - box.offsetWidth;
+    function linear(t, b, c, d) {
+        return t / d * c + b;
+    }
+    // 获取初始的位置
+    var begin = {
+        left: utils.css(box, "left"),
+        top: utils.css(box, "top"),
+        width: utils.css(box, "width"),
+        height: utils.css(box, "height"),
+        opacity: 1
+    }
+    // 目标的位置；
+    var target = {
+        left: maxL - 100,
+        top: 500,
+        width: 10,
+        height: 10,
+        opacity: 0.3
+    }
+    // 计算变化的总距离；
+    var change = {};
+
+    var duration = 3000;
+    var interval = 17;
+    box.onclick = function () {
+        box.timer = setInterval(function () {
+            interval += 17;
+            // 利用了时间到达，清除定时器；
+            if (interval > duration) {
+                utils.css(box, target);
+                clearInterval(box.timer);
+                return;
+            }
+            // 每隔17毫秒执行一次forin循环；
+            for (var key in target) {// 循环目标的状态
+                change[key] = target[key] - begin[key];
+                // 求出当前时间所对应的状态位置；
+                var curPo = linear(interval, begin[key], change[key], duration);
+                // 如果到临界位置，停止运动；
+                utils.css(box, key, curPo);
+            }
+        }, interval)
+    }
+
+    /* // 如果目标大于初始值，执行这个清楚定时器；
+     if(target[key]-begin[key]>0){
+     if(curPo>target[key]){
+     clearInterval(box.timer);
+     utils.css(box,key,target[key]);
+     return;
+     }
+     }else{
+     if(curPo<target[key]){
+     clearInterval(box.timer);
+     utils.css(box,key,target[key]);
+     return;
+     }
+     }*/
+
+
+</script>
+</body>
+</html>

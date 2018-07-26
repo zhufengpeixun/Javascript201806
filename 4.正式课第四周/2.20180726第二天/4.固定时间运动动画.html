@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            left:0;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+    var box =document.getElementById("box");
+    var maxL = utils.win("clientWidth")-box.offsetWidth;
+    // 不管距离有多远，3000ms运动到目标位置；
+    var duration  = 1000;
+    var beginL = utils.css(box,"left");
+    var interval = 18;
+  /*  var speed = maxL/duration*20;// 每20毫秒走的距离；
+    box.onclick = function () {
+        box.timer=setInterval(function () {
+            var curPo = utils.css(box,"left");
+            curPo+=speed;
+            // 如果距离大于等于最大距离，直接设置到最大；
+            if(curPo>=maxL){
+                clearInterval(box.timer);
+                utils.css(box,"left",maxL);
+                return;
+            }
+            utils.css(box,"left",curPo);
+        },20)
+    }*/
+  box.onclick = function () {
+      box.timer = setInterval(function () {
+          interval+=18;
+          // 通过linear计算出当前最新的位置；
+          var  newLeft = linear(interval,beginL,maxL,duration);
+          if(newLeft>maxL){
+              clearInterval(box.timer);
+              utils.css(box,"left",maxL);
+              return;
+          };
+          utils.css(box,"left",newLeft);
+      },interval);
+  }
+    // 匀速运动的公式；计算当前最新的状态；
+    // 时间的比等于路程的比；
+    function linear(t,b,c,d) {
+        // t : 最新的时间
+        // b : 初始的位置
+        // c : 变化的总距离
+        // d : 运动的总时间
+        return t/d*c+b;
+    }
+    var h = 10;
+    function b() {
+        h+=10;
+    }
+    b(h)
+    b(h)//20
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
