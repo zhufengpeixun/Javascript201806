@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+
+    var box = document.getElementById("box");
+    var duration = 3000;
+    var winW = utils.win("clientWidth");
+    var boxW = box.offsetWidth;
+    var maxL = winW-boxW;
+    var  begin = {
+        left : utils.css(box,"left"),
+        top : utils.css(box,"top"),
+        width:box.offsetWidth,
+        height:box.offsetHeight
+    }
+    var target = {
+        left : maxL,
+        top:400,
+        width:30,
+        height:10
+    }
+    // 变化的总距离
+    var change = {};
+    box.onclick = function(){
+        for(var key in target){
+            // 给change新增键值对；
+            change[key] = target[key]-begin[key];
+        }
+        console.log(change);
+        // time记录当前走过的总时间；
+        var time =0;
+        box.timer = setInterval(function () {
+            time+=19;// 和定时器的值保持一致，确保固定时间执行特定的路程；
+            if(time>=duration){
+                clearInterval(box.timer);
+                utils.css(box,target);
+                return;
+            }
+            for(var key in target){
+                // 循环target中所有的属性，从而去不断设置当前盒子不同的状态属性；
+                var cur = linear(time,begin[key],change[key],duration);
+                console.log(cur);
+                utils.css(box,key,cur);
+            }
+        },19);
+    };
+    // 匀速运动公式： 时间的比等于路程比；
+    function linear(t,b,c,d) {
+        /*
+        * t: 走过的总时间
+        * b: 初始的位置
+        * c: 变化的总距离
+        * d: 总时间
+        * */
+        return t/d*c+b;
+    }
+</script>
+</body>
+</html>

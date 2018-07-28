@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // for  in  : 遍历对象
+    /*var obj = {name:1,age:"2"};
+    for(var key in obj){
+        console.log(key);// "name"
+    }
+    console.log(obj.hasOwnProperty("name"));*/// true
+    function Fn() {
+        this.x = 100;
+        this.y = "你很帅";
+    }
+    var f = new Fn;// {x:100,y:"你很帅"}
+    //console.log(f.getX());
+    Fn.prototype.getX = function () {
+        console.log(1);
+    };
+    Fn.prototype = {
+        // 丢失了constructor;
+    }
+    console.log(f.getX());
+    /*for(var key in f){
+        if(f.hasOwnProperty(key)){
+            console.log(key);
+        }
+    }*/
+    // 可枚举属性： 对象的私有属性和原型上自定义的属性都是可枚举属性；那么for in 会遍历出所有的可枚举属性；
+    // 不可枚举属性： 原型上内置的属性键值对不可以枚举属性；
+
+   /* function A() {
+        B.call(this)
+    }
+    function B() {
+
+    }
+    B.prototype.getX = function () {
+
+    }
+    A.prototype= new B;// {}
+    var a = new A;
+
+    //arguments
+    function fn() {
+        arguments.__proto__ = Array.prototype;
+    }
+    // Object.create;
+    var obj = {}
+    var a =Object.create(obj);*/
+
+
+</script>
+</body>
+</html>

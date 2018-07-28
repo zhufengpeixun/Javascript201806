@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+    // 1. 点击盒子，让盒子匀速运动到页面的右端；
+
+    var box = document.getElementById("box");
+    var winW = utils.win("clientWidth");
+    var boxW = box.offsetWidth;
+    // 当盒子运动的距离是winW-boxW时，盒子应该停止；
+    box.onclick = function () {
+        // 如何让盒子运动起来；
+        // 字符串，带px 单位；
+        // 可以通过定时器不断去设置当前盒子的left值；
+        //this.style.left ="100px"
+        box.timer = setInterval(function () {
+            // 每执行一次回调函数，都先获取一下当前盒子最新的left值；
+            var  curLeft = utils.css(box,"left");
+            curLeft += 10;
+            if(curLeft>winW-boxW){
+                clearInterval(box.timer);
+                utils.css(box,"left",winW-boxW);
+                return;
+            }
+            utils.css(box,"left",curLeft);
+        },10);
+    }
+    // 大家用setTimeout 去实现动画；结合递归；
+    /*function move() {
+        setTimeout(move,15)
+    }*/
+
+
+
+
+
+
+</script>
+</body>
+</html>

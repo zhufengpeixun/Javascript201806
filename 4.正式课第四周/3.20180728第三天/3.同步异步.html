@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS : JS 属性单线程，每次只能执行一个任务；每次执行一行代码；
+    // 同步异步：
+    // 异步： 定时器  ajax  回调函数  事件
+    // 浏览器： 多线程；给JS提供了一个主任务队列和等待任务队列；所有的同步代码都会放在主任务队列中，所有异步代码任务都放在等待任务队列中；
+    // 浏览器会把所有的主任务队列中的任务执行完成之后，才会依次执行等待任务队列的中任务；
+    /*img.onload = function () {
+        //newImg.src = trueImg;
+    };
+    console.log(1);
+    for (var i = 0; i < 100000000; i++) {
+    }
+    console.log(1000);
+    setTimeout(function () {
+        console.log(1)
+    },1000)
+    console.log(2);
+    function A(callBack) {
+
+    }
+    A(B);
+    function B() {
+
+    }*/
+    // 当前定时器，时间越小，执行越早；
+ /*   setTimeout(function () {
+        console.log(1);
+    },10);
+    setTimeout(function () {
+        console.log(2);
+    },8);
+    var n = new Date();
+    for (var i = 0; i < 10000000; i++) {
+    }
+    setTimeout(function () {
+        console.log(3);
+    },7);
+    console.log(new Date() - n);// 300--400ms
+    console.log(100);*/
+ for(var i=0;i<3;i++){
+     //debugger
+     setTimeout(function () {
+         console.log(i);
+     },1000*i);
+ }
+
+
+</script>
+</body>
+</html>

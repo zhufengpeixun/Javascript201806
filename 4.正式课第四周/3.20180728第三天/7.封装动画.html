@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+        }
+        #box2{
+            top:150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <script src="utils.js"></script>
+<script>
+    var  box1 = document.getElementById("box1")
+    var  box2 = document.getElementById("box2")
+    // 匀速运动公式；
+    function linear(t,b,c,d) {
+        return t/d*c+b;
+    }
+    // 封装动画；
+    // curEle : 要运动的元素
+    // target : 元素的目标状态
+    // duration ： 动画运动时间
+    //当动画结束之后，让盒子马上变成宽高各是50;
+    function end() {
+        this.style.width="50px"
+        this.style.height="50px"
+
+    }
+    function move(curEle,target,duration,callBack) {
+        // 初始化三个变量；
+        var begin = {},
+            change = {},
+            time = 0;// 记录时间
+        // 通过遍历target得到元素的初始状态和要变化的状态；
+        for(var key in target){
+            // 给begin和change两个对象新增键值对；
+            begin[key] = utils.css(curEle,key);
+            change[key] = target[key] - begin[key];
+        }
+        curEle.timer = setInterval(function () {
+            time+=17;// 每执行一次回调，time会记录当前走过的时间；
+            //当目标时间到达之后，清楚定时器，设置目标位置状态；
+            if(time>=duration){
+                clearInterval(curEle.timer);
+                utils.css(curEle,target);
+                if(typeof callBack==="function"){
+                    callBack.call(curEle);
+                }
+                return;
+            }
+            // 循环target，设置最新的状态值
+            for(var key in target){
+                // 通过匀速公式计算最新的值；
+                var curVal = linear(time,begin[key],change[key],duration);
+                utils.css(curEle,key,curVal);
+            }
+        },17)
+
+    }
+    box1.onclick = function () {
+        move(box1,{width:200,height:200,left:300,top:300},2000,end);
+    }
+    box2.onclick = function () {
+       move(box2,{width:150,height:150,left:300,top:0},2000)
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

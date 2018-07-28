@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script src="utils.js"></script>
+<script>
+    // 时间是固定
+    var box = document.getElementById("box");
+    var duration = 5000;
+    var winW = utils.win("clientWidth");
+    var boxW = box.offsetWidth;
+    var maxL = winW-boxW;
+    var speed = (winW-boxW)/duration*17;// 没17毫秒盒子应该走的距离；
+    box.onclick = function () {
+        var curLeft = utils.css(box,"left");
+        // 外层作用域的curLeft 存储当前盒子的最新的left值；
+        box.timer = setInterval(function () {
+            curLeft+=speed;
+            if(curLeft>=maxL){
+                clearInterval(box.timer);
+                utils.css(box,"left",maxL);
+                return;
+            }
+            utils.css(box,"left",curLeft);
+        },17)
+    }
+
+
+</script>
+</body>
+</html>
