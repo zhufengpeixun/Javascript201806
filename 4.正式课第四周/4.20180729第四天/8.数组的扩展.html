@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //扩展运算符
+    // 1.合并数组、合并对象
+    // 2.将类数组转成数组；
+    /*let  ary = [1,2,3];
+    console.log(...ary);*/
+    /*let a = [1,23,4,4];
+    let b = [3,4,50];
+    let newAry = [...a,...b];*/// 合并数组；
+    /*function fn() {
+        let a = [...arguments];
+        console.log(a);
+    }
+    fn(1,2,3);*/
+
+    // Array.from: 在Array的这个类私有属性上；
+    // 是将类数组转换成一个真正的数组；
+    /*function fn() {
+        let a = Array.from(arguments);
+        console.log(a);
+    }
+    fn(1,2,3);*/
+
+    // Array.of: 将一组数转换成一个数组
+    console.log(Array.of(1, 2, 3, 5));
+
+</script>
+</body>
+</html>

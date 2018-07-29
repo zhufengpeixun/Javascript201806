@@ -1,3 +1,16 @@
+// jquery渐隐渐现原理： 五张图片叠加到一起，首先让所有图片隐藏,懒加载；如果想让第几张显示，让他透明度变成1，其他图片都变成0；fadeIn;
+
+// 1. 获取元素
+// 2.请求数据；$.ajax({url:"",type:"",async:"",data:{},cache:"",success:function(data){},error:function(){}})
+// 3.绑定数据；es6模板字符串；html()-->获取一些元素；
+// 4.延迟加载；
+// 5.图片的轮播；outer.step
+// 6. 鼠标划上清除定时器
+// 7.鼠标划上li,让其显示对应的图片
+// 8.点击左右，切换图片
+
+
+
 // 1.获取元素
 var  $outer = $("#outer");
 var  outer = $("#outer")[0];// document.getElementById()
@@ -47,7 +60,7 @@ function bindData(data) {
 }
 function delayImg() {
     $oImgs.each(function (index) {// 当前图片的索引；
-        // this-->每一张图片
+        //  this-->每一张图片
         var that  = this;
         var trueAddress = $(this).attr("data-src");
         var newImg = new Image;// 原生JS对象；
@@ -82,6 +95,7 @@ $("#outer").hover(function () {
 // 鼠标划上li
 $("#focus li").hover(function () {
     // index: 获取当前元素的索引；
+    // 原生对象转jquery  $(原生对象)
     autoMove($(this).index());
 });
 
@@ -90,13 +104,13 @@ $("#right").click(function(){
     autoMove();
 });
 $("#left").click(function(){
-   outer.step-=2;
-   if(outer.step<-1){
-       // 如果满足条件，说明已经到第一张，下一张应该是第五张
-       outer.step=$oImgsLength-2;
-   }
-   autoMove();
-})
+    outer.step-=2;
+    if(outer.step<-1){
+        // 如果满足条件，说明已经到第一张，下一张应该是第五张
+        outer.step=$oImgsLength-2;
+    }
+    autoMove();
+});
 
 
 

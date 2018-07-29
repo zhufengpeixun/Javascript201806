@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function* helloWorldGenerator() {
+        let a = 10;
+        yield a;
+        yield 'world';
+        return 'ending';
+    }
+    var hw = helloWorldGenerator();
+    console.log(hw.next());// {value:10,done:false}
+    console.log(hw.next());// {value:"world",done:false}
+    console.log(hw.next());// {value:"ending",done:true}
+    console.log(hw);
+
+
+</script>
+</body>
+</html>

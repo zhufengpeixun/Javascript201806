@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+   /* console.log(num);// undefined
+    var num = 10;
+    console.log(num);// 10
+    var num = 18;
+    console.log(num);*/// 18
+    // let : 定义变量
+    // 区别：1.let  不存在变量提升；
+    //      2.在当前作用域下，let不能重复声明变量；
+    //      3.let是存在变量声明，在代码运行之前，变量要进行声明，不是不提升；
+    //      4.在函数中，形参不可以和let声明的变量重名；函数体中函数名和变量不能重名；
+    //console.log(a);
+
+    /*let  a = 16;*/
+    /*function fn() {
+        let  a =10;
+        function a() {
+        }
+    }
+    fn(1);*/
+    // 块级作用域：for  if  while for in
+    /*if([]==![]){
+        console.log(a);// a is not  defined;
+        let a = 19;
+    }*/
+    //let  a = 100;
+    // 在for循环时，首先会形成一个大的父作用域，循环没执行一次，都会形成一个子作用域，子作用域存储了私有变量a;相互不受任何干扰；
+    /*for(let a=0;a<10;a++){
+        // let a : 不是全局的；
+        // 第一个自作用域a=0；
+        // 第二个子作用域a=1;
+        oLis[i].onclick = function () {
+            console.log(a);
+        }
+    }
+    console.log(a);*/
+
+    // const : 声明一个常量；
+    // 1. 不存在变量提升
+    // 2.变量不能重复声明
+    // 3.一旦初始化，不能再重新赋值；
+    //console.log(a);
+    let  y = "hello";
+    y = "world";
+    console.log(y);
+    const a =100;
+    // es6新增了哪些语法？
+
+</script>
+</body>
+</html>

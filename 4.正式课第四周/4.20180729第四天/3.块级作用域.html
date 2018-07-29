@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // {} : 形成块级作用域；
+    // for  for in  while  if  else   try  catch{}...
+    //console.log(fn);// undefined
+    // 在块级作用域，函数只声明，不定义的；
+    // 在块级作用域下，进来先对函数进行定义；
+    /*console.log(a);
+    if(true){
+        var a = 19;
+        fn();
+        function fn() {
+            console.log(1);
+        }
+    }
+    fn();*/
+    // 通过var声明的变量是全局变量；
+    /*let ary = [];
+    for(let i=0;i<10;i++){
+        // 每循环一次，会形成一个单独的子作用域，存储了变量i的值；
+        ary[i] = function(){
+            console.log(i);
+        }
+    }
+    //console.log(i);// 10;
+    ary[5]();*/
+    let obj = {a:1}
+    for(let key  in obj){
+        console.log(key);// "a"
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function Fn() {
+
+    }
+    Fn.prototype.getX = function () {
+        
+    }
+    new Fn;*/
+
+    // class ： 定义一个类
+    // 自定义类；
+    // 1.不能作为普通函数执行，必须带有new 运行
+    // 2.是一个自定义类，就是一个函数，那么它有prototype属性；
+    /*class Fn{
+        constructor(){
+            // 之前构造函数体中的代码；this指向当前的实例；
+            this.x=1;
+            this.y = 2;
+        }
+        a(){
+            // 原型公有的属性；
+        }
+    }
+    Fn.prototype.getY = function () {
+    }
+    console.log(typeof Fn);// "function"
+    let f = new Fn;
+    console.log(f);*/
+    /*let obj = {
+        fn(){
+            console.log(1);
+        }
+    }
+    obj.fn();*/
+
+    // extends ： 不仅继承了私有属性，而且还继承了类的公有属性；
+    class A{
+        constructor(b){
+            this.x = 100;
+            this.y = b;// 12
+        }
+        a(){
+        }
+    }
+    class B extends A{
+        constructor(){
+            super();// 把父级中的this拿到这个地方；
+            this.a = 10;
+        }
+        b(){
+        }
+    }
+    B.prototype.__proto__ = A.prototype;
+    B.prototype = new A;
+    console.log(new B);// {x：100，y:undefined,a:10}
+</script>
+</body>
+</html>

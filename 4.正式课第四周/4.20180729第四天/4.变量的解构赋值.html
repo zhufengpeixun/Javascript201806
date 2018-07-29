@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 解构赋值：
+    // 1.如果变量没有对应的解构值，那么默认解构出undefined；
+    // 2.解构赋值，要求等号左右两边的结构保持一致；
+    // 3.如果等号右边的值不是一个数组，那么就会报错；
+    // 4.解构赋值可以赋默认值，如果等号右边有对应的值，那么会将默认值覆盖；
+    /*let  a= 1;
+    let  b= 2;
+    let  c= 3;*/
+    /*var r;
+    let y;
+    console.log(y);// undefined
+    let [b,a,c,d] = [1,2,3,4,5,6];
+    console.log(a);
+    console.log(b);
+    console.log(c);
+    console.log(d);*/
+
+    /*let [a,[b],[c]] = [1,2,[3]];
+    console.log(a);
+    console.log(b);
+    console.log(c);*/
+    //let [,,[a]]= [1,2,[3]];
+    /*let [a] = [];// a是undefined；
+    let [f] = 1;*/
+
+   /* function fn() {
+        let [a,b] = arguments;
+        console.log(a);
+    }
+    fn(1,2,3,4)*/
+
+   /*let [foo=true] = [1,2];
+    console.log(foo);*/
+
+   // 对象的解构
+    // 1.数组按照顺序解构，对象按照属性名解构；
+    // 2.如果对象的属性名和属性值重名，可以省略一个；
+    /*let {b,a,c} = {a:1,b:2,c:3};
+    console.log(a);
+    console.log(b);
+    console.log(c);*/
+    /*let {foo:baz} = {foo:"aaa",bar:"bbb"};
+    console.log(baz);*/
+    //console.log(foo);  foo is  not defined;
+    /*let {foo=1} = {bar:"bbb"};
+    console.log(foo);*/
+    /*var  name = "zf";
+    var obj = {name};
+    console.log(obj);*/
+
+    // 字符串解构
+    // 字符串会转换成一个类似于数组的对象，进行遍历和解构；
+    /*let [a,b,c,d,e] = "hello";
+    console.log(a);*/
+    /*let {length} = "hello";
+    console.log(length);*/// 5
+
+
+    // 4.函数的参数解构
+    /*function fn([x,y]) {
+        console.log(x);
+        console.log(y);
+    }
+    fn([1,2])*/
+    /*function fn({a,b}) {
+        console.log(a);
+    }
+    fn({a:1,b:2})*/
+
+    // 5.用途
+   /* let x =1;
+    let y = 2;
+    [x,y] = [2,1];
+    console.log(x);// 2
+    console.log(y);*/// 1
+
+
+    function fn() {
+        return {
+            toJSON:1,
+            toArray:2
+        }
+    };
+    let {toJSON,toArray} = fn();
+    console.log(toJSON);
+
+</script>
+</body>
+</html>
