@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<script>
+    var oBox = document.getElementById("box");
+    // 事件的绑定；
+    // DOM0级事件绑定；后面的事件的方法会把前面的覆盖掉；第一次绑定的不再执行；
+    /*oBox.onclick  = function (e) {
+        console.log(1);
+     }
+     oBox.onclick  = function () {
+     console.log(2);
+     }*/
+    // DOM2级事件绑定： 一个元素的事件行为可以绑定多个方法；
+    // 元素.addEventListener(type[去掉on],函数名,true/false);// false :冒泡阶段执行   true： 捕获阶段执行；IE8及以下，不兼容；
+    // IE8 以下： attachEvent 元素.attachEvent("on"+type,函数名)；没有第三个参数；
+    // 1. 顺序问题
+    // 2. 可以重复绑定同一个方法；
+    // 3. this 问题；this会指向window；
+    function fn1() {
+        console.log(this);
+        console.log(1);
+    }
+    function fn2() {
+        console.log(2);
+    }
+    //  oBox.attachEvent("onclick",fn1)
+    //  oBox.attachEvent("onclick",fn1)
+    oBox.addEventListener("click",fn1,false);
+    oBox.addEventListener("click",fn2,false);
+    //console.log("addEventListener" in oBox);// in： 检验属性是否属于某个对象的方法；返回布尔;公有私有都返回true；
+    //console.log(oBox.hasOwnProperty("addEventListener"));// false
+    // addEventListener 在EventTarget 这个类的原型上；
+
+
+    //
+</script>
+</body>
+</html>

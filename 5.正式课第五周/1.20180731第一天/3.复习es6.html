@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // es6编译  babel   node   npm
+    // es6
+    // let  const
+    // 块级作用域： if  for  for in while  try catch...
+    // 解构赋值: 数组解构，对象解构
+    // 函数的扩展 ： ... 剩余运算符   形参赋默认值
+    // 箭头函数 ： 1.形式 2.执行
+    // 箭头和普通函数的区别
+    // 1. 没有this,this指向当前函数定义时外层作用域中this指向；跟函数在哪执行没有关系；
+    // 2. 不能作为构造函数，不能被new
+    // 3.没有arguments
+    // 4.不能使用yield这个语令；
+    /*let obj = {
+        fn : ()=>{
+            console.log(this);// window
+        }
+    }
+    obj.fn();*/
+/*    let obj = {
+        fn:function f() {
+            console.log(this);// obj
+            box.onclick =()=>{
+                //console.log(1);
+                console.log(this);// obj
+            }
+        }
+    }
+    obj.fn();*/
+    /*let ary = [1,3,4];
+    ary.map(()=>{
+        // 箭头函数执行时，外层作用域是map执行形成的私有作用域，map作用域中的this指向ary;所以箭头函数中的this，跟箭头函数在哪执行没有关系，只跟在哪定义有关；
+        console.log(this);// window
+    })
+    function B(callBack) {// callBack
+
+    }
+    B(function () {
+
+    });*/
+    /*let fn = function () {
+
+    };*/
+    /*let fn=a=>{
+        console.log(this);
+    };*/
+    /*function fn(...ary) {
+
+    }
+    fn(1,2,3,3)
+    for(var i=0;i<10;i++){
+        // 每一个子作用域存储了当前的i值；
+    }*/
+    //let  a = 10;
+    /*console.log(fn);
+    if(true){
+        // 如果在块级作用域中,用let定义的变量是私有的；
+        // 只要一进块级作用域，马上对当前函数进行赋值；
+        let a = 10;
+        var b = 19;
+        function fn() {
+        }
+    }
+    fn();
+    console.log(a);*/
+
+    // Array.from:把类数组转成真正的数组
+    // Array.of：
+    // ... : 展开运算符
+    /*let obj1 = {a:1}
+    let obj2 = {b:2};
+    let  obj = {...obj1,...obj2}
+    obj  = {a:1,b:2};*/
+
+    // 把两个对象合并成一个；课下作业；
+    /*function extend(obj1,obj2) {
+
+    }*/
+
+    // class ：
+    /*function Fn() {
+        this.x = 10;
+    };
+    Fn.prototype.getX = function () {
+
+    }
+    new Fn;*/
+    class HH{
+        constructor(){
+            this.x = 19;
+            this.y = 20;
+        }
+        getX(){
+
+        }
+    }
+    let h = new HH();
+    h.getX();
+
+    class TT extends HH{
+        constructor(){
+            super();
+            this.a = 1;
+        }
+        getY(){
+
+        }
+    }
+    let t = new TT;
+    console.log(t);
+    t.__proto__ = TT.prototype;
+    t.__proto__.__proto__ = HH.prototype;
+    TT.getX();
+    TT.prototype.__proto__ = HH.prototype;
+
+
+
+
+</script>
+</body>
+</html>

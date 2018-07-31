@@ -9,20 +9,19 @@
 // 7.鼠标划上li,让其显示对应的图片
 // 8.点击左右，切换图片
 
-
-
 // 1.获取元素
 var  $outer = $("#outer");
 var  outer = $("#outer")[0];// document.getElementById()
 var  $focus = $("#focus");
 var  $swiper = $("#swiper");
-var  $oImgs;
+var  $oImgs;//
 var $oImgsLength;
 // 通过jQuery获取的元素没有映射机制；
 // 2.ajax获取数据；
 $.ajax({
     url:"data.json",// 路径
     async:false,// Jquery 默认是异步请求；true：异步；false：同步；
+    // jQuery ajax是默认是异步的；如果async没有赋值，默认是true；如果这个键值对写错，同时也是异步的；
     type:"get",// type: 请求方式；get/post/delete/put
     //data:{
     //      username:"张三",
@@ -30,9 +29,10 @@ $.ajax({
     //      code : ""
     // },参数
     success:function (data) {
+        // 如果ajax是异步的，那么当前回调函数会等待所有的同步执行完成之后，才会执行；
         // data : 请求到的数据；
         //console.log(data);
-        bindData(data)
+        bindData(data);
     }
 });
 
@@ -44,6 +44,8 @@ function bindData(data) {
     // param2:回调函数
     var imgStr = ``;
     var liStr = ``;
+    // 1.参数： 要循环的对象数组，2.回调： 每循环一次，执行一次；
+    // 3.this  遍历的每一项
     $.each(data,function (index) {// index: 当前数据的索引；
         // console.log(this);// this---> 每一条具体的数据；
         imgStr+=`<img data-src="${this.img}">`;
@@ -59,6 +61,9 @@ function bindData(data) {
     outer.timer = setInterval(autoMove,2000);
 }
 function delayImg() {
+    // Jquery 的原型上； jquery的实例可以调用
+    // 1. 回调函数
+    // 3.循环的是jquery的实例； 类数组；[{}]
     $oImgs.each(function (index) {// 当前图片的索引；
         //  this-->每一张图片
         var that  = this;
@@ -93,6 +98,7 @@ $("#outer").hover(function () {
 });
 
 // 鼠标划上li
+console.log(1);
 $("#focus li").hover(function () {
     // index: 获取当前元素的索引；
     // 原生对象转jquery  $(原生对象)

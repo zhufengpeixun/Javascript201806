@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="outer">
+    <div id="swiper">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+</div>
+<script>
+    // 轮播图
+    // 左右无缝滚动轮播图： 原理： 五张图片横着排，第一张和最后一张是同一张；每隔2000ms改变当前swiper盒子的left；当运动第四张时，下一张是第五张，并且马上改变swiper的left,变成0；
+    // step
+    setInterval(autoMove,2000)
+    step=0;
+    function autoMove(n) {
+        // step : 当前图片显示的索引；
+        step++;
+        typeof n !== "undefined"? step= n:null;
+        // 通过step设置left
+        utils.css(swiper,"left",-1000*step);
+    };
+    // 循环所有的li;绑定点击事件
+    autoMove(2);
+
+
+
+
+
+</script>
+</body>
+</html>

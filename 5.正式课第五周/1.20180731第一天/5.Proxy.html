@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Proxy : 给对象加了一层拦截；当获取或设置这个对象属性时，拦截就会被触发；
+  let  obj = new Proxy({a:1,b:"you are beautiful"},{
+      // 两个键值对；一个是get,一个set，名字不能更改；
+      get:function () {
+          // 当获取对象属性名对应的属性值，会触发这个get对应的函数
+          console.log("你很帅");
+          return 100;
+      },
+      set:function () {
+          // 当设置对象的属性时，会触发这个函数；
+          // 修改和新增对象属性，都会触发这个函数
+          console.log("我很帅")
+      }
+  });
+  //console.log(obj.a);// undefined
+   //obj.a ++;
+    console.log(obj.a);
+    console.log(obj.b);
+
+</script>
+</body>
+</html>

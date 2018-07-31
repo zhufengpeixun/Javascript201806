@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<input type="text" id="focus">
+<script>
+    // 事件 ： 事件是元素天生自带的一种行为；当点击这个盒子时,浏览器捕捉到点击的那个盒子，就会触发这个盒子onclick对应的函数；
+    // 当鼠标点击盒子时，会触发盒子的onclick事件，onclick默认的属性值是null，只是没有执行任何的函数而已；
+
+    // 常见的事件行为： onclick  onmouseover  onmouseout onload  onscroll  onmouseenter onmouseleave  onmousedown onmouseup  onmousemove....
+    // ontouchstart ontouchmove  ontouchend
+    //input : onfocus 获取鼠标焦点事件
+    //        onblur : 失去鼠标焦点
+    //        onchange :当失去鼠标焦点，并且内容发生改变时，触发onchange;
+    //        oninput :input 的value发生改变，都会触发；
+    //        onkeydown :键盘按下触发的事件，获取input的value是按之前的value值；
+    //        onkeyup ：键盘抬起触发的事件，获取是键盘抬起最新的value；
+
+    var oBox = document.getElementById("box");
+    /*oBox.onmousemove = function () {
+        console.log(1);
+    }
+    let  inp = document.getElementById("focus");*/
+    /*inp.onfocus = function () {
+        console.log(1);
+    }
+    inp.onblur = function(){
+        console.log(2);
+    }
+    inp.onchange = function(){
+        console.log(3);
+    }*/
+    /*inp.oninput= function () {
+        console.log(this.value);
+    }*/
+   /* inp.onkeydown  = function () {
+        //this --> input
+        console.log(this.value);
+    }
+    inp.onkeyup = function () {
+        console.log(this.value);
+    }*/
+
+    // 当点击盒子，会触发这个函数执行；
+    //console.log(oBox.onclick);// null
+    /*oBox.onclick = function () {// 给元素onclick属性赋值一个空间地址；
+     console.log(100);
+     }*/
+    //oBox.onclick = [];
+    //delete oBox.onclick;// 属性是内置的，不可以被删除；
+
+
+
+</script>
+</body>
+</html>

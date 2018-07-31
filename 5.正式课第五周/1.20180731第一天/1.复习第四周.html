@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 动画  同步异步  轮播图   es6
+    // 同步异步：主任务队列和等待任务队列；需要等待主任务队列所有任务完成，才会执行异步的任务；
+
+    // 动画 ：固定步长  固定时间
+    function linear(t,b,c,d) {
+        return t/d*c+b;
+    }
+    // setInterval
+    // 封装动画
+
+    // 参数
+    // 1.当前元素
+    // 2.目标状态
+    // 3.总时间
+    // 4.回调函数，当动画运动结束后，执行的函数；
+
+    //  // 思路
+    // 1.获取当前元素的初始状态和要变化的状态；begin  change计算;
+    // 2.循环target，遍历出所有的属性的初始值,和变化值；
+    // 3.动画，通过定时器和走过的总时间计算出当前时刻盒子的状态值；
+    // 4.设置最新的状态值；
+    // 5.如果到大目标时间，清除定时器；
+
+    function animate(curEle,target,duration,callBack) {
+        let begin = {};
+        let change = {};
+        for(let key in target){
+            begin[key] = utils.css(curEle,key);
+            change[key] = target[key] - begin[key];
+        }
+        curEle.times = 0;
+        curEle.timer = setInterval(function () {
+            curEle.times +=17;
+            if(curEle.times>=duration){
+                window.clearInterval(curEle.timer);
+                utils.css(curEle,target);
+                typeof callBack==="function"?callBack.call(curEle):null;
+                return;
+            }
+            for (let key in target){
+                utils.css(curEle,key,linear(curEle.times,begin[key],change[key],duration));
+            }
+        },17);
+    }
+
+
+
+
+</script>
+</body>
+</html>
