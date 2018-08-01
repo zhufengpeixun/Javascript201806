@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:300px;
+            height:300px;
+            margin:50px auto;
+            background: lightseagreen;
+            position: relative;
+        }
+        .mark{
+            width:50px;
+            height:50px;
+            position: absolute;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    let oBox = document.getElementById("box");
+    //1.当鼠标划上oBox元素时，创建一个盒子
+    //2.当鼠标在盒子上移动时，会不断触发oBox 的onmousemove;不断设置小盒子的left和top；
+    //3.当鼠标离开盒子时，移出小盒子；
+    let mark;
+    oBox.onmouseenter = function(){
+        // 创建元素
+        // 如果盒子已经存在，不需要再创建盒子；
+        console.log(mark);
+        if(mark){
+            return;
+        }
+        mark = document.createElement("div");
+        // 新增class；
+        mark.className = "mark";
+        // 添加元素
+        oBox.appendChild(mark);
+    }
+    oBox.onmousemove = function (e) {
+        e = e || window.event;
+        //可视窗口的左边的距离减去盒子的左偏移量
+        // 由于鼠标滑动过快，让鼠标滑动到小盒子身上，那么事件源变成了小盒子；得到offsetX 是相对于小盒子的左边框的距离；
+        //console.log(e.offsetX);
+        mark.style.left = e.clientX-oBox.offsetLeft +10+ "px";
+        mark.style.top = e.clientY-oBox.offsetTop + 10+"px";
+    }
+    oBox.onmouseleave = function () {
+        // 鼠标离开，删除mark盒子；
+        if(mark){
+            oBox.removeChild(mark);
+            // mark节点被移出，但是mark变量存储的空间地址还存在；
+            mark = null;
+        }
+    }
+
+
+</script>
+</body>
+</html>

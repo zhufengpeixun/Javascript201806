@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            position: absolute;
+            top:30px;
+            left:180px;
+            background: lightgreen;
+            text-align: center;
+            line-height: 100px;
+            color: red;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+   <div id="box">推箱子</div>
+   <script>
+       let  box = document.getElementById("box");
+       // box 绑定的键盘事件是不起作用的；
+       // window 可以绑定键盘事件；当键盘按下时，触发window的键盘事件对应的方法；
+       window.onkeydown = function (e) {
+           // e.keyCode : 键盘的每一个键都有一个keyCode值；
+           //左 37  上 ： 38  右  39  下 ： 40
+           //console.log(e);
+           // 判断keyCode ,设置盒子不同的left或top；
+           if(e.keyCode===37){
+               console.log(getComputedStyle(box)["left"]);
+               box.style.left = parseFloat(getComputedStyle(box)["left"])-10+"px";
+           }else if(e.keyCode ===38){
+               box.style.top =parseFloat(getComputedStyle(box)["top"])-10+"px";
+           }else if(e.keyCode===39){
+               box.style.top =parseFloat(getComputedStyle(box)["left"])+10+"px";
+           }else if(e.keyCode===40){
+               box.style.top =parseFloat(getComputedStyle(box)["top"])+10+"px";
+           }
+
+       }
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            position: absolute;
+            top:30px;
+            left:180px;
+            background: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="parent">
+        <div id="children"></div>
+    </div>
+</div>
+<script>
+    // 要操作谁，获取谁；
+    //
+    var oBox = document.getElementById("box");
+    // 给oBOx的onclick事件绑定一个方法；当点击这个盒子时，浏览器捕捉到点击的这个盒子，会触发当前盒子onclick事件行为上的函数；
+    // 当触发元素的事件行为对应的方法时，浏览器会默认给当前方法传递一个事件信息，这个事件信息是对象数据类型的，也就是事件对象；
+    // 事件信息： 鼠标距离当前浏览器可视窗口的左边和上边的距离，距离body左边或上边的距离,距离父亲的左边的距离和上边的距离；
+    oBox.onmouseover = function (e) {
+        // e : 事件对象
+        // 在IE8及以下是不兼容的；
+        // 在IE8以下，浏览器会把当前事件的事件信息放到window一个event属性上；event的属性值就是事件对象
+        //console.log(window.event);
+        e = e || window.event;
+        e.pageX = e.pageX || e.clientX + document.documentElement.scrollLeft || document.body.scrollLeft;
+        e.pageY = e.pageY|| e.clientY + document.documentElement.scrollTop || document.body.scrollTop;
+        e.target = e.target || e.srcElement;
+        // e.clientX: 距离浏览器可视窗口的左边的距离
+        // e.clientY：距离浏览器可视窗口的上边的距离
+
+        // e.pageX : 距离body左边的距离(IE8以下不存在)
+        // e.pageY : 距离body上边的距离
+
+        // e.offsetX : 距离当前盒子左边的边框的距离
+        // e.offsetY : 距离当前盒子上边的边框的距离
+
+        // e.target : 当前点击的元素；事件源；[事件委托]
+        // e.type : 对应的事件类型；去掉on;
+
+        // e.cancelBubble : 阻止事件的冒泡传播
+        // e.returnValue  : 阻止事件的默认行为；
+
+    }
+
+</script>
+</body>
+</html>

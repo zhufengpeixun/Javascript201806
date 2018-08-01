@@ -72,14 +72,15 @@
         promise = new Promise(function (resolve,reject) {
             // 原生ajax
             let xhr = new XMLHttpRequest();// 初始化一个ajax对象
-            xhr.open("get",url,false);
+            xhr.open("get",url,true);
             xhr.onreadystatechange = function () {
+                console.log(xhr.readyState);// 2  3  4
                 if(xhr.readyState===4&&xhr.status===200){
                     // 说明请求成功；
                     //console.log(xhr.responseText);
                     resolve(xhr.responseText);
                 }else{
-                    console.log(xhr.statusText);
+                    console.log(xhr.statusText);// OK
                     reject(xhr.statusText);
                 }
             }
@@ -94,15 +95,7 @@
         console.log(val);
         return promise;
     },function (a) {
-        console.log(a);
-    }).then(function (val) {
-        
-    },function () {
-        
-    }).then(()=>{
-        
-    },()=>{
-        
+        console.log(a);// OK
     })
 
 </script>

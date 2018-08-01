@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="https://www.baidu.com/?tn=78040160_26_pg&ch=1" id="btn">点我啊</a>
+<script>
+    var  btn = document.getElementById("btn");
+    btn.onclick = function (e) {
+        // e.preventDefault : 阻止事件的默认行为；IE8以下是不兼容的；
+        // e.preventDefault();
+        // e.returnValue : 可以阻止事件的默认行为；属性值是false；
+        e = e || window.event;
+        e.preventDefault?e.preventDefault():e.returnValue = false;
+        console.log(e);
+        console.log(1);
+    }
+    // form 的sumbit : 提交
+    // a: 点击就会进行跳转；
+    // 如果a标签中是空，那么相当于刷新整个页面；
+    // 禁止
+    // 1. ###
+    // 2.javascript:;
+</script>
+</body>
+</html>

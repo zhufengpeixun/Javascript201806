@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: relative;
+            width:350px;
+            height:350px;
+            border: 1px solid black;
+            margin-top:30px;
+            margin-left:50px;
+            float:left;
+        }
+        #box img{
+            width:100%;
+            height:100%;
+        }
+        #bigBox{
+            display: none;
+            position: relative;
+            width:350px;
+            height:350px;
+            border: 1px solid black;
+            margin-top:30px;
+            margin-left:50px;
+            float: left;
+            overflow: hidden;
+        }
+        #bigBox img{
+            position: absolute;
+            width:700px;
+            height:700px;
+        }
+        #mark{
+            position: absolute;
+            width:175px;
+            height:175px;
+            background: rgba(0,0,0,0.3);
+            cursor: move;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="img/iphone.jpg" alt="">
+</div>
+<div id="bigBox">
+    <img src="img/iphone_big.jpg" alt="">
+</div>
+<script>
+    var oBox = document.getElementById("box");
+    var bigBox = document.getElementById("bigBox");
+    var img = bigBox.getElementsByTagName("img")[0];
+    var mark;
+    // 分别给元素的鼠标进入，滑动，滑出绑定方法；
+    // 1. 鼠标滑入；
+    //   1) ：创建出小盒子
+    //   2) : bigBox 显示；
+    oBox.onmouseenter = function () {
+        var smallBox = document.createElement("div");
+        smallBox.id = "mark";
+        this.appendChild(smallBox);
+        // 需要放入DOM中，才能用document去获取元素；否则当前节点是获取不到的；
+        mark = document.getElementById("mark");
+        // 让大盒子显示
+        bigBox.style.display = "block";
+
+    }
+    oBox.onmousemove = function (e) {
+        // 计算小盒子的位置；大盒子图片的位置
+        e = e || window.event;
+        var minL = 0;
+        var maxL = box.offsetWidth/2;
+        var left = e.clientX - box.offsetLeft - mark.offsetWidth/2;
+        var top = e.clientY- box.offsetTop - mark.offsetHeight/2;
+        // 如果left比最小值还小，那么直接让left等于最小值即可；如果left比最大值还大，那么直接设置成最大值；
+        if(left<minL){
+            left = minL;
+        }else if(left>maxL){
+            left=maxL;
+        }
+        if(top<minL){
+            top = minL;
+        }else if(top>maxL){
+            top = maxL;
+        }
+        // 设置盒子的left、top；
+        mark.style.left = left + "px";
+        mark.style.top = top + "px";
+        // mark 的left和img的left存在2倍关系；
+        img.style.left = -2*left + "px";
+        img.style.top = -2*top + "px";
+    }
+    oBox.onmouseleave = function () {
+        // 鼠标离开，移出mark;并且让大盒子隐藏；
+        this.removeChild(mark);
+        bigBox.style.display= "none";
+    }
+
+
+</script>
+</body>
+</html>

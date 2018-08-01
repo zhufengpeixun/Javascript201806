@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            margin:30px auto;
+            width:300px;
+            height:300px;
+            background: red;
+        }
+        #inner{
+            margin:auto;
+            width:200px;
+            height:200px;
+            background: yellow;
+        }
+        #center{
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script>
+    var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var center = document.getElementById("center");
+    // 绑定事件行为函数
+    // 事件的冒泡传播机制： 当触发子元素身上的事件时，当前元素绑定的事件方法执行，同时，父级的元素相同的事件行为也会跟着触发，继续向上依次祖先元素的相应的事件行为；直到找到window为止；这种事件传播的机制就是“冒泡传播”
+    /*center.onclick = function (e) {
+        e = e || window.event;
+        // e.stopPropagation : 阻止事件的冒泡传播；
+        // 在IE8以下是不兼容的；
+        //e.stopPropagation();
+        // e.cancelBubble :在IE8及阻止事件的冒泡传播；
+        e.cancelBubble = true;
+        console.log("center");
+    }
+    inner.onclick = function (e) {
+        e = e|| window.event;
+        //e.stopPropagation();
+        console.log("inner");
+    }
+    outer.onclick = function(){
+        console.log("outer");
+    }
+    document.body.onclick = function () {
+        console.log("body");
+    }*/
+    /*document.documentElement.onclick = function () {
+        console.log("html");
+    }
+    document.onclick = function () {
+        console.log("document");
+    }
+    window.onclick = function () {
+        console.log("window");
+    }*/
+    // onmouseover(划上)  onmouseout  和onmouseenter  onmouseleave
+    // onmouseenter（进入） 和onmouseleave : 不进行冒泡传播；所以在工作中，一般用onmouseenter和onmouseleave;
+    center.onmouseenter  = function () {
+        console.log("center");
+    }
+    inner.onmouseenter = function () {
+        console.log("inner");
+    }
+</script>
+</body>
+</html>

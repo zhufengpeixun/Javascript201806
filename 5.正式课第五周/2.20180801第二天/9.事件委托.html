@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            margin:30px auto;
+            width:300px;
+            height:300px;
+            background: red;
+        }
+        #inner{
+            margin:auto;
+            width:200px;
+            height:200px;
+            background: yellow;
+        }
+        #center{
+            margin:auto;
+            width:100px;
+            height:100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script>
+    /*var outer = document.getElementById("outer");
+    var inner = document.getElementById("inner");
+    var center = document.getElementById("center");
+    outer.onclick = function (e) {
+        console.log("outer");
+    }
+    inner.onclick = function (e) {
+        e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+        console.log("inner")
+    }
+    center.onclick = function (e) {
+        // 阻止事件冒泡传播
+        e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+        console.log("center")
+    }*/
+    // 把outer inner  center的事件行为委托给最外层的body；
+    document.body.onclick = function (e) {
+        // 对e和事件源处理兼容；
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+       // 判断当前点击事件源是谁；
+        /*console.log(typeof e.target);// "object";
+        console.log(e.target.id);*/
+        if(e.target.id==="outer"){
+            console.log("outer")
+        }else if(e.target.id ==="inner"){
+            console.log("inner")
+        }else if(e.target.id==="center"){
+            console.log("center");
+        }
+    }
+    // 事件委托原理：利用了事件冒泡传播的机制，给最外层元素的事件绑定方法，当里面的元素触发事件，那么会导致最外层的相应的事件行为被触发，根据事件源的不同，执行不同的功能；
+</script>
+</body>
+</html>

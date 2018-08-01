@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. promise  proxy   事件
+    // promise： 解决异步编程的一种方案： pending  fulfilled  rejected
+    // proxy : 拦截器  获取设置新增键值对；
+    /*let  obj = new Proxy({a:1},{
+        get:function () {
+            // 当获取键值对对应的属性值时，触发get 这个函数
+            return  100;
+        },
+        set:function () {
+            // 设置或者修改属性值时，触发set这个函数；
+        }
+    })*/
+
+    // 事件 ： onclick  onmouseover  onmouseout  onmouseenter onmouseleave   onkeydown  onkeyup ondbclick  onscroll  onload...
+    // onfocus  onblur  onchange oninput  onkeypress
+    // touchstart  touchmove  touchend
+    // gestureStart   gesturemove  gestureend
+
+    // 事件的绑定
+    // DOM0 级事件绑定:每个事件行为只能绑定一个方法，不能多次绑定，后面呢绑定方法会把前面的进行覆盖
+    oBox.onclick = function () {
+        console.log(1);
+    };
+    oBox.onclick = function () {
+        console.log(2);
+    };
+    // DOM2级事件绑定
+    // 元素.addEventListener(type,fn,false/true);
+    oBox.addEventListener("click",fn1,false);// 在IE9以上
+    oBox.attachEvent("onclick",fn2);// 在IE10 及以下是兼容的；
+    // 1.顺序问题
+    // 2.重复绑定
+    // 3.this问题；
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
