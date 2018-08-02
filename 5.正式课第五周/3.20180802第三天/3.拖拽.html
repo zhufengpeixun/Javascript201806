@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            /*left:50%;
+            top:50%;*/
+            width:300px;
+            height:300px;
+            /*margin-left:-150px;
+            margin-top:-150px;*/
+            background: #ffc0cb;
+        }
+        #box h2{
+            height:35px;
+            line-height: 35px;
+            padding-left: 10px;
+            background: lightseagreen;
+            font-size: 18px;
+            color:white;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h2>珠峰培训-201806</h2>
+</div>
+<script>
+    // 设置盒子居中
+    let oBox = document.getElementById("box");
+    let title = oBox.getElementsByTagName("h2")[0];
+    let winW = document.documentElement.clientWidth || document.body.clientWidth;
+    let winH = document.documentElement.clientHeight || document.body.clientHeight;
+    let oBoxW = oBox.offsetWidth,oBoxH = oBox.offsetHeight;
+    oBox.style.left = (winW-oBoxW)/2+"px";
+    oBox.style.top = (winH-oBoxH)/2+"px";
+    // 2.给标题绑定鼠标按下事件；
+    // 根据鼠标移动的距离，设置当前盒子最新的位置；
+    // 当鼠标按下时，记录当前鼠标距离可视窗口的左边的距离（e.clientX）;并且记录盒子的初始位置；
+    title.onmousedown = function (e) {
+        e = e || window.event;
+        // 当鼠标按下时，只执行了一次；
+        // this -->函数中的this指向绑定的元素；this--->{}
+        // 记录鼠标按下的位置和盒子初始的位置；
+        this.x = e.clientX;
+        this.y = e.clientY;
+        this.l = parseFloat(oBox.style.left);
+        this.t = parseFloat(oBox.style.top);
+        this.onmousemove = move;
+        this.onmouseup = up;
+    }
+    function move(e) {
+        e = e || window.event;
+        // 1.计算出鼠标移动变化距离；
+        // 2.设置盒子最新位置= 盒子初始的位置+ 鼠标变化的距离；
+        // 变化值 = 最新的left-初始值；
+        let changeL = e.clientX - this.x;
+        let  changeT = e.clientY - this.y;
+        let minL =0;
+        //浏览器可视窗口的宽度-盒子自身的宽度；
+        let maxL = winW-oBoxW;
+        let maxT = winH -oBoxH;
+        let curL = this.l + changeL;
+        let curT = this.t + changeT;
+        // 判断当前left和top和临界值的比较
+        if(curL<minL){
+            curL = minL;
+        }else if(curL >maxL){
+            curL = maxL;
+        }
+        if(curT<minL){
+            curT = minL;
+        }else if(curT>maxT){
+            curT = maxT;
+        }
+        // 设置盒子最新的位置
+        oBox.style.left = curL +"px";
+        oBox.style.top = curT +"px";
+    }
+
+    function up() {
+        this.onmousemove = null;
+        this.onmouseup = null;
+
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

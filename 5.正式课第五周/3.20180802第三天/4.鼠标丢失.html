@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        #box{
+            position: absolute;
+            /*left:50%;
+            top:50%;*/
+            width:300px;
+            height:300px;
+            /*margin-left:-150px;
+            margin-top:-150px;*/
+            background: #ffc0cb;
+        }
+        #box h2{
+            height:35px;
+            line-height: 35px;
+            padding-left: 10px;
+            background: lightseagreen;
+            font-size: 18px;
+            color:white;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h2>珠峰培训-201806</h2>
+</div>
+<script>
+    // 鼠标丢失: 当鼠标滑动过快，浏览器计算的速度没有鼠标滑过的速度快，导致鼠标在body上滑动，不会触发盒子的onmousemove事件行为的方法，盒子静止；当鼠标再次划上title时，会继续触发onmousemove事件，由于鼠标抬起时，不再盒子上，而是在body中，所以盒子onmouseup事件没有被触发，所以onmousemove没有清掉；
+    // 1. setCapture
+    // 2. 事件委托；
+    let oBox = document.getElementById("box");
+    let title = oBox.getElementsByTagName("h2")[0];
+    let winW = document.documentElement.clientWidth || document.body.clientWidth;
+    let winH = document.documentElement.clientHeight || document.body.clientHeight;
+    let oBoxW = oBox.offsetWidth,oBoxH = oBox.offsetHeight;
+    oBox.style.left = (winW-oBoxW)/2+"px";
+    oBox.style.top = (winH-oBoxH)/2+"px";
+    title.onmousedown = function (e) {
+        e = e || window.event;
+        this.x = e.clientX;
+        this.y = e.clientY;
+        this.l = parseFloat(oBox.style.left);
+        this.t = parseFloat(oBox.style.top);
+        // 在IE和火狐下，浏览器给元素默认提供方法，setCapture;这个方法执行，会让盒子和鼠标绑定在一起，不管鼠标滑动多快，盒子都会跟着鼠标运动；
+        //console.log(this.setCapture);// 在谷歌浏览器中没有这个属性；
+        //this.setCapture();
+       /* this.onmousemove = move;
+        this.onmouseup = up;*/
+        if(this.setCapture){
+            // 在IE和火狐
+            this.setCapture();
+            this.onmousemove = move;
+            this.onmouseup = up;
+        }else{
+            // 在谷歌浏览器中:利用事件委托给body绑定onmousemove；
+            let that = this;
+            document.body.onmousemove = function (e) {
+                move.call(that,e);
+            };
+            document.body.onmouseup = function (e) {
+                up.call(that,e);
+            };
+        }
+
+    }
+    function move(e) {
+        // this-->title;
+        //console.log(e);
+        e = e || window.event;
+        let changeL = e.clientX - this.x;
+        let  changeT = e.clientY - this.y;
+        let minL =0;
+        let maxL = winW-oBoxW;
+        let maxT = winH -oBoxH;
+        let curL = this.l + changeL;
+        let curT = this.t + changeT;
+        if(curL<minL){
+            curL = minL;
+        }else if(curL >maxL){
+            curL = maxL;
+        }
+        if(curT<minL){
+            curT = minL;
+        }else if(curT>maxT){
+            curT = maxT;
+        }
+        oBox.style.left = curL +"px";
+        oBox.style.top = curT +"px";
+    }
+
+    function up() {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+        // 谷歌浏览器；
+        document.body.onmousemove = null;
+        document.body.onmouseup = null;
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

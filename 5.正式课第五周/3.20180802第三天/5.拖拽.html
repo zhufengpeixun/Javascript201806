@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width:100%;
+            height:100%;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background:deeppink;
+            border-radius: 50%;
+            position: absolute;
+        }
+        #box1{
+            top:200px;
+        }
+        #box2{
+            top:350px;
+        }
+    </style>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+<script>
+    let box1 = document.getElementById("box1");
+    let box2 = document.getElementById("box2");
+    let winW = document.documentElement.clientWidth || document.body.clientWidth;
+    let winH =document.documentElement.clientHeight || document.body.clientHeight;
+    let oBoxW = box1.offsetWidth,oBoxH = box1.offsetHeight;
+    //down : 记录位置的；
+    function down(e) {
+        console.log(1);
+        e = e || window.event;
+        // 记录鼠标点击距离浏览器可视窗口左边和上边的距离；
+        // 记录box的初始的left和top；
+        this.x = e.clientX;
+        this.y = e.clientY;
+        this.l = parseFloat(getComputedStyle(this).left);
+
+        this.t = parseFloat(getComputedStyle(this).top);
+        // 绑定方法，解决鼠标丢失
+        if(this.setCapture){
+            // 在IE和火狐中
+            this.setCapture();
+            this.onmousemove =move;
+            this.onmouseup = up;
+        }else{
+            let that = this;
+            document.body.onmousemove = function (e) {
+                move.call(that,e)
+            }
+            document.body.onmouseup = function (e) {
+                up.call(that,e);
+            }
+        }
+    }
+    // 给box1绑定鼠标按下事件；
+    box1.onmousedown =down;
+    box2.onmousedown =down;
+    // onmousemove:事件对应的方法是每隔一段时间执行一次；跟盒子移动的距离没有关系
+    function move(e) {
+
+        // 计算盒子的最新位置的；
+        let  changeL = e.clientX - this.x;
+        let  changeT = e.clientY -this.y;
+        let  maxL = winW - oBoxW;
+        let minL = 0;
+        let maxT = winH - oBoxH;
+        let curL = this.l+changeL;
+        let curT = this.t + changeT;
+
+        if(curL>maxL){
+            curL = maxL;
+        }else if(curL<minL){
+            curL = minL;
+        }
+        if(curT>maxT){
+            curT = maxT;
+        }else if(curT<minL){
+            curT = minL;
+        }
+        this.style.left = curL + "px";
+        this.style.top = curT + "px";
+        getSpeed.call(this);
+    }
+    function up() {
+        if(this.releaseCapture){
+            this.releaseCapture();
+            this.onmousemove  = null;
+            this.onmouseup = null;
+        }else{
+            document.body.onmousemove = null;
+            document.body.onmouseup  = null;
+        }
+        drop.call(this);
+        fly.call(this);
+    }
+    //自由落体
+    function drop() {
+        clearTimeout(this.dropTimer)
+        // this---运动的盒子
+        if(!this.dropSpeed){
+            this.dropSpeed = 1;
+        }else{
+            this.dropSpeed+=3.8;
+        }
+        this.dropSpeed*=0.97;
+        let maxT = winH - this.offsetHeight;
+        let curPo = this.offsetTop + this.dropSpeed;
+        if(curPo>=maxT){
+            this.style.top = maxT + "px";
+            // 速度反向；盒子向上运动；
+            this.dropSpeed*=-1;
+            // 如果此处连续两次执行，说明盒子已经到达页面底部，并停止；
+            this.flag ++;
+        }else{
+            this.style.top = curPo + "px";
+            this.flag=0;
+        }
+        // 定时器中函数，this指向window；改变定时器中回调函数的this；利用bind;
+        if(this.flag<2){
+            this.dropTimer = setTimeout(drop.bind(this),18);
+        }else{
+            clearTimeout(this.dropTimer);
+        }
+    }
+    // 水平运动动画
+
+    function fly() {
+        clearTimeout(this.dropTimer);
+        let minL = 0;
+        let maxL = winW-this.offsetWidth;
+        let curPo = parseFloat(this.style.left) + this.flySpeed;
+        this.flySpeed*=0.98;
+        if(curPo > maxL){
+            curPo = maxL;
+            this.flySpeed*=-1;
+        }
+        if(curPo < minL){
+            curPo = minL;
+            this.flySpeed *=-1;
+        }
+        this.style.left  = curPo + "px";
+        if(Math.abs(this.flySpeed)>=0.5){
+            this.flyTimer = setTimeout(fly.bind(this),17);
+        }else{
+            clearTimeout(this.flyTimer);
+        }
+
+    }
+
+    function getSpeed() {
+        // this ---> 当前运动盒子
+        //盒子两次位置的差代表盒子的速度；
+        // 当鼠标离开盒子的那一刻，和上一次执行onmousemove时，盒子水平方向的差，就近似于速度；
+        if(!this.prevPosi){
+            // 如果第一次进来，给盒子新增一个prevPosi;
+            this.prevPosi = this.offsetLeft;
+        }else{
+            this.flySpeed = this.offsetLeft - this.prevPosi;
+            this.prevPosi = this.offsetLeft;//记录上一次盒子的左偏移量；
+        }
+    }
+</script>
+</body>
+</html>

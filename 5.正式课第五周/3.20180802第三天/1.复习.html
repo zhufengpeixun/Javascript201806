@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="bigBox">
+    <div id="box" style="width: 100px;height:100px;border: 1px solid black">
+    </div>
+</div>
+
+<script>
+    // 事件对象
+    box.onclick = function (e) {
+        // e : 事件对象 {}
+        // 在IE8一下，e是undefined；浏览器把事件信息给了全局window下的event属性；
+        e  = e || window.event;
+        // clientX clientY : 距离可视窗口左边的距离上边的距离
+        // pageX  pageY : 距离body左边的距离上边的距离
+        // offsetX offsetY : 距离事件源左边的距离上边的距离
+        // 事件源： 事件发生的源头；
+        // 事件源跟绑定的元素没有直接的关系，跟鼠标触发元素对应的事件有关；
+        e.target = e.target || e.srcElement;
+        e.pageX = e.clientX + document.documentElement.scrollLeft || document.body.scrollLeft;
+        e.pageY= e.clientY + document.documentElement.scrollTop || document.body.scrollTop;
+        // 在IE8以下，e.stopPropagation 是不存在；但是cancelBubble是存在的；赋值是true，阻止事件的冒泡传播
+        // 阻止事件的默认行为： a   form 提交；
+        e.stopPropagation = e.stopPropagation || function () {
+            e.cancelBubble = true;
+        };
+        e.preventDefault = e.preventDefault || function () {
+            e.returnValue  = false;
+        };
+        e.stopPropagation();
+        //e.stopPropagation?e.stopPropagation() : e.cancelBubble = true;
+        this.style.background = "red";
+    }
+    bigBox.onclick = function () {
+        console.log(1);
+    }
+
+    // 事件的冒泡传播：e.stopPropagation();
+    // 事件的默认行为：e.preventDefault();
+
+    // DOM2级事件绑定：
+    // 1) 可以给一个元素的同一个事件绑定多个方法
+    // 2) 可以控制该方法是在捕获阶段还是冒泡阶段执行；
+    // 捕获阶段 --->目标阶段---> 冒泡阶段；
+    // 捕获-->从外向里
+    // 目标--> 先绑什么，先执行什么
+    // 冒泡--> 从里向外
+    //box.addEventListener("click",fn,false)// 冒泡
+    //box.addEventListener("click",fn,true)// 捕获
+    // attachEvent;
+    // box.attachEvent("onclick",fn);
+
+    // 事件委托 ：把事件委托给最外层元素，当触发子孙元素的事件行为时，同时由于冒泡传播的特点，会触发最外层盒子的对应的事件行为；根据事件源的不同，执行不同的操作就可以；
+
+
+
+
+
+
+</script>
+</body>
+</html>
