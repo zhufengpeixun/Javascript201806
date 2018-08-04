@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    // DOM0级事件绑定；给同一个元素的同一个事件类型，只能一个方法；后面绑定会把前面的覆盖；
+    // 元素.type = 函数；
+    /*box.onclick = function () {
+        console.log(1);
+    }
+    box.onclick = function () {
+        console.log(2);
+    }
+    box.onclick = null;*/
+
+    // DOM2级事件绑定
+    //addEventListener 是eventTarget 这个类原型上的方法；
+    // 优势： 可以给同一个元素的用一个事件行为绑定多个方法；
+    // 元素.addEventListener(type,fn)
+    // 1.type: 去掉on的事件类型
+    // 2.fn : 要绑定的方法
+    // 3. boolean : false : 让当前方法在冒泡阶段执行，true： 捕获阶段执行；默认是false；
+    function fn() {
+        console.log("天很热")
+        //box.removeEventListener("click",cool,true);
+        //box.detachEvent("onclick",cool)
+        //console.log(this);
+    }
+    function cool() {
+        console.log("明天就凉快");
+    }
+    /*box.addEventListener("click",fn,false);
+    box.addEventListener("click",fn,false);
+    box.addEventListener("click",cool,false);
+    */
+    // removeEventListener : 移出事件对应的方法；
+    // 必须保证三个参数完全相同；
+
+    // attachEvent: 在IE8及以下，addEventListener是不兼容的
+    //attachEvent(type,fn): 没有办法控制是哪个阶段执行的；
+    box.attachEvent("onclick",fn);
+    box.attachEvent("onclick",fn);
+    box.attachEvent("onclick",cool);
+    //box.detachEvent("onclick",fn);
+
+    // addEventListener 和 attachEvent :
+    // 1.顺序问题：addEventListener先绑谁，先执行谁；attachEvent : 顺序倒着执行；
+    // 2. this问题: addEventListener 绑定的方法中的this指向被绑定的元素，attachEvent 指向window
+    // 3.重复绑定：addEventListener 不能重复给一个元素的同一个事件行为绑定相同的方法，只执行一次；attachEvent绑几次执行几次；
+    // detachEvent : 移出事件绑定的方法；
+    // 移动端   ajax   node   vue   react    一周
+
+
+</script>
+</body>
+</html>

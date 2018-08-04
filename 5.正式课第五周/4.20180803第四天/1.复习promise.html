@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // axios
+    //  es6新增一个类  Promise：解决异步的一种方案；
+    /// Promise 本身是同步的；
+    /*let  promise = new Promise(function (resolve,reject) {
+        // 如果异步成功，执行resolve，如果失败执行reject；
+        // 三种状态： Pending（进行时） fulfilled(成功态)  rejected(失败态)
+        //  pending --->fulfilled  : 调用resolve方法
+        // pending --->rejected   ： 调用reject方法；
+        //let mantou= 18;
+        /!*console.log(100);
+        if(Math.round(Math.random()*20)<10){
+            resolve();
+        }else{
+            reject();
+        }*!/
+        console.log(100);
+        setTimeout(function () {
+            console.log(99);
+            if(Math.round(Math.random()*20)<10){
+                resolve();
+            }else{
+                reject();
+            }
+        },2000)
+    })
+    console.log(101);*/
+
+    // then : 定义在Promise的原型上；Promise的实例可以调用then方法；
+    // then : 两个实参： 第一个参数是当异步请求成功之后，执行的函数；第二个参数是异步请求失败执行的函数；
+    /*promise.then(function () {
+        console.log(103);
+        console.log("买");
+    },function () {
+        console.log("不买")
+    })*/
+    
+    function getData(url) {// 路径；
+        let promise = new Promise(function (resolve,reject) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("get",url,true);
+            xhr.onreadystatechange = function () {
+                //  2   3   4
+                if(xhr.readyState !==4){
+                    return;
+                }
+                if(xhr.status===200){
+                    resolve(xhr.responseText);
+                }else{
+                    reject(xhr.statusText);
+                }
+            }
+        })
+        return promise;
+    }
+    getData("data.json").then(function (data) {
+        console.log(data);
+    },function (data) {
+        //
+    });
+
+    
+    
+
+
+
+
+</script>
+</body>
+</html>

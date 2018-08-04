@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<div id="box1"></div>
+<input type="text" id="input">
+<script>
+    let box = document.getElementById("box");
+    // 事件：是元素天生自带的一种行为；不是后期新增的；当鼠标点击，滑过，滑入等等这种行为都会触发元素对应的事件；让这个事件绑定的方法执行；
+    // 元素默认情况下，事件对应的属性值都是null；只要点击盒子，就会触发盒子的点击事件的属性值；只是属性值是null；没有进行任何的操作而已；
+
+    box.onclick = null;
+    box1.onclick = function () {
+    }
+    // 常见的事件行为： onclick  onmouseover  onmouseout   onmouseenter  onmouseleave  onmousedown  onmouseup  onmousemove onscroll onload  onresize
+    // input :
+    // onfocus : 获取鼠标焦点
+    // onblur : 失去鼠标焦点
+    // onchange : 内容改变
+    // oninput : 输入一次触发一次；
+    // onkeydown : 键盘按下
+    // onkeyup : 键盘抬起；
+
+    // 移动端
+    // touchstart  touchmove  touchend touchcancel:(非常规操作触发的事件；比如手机没电了)
+    // gesturestart  gesturechange  gestureend;
+
+    // canPlay : 音视频
+
+    input.onkeypress = function () {
+        console.log(this.value);
+    };
+    input.onkeyup = function () {
+        console.log(this.value);
+    }
+
+
+    // 当页面窗口大小发生改变，触发onresize事件；
+    /*window.onresize = function () {
+        console.log(1);
+    }*/
+    // 当页面元素都加载完毕，触发window.onload的事件；
+    /*window.onload = function () {
+    }*/
+
+
+</script>
+</body>
+</html>

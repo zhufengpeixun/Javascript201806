@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width:300px;
+            height:300px;
+            background: yellow;
+            margin:50px auto;
+        }
+        #inner{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:auto;
+        }
+        #center{
+            width:100px;
+            height:100px;
+            background: blue;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script>
+    let outer = document.getElementById("outer");
+    let inner = document.getElementById("inner");
+    let center = document.getElementById("center");
+    // 事件的冒泡传播： 当触发页面中某个元素的事件行为时,同时依次向上触发当前元素祖先元素身上的对应事件行为；直到找到window为止；
+    outer.onclick = function (e) {
+        e.stopPropagation();// 阻止向外冒泡；
+        console.log("outer")
+    };
+    inner.onclick = function (e) {
+        console.log(e);
+        e.stopPropagation();
+        // cancelBubble : 属性值是true，可以阻止事件的冒泡传播；
+        //e.cancelBubble = true;
+        console.log("inner");
+    };
+    center.onclick = function (e) {
+        //e.stopPropagation();
+        e.stopPropagation?e.stopPropagation():e.cancelBubble = true;
+        console.log("center");
+    }
+    // onmouseover  onmouseout
+    // onmouseenter  onmouseleave: 不存在冒泡传播的机制；所以在工作中一般用onmouseenter；
+
+</script>
+</body>
+</html>

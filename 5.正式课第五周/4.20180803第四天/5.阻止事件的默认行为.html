@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="https://www.baidu.com/?tn=78040160_26_pg&ch=1" id="once">百度一下</a>
+<form action="https://www.baidu.com/">
+    <!--action: 路径-->
+    <input type="text" username="">
+    <input type="text" password="">
+    <input type="submit" id="submit">
+</form>
+<script>
+    // ###
+    // javascript:;
+    // a标签有默认行为：当点击a标签时，会跳转到指定的url下；
+
+    //  可以发送请求
+    // 1.ajax
+    // 2.src
+    // 3.form
+    // 4.浏览器
+
+
+    let once = document.getElementById("once");
+    once.onclick = function (e) {
+        e.preventDefault();// 阻止事件的默认行为；
+        console.log(1);
+    }
+    submit.onclick = function (e) {
+        // e.preventDefault :在IE8及以下是不兼容的；e.returnValue = false;
+        e.preventDefault?e.preventDefault():e.returnValue=false;
+        // e.returnValue 如果属性值是false，会阻止事件的默认行为；
+        console.log(1);
+        //return false;
+    }
+</script>
+</body>
+</html>

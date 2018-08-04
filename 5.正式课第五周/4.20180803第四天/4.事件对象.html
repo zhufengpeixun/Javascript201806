@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            margin:30px auto;
+        }
+        #outer{
+            width:200px;
+            height:200px;
+            background: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="box"></div>
+</div>
+
+<script>
+    // 事件对象： 对象；
+    // 当元素的事件行为被触发，浏览器会默认把当前事件的事件信息传递给事件绑定的方法；事件信息包含了鼠标的点击的位置，触发事件类型。触发的是哪个元素...  ;这个事件信息就是事件对象；
+   var box = document.getElementById("box");
+    box.onclick = function (e) {
+       // 兼容
+        e= e || window.event;
+        e.pageX = e.pageX || e.clientX + document.documentElement.scrollLeft || document.body.scrollLeft;
+        e.pageY = e.pageY|| e.clientY + document.documentElement.scrollTop|| document.body.scrollTop;
+        e.target = e.target || e.srcElement;
+
+        // e.keyCode
+        // clientX : 当前鼠标点击的位置距离浏览器可视窗口的水平方向的距离；
+        // clientY : 当前鼠标点击的位置距离浏览器可视窗口的上边框的的距离；
+
+        // pageX :鼠标点击的位置距离body的左边框的距离
+        // pageY : 鼠标点击距离body上边框的距离；
+
+        // offsetX : 鼠标点击距离事件源左边的距离；
+        // offsetY : 鼠标点击距离事件源上边框的距离；
+
+        // e.target : 事件源
+
+        // e.type : 事件类型；不带on;
+
+
+    };
+    // IE8及以下，会把事件的事件信息放在window的event属性上；
+    /*outer.onclick = function (e) {
+        console.log(e);
+    }*/
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:300px;
+            height:300px;
+            background: lightgreen;
+            margin : 30px auto;
+            position: relative;
+        }
+        #smallBox{
+            width:50px;
+            height:50px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    let  oBox  = document.getElementById("box");
+    // onmousemove : 当鼠标在元素上移动时，会不断触发onmousemove事件绑定的方法；
+    let mark;
+    oBox.onmouseenter = function () {
+        mark = document.createElement("div");
+        // 改变id名变为smallBox;
+        mark.id = "smallBox";
+        // 放回页面中；
+        oBox.appendChild(mark);
+        
+    }
+    oBox.onmousemove = function (e) {
+        e = e || window.event;
+        mark.style.left = e.clientX -oBox.offsetLeft+10+ "px";
+        mark.style.top= e.clientY - oBox.offsetTop +10+"px";
+    }
+    oBox.onmouseleave = function () {
+        this.removeChild(mark);
+    }
+</script>
+</body>
+</html>

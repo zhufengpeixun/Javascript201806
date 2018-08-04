@@ -106,7 +106,6 @@
     }
     //自由落体
     function drop() {
-        clearTimeout(this.dropTimer)
         // this---运动的盒子
         if(!this.dropSpeed){
             this.dropSpeed = 1;
@@ -136,7 +135,7 @@
     // 水平运动动画
 
     function fly() {
-        clearTimeout(this.dropTimer);
+        clearTimeout(this.flyTimer);
         let minL = 0;
         let maxL = winW-this.offsetWidth;
         let curPo = parseFloat(this.style.left) + this.flySpeed;
@@ -155,7 +154,6 @@
         }else{
             clearTimeout(this.flyTimer);
         }
-
     }
 
     function getSpeed() {

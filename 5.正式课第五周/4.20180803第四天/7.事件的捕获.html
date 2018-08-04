@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width:300px;
+            height:300px;
+            background: yellow;
+            margin:50px auto;
+        }
+        #inner{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:auto;
+        }
+        #center{
+            width:100px;
+            height:100px;
+            background: blue;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script>
+    let outer = document.getElementById("outer");
+    let inner = document.getElementById("inner");
+    let center = document.getElementById("center");
+    // addEventListener
+    function fn1() {
+        console.log("outer 捕获")
+    }
+    function fn2() {
+        console.log("outer 冒泡")
+    }
+    function fn3() {
+        console.log("inner 捕获")
+    }
+    function fn4() {
+        console.log("inner 冒泡")
+    }
+    function fn5() {
+        console.log("center 捕获")
+    }
+    function fn6() {
+        console.log("center 冒泡")
+    }
+
+    outer.addEventListener("click",fn2,false);
+    outer.addEventListener("click",fn1,false);
+    inner.addEventListener("click",fn3,true);
+    inner.addEventListener("click",fn4,false);
+    center.addEventListener("click",fn6,false);
+    center.addEventListener("click",fn5,true);
+
+    // true： 捕获阶段执行；false : 冒泡阶段执行
+
+
+    // 事件分为三个阶段：
+    // 捕获阶段  --->  目标阶段  ---> 冒泡阶段；
+    // 目标阶段绑定的方法的执行顺序：先绑哪个函数，就先执行哪一个；
+    // 捕获阶段： 从外向里，依次执行祖先元素上对应的方法
+    // 冒泡阶段： 从里向外，依次执行祖先元素上对应的方法
+
+
+</script>
+</body>
+</html>>
