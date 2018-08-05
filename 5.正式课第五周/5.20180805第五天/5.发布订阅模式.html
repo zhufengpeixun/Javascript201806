@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 发布订阅 ：观察者模式；
+    // 订阅  ---> 发布（主体）
+    // addEventListener : 新增事件监听者；
+    // 订阅： 新增订阅者；
+    // 水开了： 喝茶  泡面  咖啡；
+    //
+    let  oBox = document.getElementById("box");
+    function tea() {
+        console.log("喝茶")
+    }
+    function noddle() {
+        console.log("可以泡面了")
+    }
+    function coffee() {
+        console.log("可以咖啡了")
+    }
+    setTimeout(function () {
+        // 发布 ：
+        selfrun.call(oBox,"boiling");
+    },3000);
+    // 订阅方法
+    /*
+    * curEle : 订阅主体；元素
+    * type: 类型
+    * fn : 观察者；
+     *  */
+    function on(curEle,type,fn) {
+        // 初始化一个数组，存放的是观察者；
+        if(!curEle[type]){
+            // 当第一次进来，初始化一个空数组；
+            curEle[type] = [];
+        }
+        let  ary = curEle[type];
+        for(let i=0;i<ary.length;i++){
+            // 如果fn出现过，直接停止这次订阅；
+           if(fn===ary[i]){
+               return;
+           }
+        }
+        ary.push(fn);
+    }
+    // 发布；让观察者执行
+    function selfrun(type) {
+        // this---> 订阅主体；
+        let  a = this[type];
+        for(let i=0;i<a.length;i++){
+            if(typeof a[i]==="function"){
+                a[i].call(this);
+            }
+        }
+    }
+    // 取消订阅；把在数组中存储的方法移除掉；
+    function off(curEle,type,fn) {
+        let ary = curEle[type];
+        for(let i=0;i<ary.length;i++){
+            if(fn === ary[i]){
+                //ary.splice(i,1); 数组塌陷
+                ary[i] = null;
+            }
+        }
+    }
+    on(oBox,"boiling",tea);
+    on(oBox,"boiling",noddle);
+    on(oBox,"boiling",coffee);
+    off(oBox,"boiling",tea);
+
+    // 自定义事件
+    // onclick
+
+    // DOM2级
+    // 1.顺序问题  2. this 问题   3.重复绑定问题；
+    // on  selfRun  off ;
+
+
+
+
+
+</script>
+</body>
+</html>

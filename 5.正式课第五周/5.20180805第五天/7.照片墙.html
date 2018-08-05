@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width:480px;
+            height:640px;
+            padding:10px;
+            margin:10px auto;
+            position: relative;
+            background: yellow;
+        }
+        ul li{
+            width:150px;
+            height:150px;
+            background: greenyellow;
+            float :left;
+            margin:5px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: move;
+        }
+
+        ul li img{
+            width:150px;
+            height:150px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /*不让用户拖拽*/
+            -webkit-user-drag: none;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="ul">
+    <li><img src="img/1.png" alt=""></li>
+    <li><img src="img/2.png" alt=""></li>
+    <li><img src="img/3.png" alt=""></li>
+    <li><img src="img/4.png" alt=""></li>
+    <li><img src="img/5.png" alt=""></li>
+    <li><img src="img/6.png" alt=""></li>
+    <li><img src="img/7.png" alt=""></li>
+    <li><img src="img/8.png" alt=""></li>
+    <li><img src="img/9.png" alt=""></li>
+    <li><img src="img/10.png" alt=""></li>
+    <li><img src="img/11.png" alt=""></li>
+    <li><img src="img/12.png" alt=""></li>
+</ul>
+<script src="event.js"></script>
+<script>
+    // 操作谁，获取谁
+    let  oLis = document.getElementsByTagName("li");
+    // li设置position之后，当前li脱离页面文档流，剩下的图片会向前排列；所以每次得到位置都是一样的；
+    for(let i=oLis.length-1;i>=0;i--){
+        let cur = oLis[i];
+        cur.style.left = cur.offsetLeft+"px";
+        cur.style.top = cur.offsetTop + "px";
+        cur.style.position = "absolute";
+        cur.style.margin="0px";
+        new Drag(cur).on("selfdown",changeIndex).on("dragStart",isHit).on("dragend",changePosition)
+    }
+    let zIndex  = 1;
+    function changeIndex(){
+        //this---> Drag 的实例
+        // z-index  ---> zIndex
+        this.ele.style.zIndex = ++zIndex;
+    }
+    //
+    function isHit() {
+        // this.ele
+        this["hit"] = [];
+        let dragLi = this.ele;// 当前拖拽的li;
+        for(let i=0;i<oLis.length;i++){
+            let cur = oLis[i];
+            if(cur === dragLi){continue};
+            if(dragLi.offsetLeft + dragLi.offsetWidth<cur.offsetLeft||dragLi.offsetTop+dragLi.offsetHeight < cur.offsetTop||dragLi.offsetLeft>cur.offsetLeft+cur.offsetWidth||dragLi.offsetTop>cur.offsetTop+cur.offsetHeight){
+                // 满足条件说明不碰撞；
+                cur.style.background = "";
+            }else{
+                cur.style.background = "pink";
+                this["hit"].push(cur);// 把有碰撞的盒子放进数组中；
+            }
+        }
+    }
+    
+    // 交换位置
+    function changePosition() {
+        // this --> 实例；【li,li,li】
+        let ary = this["hit"];
+        let ele = this.ele;
+        // 给碰撞到的li，计算出和拖拽那个li的距离差；
+        for(let i=0;i<ary.length;i++){
+            let cur = ary[i];// 变颜色li;
+            cur.distance = Math.pow(cur.offsetTop-ele.offsetTop,2)+Math.pow(cur.offsetLeft-ele.offsetLeft,2);
+        }
+        ary.sort(function (a,b) {
+            // a -->
+            return a.distance-b.distance;
+        });
+        if(ary.length){
+            ele.style.left = ary[0].offsetLeft+ "px";
+            ele.style.top = ary[0].offsetTop + "px";
+            ary[0].style.left = this.l + "px";
+            ary[0].style.top = this.t + "px";
+        }else{
+            // 如果没有和任何的盒子发生碰撞；让其回到原位
+            ele.style.left = this.l + "px";
+            ele.style.top = this.t + "px";
+        }
+
+        
+    }
+
+</script>
+</body>
+</html>

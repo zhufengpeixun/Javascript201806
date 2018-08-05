@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:300px;
+            height:300px;
+            background: lightgreen;
+            position: absolute;
+            /*left:50%;
+            top:50%;
+            margin-top: -150px;
+            margin-left: -150px;*/
+        }
+        #box h3{
+            height:30px;
+            line-height: 30px;
+            width:290px;
+            padding-left:10px;
+            background: red;
+            cursor: move;
+            color:white;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <h3>今天会下雨</h3>
+</div>
+<script>
+    // 元素.style.left;
+    // 鼠标丢失： 当鼠标移动过快，盒子计算的速度跟不上鼠标移动的速度，当鼠标抬起时，不会触发盒子的onmouseup事件；不能移出onmousemove;当鼠标一划上，马上执行move方法；
+
+    // 在IE和火狐： 提供一个方法，让当前鼠标和盒子绑定在一起；
+    // setCapture;
+    // 谷歌下没有setCapture；
+    // 谷歌处理鼠标丢失： 利用了事件委托，给document绑定onmousemove；鼠标不可能脱离document，onmousemove会一直执行；鼠标就不再丢失啦；
+    let oBox = document.getElementById("box");
+    let title = oBox.getElementsByTagName("h3")[0];
+    let  winW = document.documentElement.clientWidth || document.body.clientWidth;
+    let winH = document.documentElement.clientHeight||document.body.clientHeight;
+    let oBoxW =oBox.offsetWidth,oBoxH = oBox.offsetHeight;
+    oBox.style.left = (winW-oBoxW)/2+"px";
+    oBox.style.top = (winH-oBoxH)/2+"px";
+    let minL = 0;
+    let maxL = winW-oBoxW;
+    let maxT = winH -oBoxH;
+    // onmousedown : 记录鼠标、盒子的初始位置；并且绑定onmousemove 和onmouseup
+    title.onmousedown = function (e) {
+        e = e || window.event;
+        // 记录鼠标的初始位置
+        this.x = e.clientX;
+        this.y = e.clientY;
+        // 记录盒子的初始位置
+        this.l = parseFloat(oBox.style.left);
+        this.t = parseFloat(oBox.style.top);
+
+        if(this.setCapture){
+            // 火狐和IE
+            this.setCapture();
+            title.onmousemove = move;
+            title.onmouseup = up;
+        }else{
+            // 利用事件委托，给document绑定onmousemove；onmouseup
+            let that = this;
+            document.onmousemove = function (e) {
+                move.call(that,e);
+            };
+            document.onmouseup = function (e) {
+               up.call(that);
+            };
+        }
+    }
+     function move(e) {
+        // 记录鼠标水平方向和纵向发生的变化值
+         let changeL = e.clientX - this.x;
+         let changeT = e.clientY -this.y;
+         let  curL =  this.l + changeL;
+         let  curT = this.t + changeT;
+         if(curL >maxL){
+             curL = maxL;
+         }else if(curL<minL){
+             curL = minL;
+         }
+         if(curT >maxT){
+             curT = maxT;
+         }else if(curT<minL){
+             curT = minL;
+         }
+         oBox.style.left =curL+"px";
+         oBox.style.top =curT + "px";
+     }
+     function up() {
+         if(this.releaseCapture){
+             this.releaseCapture();
+             this.onmousemove = null;
+             this.onmouseup = null;
+         }else{
+             document.onmousemove = null;
+             document.onmouseup = null;
+         }
+
+     }
+    //效果 ---> 分析 ---> 汉语的逻辑 ----> 代码
+
+
+
+</script>
+</body>
+</html>
