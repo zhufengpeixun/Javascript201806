@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 全局下this指向window
+    // 2. 给元素的事件绑定方法，方法中this指向被绑定的元素
+    // 3.函数中的this，看函数执行前有没有"."，点前面是谁，this就是谁，没有点，this指向window；
+    // 4.执行函数中的this永远指向window
+    // 5.回调函数中的this指向window
+    // 6.构造函数中的this指向当前的实例
+    // 7.call 、apply、bind改变this指向
+    /*function gn(name,age){
+        var obj = {};
+        obj.name = name;
+        obj.age = age;
+        return obj;
+    }
+    gn("a",1);
+    gn("b",2);*/
+
+
+    // 构造函数
+    function Fn() {
+        console.log(this);
+        //this --->实例
+        // 1.当代码执行之前，首先默认初始化一个空对象；
+        // 2.并且让构造函数中的this指向这个空间地址；
+        // 默认返回this；
+        // return this;
+        this.name = "";
+        this.down(this);
+        this.age = 18;
+    }
+    //let a = new Fn()// {}  实例；
+    /*Fn.prototype.down = function () {
+    }*/
+    Fn.prototype ={
+        down:function(a){
+            //this---实例
+            console.log(this);// 实例
+            console.log(this.constructor);//Object
+            //console.log(age);// 报错
+            console.log(this.age);// undefined
+            console.log(this.name);// ""
+        }
+    }
+    let a = new Fn.call(18);
+    //a.down();
+    // this : 在特殊场景下，指向不同的地址；
+    /*let ary = [2,3];
+    ary.map(function () {
+        console.log(this);//{17}
+    },17)*/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    //"use strict";
+    /*function fn() {
+        console.log(this);// undefined;
+    }
+    fn();
+    (function () {
+        console.log(this);
+    })();*/
+    // 在非严格模式下，call传null，undefined，或者不传，都是默认指向window
+    /*function fn() {
+        console.log(this);
+    }
+    fn.call(undefined);*/// null undefined
+    // 严格模式和非严格模式区别；
+    // 1. 严格模式中函数执行前没有.,或者自执行函数中的this指向undefined；
+    // 2.严格模式下，传null；this就是null；undefined就是undefined；不传也是undefined
+    // 3.严格模式下，arguments和形参是不存在映射机制的；
+    // 4.不能对只读属性赋值；
+    // 5.不能识别0开头的八进制数字；
+    /*function gh(a,b,c) {
+        a = 10;
+        console.log(arguments);//严格模式下；[1,2,3] 非：[10,2,3]
+    }
+    gh(1,2,3);
+    box.offsetHeight  = 100;
+    let num = 014;
+    console.log(num);*/
+    //console.log(["1","2","10"].map(parseInt));// [1,NaN,2]
+    // parseInt：
+    /*parseInt("1",0)
+    parseInt("2",1);
+    parseInt("10",2)*/
+    //百度一下
+
+
+</script>
+</body>
+</html>

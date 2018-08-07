@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // call  apply   bind:
+   /* function fn(m,n,o) {
+        // m =1
+        // n = 2
+        // o = 3
+        console.log(this);
+    }
+    fn();
+    fn.call([],1,2,3)*/
+   // apply :
+    /*function fn(m,n,o) {
+        console.log(arguments);
+    }
+    fn.apply([],[1,2,3,4])*/
+
+    // bind : 预处理this
+    Function.prototype.myBind = function () {
+        // this
+        // 第一个参数；
+        let obj = arguments[0] || window;// 需要让fn中指向这个obj;
+        // 把参数从第二项开始截取；
+        let arg = [].slice.call(arguments,1);
+        // 让当前作用域下的this赋值给变量that；存储；
+        let that = this;// fn;
+        return  function () {
+            // apply
+            let arg1  = [].slice.call(arguments)
+            return that.apply(obj,arg.concat(arg1));
+        }
+    };
+    function fn(a,b,c,d) {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(d);
+        return 100;
+    };
+    let f = fn.bind(100,18,12,1); // fn 并没有执行；
+    //console.log(typeof f);// "function"
+    console.log(f(16));
+
+    // 在IE8及以下不兼容；
+    // 利用apply；
+    /*Function.prototype.myBind = function () {
+        // this
+        // 第一个参数；
+        let obj = arguments[0] || window;// 需要让fn中指向这个obj;
+        // 把参数从第二项开始截取；
+        let arg = [].slice.call(arguments,1);
+        // 让当前作用域下的this赋值给变量that；存储；
+        let that = this;// fn;
+        return  function () {
+            // apply
+            let arg1  = [].slice.call(arguments)
+           return that.apply(obj,arg.concat(arg1));
+        }
+    };
+    Function.prototype.myBind = function (context,...arg) {
+        let _this = this;
+        return function(...arg1){
+            _this.apply(context,[...arg,...arg1]);
+        }
+    };
+    let f = fn.myBind([],1,2,3);
+    f(8,12);*/// f执行，就是让fn执行；
+
+    /*function fnn() {
+        console.log(this);
+    }
+    let t = fnn.bind();
+    t();*/
+    function f1() {
+        return 100;
+    }
+   let f2 =  f1.bind(15)
+    console.log(f2());
+
+
+</script>
+</body>
+</html>

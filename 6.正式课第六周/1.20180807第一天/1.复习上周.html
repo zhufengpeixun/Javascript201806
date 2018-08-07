@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.  es6    事件    发布订阅
+    //es6
+    // 1.let  const
+    // 2.解构赋值
+    // 3.扩展运算符 ...  剩余运算符 ...
+    // 4.箭头函数
+        // 1.没有this，this指向当前箭头函数定义时所在作用域中的this；
+        // 2. 没有arguments
+        // 3. 不能被new，不能作为构造函数
+        // 4. 不能Generator函数，不能使用yield命令；
+    // 5.Array.from  of
+    // 6.promise : 解决异步； 三个状态；pending-->fulfilled  pending -->reject   then
+    // 7.proxy : 拦截器；
+    // 8.class   extends
+    /*let obj = new Proxy({a:1},{
+        get:function(){
+
+        },
+        set:function () {
+
+        }
+    });*/
+    /*let  fn = (...arg)=>{
+        console.log(arg);// ary
+    }
+    let f = a =>a;
+    fn(1,2,3,34,7);*/
+    //事件：
+    // 1.事件行为 onload onscroll onresize
+    // 2.事件对象 event  事件信息；  e.target e.stopPropagation e.preventDefault    e.clientX  e.clientY e.pageX  e.pageY e.offsetX  e.offsetY
+    //3.默认行为
+    //4.冒泡传播
+    //5.事件三个阶段 ： 捕获阶段 -->目标阶段-->冒泡阶段
+    //6.事件绑定  DOM0  DOM2
+    // addEventListener  removeEventListener
+    // 元素.addEventListener(type,fn,true/false)
+    // attachEvent  detachEvent
+    // 元素.attachEvent(on+type,fn);
+    // this 问题
+    // 顺序问题
+    // 重复绑定问题；
+    //  DOM2级事件兼容；attachEvent
+    // 7.事件委托：
+    // 放大镜  拖拽  自由落体、抛物线   照片墙
+
+    // 发布订阅模式
+    // 订阅： on  发布： run 取消订阅：off；
+    function on(curEle,type,fn) {
+        // 把方法放在自定义属性上；
+        if(!curEle[type]){
+            curEle[type] = [];
+        }
+        let  ary = curEle[type];
+        // 校验当前方法是否出现过；
+        for(let i=0;i<ary.length;i++){
+            if(ary[i] === fn){
+                return;
+            }
+        }
+        ary.push(fn);
+    }
+    function run(type,e) {
+        e = e || window.event;
+        e.target =e.target || e.srcElement;
+        e.stopPropagation = e.stopPropagation || function () {                   e.cancelBubble = true;
+        }
+        e.preventDefault = e.preventDefault || function () {
+            e.returnValue = false;
+        }
+        // ...
+        // this --->发布主体
+        let a = this[type];
+        for(let i=0;i<a.length;i++){
+            if(typeof a[i] === "function"){
+                a[i].call(this,e)
+            }
+        }
+    }
+    function off(curEle,type,fn) {
+        let ary = curEle[type];
+        for(let i=0;i<ary.length;i++){
+            if(fn === ary[i]){
+                ary[i] = null;
+            }
+        }
+    }
+    function fn1(e) {
+        // 事件对象；
+        console.log(e);
+        e.stopPropagation();
+    }
+    on(oBox,"dragStart",fn1)
+    on(oBox,"dragStart",fn2);
+    oBox.onmousedown = function (e) {
+
+        run.call(oBox,"dragStart",e);
+    }
+    oBox.onmousemove = function (e) {
+        run.call(oBox,"dragmoving",e);
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
