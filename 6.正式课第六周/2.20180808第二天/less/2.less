@@ -1,0 +1,60 @@
+// 1.less中； 类可以被另一个类直接引用；那么就拿到了另一个样式
+// 2.在类中写的类是，当前类的子类；子类不会拥有父类的属性；
+
+/*.public{
+  // 类 : 可以被其他元素调用；
+  width:200px;
+  height:200px;
+  #prev{
+    color:red;
+  }
+}
+.box{
+  .public;
+}*/
+// 函数
+// 1.函数不进行编译；
+// 2.函数可以被调用，参数被赋默认值；
+// 3.在函数中存在arguments;
+/*
+.public(@property:all,@duration:1s,@timing:linear,@delay:1s){
+!*  -webkit-transition: @property @duration @timing  @delay;
+  -moz-transition: @property @duration @timing  @delay;
+  -ms-transition: @property @duration @timing  @delay;
+  -o-transition:@property @duration @timing  @delay;
+  transition: @property @duration @timing  @delay;*!
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+.box{
+  .public();
+}
+.box1{
+  .public(@duration:2s);
+}
+*/
+
+// 作用域
+// 在less中也存在私有作用域；私有变量；上一级作用域；并且存在向上查找的机制；
+/*@w:100px;
+.public{
+  width:@w;
+  .prev{
+    height:@w;
+    @w:10px;
+  }
+}*/
+
+// 继承
+.public{
+  width:100px;
+  height:100px;
+}
+.box:extend(.public){
+    color:red;
+}
+
+

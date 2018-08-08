@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            background: red;
+            margin:30px auto;
+            /*
+            transition : 过渡属性
+            transition-property : 要过渡的属性； all : 所有的属性
+            transition -duration : 动画变化的时间
+            transition-timing-function : 过渡效果
+            transition-delay : 动画延迟时间
+            */
+            /*transition-property: all;
+            transition-duration: 2s;
+            transition-timing-function:ease-in;
+            !*ease-in   ease-in-out  ease-out   linear*!
+            transition-delay: 2s;*/
+            transition: all 1s  linear;
+        }
+        #box:hover{
+            /*width:300px;
+            height:300px;*/
+            transform: scale(2,1) translate(100px,100px)  rotate(360deg);
+            /*scale : 缩放
+            translate : 平移
+            rotate : 旋转
+            skew : 倾斜；
+            */
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 当鼠标划上，让盒子的宽高变成300px;
+   /* let  oBox = document.getElementById("box");
+    oBox.onmouseenter = function () {
+        oBox.timer = setInterval(function () {
+            var cur = oBox.offsetWidth;
+            cur+=10;
+            if(cur>=300){
+                clearInterval(oBox.timer);
+                oBox.style.width = oBox.style.height = 300+"px";
+                return;
+            }
+            oBox.style.width = oBox.style.height = cur+"px";
+        },17)
+
+    }*/
+</script>
+</body>
+</html>

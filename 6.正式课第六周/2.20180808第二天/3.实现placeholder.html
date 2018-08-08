@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0;
+        }
+        .inputBox{
+            margin-left: 20px;
+            width:180px;
+            height:30px;
+            margin-bottom: 2px;
+            position: relative;
+        }
+        .inputBox input {
+            height:25px;
+            width:100%;
+            z-index:2;
+        }
+        .inputBox span{
+            position: absolute;
+            left:3px;
+            top:5px;
+        }
+    </style>
+</head>
+<body>
+<div class="inputBox">
+    <input type="text" data-place="请输入用户名">
+</div>
+<div  class="inputBox">
+    <input type="text" data-place="请输入密码">
+</div>
+<input type="text">
+<script>
+    // 1.获取所有的input；获取所有带data-place 属性的input
+    var inputs = document.getElementsByTagName("input");
+
+    /*var ary = [];
+    //console.log(inputs[2].getAttribute("data-place")); null
+    // 把所有data-place 属性获取到；
+    for(var i=0;i<inputs.length;i++){
+        if(inputs[i].getAttribute("data-place")){
+            ary.push(inputs[i]);
+        }
+    }
+    // 标准浏览器下的处理；
+    if("placeholder" in inputs[0]){
+        for(var i=0;i<ary.length;i++){
+            ary[i].placeholder = ary[i].getAttribute("data-place")
+        }
+    }else{
+        for(var i=0;i<ary.length;i++){
+            var  cur = ary[i];
+            var span = document.createElement('span');
+            span.className = "myspan";
+            span.innerHTML = cur.getAttribute("data-place");
+             cur.parentNode.appendChild(span);
+             cur.next = span;
+             span.onclick = function () {
+                 this.previousElementSibling.focus();// 自动聚焦；
+             }
+            cur.onkeydown =cur.onkeyup = function () {
+                this.value.length>0?this.next.style.display = "none":this.next.style.display= "block";
+            }
+        }
+    }*/
+    //inputs[2].focus();
+
+</script>
+</body>
+</html>

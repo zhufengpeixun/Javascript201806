@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:120px;
+            height:300px;
+            background: url(clock.png) no-repeat;
+            margin:20px auto;
+            animation: move  2s  linear  0s infinite;
+            transform-origin:center top;
+            /*水平： left  center  right*/
+            /*竖直： top  center  bottom*/
+            /*infinite : 无限次运动*/
+            /*@keyframes : 定义动画*/
+            /*
+          animation-name : 运动轨迹名称，@keyframes设置运动轨迹
+          animation-duration： 运动轨迹运动时间
+          animation-timing-function：运动方式（linear ease-in  ease-out…）
+          animation-delay : 延迟时间
+	animation-iteration-count : 动画执行次数，默认1，inifite无限次
+            */
+        }
+        @keyframes move {
+            /**/
+            0%{
+                transform: rotate(45deg);
+            }
+            25%{
+                transform: rotate(-0deg);
+            }
+            50%{
+                transform: rotate(-45deg);
+            }
+            75%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+
+
+
+
+</script>
+</body>
+</html>

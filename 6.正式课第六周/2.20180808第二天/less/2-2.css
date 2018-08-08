@@ -1,0 +1,47 @@
+/*.public{
+  // 类 : 可以被其他元素调用；
+  width:200px;
+  height:200px;
+  #prev{
+    color:red;
+  }
+}
+.box{
+  .public;
+}*/
+/*
+.public(@property:all,@duration:1s,@timing:linear,@delay:1s){
+!*  -webkit-transition: @property @duration @timing  @delay;
+  -moz-transition: @property @duration @timing  @delay;
+  -ms-transition: @property @duration @timing  @delay;
+  -o-transition:@property @duration @timing  @delay;
+  transition: @property @duration @timing  @delay;*!
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+.box{
+  .public();
+}
+.box1{
+  .public(@duration:2s);
+}
+*/
+/*@w:100px;
+.public{
+  width:@w;
+  .prev{
+    height:@w;
+    @w:10px;
+  }
+}*/
+.public,
+.box {
+  width: 100px;
+  height: 100px;
+}
+.box {
+  color: red;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #submit{
+            width:100px;
+            height:100px;
+            background: lightgreen;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--
+<form action="https://news.163.com/">
+    <label for="user">用户名</label><input type="text" id="user" name="user">
+    <label for="pass">密码</label><input type="text" id="pass" name="pass">
+    <label for="">邮箱</label><input type="email">
+    <label for="">数字</label><input type="number" max="10" min="1">
+    <label for="">电话</label><input type="tel">
+    <input type="range" max="100" min="1" id="range">
+    <input type="color">
+    <input type="week">
+    <input type="date">
+    &lt;!&ndash;<input type="image" src="1.png">&ndash;&gt;
+    <input type="submit" id="submit">
+</form>
+<input type="button" value="按钮"></input>
+<input type="radio" checked>
+<input type="checkbox" checked>
+<input type="file">
+-->
+<form action="https://news.163.com/">
+    <label for="user"></label><input type="text" name="username" id="user"  autocomplete="off">
+    <input type="text" pattern="\d{1,3}">
+    <input type="submit">
+</form>
+
+<input type="text" data-place="请百度一下">
+<script>
+    // type 类型；
+    // text： 文本框
+    // submit : 和form表单结合使用；发送请求；一般用登录注册；
+    // button ： 按钮
+    // radio : 单选按钮
+    // checkbox : 复选框  checked
+    
+    // file :  打开本地文件；一般用于上传文件，上传图片；
+    // 
+    // 上传头像怎么做
+
+    // email : 邮箱；
+    // number:
+    // range : 区间范围；拖拽条；
+    // color: 色板
+    // week : 时间周
+    // date : 时间日
+    //
+
+
+   /* let range = document.getElementById("range");
+    range.oninput = function () {// 当value值发生改变，触发oninput事件；
+        console.log(this.value);
+    }*/
+
+   // 自己写一个placeholder属性；
+
+
+    // placeholder ：
+    // autocomplete : 自动保存用户输入值；
+    // autofocus: 自动聚焦
+    // required : 必须输入值
+    // pattern : 正则；
+</script>
+</body>
+</html>
