@@ -1,0 +1,60 @@
+
+/*
+@w:200px;
+.box{
+  width:@w;
+  height:200px;
+  background: yellow;
+}
+.box{
+  &:hover{
+     color:red;
+  }
+  &-prev{
+    color:red;
+  }
+  .next{
+    color:red;
+  }
+  &>div{
+    color:red;
+    .first{
+      margin:4px;
+      .last{
+        padding:10px;
+      }
+    }
+  }
+}
+
+// 条件
+.fn(@w) when(@w<10){// when(条件)； 当条件成立时，样式有效；
+  width:100px;
+}
+.mm{
+  color:red;
+  .fn(@w:1);
+  .pan(red);
+}
+// isColor  isNumber  isString  isUrl  isPixel(是否是px) ispercentage(是否是百分比)...
+.pan(@w) when(isColor(@w)){
+   background: @w;
+}
+*/
+// 递归
+.cloumn(@w) when (@w<5){
+  .box@{w}{
+    width:unit(@w*10,%);
+  }
+  .cloumn(@w+1);
+}
+.cloumn(@w:1);
+
+// 编辑和使用   变量 @    函数和类   作用域    继承   &    递归；
+
+
+
+
+
+
+

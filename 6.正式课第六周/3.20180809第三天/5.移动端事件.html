@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--meta:vp  :按tab键-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+       #box{
+           width:1.5rem;
+           height:1.5rem;
+           background: red;
+       }
+    </style>
+    <script>
+        (function () {
+                // 自执行形成的私有的作用域，保护了里面的变量不受外界干扰；
+                function computed() {
+                    let w = 750;
+                    let winW = document.documentElement.clientWidth;
+                    document.documentElement.style.fontSize= winW*100/750+"px";
+                }
+                computed();
+            window.addEventListener("resize",computed)
+        })();
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<script src="zepto.min.js"></script>
+<script>
+    // 1. 不存在DOM映射的机制；
+    var oBox = document.querySelector("#box");
+    /* var boxs = document.querySelectorAll("div");
+    oBox.onclick = function(){
+        console.log(1);
+        var div = document.createElement("div");
+        this.appendChild(div);
+        console.log(boxs);
+    }
+    oBox.ondblclick = function () {
+        console.log(2);
+    }*/
+    // onclick : 在PC端中，当点击元素之后，会立即触发元素的点击事件，点击事件绑定的方法会立即执行；但是在移动端，元素的onclick事件，存在300ms的延迟；因为移动端等待当前事件是不是双击事件；
+    // ondblclick :  双击事件；
+    // 不存在键盘事件；
+
+    //zepto.js : 移动端的jquery；不存在slideDown  slideUp;
+    // 动画存在  show   hide    animate ...
+    // tap : 不存在300ms的延迟；
+    //$("#box").hide();
+
+
+
+    // 触摸；touch 事件
+    // touchstart  touchmove  touchend
+    // onmousedown:
+    oBox.addEventListener("touchstart",function (e) {
+        //console.log(1);
+        // Touchevent : 触摸的事件对象
+        // 在触摸的事件对象中，把触摸的信息的距离值存放在e的touches中；
+        console.log(e.touches[0].clientX);
+    });
+    oBox.addEventListener("touchmove",function (e) {
+        console.log(2);
+        console.log(e.touches[0].clientX);
+    });
+    oBox.addEventListener("touchend",function () {
+        console.log(100);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

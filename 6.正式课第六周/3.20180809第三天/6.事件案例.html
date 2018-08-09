@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+        #box{
+            width:1.5rem;
+            height:1.5rem;
+            background: lightcoral;
+            opacity: 0.3;
+            margin:0.3rem auto;
+            /*transition: all 1s linear;*/
+        }
+    </style>
+    <script>
+        (function () {
+            // 自执行形成的私有的作用域，保护了里面的变量不受外界干扰；
+            function computed() {
+                let w = 750;
+                let winW = document.documentElement.clientWidth;
+                document.documentElement.style.fontSize= winW*100/750+"px";
+            }
+            computed();
+            window.addEventListener("resize",computed)
+        })();
+    </script>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    // 点击盒子，盒子旋转540deg
+    // 如果盒子的touchmove水平方向或竖直方向移动距离超过30px;让当前盒子透明度变成1；
+    var  oBox = document.querySelector("#box");
+    oBox.addEventListener("touchstart",function (e) {
+        //console.log(this); oBox;
+        // 事件源 ，stopPropagation ... 是私有的属性
+        var point = e.touches[0];// 事件的距离信息；
+        // 记录触摸的初始位置；
+        this.x = point.clientX;
+        this.y = point.clientY;
+        this.style.transition = "all 0s"
+        this.style.transform = "rotate(0deg)";
+    });
+    oBox.addEventListener("touchmove",function (e) {
+         var point = e.touches[0];
+         if(point.clientX-this.x>30 || point.clientY-this.y>30){
+             //this.style.transition = ""
+             this.move = true;// 添加自定义属性；
+         }
+    });
+    // 在touchend的事件对象中，在e.touches没有事件触摸的信息；会把事件信息放在changedTouches;
+    //var flag = 0;
+    oBox.addEventListener("touchend",function (e) {
+        //console.log(e);
+        this.style.transition = "all 1s linear";
+        if(this.move){
+            this.style.opacity = 1;
+        }else{
+            //flag++;
+            // 当条件不成立，给transform新增旋转的属性值
+            //this.style.transform = "rotate("+540*flag+"deg)";
+            this.style.transform = "rotate(540deg)";
+         /*   setTimeout(()=>{
+                this.style.transform = "rotate(0deg)";
+            },1000);*/
+        }
+    })
+</script>
+</body>
+</html>

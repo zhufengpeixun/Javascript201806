@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--viewport : 视口
+    content:内容的宽度=设备的宽度；
+    user-scalabel : 禁止用户缩放
+    initial-scale = 1.0; 默认缩放1；
+
+    -->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+       div{
+            width:1.875rem;
+            height:1.875rem;
+            background: red;
+            float: left;
+            font-size: 0.12rem;
+       }
+    </style>
+</head>
+<body>
+<div ></div>
+<div></div>
+<div ></div>
+     <div id="box"></div>
+<script>
+    // rem : 单位；
+    // 是相对于HTML的font-size 属性来的；1rem就是HTML的font-size的属性值；
+    // 手机的屏幕的大小各种各样；
+    // 当屏幕发生改变时，只需要改变HTML的font-size属性值，那么其他元素的宽高都发生了变化；
+    // 根据手机的分辨率
+
+    // 设计稿： PSD;
+    // 设计稿： 750px;  200px;    400px;
+    // 公司一般的设计稿都是 750px;
+    // 设计稿  750px    375px;     3.75rem;   font-size:100px;
+    // 手机屏幕  375px   187.5px    3.75rem;   font-size:50px;
+    // 手机屏幕  414px              3.75rem;  font-size:414*100/750
+
+    // console.log(document.documentElement.clientWidth);
+    // 布局视口  视觉视口  理想视口；
+   function computedFont() {
+       // 根据屏幕的宽度，设置HTML的font-size属性；
+       let winW = document.documentElement.clientWidth;
+       let wid = 750;
+       document.documentElement.style.fontSize =winW*100/750+"px";
+   }
+    computedFont();// 设置HTML的font-size;
+    // 当屏幕窗口发生改变时，触发window的onresie事件；
+    window.addEventListener("resize",computedFont);
+</script>
+</body>
+</html>

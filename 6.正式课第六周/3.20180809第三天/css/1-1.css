@@ -1,0 +1,54 @@
+/*
+@w:200px;
+.box{
+  width:@w;
+  height:200px;
+  background: yellow;
+}
+.box{
+  &:hover{
+     color:red;
+  }
+  &-prev{
+    color:red;
+  }
+  .next{
+    color:red;
+  }
+  &>div{
+    color:red;
+    .first{
+      margin:4px;
+      .last{
+        padding:10px;
+      }
+    }
+  }
+}
+
+// 条件
+.fn(@w) when(@w<10){// when(条件)； 当条件成立时，样式有效；
+  width:100px;
+}
+.mm{
+  color:red;
+  .fn(@w:1);
+  .pan(red);
+}
+// isColor  isNumber  isString  isUrl  isPixel(是否是px) ispercentage(是否是百分比)...
+.pan(@w) when(isColor(@w)){
+   background: @w;
+}
+*/
+.box1 {
+  width: 10%;
+}
+.box2 {
+  width: 20%;
+}
+.box3 {
+  width: 30%;
+}
+.box4 {
+  width: 40%;
+}

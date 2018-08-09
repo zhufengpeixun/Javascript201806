@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="swiper.min.css">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-container{
+            width:600px;
+            height:300px;
+        }
+        .swiper-slide{
+            text-align: center;
+            line-height: 300px;
+        }
+        .swiper-slide img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="banner/banner1.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="banner/banner2.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="banner/banner3.jpg" alt="">
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+</div>
+<script src="swiper.min.js"></script>
+<script>
+    // 创建一个swiper实例；
+    // 参数1 ： 选择器；
+    // 参数2 ： 对象; 这个键值对的名字是固定的；
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        //speed:3000,一张图片轮播的时间
+        autoplay:2000,// 时间毫秒；
+        effect:"coverflow",
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
+    // 看文档能力；
+</script>
+</body>
+</html>

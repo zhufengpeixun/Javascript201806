@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+        }
+        #box{
+            /* */
+            width:100px;
+            height:100px;
+            background: red;
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+        #box:hover{
+            transform: translateX(200px);
+        }
+        /*perspective:2000px
+        transform-style:preserve-3d;
+        */
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // css3  2D   :
+    // transition :
+    // animate
+   /* function linear(t,b,c,d) {
+        return t/d*c+b;
+    }
+    // 固定时间
+    function animate(curEle,target,duration,callBack) {
+        // 得到初始值，计算变化值；
+        let begin = {};
+        let change = {};
+        for(let key in target){
+            begin[key] = utils.css(curEle,key);
+            change[key] = target[key] - begin[key];
+        }
+        let time = 0;
+        curEle.timer = setInterval(function () {
+            time+=17;
+            if(time>duration){
+                clearInterval(curEle.timer);
+                utils.css(curEle,target);
+                return;
+            }
+            for(let key in target){
+                let curPo = linear(time,begin[key],change[key],duration);
+                utils.css(curEle,key,curPo);
+            }
+        },17);
+    };*/
+   // let oBox = document.getElementById("box");
+   // transitionEnd
+   // webkitTransitionEnd : 事件； 当CSS3动画结束之后，会触发这个事件；让绑定的方法执行；
+   /*oBox.addEventListener("webkitTransitionEnd",function () {
+       this.style.opacity = 0.3;
+   });*/
+
+    // less : 编程语言；
+    // 开发环境：less;编译成css文件； lessc less文件名  css文件名
+    // 测试环境
+    // 生产环境：
+
+
+
+
+
+</script>
+</body>
+</html>
