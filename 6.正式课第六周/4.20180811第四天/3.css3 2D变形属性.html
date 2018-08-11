@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background: red;
+            -webkit-transition: all 2s  linear 2s;
+            -moz-transition: all 2s  linear 2s;
+            -ms-transition: all 2s  linear 2s;
+            -o-transition: all 2s  linear 2s;
+            transition: all 2s  linear 2s;
+            /*transition-property:all;
+            transition-duration:2s;
+            transition-timing-function:linear;
+            transition-delay:2s;*/
+                /*过渡动画属性*/
+            /*transition-property : 过渡属性*/
+            /*transition-duration: 过度时间*/
+            /*transition-timing-function: 过度效果*/
+            /*transition-delay: 延迟时间*/
+            /* 盒子的状态没有发生变化；位置，宽高，浏览器对盒子进行重绘；盒子真正的属性值没有变化*/
+            /*translate:平移（x,y）  缩放：scale(x,y)  rotate()旋转 skew(角度)*/
+        }
+        #box:hover{
+            transform: skew(60deg);
+        }
+        .second{
+            width:50px;
+            height:50px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div class="second"></div>
+<script>
+ let oBox = document.getElementById("box");
+ console.log(getComputedStyle(oBox).width);
+
+</script>
+</body>
+</html>

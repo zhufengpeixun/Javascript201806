@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 每个页面都会产生一个单独的作用域，页面之间是不可以互通访问变量的；
+    // 每个页面又都是在浏览器中打开的；如果可以把值存储到浏览器中，让浏览器作为中介；浏览器可以起到存储值，另一个页面可以进行访问；
+
+    let user = "牛犇犇";
+    // h5 : localStorage   sessionStorage; 本地存储；
+    // cookie  session;
+    // setItem : 设置键值对；
+    /*localStorage.setItem("a",18332569711)
+     localStorage.setItem("b",1833)*/
+    //localStorage.setItem("user",user);
+
+    // localStorage : 永久性存储；
+    // setItem  getItem  removeItem:
+    //localStorage.removeItem("b");
+    // sessionStorage : 会话级别存储；不能在另一个页面中访问变量；
+
+    //1.setItem  getItem  removeItem
+    //2.永久性存储,会话级别存储;
+    //3.如果获取不到属性值，获取的结果是null；
+    sessionStorage.setItem("user",user);
+    console.log(sessionStorage.getItem("user", user));
+    // localStorage  sessionStorage  cookie  session 的区别？
+
+</script>
+</body>
+</html>

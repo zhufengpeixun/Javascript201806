@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--会随着屏幕大小的变化而变化；-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+        .box{
+            width:1.5rem;
+            height:1.5rem;
+            background: red;
+        }
+    </style>
+    <script>
+        // 一般的JS都是放在元素的下面；
+        // 放上面： 当渲染DOM之前，把css 的样式进行计算；当渲染DOM时，直接按计算的最新值来描绘；
+        // 放在下面： 盒子先按照750的设计稿来描绘；导致每个元素都要进行重新描绘；会消耗浏览器的性能；
+        function computed() {
+            let winW  = 750;// 设计稿的宽度
+            let screeW = document.documentElement.clientWidth;
+            // font = 100*screeW/750
+            let font = screeW*100/750;
+            document.documentElement.style.fontSize = font+"px";
+        }
+        computed();
+        window.addEventListener("resize",computed);
+    </script>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    // 鼠标  键盘
+    // touch ： 触摸；
+    // click ： 点击；
+    // 在移动端中，onclick事件存在300ms的延迟；为了区分是单机还是双击；如果在点击一下之后，300ms之内如果没有触发第二次点击操作，那么会认为是单击事件；如果300ms之内，那么是双击事件；
+    //ondbclick
+    let oBox = document.getElementsByClassName("box")[0];
+    var a = new Date();
+    oBox.onclick = function (e) {
+        console.log(e);
+    };
+    // 1. 在移动端，有zepto;
+    // 不存在slideDown  slideUp...
+    //$(".box").animate({width:300,opacity:0.2})
+    /*$(".box").tap(function () {
+        // tap： 这个是zepto绑定点击事件；不存在300ms的延迟；
+    });*/
+    //2. fastClick : 处理移动端300ms毫秒的延迟；
+    // 事件对象： 代表当前事件触发的信息；
+    // touch :
+    oBox.addEventListener("touchstart",function (e) {
+        console.log(e);// 事件对象
+        // e.type  e.target e.canBubble  e.returnValue 这些是私有的属性；
+        // 但是clientX clientY 不是私有属性；
+        // 事件信息存储到e的touches属性名为0的属性值中
+    });
+    //
+    oBox.addEventListener("touchmove",function (e) {
+        //console.log(e.touches[0]);
+    });
+    oBox.addEventListener("touchend",function (e) {
+        //console.log(e);
+        // 在触摸结束的事件对象中，当前触摸的事件信息，clientX,clientY 不在e.touches中存在，在e的changedTouches 中存在；
+        // 如果需要在触摸结束获取信息；
+//        console.log(e.changedTouches[0]);
+//        console.log(e.target);
+    });
+</script>
+</body>
+</html>

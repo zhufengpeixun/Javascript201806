@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*在1000像素以上显示红色；1000像素以下蓝色*/
+        .box{
+            width:50%;
+            height:200px;
+            background: red;
+            margin:30px auto;
+        }
+        .child{
+            width:50%;
+            height:100px;
+        }
+        /*@media + all  + and ( 条件)*/
+        /*@media all and (min-width:1000px){
+            !*min-width:当屏幕宽度大于1000px，样式有效*!
+            .box{
+                background: red;
+            }
+        }
+        @media all  and (min-width: 400px) and (max-width:600px) {
+            .box{
+                background: black;
+            }
+        }
+        @media all and (max-width:1000px){
+            !*max-width:当屏幕宽度小于1000px，样式有效*!
+            .box{
+                background: blue;
+            }
+        }*/
+        /*当两个@media都满足；谁在后面谁的样式有效；后面的会把前面的进行覆盖*/
+        /* 1280   960---1280   720---960  480---720*/
+        /*以电脑屏幕常见的分辨率作为区间；对盒子进行不同样式的设置*/
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="child"></div>
+</div>
+<script>
+    // 移动端 ：智能手机  平板 ...
+    // 响应式布局： 开发出一套页面，利用响应式布局，让在不同大小的设备上以最佳的视觉效果呈现；
+
+    // 媒体查询 : 一般用于PC端屏幕的分辨率不同；
+    // rem 布局   流式布局   flexbox;
+</script>
+</body>
+</html>

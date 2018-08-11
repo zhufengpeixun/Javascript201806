@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--会随着屏幕大小的变化而变化；-->
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 100px;
+        }
+        .box{
+            width:1.5rem;
+            height:1.5rem;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div></div>
+<div class="box">
+    <div class="child"></div>
+</div>
+<script>
+    //rem布局： 现在移动端最流行的方式；
+    // rem : 是一个像素单位； 是相对于页面HTML的fontSize 这个属性的属性值；1rem = HTML的fontsize;
+    // px : 像素
+    // em :是相对于父级元素fontSize的值；
+    // 视口： 
+    // 布局视口 -->视觉视口--->理想视口；
+    //大多数浏览器的可视窗口都是980px;
+
+    // 设计稿：1.取宽高  2. 取颜色   3. 取素材；
+    //公司常用的设计稿 750px;      150px     1.5rem;    fontSize:100
+    //              375px;      75px       1.5rem;   fontSize:50;
+    //              414px                  1.5rem
+    // 750/屏幕的宽度= 750的fontSize/ 屏幕的fontSize;
+   function computed() {
+       let winW  = 750;// 设计稿的宽度
+       let screeW = document.documentElement.clientWidth;
+       // font = 100*screeW/750
+       let font = screeW*100/750;
+       document.documentElement.style.fontSize = font+"px";
+   }
+    computed();
+   // window 的resize;当页面的窗口大小发生变，触发window的onresize事件；
+   window.addEventListener("resize",computed);
+
+
+
+
+</script>
+</body>
+</html>

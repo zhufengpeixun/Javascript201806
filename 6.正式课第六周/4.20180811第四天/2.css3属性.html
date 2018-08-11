@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .list{
+            list-style: none;
+            width:300px;
+        }
+        .list li{
+            width:100%;
+            text-align: center;
+            height:30px;
+            line-height: 30px;
+            border-bottom: 1px solid lightgreen;
+        }
+        div{
+            width:100%;
+            text-align: center;
+            height:30px;
+            line-height: 30px;
+            border-bottom: 1px solid lightgreen;
+        }
+        /*.list li:nth-child(2n){
+            !*2n : 第偶数个*!
+            background: red;
+        }
+        .list :nth-child(2n+1){
+            !*2n+1: 第奇数个*!
+            background: yellow;
+        }
+        .list :nth-child(5){
+            !*2n+1: 第奇数个*!
+            background: yellow;
+        }*/
+        /*.list li:nth-of-type(2n){
+            background: red;
+        }
+        .list li:nth-of-type(2n+1){
+            background: yellow;
+        }*/
+        .box{
+            width:200px;
+            height:200px;
+            margin:30px auto;
+            /*-webkit-linear-gradient(角度 颜色)*/
+            /*background:-webkit-linear-gradient(top left,red,blue,yellow,black);
+            background:linear-gradient(top left,red,blue,yellow,black);*/
+            /*重复渐变*/
+            background: repeating-linear-gradient(0deg,red 80px,blue 100px);
+            background: -webkit-repeating-linear-gradient(0deg,red 80px,blue 100px);
+        }
+    </style>
+</head>
+<body>
+<!--<ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <div></div>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>-->
+<div class="box"></div>
+<script>
+    // 1.选择器；
+    // 2. border-radius
+    // 3. box-shadow:阴影：  水平偏移  竖直偏移  模糊半径  扩展半径 颜色  inset;  让盒子更有立体感；
+    // 4. 渐变；background:linear-gradient()
+    //  background:repeating-linear-gradient()
+</script>
+</body>
+</html>
