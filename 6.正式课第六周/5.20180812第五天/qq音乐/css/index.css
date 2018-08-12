@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 100px;
+    height:100%;
+}
+body{
+    height:100%;
+}
+.container{
+    height:100%;
+    position: relative;
+}
+.backgroundImg,.bg{
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index: -2;
+}
+.backgroundImg{
+    background: url(../img/myDream.jpg) no-repeat;
+    background-size: cover;
+    /*让盒子有个模糊度*/
+    filter: blur(7px);
+    -webkit-filter: blur(7px);
+}
+.bg{
+    background: rgba(0,0,0,.2);
+}
+.header{
+    position: relative;
+    padding:.3rem;
+    background: rgba(0,0,0,0.3);
+}
+.header .content img{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.header .content h2{
+    display: inline-block;
+    color:white;
+    vertical-align: top;
+}
+.header .content h2 span{
+    display: block;
+    height:0.6rem;
+}
+.header .content h2 span:nth-child(1){
+    font-size: .45rem;
+}
+.header #musicBtn{
+    display: block;
+    width:0.6rem;
+    height:0.6rem;
+    background:url(../img/music.svg) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right:0.3rem;
+    top:50%;
+    margin-top:-0.3rem;
+}
+.header #musicBtn.select{
+    animation: move 1s linear 0s infinite;
+}
+@keyframes move {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.main{
+    padding:0.3rem;
+    height:5rem;
+    position: relative;
+    overflow: hidden;
+}
+.main .wrapper{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width:100%;
+    transition: all 0.3s linear;
+}
+.main .wrapper p{
+    height:0.84rem;
+    line-height: .84rem;
+    text-align: center;
+    color:rgba(255,255,255,0.5);
+    letter-spacing: 0.04rem;
+    font-size: 0.4rem;
+}
+.main .wrapper p.select{
+    color:#31C27C;
+}
+.footer{
+    padding:0.3rem;
+    position: relative;
+}
+.progress{
+    height:0.8rem;
+    width:100%;
+    position: relative;
+    overflow: hidden;
+}
+.progress span{
+    position: absolute;
+    color:white;
+}
+.progress span:nth-child(1){
+    left:.3rem;
+}
+.progress span:nth-child(2){
+     right:.3rem;
+ }
+.progress .probg{
+    width:65%;
+    margin:0.15rem auto;
+    background: rgba(255,255,255,0.5);
+    height:0.04rem;
+}
+.progress .probg .alreay{
+    height:0.04rem;
+    background: #31C27C;
+    width:0;
+}
+.footer #down{
+    display: block;
+    border-radius: .5rem;
+    width:60%;
+    margin:auto;
+    height:1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: .4rem;
+    color:white;
+    background: url(../img/sprite_play.png) .2rem -5.86rem  no-repeat  #31C27C;
+    /*设置雪碧图的大小*/
+    background-size:0.8rem 7rem;
+}

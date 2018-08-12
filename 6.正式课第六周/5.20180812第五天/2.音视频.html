@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<video src=""></video>
+<audio src="img/myDream.m4a" controls preload="none" id="music"></audio>
+<script>
+    // 音视频默认不会直接进行播放的；
+    // controls : 让音视频显示；
+    // autoplay : 自动播放；
+    // preload :  预加载  none : 不预加载  auto ： 自动加载 metadata: 预加载片头、duration；
+    let music = document.getElementById("music");
+
+    // paused : 暂停；如果音乐是暂停状态，那么paused 就是true；如果播放状态就是false；
+    // play(): 让音乐播放；
+    // pause() : 让音乐暂停；
+
+    // 时间 整数部分是秒；
+    // duration : 当前音乐的总时间；
+    // currentTime : 代表当时音频播放过的时间；
+
+
+    // canplay : 当音乐开始播放的时候开始执行，只执行一次；
+    music.addEventListener("canplay",function () {
+        console.log(1);
+    });
+
+
+
+
+
+</script>
+</body>
+</html>

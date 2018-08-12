@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width:100px;
+            height:100px;
+            background: red;
+            /*transition: all 2s  linear;*/
+            /*infinite : 无限次*/
+            animation: move 2s  linear 1s infinite;
+        }
+        /*帧动画*/
+        @keyframes move {
+            0%{
+                transform:translate(100px);
+            }
+            25%{
+
+            }
+            50%{
+                transform:translate(200px);
+            }
+            75%{
+
+            }
+            100%{
+                transform:translate(100px);
+            }
+        }
+        .box:hover{
+            transform: rotate(360deg);
+        }
+        @media all  and (min-width: 100px){
+            .box{
+
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+    // H5的新增标签
+    // CSS3 的新增的属性
+    // css3 的动画
+    // transition : 过渡动画属性；
+    // transition : property duration  effect(linear ease-in 加速  ease-out  减速  ease-in-out  : 先加速后减速)  delay;
+    //transform : translate 平移  scale : 缩放  rotate 旋转  skew 倾斜 逆时针为正；
+    // transform-origin:旋转中心 横向： left  center  right length  % ;  纵向  ： top  center  bottom  length  %;
+    // webkitTransitionEnd: 事件行为； 当动画结束时，会默认触发这个事件；
+    /*let oBox = document.getElementsByClassName("box")[0];
+    function fn() {
+        this.style.background ="blue";
+    };
+    oBox.addEventListener("webkitTransitionEnd",fn);*/
+    // transform-style:preserve-3d;
+    // perspective:2000px; 视距；
+    // 自定义动画
+    // 本地存储：
+    //localStorage: getItem  setItem  removeItem
+    //sessionStorage: getItem  setItem  removeItem
+    // 布局：
+    // 媒体查询
+    // 流式布局： 百分比
+    // flexBox : display :flex;
+    // rem 布局：html的fontSize; 设计稿；
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

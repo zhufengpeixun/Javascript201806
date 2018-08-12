@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--meta: 理想视口-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        // 为了避免全局变量的干扰；计算rem;
+        (function () {
+            function computedFont() {
+                let winW = document.documentElement.clientWidth;
+                document.documentElement.style.fontSize = winW*100/750+"px";
+            }
+            computedFont();
+            // 当窗口发生改变，立即重新计算HTML的fontSize 属性的属性值；
+            window.addEventListener("resize",computedFont)
+        })();
+    </script>
+</head>
+<body>
+<section class="container">
+    <audio src="img/myDream.m4a" preload="none" id="musicAudio" loop></audio>
+    <div class="backgroundImg"></div>
+    <div class="bg"></div>
+    <header class="header">
+        <div class="content">
+            <img src="img/myDream.jpg" alt="">
+            <h2>
+                <span>我的梦</span>
+                <span>张靓颖</span>
+            </h2>
+        </div>
+        <a href="javascript:;" id="musicBtn"></a>
+    </header>
+    <main class="main">
+        <div class="wrapper">
+            <!--<p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>
+            <p>我的未来不是梦</p>-->
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="progress">
+            <span id="current">00:00</span>
+            <span id="duration">00:00</span>
+            <div class="probg">
+                <div class="alreay"></div>
+            </div>
+        </div>
+        <a href="javascript:;" id="down">下载这首歌曲</a>
+    </footer>
+</section>
+<script src="js/zepto.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
