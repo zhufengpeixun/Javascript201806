@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // on   run   off
+    // 1.订阅 ： 把任务绑定给订阅主体；
+    // 2.发布： 让订阅的任务执行
+
+    let plan = $.Callbacks();
+    // plan.add : 是一个函数；订阅任务；
+    /*plan.add(function () {
+
+    });
+    plan.add(()=>{
+        console.log(2)
+    });*/
+    function fn(){
+        console.log(1)
+    }
+    function fn1(){
+        console.log(1)
+    }
+    plan.add(fn);
+    plan.add(fn1);
+    //plan.remove(fn);
+    plan.fire();// 发布
+    // add:订阅  fire：发布  remove：取消订阅
+
+
+</script>
+</body>
+</html>

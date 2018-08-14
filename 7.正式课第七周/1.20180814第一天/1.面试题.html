@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.
+    /*let a = {x:1,y:2};
+    let b = a;      // 把a的空间地址赋值给了b;
+    a.y = a = {y:1};// 点的优先级高于等号右边的a; 先运算a.y;再运算a;
+    console.log(a); // {y:1}
+    console.log(b); */// {x:1,y:{y:1}}
+
+    //2. 去重
+    //let arr = [122,122,56,{a:1,b:2},{a:1,b:4},{a:1,b:2},{a:1,b:4}];
+    let  arr1 = [{a:1,b:2},{a:1,b:4},{a:1,b:2},{a:1,b:4},{b:2,a:1}];
+    // 循环
+    let obj = {};
+    // "12"
+    for(let i=0;i<arr1.length;i++){
+        for(let j = i+1;j<arr1.length;j++){
+            console.log(1);
+//            debugger
+            if(arr1[i].a===arr1[j].a&&arr1[i].b === arr1[j].b){
+                arr1.splice(i,1);
+                i--;
+                break;
+            }
+        }
+        /*if(obj[arr1[i].a + "," + arr1[i].b]){
+            arr1.splice(i,1);
+            i--;
+        }
+        obj[arr1[i].a + "" + arr1[i].b] = true;*/
+    }
+    console.log(arr1);
+</script>
+</body>
+</html>
