@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+        }
+        #canvas{
+            width: 7rem;
+            margin: .25rem 0 0 1.5rem;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="600"></canvas>
+</body>
+</html>
+<script type="text/javascript">
+    /**
+     * rem 布局初始化
+     */
+    $('html').css('font-size', $(window).width()/10);
+    /**
+     * 获取 canvas 画布
+     * 获取 canvas 绘图上下文环境
+     */
+    var canvas = $('#canvas')[0];
+    var cxt = canvas.getContext('2d');
+
+    /**
+     * 绘制一片星空加月亮
+     */
+    cxt.clearRect(0, 0, canvas.width, canvas.height)
+    var skyStyle = cxt.createRadialGradient(canvas.width/2, canvas.height, 0, canvas.width/2, canvas.height, canvas.height);
+    skyStyle.addColorStop(0.0, '#035');
+    skyStyle.addColorStop(1.0, 'black');
+    cxt.fillStyle = skyStyle;
+    cxt.fillRect(0, 0, canvas.width, canvas.height);
+
+    for(var i = 0; i < 150; i++){
+        var fiveStart = {};
+        fiveStart.Radius = Math.random()*4+4;
+        fiveStart.offsetX = Math.random()*canvas.width;
+        fiveStart.offsetY = Math.random()*canvas.height*0.65;
+        fiveStart.RotationAngle = Math.random()*360;
+        drawFiveStar(cxt, fiveStart);
+    }
+    fillMoon(cxt, 1, 800, 150, 80, 30);
+
+    /**
+     * 绘制月亮的方法
+     */
+    function fillMoon(cxt, d, x, y, R, rot){
+        cxt.save();
+        cxt.translate(x, y);
+        cxt.rotate(rot*Math.PI/180);
+        cxt.scale(R, R);
+        pathMoon(cxt, d);
+        cxt.fillStyle = 'yellow';
+        cxt.fill();
+        cxt.restore();
+    }
+    function pathMoon(cxt, d){
+        cxt.beginPath();
+        cxt.arc(0, 0, 1, 0.5*Math.PI, 1.5*Math.PI, true);
+        cxt.moveTo(0, -1);
+        cxt.arcTo(d, 0, 0, 1, dis(0, -1, d, 0)/d);
+        cxt.closePath();
+    }
+
+    function dis(x1, y1, x2, y2){
+        return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+    }
+
+    /**
+     * 控制五角星的方法
+     */
+    function drawFiveStar(cxt, fiveStart){
+        cxt.save();
+        cxt.translate(fiveStart.offsetX, fiveStart.offsetY); //相对于原点的偏移量
+        cxt.rotate(fiveStart.RotationAngle/180*Math.PI); //图形旋转(弧度)
+        cxt.scale(fiveStart.Radius, fiveStart.Radius); //图形缩放( X轴的倍数, Y轴的倍数 )
+        fiveStartPath(cxt);
+        cxt.fillStyle = "yellow";
+        cxt.fill();
+        cxt.restore();
+    }
+    function fiveStartPath(cxt){
+        cxt.beginPath();
+        var x = 0; y = 0;
+        for(var i = 0; i < 5; i++){
+            x = Math.cos((18+72*i)/180*Math.PI);
+            y = Math.sin((18+72*i)/180*Math.PI);
+            cxt.lineTo(x, 0-y);
+            x = Math.cos((54+72*i)/180*Math.PI)/2.0;
+            y = Math.sin((54+72*i)/180*Math.PI)/2.0;
+            cxt.lineTo(x, 0-y);
+        }
+        cxt.closePath();
+    }
+</script>

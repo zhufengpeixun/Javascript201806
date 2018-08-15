@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form action="">
+    <label for="">用户名</label><input type="text" name="userna" id="user">
+    <label for="">密码</label><input type="text" name="password" id="pass">
+    <input type="submit">
+</form>-->
+<label for="">用户名</label><input type="text" name="username" id="user">
+<label for="">密码</label><input type="text" name="password" id="pass">
+<button id="sub">提交</button>
+<script src="jquery-3.2.1.js"></script>
+<script>
+    // $ ===>jQuery;
+    sub.onclick  = function () {
+        let  val1 = document.getElementById("user").value;
+        let  val2 = document.getElementById("pass").value;
+        $.ajax({
+            url :"aside.json",
+            type:"get",
+            dataType:"json",
+            async:true,
+            cache:true,
+            data:{
+                username :  val1,
+                password :  val2
+            },
+            success:function (val) {
+                console.log(val);
+            },
+            error:function (v) {
+                console.log(v);// 包含了错误的信息；
+            }
+        })
+    }
+    // url : 请求路径
+    // type:请求方式
+    // dataType:返回的数据类型；
+    // async : true： 异步（默认就是异步）;
+    // data: 属性值是一个对象；里面含有了多个键值对；客户端发送给服务器的参数；
+    // success:当数据请求成功之后，调用success的回调函数；并且会把请求到的数据传给这个回调函数；
+    // error： 当请求失败会执行这个回调函数；
+    // cache:是否走缓存；true是走缓存，false，不走缓存；get;
+    // 用原生的JS封装jquery的ajax；
+</script>
+</body>
+</html>

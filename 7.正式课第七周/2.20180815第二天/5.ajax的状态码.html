@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let xhr = new XMLHttpRequest;
+    xhr.open("get","aside.json",true);
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState===4&&/^2\d{2}/.test(xhr.status)){
+            // 当请求结束，会有一个状态码产生，会放在xhr的属性上；
+            // 服务端会把请求成功的属性放在xhr.responseText 属性上；
+            // console.log(xhr.responseText);
+            // 常用的status:
+            // 200 : 数据一切正常
+            // 301 ： 永久重定向
+            // 302: 临时转移
+            // 304 : 读取缓存；
+            // 307 ： 临时重定向；
+            // 4开头基本都是客户端的问题
+            // 400 : 请求的参数有错误；
+            // 401: 权限不够
+            // 404 : 路径错误
+            // 5 开头基本都是服务端的代码有问题；
+            // 500 : 服务器的代码有误
+            // 503 : 超负荷；
+        }
+    };
+    xhr.send();
+</script>
+</body>
+</html>

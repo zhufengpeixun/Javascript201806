@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- createLinearGradient(x0,y0,x1,y1) -->
+<!-- createRadialGradient(x0,y0,r0,x1,y1,r1) -->
+<!-- createPattern -->
+
+
+<p>要用到的图片：</p>
+<img src="./img/img_the_scream.jpg" id="lamp"/>
+<p>Canvas:</p>
+
+<p>
+    <button onclick="draw('repeat')">Repeat</button>
+    <button onclick="draw('repeat-x')">Repeat-x</button>
+    <button onclick="draw('repeat-y')">Repeat-y</button>
+    <button onclick="draw('no-repeat')">No-repeat</button>
+</p>
+
+<canvas id="myCanvas" width="800" height="600" style="border:1px solid #d3d3d3;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script type="text/javascript">
+    let canvas = document.getElementById('canvas');
+    canvas.width = 600;
+    canvas.height = 600;
+    let ctx = canvas.getContext('2d');
+    ctx.font='40px Arial';
+    // ctx.strokeStyle='blue';
+
+    ctx.fillText('canvas',100,100,100);
+
+
+
+
+    function draw(direction) {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.clearRect(0, 0, c.width, c.height);
+        var img = document.getElementById("lamp")
+        var pat = ctx.createPattern(img, direction);
+        ctx.rect(0, 0, 500, 500);
+        ctx.fillStyle = pat;
+        ctx.fill();
+    }
+</script>
+
+</body>
+</html>

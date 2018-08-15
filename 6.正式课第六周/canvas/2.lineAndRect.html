@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- moveTo(x,y) lineTo(x,y) beginPath() closePath() -->
+<!-- stroke() fill() strokeStyle fillStyle lineWidth -->
+<!-- rect() fillRect() strokeRect() clearRect() -->
+
+<!-- lineCap: butt(default) round square-->
+<!-- lineJoin:round bevel miter(default)-->
+<!-- miterLimit:10(default)-->
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:20px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<script>
+    let canvas = document.getElementById('canvas');
+    canvas.width = 600;
+    canvas.height = 600;
+    let ctx = canvas.getContext('2d');
+    // ctx.beginPath()
+    // //状态设置
+    // ctx.moveTo(50, 50);
+    // ctx.lineTo(200, 200);
+    // ctx.lineTo(10, 200);
+    // ctx.lineTo(50, 50)
+    // ctx.strokeStyle = 'blue';
+    // ctx.fillStyle = 'red';
+    // ctx.lineWidth = 15;
+    // ctx.lineJoin='bevel'
+    // ctx.closePath()
+    // ctx.stroke()
+    // ctx.fill()
+
+    function drawRect(x, y, width, height, color, lineColor, lineWidth, str, textColor, fontSize) {
+        // ctx.strokeStyle = textColor;
+        // ctx.font = fontSize + 'px Arial';
+        // ctx.strokeText(str, x, y + fontSize);
+        debugger
+        ctx.beginPath()
+
+        ctx.strokeStyle = lineColor;
+        ctx.fillStyle = color;
+        ctx.lineWidth = lineWidth;
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + width, y);
+        ctx.lineTo(x + width, y + height);
+        ctx.lineTo(x, y + height);
+        ctx.closePath()
+        ctx.fill()
+        ctx.stroke()
+        ctx.strokeStyle = textColor;
+        ctx.font = fontSize + 'px Arial';
+        ctx.strokeText(str, x, y + fontSize);
+
+    }
+
+    drawRect(10, 10, 500, 100, 'green', 'blue', 10, 'canvas', 'red', 80)
+
+    // drawRect(100, 100, 50, 100, 'yellow', 'red', 10)
+    // drawRect(180, 180, 50, 100, 'gray', 'purple', 10)
+    // drawRect(300, 300, 50, 100, 'orange', 'blue', 10)
+
+    // ctx.strokeStyle = 'blue';
+    // ctx.lineWidth=20
+    // ctx.strokeRect(10, 20, 400, 500);
+
+    // ctx.fill();
+    // ctx.stroke()
+</script>
+x
+</body>
+</html>

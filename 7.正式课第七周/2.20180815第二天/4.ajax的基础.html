@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src=""></script>
+<script>
+    // ajax   : async  javascript  and  xml;
+    // xml : 可扩展的标记语言；
+
+    // 前后端不分离：后端也可以实现页面的刷新；服务器会把页面进行组装，把组装的代码发送浏览器；--->全局刷新；
+    // 前后端分离； ajax : 局部刷新；
+
+    // 发请求：
+    // 浏览器
+    // src
+    // form 表单
+    // ajax
+
+    // webStorm 以自己的电脑服务器，起了一个服务；
+    // 1.ajax 的实例是可以向服务器发送请求的；
+     let xhr = new XMLHttpRequest; //创建ajax的实例
+    console.log(xhr.readyState);// 0
+    // 2. 可以通过XMLHttpRequest原型上的open;打开一个路径
+    // open(type,url,false/true);false : 同步  true： 异步；
+
+     xhr.open("get","aside1.json",true);
+      //console.log(xhr.readyState);// 1
+     // 3. 给ajax的实例的onreadystatechange事件绑定一个方法；当ajax发送请求时，会触发这个事件行为；监听当前ajax进行到哪一步；
+    // 当xhr的readyState 发生改变时，函数就会执行一次；
+     xhr.onreadystatechange = function () {
+         // 如果是异步的请求，这个函数执行三次； 2  3  4；
+         console.log(xhr.readyState);
+         // 为了拿到确定的数据；不仅要通过xhr的readyState判断，还需要根据，xhr.的status来判断，客户端是否成功接收到服务端返回的数据；
+         if(xhr.readyState===4&&/^2\d{2}/.test(xhr.status)){
+
+         }
+     };
+     // 4.发送请求到服务器；
+     xhr.send();
+    // readyState : 0   1   2   3   4;
+    // 0 : 创建了一个ajax 的实例；
+    // 1 : 已经通过原型上的open，打开路径；
+    // 2 : 客户端已接收到服务器返回的响应头信息；
+    // 3 : 服务器需要整理资源，根据参数处理要返回前端的数据，并且把数据发送给客户端；
+    // 4 ： 客户端接收到服务端所有的数据，readyState就变成了4；
+
+
+</script>
+</body>
+</html>

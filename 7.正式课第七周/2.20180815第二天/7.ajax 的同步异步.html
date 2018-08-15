@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="http.png" alt="">
+<script>
+    // JS ：是单线程的；每次只能执行一个任务
+    // 浏览器：是多线程的；可以同时执行多个任务；
+    let data=null;
+    let xhr = new XMLHttpRequest;// 0
+    // 4
+    xhr.open("get","aside.json",false);
+    // 只会等待任务执行完成之后，才会继续向下执行；
+    xhr.onreadystatechange = function () {
+        //console.log(xhr.readyState);// true : 2 3 4;
+        //4;
+        data=xhr.responseText;
+        bindHTMl(data);
+        //console.log(1);
+    };
+    xhr.send();
+    // content-type: 告诉浏览器当前的文件类型；让浏览器准备好接收；
+    // 当服务器接收客户端的请求之后，会首先返回一个响应头（http报文）；当客户端接收到响应头后，那么xhr的readyState 就变成了2；当客户端开始接收数据事，readyState 就变成了3，与此同时，服务器会一直整理数据，一直发送；当客户端接收了所有的服务端数据之后，readyState 就变成了4；
+    //console.log(2);
+    function bindHTMl(data) {
+
+    }
+    // 页面中有五个请求
+    // 1.  1s; 时间月；
+    // 2.  2s;
+    //...
+    // 5.  5s;
+    // 如果同步一共需要15s;如果异步的话, 5s;
+    // 如果当前的ajax是同步的；必须等待当前的ajax任务执行结束，前端接收到后端的数据，才会继续向下执行代码；如果当前ajax是异步的，那么不会等待任务结束，继续向下执行；
+
+    // 一般情况下是异步的；
+   /* setTimeout(function () {
+    },100);
+    console.log(100)*/
+
+
+
+
+</script>
+</body>
+</html>

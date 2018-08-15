@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+        }
+        #canvas{
+            margin: auto auto;
+            width: 7rem;
+            margin: .25rem 0 0 1.5rem;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="1000" height="600"></canvas>
+</body>
+</html>
+<script type="text/javascript">
+    /**
+     * rem 布局初始化
+     */
+    $('html').css('font-size', $(window).width()/10);
+    /**
+     * 获取 canvas 画布
+     * 获取 canvas 绘图上下文环境
+     */
+    var canvas = $('#canvas')[0];
+    var cxt = canvas.getContext('2d');
+
+    /**
+     * 线段相交交点的三种表现形式
+     * bevel  round  miter( 受 miterLimit 值得约束 )
+     */
+    var fiveStart = {
+        bigRadius: 200,
+        smallRadius: 10,
+        offsetX: 400,
+        offsetY: 300,
+        RotationAngle: 0
+    }
+
+    //cxt.lineJoin = "bevel"; //线与线的交点平角
+    //cxt.lineJoin = "round"; //线与线的交点圆角
+    cxt.lineJoin = "miter"; //线与线的交点尖角
+    cxt.miterLimit = 40; //尖角指数配合 miter 使用,数字越大,产生尖角的可能性越大
+    drawFiveStar(cxt, fiveStart);
+
+    /**
+     * 绘制五角星的方法
+     */
+    function drawFiveStar(cxt, fiveStart){
+        cxt.beginPath();
+        cxt.lineWidth = 10;
+        var x = 0, y = 0;
+        for(var i = 0; i < 5; i++){
+            x = Math.cos((18+72*i-fiveStart.RotationAngle)/180*Math.PI);
+            x = x*fiveStart.bigRadius+fiveStart.offsetX;
+            y = -Math.sin((18+72*i-fiveStart.RotationAngle)/180*Math.PI);
+            y = y*fiveStart.bigRadius+fiveStart.offsetY;
+            cxt.lineTo(x,y);
+            x = Math.cos((54+i*72-fiveStart.RotationAngle)/180*Math.PI);
+            x = x*fiveStart.smallRadius+fiveStart.offsetX;
+            y = -Math.sin((54+i*72-fiveStart.RotationAngle)/180*Math.PI);
+            y = y*fiveStart.smallRadius+fiveStart.offsetY;
+            cxt.lineTo(x,y);
+        }
+        cxt.closePath();
+        cxt.stroke();
+    }
+</script>

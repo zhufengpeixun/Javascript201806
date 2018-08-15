@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:20px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<!--arc-->
+<!--arcTo-->
+<!--quadraticCurveTo-->
+<!--bezierCurveTo-->
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext('2d');
+    canvas.width = 600;
+    canvas.height = 600;
+    ctx.arc(300, 300, 50, 0, 1.5 * Math.PI,true)
+    ctx.strokeStyle = 'blue';
+    ctx.fillStyle = 'red';
+    ctx.lineWidth=3
+
+    ctx.fill();
+    ctx.stroke();
+
+</script>
+</body>
+</html>

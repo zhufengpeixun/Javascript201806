@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let xhr = new XMLHttpRequest;
+    xhr.open("get","aside.json",true);
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState===4&&/^2\d{2}/.test(xhr.status)){
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send({username:"1110",password:"88888"});
+    // 会在接口文档中进行体现；
+       // get : 一般用于获取数据
+        // {username:"1110",password:"88888"}
+       // 1.get请求传参数，会把参数拼接到url的后面；url?username=1110&password=88888;
+       // 2.由于浏览器对url的地址，有所限制；IE的url 一般不超过2k;谷歌一般在8k左右；超出部分自动截掉
+      // 3.参数在url中存在，安全性较低；
+      // 4. get请求会走存在缓存；为了防止走缓存，会在url的后面拼接一个随机数；时间戳；
+     // Date.now(); 返回当前时间距离1970-1-1上午8点的毫秒数；
+
+    // post :一般用于修改数据；或客户端向服务端发送大量的数据；
+       // 1.post的参数需要放进请求体中，传递给服务器；
+       // 2.由于post请求放进请求体中，所以没有大小的限制，一般工作中使用post请求居多；
+       // 3.post请求的参数在请求体中，相对于get方式更安全；
+       // 4.post请求不会默认走缓存，如果浏览器已经缓存过，那么重新发送请求；
+    // delete:删除数据
+    // head : 从服务器中获取响应头，不需要响应主体；
+    // put :往服务器放一些资源；
+
+
+
+
+</script>
+</body>
+</html>

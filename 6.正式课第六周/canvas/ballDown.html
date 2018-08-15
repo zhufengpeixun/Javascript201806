@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hangge.com</title>
+    <style>
+        canvas {
+            cursor: pointer;
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        // 用于表示球的所有细节的Ball函数
+        function Ball(x, y, dx, dy, radius) {
+            this.x = x;
+            this.y = y;
+            this.dx = dx;
+            this.dy = dy;
+            this.radius = radius;
+            this.strokeColor = "black";
+            this.fillColor = "red";
+        }
+
+        // 这个数组用于保存画布上出现的所有球
+        var balls = [];
+
+        var canvas;
+        var context;
+
+        window.onload = function() {
+            canvas = document.getElementById("canvas");
+            context = canvas.getContext("2d");
+            canvas.onmousedown = canvasClick;
+            // 每0.02秒绘制一次画布
+            setTimeout(drawFrame, 20);
+        };
+
+        function addBall() {
+            // 小球半径
+            var radius = 20;
+            // 创建新的ball对象
+            var ball = new Ball(50,50,1,1,radius);
+            // 将其保存在balls数组中
+            balls.push(ball);
+        }
+
+        function clearBalls() {
+            // 删除所有球对象
+            balls = [];
+        }
+
+        function drawFrame() {
+            // 清除画布
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            context.beginPath();
+
+            // 循环所有的球
+            for(var i=0; i<balls.length; i++) {
+                // 把每个球移动到新的位置
+                var ball = balls[i];
+                ball.x += ball.dx;
+                ball.y += ball.dy;
+
+                // 添加重力作用的效果，让球加速下落
+                if ((ball.y) < canvas.height) ball.dy += 0.22;
+                // 添加摩擦力作用的效果，减慢左右移动速度
+                ball.dx = ball.dx * 0.998;
+                // 如果球碰到某一边，就反弹回来
+                if ((ball.x + ball.radius > canvas.width) || (ball.x - ball.radius < 0)) {
+                    ball.dx = -ball.dx;
+                }
+                // 如果球碰到底部，反弹回来，但慢慢地减速
+                if ((ball.y + ball.radius > canvas.height) || (ball.y - ball.radius < 0)) {
+                    ball.dy = -ball.dy*0.96;
+                }
+
+                context.beginPath();
+                context.fillStyle = ball.fillColor;
+
+                // 绘制球
+                context.arc(ball.x, ball.y, ball.radius, 0, Math.PI*2);
+                context.lineWidth = 1;
+                context.fill();
+                context.stroke();
+            }
+
+            // 20毫秒后绘制下一帧
+            setTimeout(drawFrame, 20);
+        }
+
+        function canvasClick(e) {
+            // 获取点击的坐标
+            var clickX = e.pageX - canvas.offsetLeft;
+            var clickY = e.pageY - canvas.offsetTop;
+
+            // 找到点中的小球
+            for(var i in balls)
+            {
+                var ball = balls[i];
+                if ((clickX > (ball.x-ball.radius)) && (clickX < (ball.x+ball.radius)))
+                {
+                    if ((clickY > (ball.y-ball.radius)) && (clickY < (ball.y+ball.radius)))
+                    {
+                        // 改变点击的小球速度
+                        ball.dx -= 2;
+                        ball.dy -= 3;
+                        return;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<canvas id="canvas" width="400" height="300">
+</canvas>
+<div>
+    <button onclick="addBall()">添加小球</button>
+    <button onclick="clearBalls()">清空画布</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- fillText(string,x,y,[maxlen])  -->
+<!-- strokeText(string,x,y,[maxlen]) -->
+<!-- font:font-style font-variant font-weight font-size font-family-->
+<canvas id="canvas" style="border:1px solid #aaa;display:block;margin:20px auto;">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+<script>
+    let canvas = document.getElementById('canvas');
+    canvas.width = 600;
+    canvas.height = 600;
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle='yellow'
+    ctx.fillRect(10,10,700,300);
+
+
+    ctx.font = '100px Arial';
+    ctx.strokeStyle = 'blue';
+    let gradient = ctx.createLinearGradient(100, 100, 500, 100)
+    gradient.addColorStop(0, 'red');
+    gradient.addColorStop(0.4, 'blue');
+    gradient.addColorStop(0.8, 'green');
+    // ctx.fillStyle = gradient;
+    ctx.strokeStyle=gradient;
+    ctx.strokeText('canvas', 100, 100);
+    // ctx.fillText(ctx.measureText('canvas').width,100,150)
+
+// ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height)
+
+
+</script>
+</body>
+</html>
