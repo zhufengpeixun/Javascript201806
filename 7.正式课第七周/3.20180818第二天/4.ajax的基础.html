@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  浏览器  ajax
+    //  ajax ： async  javascript  and  xml;
+    //  JSON数据格式； JSON.parse  JSON.stringify
+    //  xml : 可扩展的标记语言；一般用于后台来存储数据的；
+
+    // 前后端不分离： 前端网页制作；经常负责搭建页面的结构；后端需要绑定数据，写动态效果，后端承接了项目的大部分功能；
+    // 全局刷新 ： 发送请求，导致整个页面都需要重新渲染；
+
+    // 前后端分离：前端负责搭建页面，负责绑定数据，负责一些动态的效果;
+    //  局部刷新： 只让页面的某个部分发生变化；ajax;
+
+    // netWork : 监听浏览器的网络请求；
+
+    // ajax 的使用;
+    //1. 创建一个ajax的实例
+    let xhr = new XMLHttpRequest();
+    //console.log(xhr.readyState);// 0
+    // 2. 打开一个路径；请求数据 xhr.open(get/post,url,false);
+    xhr.open("get",'aside1.json',true);//false 同步   true 异步；
+    // 3.监听: 当前ajax实例的属性readyState；当readyState发生变化，触发绑定的函数；
+    //console.log(xhr.readyState);// 1
+    // readyState 的值一共0 1 2 3 4；
+    // 0 :  初始化一个ajax的实例，readyState默认值是0；
+    // 1 :  当open执行完毕之后，readyState的值是1；
+    // 2 ： 客户端已经接收到服务器返回的响应头；
+    // 3 ： 客户端开始接收数据，服务器在处理整理数据；
+    // 4 ： 客户端已经成功接收到所有的数据；
+
+    xhr.onreadystatechange = function () {// 当readyState发生变化，就会触发；
+        console.log(this);// 指向了ajax的实例；
+        console.log(xhr.readyState);// 2    3   4;
+        if(xhr.readyState===4&& /^2\d{2}/.test(xhr.status)){
+            // 说明浏览器已经成功获取到数据；
+        }
+    };
+    // 4. 发送请求
+    xhr.send();
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

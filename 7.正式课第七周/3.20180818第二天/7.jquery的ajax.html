@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+     /*function jQuery(){}
+     window.$= window.jQuery = jQuery;*/
+     // jQuery的原型上
+     // jQuery的私有属性上；
+     $.ajax({
+         url:"aside.json",
+         type:"get",// 默认是get请求
+         async:true,// 默认是异步
+         data:{
+             username:"1833333",
+             password:"888888"
+         },
+         dataType:"json",// 默认请求回来是json格式；
+         success:function (data) {
+             // 数据请求成功执行这个回调
+         },
+         error:function(){
+         }
+     });
+     // 说思路
+    function ajax(options) {
+        let _default = {
+            url:"",
+            type:"get",
+            async:true,
+            data:null,
+            success:null
+        };
+        // ajax 的四步曲
+        xhr.open(_default.type,_default.url,_default.async);
+    };
+    ajax({
+        url:"aside.json"
+    });
+
+
+
+
+</script>
+</body>
+</html>

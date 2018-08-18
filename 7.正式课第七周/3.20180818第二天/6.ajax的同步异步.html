@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // JS :单线程； 每次执行执行一个任务
+    // 浏览器： 多线程； 可以同时进行多个任务
+    setTimeout(()=>{// 会马上记录一个开始时间，当过了1000ms之后让这个回调函数执行；
+        console.log("a")
+    },1000);
+    setTimeout(()=>{
+        console.log("b");
+    },1500);
+    for(let i=1;i<100000000;i++){
+        // 1500ms;
+    }
+    // 当主任务队列执行完毕，再去把等待任务队列的任务拿到主任务队列来执行；（微任务，宏任务；）
+    // 同步：浏览器必须把这个任务执行完毕，才能继续执行下一个任务；
+    // 异步：浏览器让任务没有执行完，但是可以继续执行下一行代码；
+    // setTimeOut
+
+    /*let xhr = new XMLHttpRequest();
+    xhr.open("get",'aside.json',true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && /^2\d{2}/.test(xhr.status)) {
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.send();*/
+
+    let xhr1 = new XMLHttpRequest();
+    xhr1.open("get",'aside.json',true);
+    //  readyState  ====> 1;
+    //  readyState ---> 1 --->2;
+    //  同步
+    xhr1.onreadystatechange = function () {
+        console.log(xhr1.readyState);//如果是异步请求，会执行三次，如果是同步请求会执行一次；
+        if (xhr1.readyState === 4 && /^2\d{2}/.test(xhr1.status)) {
+            console.log(xhr1.responseText);
+        }
+    };
+    xhr1.send();
+
+
+
+</script>
+</body>
+</html>

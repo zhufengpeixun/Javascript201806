@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.open("get",'aside.json',true);
+    xhr.onreadystatechange = function () {
+        /* console.log(xhr.hasOwnProperty("readyState"));
+        console.log(xhr.hasOwnProperty("status"));*/
+        if (xhr.readyState === 4 && /^2\d{2}/.test(xhr.status)) {
+            // 说明浏览器已经成功获取到数据；
+            console.log(xhr.responseText);
+        }
+        // xhr.status; 状态码；代表当前请求的状态；
+        // 当创建好实例，status默认状态值是0；
+        // 当请求结束之后，会根据当前的请求状态去改变这个属性值；
+        // 常用的状态码
+        // 200 : 客户端数据接收成功
+        // 301 : 永久重定向；
+        // 302 ：临时转移，临时重定向
+        // 304 : 读取缓存；（浏览器缓存）
+        // 307 : 临时转移
+        // 401 : 没有权限访问该网站；
+        // 404 : 路径错误
+        // 500 : 服务器未知错误；
+        // 503 : 超负荷；访问量大；
+    }
+    xhr.send();
+
+    // ajax的请求方式；
+    // get  ：一般用于获取服务器数据；
+       //1. get请求传参数，需要把参数放在url问号的后面；
+       //2. 浏览器对url的长度的有要求，IE 2K；谷歌8K；如果多余的，自动截取；
+       //3. get请求安全性较低；
+       //4. get 会有缓存；会在url 的后面拼接一个时间戳；
+
+    // post : 一般用于向服务器发送数据；
+       // 1. post 请求把参数放在请求体中发送给服务器；
+       // 2. 对于数据的大小没有限制；
+       // 3.post是比较安全；
+       // 4.post 没有缓存；
+    // put  : 向服务器发送一些数据
+    // delete: 向服务器删除数据
+    // head : 只请求数据的响应头信息；
+</script>
+</body>
+</html>
