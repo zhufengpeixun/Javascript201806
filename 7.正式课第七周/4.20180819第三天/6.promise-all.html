@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    function queryFn(url) {
+        return new Promise(function (resolve,reject) {
+            $.ajax({
+                url:url,
+                dataType:"json",
+                success:function (data) {
+                    resolve(data);
+                }
+            });
+        });
+    }
+    // Promise.all返回一个新的promise的实例；这个新的实例的状态由数组中的promise实例来决定，当数组中所有的promise都是成功态，新的promise就是成功态，如果有一个失败，变成失败态；
+    // 数组中的promise实例，会把成功的数据组成一个数组，传给promise.all的then的参数；
+   /* Promise.all([queryFn('aside.json'),queryFn("banner.json")]).then(function (arr) {
+    console.log(arr);
+    }).catch(function (a) {
+        console.log(a);
+    });*/
+
+
+    // Promise.race: 比赛；
+    // 数组中的实例谁先执行，那么就会把谁的数据传递给then；
+    Promise.race([queryFn('aside.json'),queryFn("banner.json")]).then(function (arr) {
+        console.log(arr);
+    }).catch(function (a) {
+        console.log(a);
+    });
+</script>
+</body>
+</html>

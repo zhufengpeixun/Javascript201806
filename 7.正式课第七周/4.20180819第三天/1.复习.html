@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // ajax : 局部刷新；
+    // new XMLHttpRequest()
+    // http或https;
+    // 请求头 ：客户端
+    // 响应头 ：服务器
+    // 三次握手四次挥手：
+    // 客户端和服务端都可以向对方传输数据，但是通道是不同的；
+    // ajax : 四步曲；
+    let xhr = new XMLHttpRequest();
+    xhr.open("get","aside.json?user=1&word=2",false);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);//  2  3  4
+        // 0  1   2  3  4;
+        // xhr.status;
+        //
+    }
+    // get 和 post
+    // 同步异步；
+    // 异步 ： 定时器   ajax  promise的then；   async  await  事件行为绑定的方法  回调函数；
+    // 关于浏览器的性能优化?
+    // $.ajax();
+    // extend : 扩展；扩展到原型上，扩展到函数的私有属性上；
+    // url  type  data (参数)  dataType  async success  error  timeout
+    //
+    $.ajax({
+        url:"",
+        type:"get",
+        success:function (data) {
+            console.log(data);
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<script src="ajax.js"></script>-->
+<script>
+    //跨域 ： 同源策略  和  非同源策略；
+    // 同源：//1.协议相同
+            //2.域名相同
+            //3.端口号相同；
+
+    // 把一个JOSN文件部署到A服务器的6000端口下，那么A服务器的6001端口的ajax请求；不能访问6000端口下的数据；
+    // ajax属于同源策略，在不做任务处理情况下，只能访问自己服务器下的数据；
+    // 浏览器属于非同源策略，可以访问任务服务器上数据的；
+   /* ajax({
+        url:"http://matchweb.sports.qq.com/kbs/calendar?columnId=100000",
+        type:"get",
+        success:function (data) {
+            console.log(data);
+        }
+    });*/
+
+   /* 3.JSONP.html?_ijt=vttkd4qot571vghoigo5m3p8kr:1 Failed to load http://matchweb.sports.qq.com/kbs/calendar?columnId=100000?: The 'Access-Control-Allow-Origin' header has a value 'http://sports.qq.com' that is not equal to the supplied origin. Origin 'http://localhost:63342' is therefore not allowed access.*/
+   function fn(data) {
+       console.log(data)
+   };
+   // JSOP的原理：
+    // 1. 利用了script标签的src的属性，src的属性是非同源策略，可以访问不同服务器或端口下的数据；
+    // 2. 给这个src的路径拼接一个callback的属性，callback=fn;当数据通过http传输给服务器；服务器会把数据放进callback传进的函数的参数里；
+    // 3.服务器把处理的数据和函数通过http传给客户端，当客户端接收到之后，让fn进行执行；
+    fn(data);
+    // JSONP是常见的一种跨域解决方式，实现非同源下的数据请求；
+</script>
+<script src="http://matchweb.sports.qq.com/kbs/calendar?columnId=100000&callback=fn"></script>
+</body>
+</html>

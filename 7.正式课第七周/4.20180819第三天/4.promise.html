@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Promise : 是浏览器新增的内置的API ;为了处理异步的操作；
+    //console.log(Promise);
+    // Promise 是一个同步的过程；Promise传进的回调函数会立即执行；当回调函数执行完毕，才会去执行下面的任务；
+    //Promise 执行必须接受函数作为实参；
+    // Promise 的三个状态： pending  fulfilled  rejected;  pending 到成功，从pending到失败状态；如果当前promise状态一旦发生改变，那当前【promise的状态就会凝固；
+    let p1 = new Promise(function (reslove,reject) {
+        // 当Promise的回调函数中异步成功之后，执行特定的函数；
+        // 当前函数中，存放的是异步的操作任务；当异步的操作任务成功之后，会调用then方法中的第一个函数；如果异步操作失败，会默认调用then的第二个函数；
+        // resolve: 当异步操作成功，执行的函数;事件队列；收集了then方法中传进来的第一个参数；
+        // reject : 当异步操作失败执行的函数；事件队列；收集了then方法中传进来的第二个参数；
+        // 如果then方法中没有返回值，或者返回的不是一个promise的实例，那么下一个then中的函数会根据第一个异步的操作成功resolve执行有关；如果then的成功的回调中，如果then的第一个函数返回一个promise的实例，那么下一个then的第一个参数会根据上一个then的返回promise中异步操作成功后，会进行调用这个then的resolve；
+        setTimeout(function () {
+            reslove();
+        },1000);
+        console.log(1);
+    });
+    p1.then(function () {
+        console.log("下课");
+        return  new Promise(function (resolve,reject) {
+            setTimeout(function () {
+                resolve();
+            },1000)
+        });
+    },function () {
+
+    }).then(function () {
+        console.log(100);
+    },function () {
+        console.log(200);
+    });
+    //console.log(2);// 先输出1；
+    // 定时器是异步的；
+   /* setTimeout(function(){
+        console.log(3);
+    },0);
+    console.log(4);*/
+
+   // 如果有两个请求，第二个需要在第一个请求成功之后，才能请求第二个；
+   /* $.ajax({
+        url:"aside.json",
+        type:"get",
+        success:function () {
+            $.ajax({
+                url:"banner.json",
+                type:"get",
+                success:function () {
+                    $.ajax({
+
+                    });
+                }
+            })
+        }
+    });*/
+    /*let  p1 = new Promise(function (resolve,reject) {
+        $.ajax({
+            url:"aside.json",
+            type:"get",
+            success:function () {
+               resolve();
+            }
+        });
+    });
+    p1.then(function () {
+        $.ajax({
+            url:"banner.json",
+            type:"get",
+            success:function () {
+
+            }
+        });
+    })*/
+
+
+
+</script>
+
+
+
+</body>
+</html>

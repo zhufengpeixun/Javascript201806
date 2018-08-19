@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 主任务队列和对等待任务队列；
+    // 主任务队列存储的都是同步的任务；
+    // 等待任务队列中存储都是异步的任务；当主任务队列中的任务执行完成之后，接下来会把异步任务队列到达时间的任务拿出放到主任务队列中进行执行；
+  /*  setTimeout(function () {
+       console.log(100)
+    },0);
+    console.log(500);
+    let p = new Promise(function (resolve,reject) {
+        console.log(200);
+        resolve();
+        console.log(300);
+    });
+    console.log(600);
+    p.then(function () {
+        console.log(400);
+    });
+    console.log(700);*/
+    // 500  200  300  600【主任务队列执行完毕】  400  100
+    // 在异步的任务队列中分为微任务和宏任务；当同步的任务执行完毕，先去等待的任务队列把所有的微任务找出来，挨个执行；当微任务执行完毕，再把所有的宏任务执行；
+    // 微任务： Promise的then  async函数  process.nextTick
+    // 宏任务：setTimeout  setInterval ...
+    // 1.async这个函数默认返回一个promise的实例；返回值可以调用then方法
+    // 2.在函数中await后面的代码都是异步的；把后面的表达式变成一个微任务；
+    // 3.async必须成对出现
+ /*   function fn() {
+        console.log(3);
+    };
+    async function sum() {
+        console.log(1);
+        await fn();
+        // await : 把后面的代码变成了异步的任务；
+        console.log(2);
+    }
+    sum();
+    console.log(4);// 1  3  4  2*/
+
+
+   /* async function async1() {
+        console.log('async1 start');// 2
+        await async2();
+        console.log('async1 end'); // 7
+    }
+    async function async2() {
+        console.log('async2'); // 3
+    }
+    console.log('script start');// 1
+    setTimeout(() => {
+        console.log('setTimeout');// 8
+    }, 0);
+    async1();
+    new Promise(resolve => {
+        console.log('promise1');// 4
+        resolve();
+    }).then(() => {
+        console.log('promise2'); // 6
+    });
+    console.log('script end');/*/
+
+    console.log('1');
+    setTimeout(function () {
+        console.log('2');
+        new Promise(function (resolve) {
+            console.log('4');
+            resolve();
+        }).then(function () {
+            console.log('5');
+        });
+    });
+    new Promise(function (resolve) {
+        console.log('7');
+        resolve();
+    }).then(function () {
+        console.log('8');
+    });
+    setTimeout(function () {
+        console.log('9');
+        new Promise(function (resolve) {
+            console.log('11');
+            resolve();
+        }).then(function () {
+            console.log('12');
+        });
+    });
+    // JS中事件循环机制？ eventLoop
+</script>
+</body>
+</html>
