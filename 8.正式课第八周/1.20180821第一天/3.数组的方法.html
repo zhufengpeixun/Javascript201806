@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 数组 --> 对象数据类型
+    // 数组 ： 索引  length 属性名是索引，属性值是数组成员；
+    // 工作中，一般后端返回前端的数据一般是数组的和对象的格式；
+    // pop  push  shift  unshift slice  splice  indexOf  lastIndexOf concat  map  forEach  join   sort  reverse;
+    /*Array.prototype.pop = function () {
+        console.log(1);
+    }*/
+    /*Array.prototype = {
+        pop:function () {
+            console.log(1);
+        }
+    }
+    // 内置类的原型的空间地址不能被修改；修改是无效的；
+    let a = [100,200];
+    a.pop();
+    console.log(a);*/
+    //let b = new Array;
+   /*class Fn{
+       constructor(a){
+           console.log(a);
+       }
+       // Fn 原型上的方法；
+       pop(){
+       }
+       // static 定义的属性是这个类的私有属性，当前类创建的实例不能调用这个静态属性；
+       static a(){
+       }
+   }
+   new Fn(1);
+   function RR() {
+   }
+   RR.prototype.hh = function () {
+   };
+   // 函数对象的角色；
+   RR.a = function () {
+       console.log(1);
+   };*/
+
+   // 数组的循环
+    // for
+    // for in
+    // forEach
+    // map
+    // for  of;
+   /* let  a = [1,2,3];
+    for(let key  of  a){
+        console.log(key);// 当前数组成员项；
+    }
+    // 由于对象没有iterator接口，所以不可以循环对象；
+    let b = {a:1,b:2};
+    for(let key  of  b){
+        console.log(key);
+    }
+*/
+  // let  arr = [100,80,56,101];
+   // 1. forEach  :  循环遍历数组；forEach 这个函数没有return，所以返回值永远是undefined；
+    //let newArr = arr.forEach((item,index,ww)=>{
+        // 回调函数执行次数和数组成员的个数有关；
+        // item -->数组成员  index-->索引  ww--->当前数组；
+        // this ---> window
+        //console.log(item);
+        //console.log(ww);
+        //console.log(this);
+        //return 100;
+    //});
+    //console.log(newArr);
+
+    // 2.map : 映射;原有数组有几项，那么返回值就会有几项；map会把回调函数的返回值组装成一个新的数组进行返回；原有数组不发生改变；
+  /*let newArr = arr.map((item,index)=>{
+         return `<li>${item}</li>`
+    });
+    console.log(newArr.join(""));
+    console.log(arr);*/
+
+    // 3.filter : 过滤;把符合条件的放进新数组中；原有数组不发生改变；
+/*    let  arr = [100,80,56,101];
+    let newArr  = arr.filter((item,index)=>{
+        // return一个返回值；如果这个返回值true，那么会把这一项过滤，放到新的数组中；如果返回false；那么返回一个[];
+        return item>70;
+    })
+    console.log(newArr);
+    console.log(arr);*/
+
+   // 4.find :查找；从所到右一次进行查找；找到符合条件的第一项，并且把这一项返回；结束整个函数；
+    // 找true；
+    // 如果没有符合条件的那么返回undefined；
+   /* let  arr = [34,80,56,101];
+    let val = arr.find((item,index)=>{
+        //console.log(item);
+        return item>200;
+    });
+    console.log(val);*/
+
+
+    // 5.some : 返回一个布尔值；如果有符合条件的返回true，如果没有找到符合条件的，返回是false；
+    // 如果有符合条件的，那么不再循环，直接停止整个函数；返回true；
+    // 如果没找到，会循环所有项，并且返回false；
+    // 找true就停下来
+   /* let  arr = [34,80,56,101];
+    let a = arr.some((item,index)=>{
+        console.log(1);
+        return item>66;
+    });
+    console.log(a);*/
+
+   // 6.every :返回一个布尔值；true或false；必须要求每一项都返回true，整体结果返回true；只要有一个是false，整体结果就是false；
+    // 找到false就停下来；
+   /* let  arr = [34,80,56,101];
+    let t = arr.every((item,index)=>{
+        //console.log(1);
+        return item>60;
+    })
+    console.log(t);*/
+
+   // 7.includes : 包含；检测是否包含某一项；如果包含返回true，不包含返回false；
+    // indexOf : 返回的是当前项第一次出现的索引位置；不存在返回-1；
+    /*let  arr = [34,80,56,101];
+    console.log(arr.includes(81));
+*/
+    // 8.reduce :收敛；求和；
+    // reduce第二个参数，代表回调函数中的第一次的prev
+    /*let  arr = [34,80,56,101,999];
+    let yy = arr.reduce((prev,next)=>{
+        // prev : 输出上一次回调函数的返回值；【第一次除外】
+        console.log(prev,next);
+        return  prev+next;
+    });
+    console.log(yy);*/
+
+    let arr = [{price:10,count:2},{price:66,count:3},{price:99,count:5}];
+    // 计算这个数的总价钱的和；
+
+   let  mn =  arr.reduce((prev,next)=>{
+       //console.log(prev.price * prev.count + next.price * next.count);
+       //debugger
+       return prev+next.price*next.count;
+    },0);
+    console.log(mn);
+
+</script>
+</body>
+</html>

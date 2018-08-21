@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*实现一个LazyMan，可以按照以下方式调用:
+        1) LazyMan(“Hank”)输出:
+           Hi! This is Hank!
+
+        2) LazyMan(“Hank”).sleep(10).eat(“dinner”)输出
+           Hi! This is Hank!
+           //等待10秒..
+           Wake up after 10
+           Eat dinner~
+
+        3) LazyMan(“Hank”).eat(“dinner”).eat(“supper”)输出
+           Hi This is Hank!
+           Eat dinner~
+           Eat supper~
+
+        4) LazyMan(“Hank”).sleepFirst(5).eat(“supper”)输出
+            //等待5秒
+            Wake up after 5
+            Hi This is Hank!
+            Eat supper*/
+
+    function lazyMan(name) {
+        function Man() {
+            setTimeout(function () {
+                console.log(`Hi! This is ${name}!`);
+            },0)
+        }
+        Man.prototype.sleep = function (time) {
+            /*setTimeout(function () {
+                console.log(`Wake up after ${time}!`);
+            },time*1000);*/
+            // 把异步的转成同步的等待10秒；
+            setTimeout(function () {
+                // 加定时器，为了让此处整体变成异步；
+                let duration = time *1000;// 10秒的毫秒差；
+                let curTime= Date.now();
+                //当过了10秒之后，继续执行下面的代码;while 循环是用来阻塞当前主线程；因为while循环是同步的；当while不结束；那么代码不能向下运行；
+                while(Date.now()-curTime<=duration){};
+                console.log(`Wake up after ${time}!`);
+            },0);
+            return this;
+        }
+        Man.prototype.eat = function (food) {
+            setTimeout(function () {
+                console.log(`Eat  ${food}~`);
+            },0)
+           return this;// 实例
+        };
+        Man.prototype.sleepFirst = function (time) {
+            let  duration = time*1000;
+            let curTime =Date.now();
+            // while ： 用来阻塞线程；不是只有定时器可以解决时间问题；
+            while(Date.now()-curTime<=duration){};
+            console.log(`Wake up after ${time}`);
+            return this;
+        }
+        return new Man();
+    }
+    //lazyMan("hank")
+    //lazyMan("Hank").sleep(10).eat("dinner");
+    //lazyMan("Hank").eat("dinner").eat("supper")
+    lazyMan("Hank").sleepFirst(5).eat("supper");
+</script>
+</body>
+</html>
