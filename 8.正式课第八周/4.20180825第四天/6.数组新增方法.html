@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1.forEach： 遍历  map  ： 映射
+    /*let arr = [12,3,45,5];
+    arr.forEach(function (item) {
+        console.log(this);
+    },888);*/
+    // forEach中的第二个参数指向了回调函数的this；
+
+    /*let  a =  arr.map(function (item) {
+        return 1;
+    });*/
+    // [1,1,1,1]
+
+    // 3. filter: 过滤；如果回调函数中返回true，那么会放到新的数组中；
+   /* let a =  arr.filter(function (item,index) {
+        return true;
+    });*/
+
+   // 4.find: 从左到右一次遍历；直到找到符合条件的那一项；把找到的那一项返回并且中止遍历；如果都不符合条件，返回undefined
+     /*let a =  arr.find(function (item,index) {
+         return item>40;
+     });
+    console.log(a);*/
+
+     // 5.some : 返回一个布尔值;找true的方法；查到符合条件的那一项，中止遍历；返回true；如果没有符合条件的，返回false；
+    /*let a =arr.some(function (item,index) {
+        return item>400;
+    });
+    console.log(a);*/
+
+    // 6.every :返回一个布尔值；找false;如果没有false，返回true；
+/*     let a =arr.every(function (item,index) {
+         return item>400;
+     });
+     console.log(a);*/
+
+  // 7.includes : 是否包含某一项；返回一个布尔值；存在返回true，不存在返回false；
+  /*  console.log(arr.includes(3));// true
+    console.log(arr.includes(2));/*/// false
+
+    // 8.reduce :收敛
+    let arr = [1,3,45,5];
+   let sum = arr.reduce(function (prev,next) {
+       // 第一次执行时，prev代表第一项，next代表下一项；
+       // 第二次执行，prev代表的上一个回调函数的返回值；next代表下一项；
+       console.log(prev, next);
+       return prev+next;
+   })
+    console.log(sum);
+</script>
+</body>
+</html>

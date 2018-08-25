@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    // ajax的串行；
+    // ajax的并行；
+    // ajax 的回调地狱；
+    /*$.ajax({
+        url:"1.json",
+        success:function () {
+            // 第一个请求成功之后，发送；
+            $.ajax({
+                url:"2.json",
+                success:function () {
+                    // 第二个请求成功之后，发送；
+                    $.ajax({
+                        url:"3.json",
+                        success:function () {
+
+                        }
+                    })
+                }
+            })
+        }
+    });
+
+    function getData(url) {
+        return new Promise((resolve,reject)=>{
+            $.ajax({
+                url:url,
+                success:function () {
+                    resolve();
+                }
+            })
+        })
+    }
+    getData("1.json").then(function () {
+        getData("2.json");
+    }).then(function () {
+        getData("3.json");
+    });*/
+
+
+    // 并行
+   /* $.ajax({
+        url:"1.json",
+        success:function () {
+
+        }
+    });
+    $.ajax({
+        url:"2.json",
+        success:function () {
+
+        }
+    })
+    $.ajax({
+        url:"3.json",
+        success:function () {
+
+        }
+    })*/
+
+  /* new Promise(function (resolve,reject) {
+       console.log(1)
+   })*/
+
+</script>
+</body>
+</html>

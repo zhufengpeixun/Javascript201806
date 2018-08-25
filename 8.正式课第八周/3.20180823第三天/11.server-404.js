@@ -6,7 +6,7 @@ let mime = {
     ".html":"text/html",
     ".json":"application/json",
     ".png":"image/png",
-    ".js":"application/javascript"
+
 };
 http.createServer(function (req,res) {
     let {pathname} = url.parse(req.url);

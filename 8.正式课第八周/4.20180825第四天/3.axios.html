@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script>
+   // axios : 基于promise封装的ajax;用于请求数据的；
+  // axios 的get ;发送get请求成功之后，会执行then中的函数；并且把请求到的数据传给回调函数的参数；
+   axios.post("1.json",{user:1}).then(function (res) {
+       // data是一个封装的对象；对象中属性名是data的属性值，才是请求到的数据；
+       // 有响应头信息；还有状态码；statusText : "OK";
+       // console.log(res);
+       // res.data;
+   });
+  // axios.all :当所有的异步请求成功之后，会执行then中的回调；
+   axios.all([]).then(function () {
+       
+   });
+
+</script>
+</body>
+</html>
