@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box2">
+    <div>
+        <span>姓名</span>
+        <input type="text" id="username">
+    </div>
+    <div>
+        <span>年龄</span>
+        <input type="text" id="age">
+    </div>
+    <div>
+        <span>电话</span>
+        <input type="text" id="phone">
+    </div>
+    <div>
+        <span>地址</span>
+        <input type="text" id="address">
+    </div>
+    <div class="submit" id="submit">提交</div>
+</div>
+<script src="ajax.js"></script>
+<script>
+    // 1.当点击提交按钮时，发送post请求，把数据通过请求体传输给服务器
+    let submit = document.getElementById("submit");
+    let username = document.getElementById("username");
+    let age = document.getElementById("age");
+    let phone = document.getElementById("phone");
+    let address = document.getElementById("address");
+    // 获取url下的id的值
+    let url = window.location.href;
+    let index  = url.indexOf("=");
+    let id = url.substring(index+1);
+    // 只要点击修改时才发送当前这个请求；url有没有等号更直接判断是否需要发送这个请求；
+    let flag;
+    index<0? flag = false:flag=true;
+    // 如果flag是false，说明点击的是新增；如果是true，说明点击的是修改；
+    if(flag){
+        ajax({
+            url:"/getInfo?id="+id,
+            type:"get",
+            success:function (data) {
+                // 通过id的得到用户的具体信息，并且把数据放进input中
+                if(data.code===0){
+                    let curData = data.data;
+                    username.value = curData.name;
+                    age.value = curData.age;
+                    phone.value = curData.phone;
+                    address.value = curData.address;
+                }
+            }
+        });
+    }
+
+    submit.onclick = function () {
+        // 1.新增客户；每新增一个客户，相当于向服务器json文件中注入一条数据；
+        if(flag){
+            ajax({
+                url:"/updateInfo",
+                type:"post",
+                data:{
+                    id:id,
+                    name:username.value,
+                    age:age.value,
+                    phone:phone.value,
+                    address:address.value
+                },
+                success:function (data) {
+                    if(data.code===0){
+                        // window.location.href : 跳转到指定路径
+                        window.location.href = "index.html";
+                    }
+                }
+            });
+            return;
+        }
+        ajax({
+            url:"/addInfo",
+            type:"post",
+            data:{
+                name:username.value,
+                age:age.value,
+                phone:phone.value,
+                address:address.value
+            },
+            success:function (data) {
+                if(data.code===0){
+                    // window.location.href : 跳转到指定路径
+                    window.location.href = "index.html";
+                }
+            }
+        })
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+产品 ---> 需求 (前后端介入)---> UI --- 前后端同时开发；
+分析功能
+
+// 1.查询
+// 2.删除
+// 3.新增
+// 4.修改    增删改查
+// API 接口文档： 请求个数、请求方式、地址参数、返回前端的数据格式；便于前后端同时开发；
+
+// 接口： url
+1、获取用户信息
+   URL : "/getList"   get
+   参数 ： （不需要参数的）；
+   返回 ：
+         '{
+              “code” ：0    // 返回的是0，代表返回或者处理成功，如果是1 ，代表失败
+              “msg” : "获取成功"   返回一条信息，
+              “data”:[
+                  {"id":"1","name":"de","age":"16","phone":"1828828","address":"xxxxx"}
+                  {"id":"2","name":"de","age":"16","phone":"1828828","address":"xxxxx"}
+                  {"id":"3","name":"de","age":"16","phone":"1828828","address":"xxxxx"}
+              ]
+
+         }'
+
+// 2、点击修改，获取某一个客户的信息
+
+url : "/getInfo"   GET
+参数 ：？id=xxx  把需要客户的ID传给服务器
+返回：
+    '{
+        "code" : 0,
+        "msg" : "",
+        "data": {
+             "id" : xxx,
+             "name" : "",
+             "age" : xxx,
+             "phone" : "",
+             "address" : ""
+        }
+    }'
+3、增加客户
+url : "addInfo" POST
+参数 ： 请求主体中 ‘{“name”:"","age":"","phone":"","address":""}’
+返回 ：
+‘{
+    "code" : 0，// 0 是成功 1 是失败
+    "msg" : ""
+
+    }’
+
+4、修改客户信息；
+   URL : "updateInfo"   POST;
+    参数 ： 请求主体中  '{"id" : xxx,"name" : "","age" : xxx,"phone" : ""
+      "address" : ""}'
+
+    返回 ：‘{
+    "code" : 0,
+    "msg" : ""
+    }’
+5、删除客户
+ URL ："/removeInfo/ ?id=xx;"  GET
+ 参数 ： ?id=xx;
+ 返回：‘{
+     "code" : 0,
+     "msg" : ""
+ }’
+
+
+

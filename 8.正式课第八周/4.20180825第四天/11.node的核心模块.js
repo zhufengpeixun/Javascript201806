@@ -27,6 +27,6 @@ fs.writeFileSync("./12.json","1234567890","utf8")
  console.log(1);
 // 向文件内容的末尾追加内容；异步
 /*fs.appendFile("./12.json","1234567890","utf8",function (err) {
-    console.log(100);
-})
-console.log(1);*/
+ console.log(100);
+ })
+ console.log(1);*/

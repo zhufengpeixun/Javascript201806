@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.w50{
+    width:50px;
+}
+.w150{
+    width:150px;
+}
+.w200{
+    width:195px;
+}
+.box1{
+    width:800px;
+    margin:30px auto;
+    padding:10px;
+    border:2px solid lightseagreen;
+}
+.head{
+    background: lightblue;
+    height:35px;
+    line-height: 35px;
+    color:white;
+    padding:0 5px;
+}
+
+.head span,.list li span{
+    float:left;
+    text-align: center;
+}
+.list li{
+    padding:0 5px;
+    height:35px;
+    line-height: 35px;
+}
+.list li:nth-child(even){
+    background: #eee;
+}
+.list li:hover{
+    background: lightblue;
+}
+
+
+/*下面是add.html中的样式*/
+.box2{
+    width:500px;
+    margin:20px auto;
+    padding:20px;
+    border:2px solid lightseagreen;
+}
+.box2 div{
+    height:35px;
+    line-height: 35px;
+    margin-bottom: 10px;
+}
+.box2 div span{
+    width:50px;
+    display: inline-block;
+}
+.box2 div input {
+    height:35px;
+    padding-left:10px;
+    width:180px;
+}
+#phone,#address{
+    width:350px;
+}
+#submit{
+    width:200px;
+    height:30px;
+    text-align: center;
+    line-height: 30px;
+    background: lightgreen;
+    margin:20px auto;
+    color:white;
+    cursor:pointer;
+}

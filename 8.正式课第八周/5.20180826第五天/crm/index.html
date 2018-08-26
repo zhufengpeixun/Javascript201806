@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box1">
+    <a href="add.html">增加新客户</a>
+    <h4 class="head">
+        <span class="w50">编号</span>
+        <span class="w150">姓名</span>
+        <span class="w50">年龄</span>
+        <span class="w200">电话</span>
+        <span class="w200">地址</span>
+        <span class="w150">操作</span>
+    </h4>
+    <ul class="list" id="list">
+        <li>
+            <span class="w50">1</span>
+            <span class="w150">2</span>
+            <span class="w50">3</span>
+            <span class="w200">电话</span>
+            <span class="w200">地址</span>
+            <span class="w150">操作</span>
+        </li>
+    </ul>
+</div>
+<script src="ajax.js"></script>
+<script>
+    let list = document.getElementById("list");
+    // 1.获取客户信息的数据；并把数据渲染到页面中；
+    ajax({
+        url:"/getList",
+        type:"get",
+        success:function (data) {
+            if(data.code ===0){
+                data = JSON.parse(data.data);
+                bindHtml(data);
+            }
+        }
+    });
+    function bindHtml(data) {
+        let str = ``;
+        for(let i=0;i<data.length;i++){
+            let cur = data[i];
+            str +=`<li>
+                        <span class="w50">${cur.id}</span>
+                        <span class="w150">${cur.name}</span>
+                        <span class="w50">${cur.age}</span>
+                        <span class="w200">${cur.phone}</span>
+                        <span class="w200">${cur.address}</span>
+                        <span class="w150">
+                            <a href="add.html?id=${cur.id}">修改</a>
+                            <a href="javascript:;" customId="${cur.id}">删除</a>
+                         </span>
+                   </li>`
+        }
+        // 把拼接好的数据放进ul中；
+        list.innerHTML = str;
+    }
+
+    // 2.删除客户
+    list.onclick = function (e) {
+        e = e || window.event;
+       let id = e.target.getAttribute("customId");
+        //console.log(id);
+        // 告诉后端把id是这个值的数据，进行删除；
+        if(e.target.innerHTML==="删除"){
+            let flag = confirm("您确定删除编号为"+id+"的客户吗?")
+            if(flag){
+                ajax({
+                    url:"/removeInfo?id="+id,
+                    type:"get",
+                    success:function (data) {
+                        if(data.code===0){
+                            e.target.parentNode.parentNode.parentNode.removeChild( e.target.parentNode.parentNode);
+                        }
+                    }
+                })
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
