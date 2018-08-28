@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="box">
+<script>
+    //defineProperty 是一个函数，是Object私有的方法；
+    let obj = {};
+    // 对obj这个对象的是name属性名，进行监控；当获取obj中name属性名的属性值时，会触发get函数；当设置name属性值，会触发set函数；
+    Object.defineProperty(obj,"name",{
+        get(){
+            console.log(100);
+        },
+        set(val){
+            // 当设置对象的name属性值时，会触发这个函数；当设置这个值时，会默认给set传一个参数，这个参数值是最新设置的那个值；
+            console.log(val);
+        }
+    });
+/*    let  vm = new  Vue({
+        el : "#app",
+        data:{
+            a:18
+        }
+    });
+
+    for(var key  in  data){
+        // 给data中每一个属性增加监听者，当数据发生变化时，会触发set方法；当视图变化时，通过DOM的事件监听，改变数据；这些数据都会被Vue的实例所代理；当vm.a === vm.data.a;
+        Object.defineProperty(vm,key,{
+            get(){
+            },
+            set(){
+            }
+        })
+    }
+    vm.a = 19;*/
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--小胡子语法：支持jS表达式;最终得到一个返回值；结果-->
+   {{1+2}}{{product}}
+</div>
+<div id="app1"></div>
+<div id="app2"></div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // Vue : 是一个构造函数；传进来一个对象，让指定的元素成为一个vue的实例；可以使用vue的方法
+    let vm = new Vue({
+        el:"#app",// vue选择器；让哪个元素初始化一个vue的实例；
+        data:{
+            // data：中的每一个属性都会放到当前实例的属性上；
+            product:"苹果"
+        }
+    });
+</script>
+</body>
+</html>

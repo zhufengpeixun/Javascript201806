@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--v-for : Array  -->
+        <!--v-for : Object-->
+        <!--v-for : number -->
+        <!--v-for : string -->
+        <!--要循环谁，就把v-for放在谁在身上-->
+        <!--(a,index) in  arr : a 代表是数组的每一项，index代表索引-->
+        <!--<li v-for="(a,index) in arr">{{a}}{{index}}</li>-->
+        <!--<li v-for="a in num">{{a}}</li>-->
+        <!--<li v-for="a in  str">{{a}}</li>-->
+        <!--在循环对象中，如果只有一个值，那么得到是属性值；第二个参数代表是属性名,第三个代表的是索引-->
+        <!--<li v-for="(a,b,index) in  obj">{{a}}{{b}}{{index}}</li>-->
+        <li v-for="a in arr">
+            <ul>
+                <li v-for="b in a">{{b}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            arr:[[1,2,3],[4,5,6],[7,8,9]],
+            num:5,
+            str:"zfpx",
+            obj:{name:"12",age:"34",sex:"56"}
+        }
+    });
+</script>
+</body>
+</html>

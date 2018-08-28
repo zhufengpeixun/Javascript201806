@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--指令：在vue中，定义在DOM的行间属性,vue赋予这些一些特殊的功能和意义；一般以 v- 开头；这些-->
+    <!--v-model： 把input的value值和data的某个属性进行绑定；v-model一般用于表单元素;复选框 、单选框、下拉框-->
+    <input type="text" v-model="flag">
+    <!--v-text: 把数据绑定DOM元素中，具有响应式；并且会把之前的进行覆盖-->
+    <div v-text="flag"></div>
+    <!--v-html : 可以识别标签；-->
+    <div v-html="title"></div>
+    <!--v-if: 当属性值是true，则显示当前的元素；为false，那么显示v-else的元素-->
+    <!--v-if 组合控制的是DOM元素的存在，不是控制display:none-->
+    <div v-if="tt===false">
+        电脑
+    </div>
+    <div v-else>
+        手机
+    </div>
+    <div v-if="tt">
+        手表
+    </div>
+    <div v-else>
+        自行车
+    </div>
+    <!-- v-show : 控制元素的显示隐藏；通过控制css的display属性；-->
+    <p v-show="yy">快下课了</p>
+
+    <!--v-bind: 用于绑定动态的属性-->
+    <!--v-bind：  最后简写成一个：就可以取到动态的属性；-->
+    <img :src="imgUrl" alt="">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // vue中的常见的指令： v-model  v-text   v-html   v-for   v-once  v-if  v-else  v-else-if  v-show   v-bind  v-on
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            flag :"你很帅",
+            title:"<h2>你很漂亮</h2>",
+            tt:true,
+            hh:true,
+            yy:true,
+            imgUrl :"svn.png",
+            img:["1.png","2.png"]
+        }
+    });
+</script>
+</body>
+</html>

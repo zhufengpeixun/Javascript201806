@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{arr}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2,3,4,5,6]
+        }
+    });
+    //console.log(vm.arr);
+    // 1.通过索引不可以修改data中数组的某一项；
+    //vm.arr[0] = 100;
+    // 2.通过改变数组的length，也不能实现响应式；
+    // vm.arr.length--;
+    // 3.通过原型上的方法，可以对数组实现修改；
+    // 数组的方法中，原有数组发生改变的方法：
+    //  pop   push  shift  unshift  splice  sort  reverse;
+    //vm.arr.reverse();
+    // 利用了filter的返回值对vm.arr的属性重新赋值；arr的空间地址发生变化；
+    //vm.arr = vm.arr.filter(item=>item>3);
+    //vm.arr.reverse();
+
+</script>
+</body>
+</html>

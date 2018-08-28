@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{a.school}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            a:{}
+        }
+    });
+    //vm.a.school = "zfpx";  //新增的属性不会有响应式；
+    // 1. 直接覆盖原有的空间地址；新的地址进行替换；属性都有响应式；
+    //vm.a = {school:"zfpx"};
+    // 2.vm.$set() 设置data对象的属性; 具有响应式；
+    //console.log(vm);// Vue 的实例；
+    vm.$set(vm.a,"school","珠峰00");
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="box">
+<script>
+    let obj = {};
+    // 第三方变量；为了防止获取obj.name 时出现无限循环；
+    let temp = {};
+    // 让对象中的值发生变化，那么input内容也跟着变化，当input框中值发生改变，对象的值也跟着变化；name;
+    Object.defineProperty(obj,"name",{
+        get(){
+            return temp.name;// get 的返回值就是obj.name 的获取值；
+        },
+        set(val){
+            temp.name = val;
+            box.value = val;
+        }
+    });
+    // VUE利用DOM事件监听机制；
+    // 视图 影响数据；
+    box.addEventListener("input",function () {
+        obj.name = this.value;// 把input框的值赋值给obj.name属性；
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{a}}
+    <input type="text" v-model="a">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // Vue  : 必须依托于页面中的元素； 通过el 获取元素；id需要加#；class是加.;
+    let  vm = new  Vue({
+        el : "#app",
+        data:{
+            // 双向数据绑定：vue利用Object.definedProperty 这个方法遍历data中所有的属性，给每一个属性增加  setter方法，和getter方法，当数据发生变化时，会触发setter方法，当获取数据时，会触发getter方法；Object.definedProperty在IE以下是不兼容的；vue 是不兼容IE8 以下； 是es5新增的方法；data中的所有的属性最终被vm这个实例所代理；
+            a:18
+        }
+    });
+</script>
+</body>
+</html>
