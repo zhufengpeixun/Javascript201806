@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--要循环谁，把v-for放在谁的身上-->
+        <li v-for="(item,index) in  fruits">
+            {{index+1}}{{item.name}}
+            <ul>
+                <li v-for="(a,childIndex) in  item.color">
+                    {{childIndex+1}}{{a}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            fruits:[
+                {name:'香蕉',color:['green','yellow']},
+                {name:'苹果',color:['red','green','yellow']},
+                {name:'西瓜',color:['pink']}]
+        }
+    });
+
+
+</script>
+</body>
+</html>

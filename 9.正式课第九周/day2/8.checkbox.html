@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--在复选框中，如果只有一个，v-model会将值默认转换成布尔类型的值；-->
+    <input type="checkbox" v-model="val">游泳 {{val}}
+
+    <!--如果v-model 在复选框绑定同时绑定一个值；那么会把这几个进行分组；把选中的值，统一放进一个数组中；-->
+
+    <input type="checkbox" v-model="hobby" value="睡觉">睡觉
+    <input type="checkbox" v-model="hobby" value="吃饭">吃饭
+    <input type="checkbox" v-model="hobby" value="约会">约会
+    <!--如果多个input框同时绑定一个相同的v-model；通过是否在数组中进行选中或者不选中；各自控制他自己的状态；-->
+    {{hobby}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            val:0,// 转布尔是true，则默认选中；如果转布尔是false，则不选中；
+            hobby:[]
+        }
+    });
+</script>
+</body>
+</html>

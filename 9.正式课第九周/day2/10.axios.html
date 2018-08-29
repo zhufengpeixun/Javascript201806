@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="a in  arr">{{a.name}}
+            <ul>
+                <li v-for="b in a.list">
+                    {{b}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script>
+    let vm  = new Vue({
+        el:"#app",
+        data:{
+            arr:[]
+        },
+        created(){
+            // 当vue的实例创建成功，会执行这个函数；vue所有的请求，几乎都在这里进行发送；
+            //console.log(this); this执行vue的实例
+            this.getData();
+        },
+        methods:{
+            //获取数据的方法
+            getData(){
+                axios.get("list.json").then(data=>{
+                    // 当请求数据成功，会执行这个回调；会把数据从新组装，传给data；其中data中的data才是真正的数据；
+                    // 把请求到的数据赋值给data中的属性；data中的属性值是响应式
+                    this.arr = data.data;
+                },err=>{
+                    // 如果请求失败，那么会执行这里的回调，err代表错误的信息
+                });
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

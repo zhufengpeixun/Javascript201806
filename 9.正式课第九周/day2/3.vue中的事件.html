@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!-- v-on: 可以写成@来代替，绑定事件行为-->
+    <div @click="fn($event,2,1)" v-text="msg"></div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let  vm = new Vue({
+        el:"#app",
+        // data的属性和methods中的属性不能重名；
+        data:{
+            msg:"你很帅"
+        },
+        methods:{
+            // methods : 存储的是事件行为的方法；
+            // 在VUE 中给元素的事件行为绑定方法，一般都写在行内属性中；
+            fn(a,b,c){
+                // 1.如果在绑定时，fn不带();那么函数会默认接收一个事件对象e;mouseEvent;
+                // 2.如果绑定时，带有小括号，那么默认不接收事件对象；
+                // 3.既需要事件对象，又需要参数；需要在绑定的小括号中加一个$event ,后面的参数才是真正的实参；
+                console.log(a);
+                console.log(b);
+               /* alert("你很帅");*/
+            }
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

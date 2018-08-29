@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg.a">
+    <img :src="" alt="">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // VUE  : 是一个渐进式框架；是MVVM模式的框架；M： model(后端返回的数据)  view :(视图)  view-model:简历数据和视图之间的桥梁；
+    // 数据响应式：双向数据绑定的原理；
+    //
+   let vm =  new Vue({// 初始化一个vue的实例；
+       el:"#app",//
+       data:{
+           msg:{},
+           arr:[1,2,3,4,5]
+       }
+   });
+   //vm.msg.a = "aab";
+    // 1.改变空间地址
+   // vm.msg = {a:"aab"};
+    // 2.$set
+    //vm.$set(vm.msg,"a","1")
+
+    // 1. 不可以通过索引去改某一项
+    // 2.不能通过length去改变数组
+    //vm.arr[0] =8;
+    // pop  push shift  unshift   splice  sort  reverse;
+    // every  :
+    /*Array.prototype.myEvery = function (callBack) {
+        // this ---> arr;
+       for(let i=0;i<this.length;i++){
+           // 把数组每一项传给callback
+          if(!callBack(this[i],i)){
+              return false;
+          }
+          /!*if(i===this.length-1){
+              return  true;
+          }*!/
+       }
+       return true;
+    };
+    // val : every是一个布尔值；true/false
+    let arr = [12,3]
+    let val = arr.myEvery(function (item,index) {
+        return item>5;
+    })*/
+
+
+    // vue的指令；
+    // v-model  v-text  v-html  v-if  v-else  v-else-if  v-show
+    // v-bind  v-for  v-on  v-once  v-cloak
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

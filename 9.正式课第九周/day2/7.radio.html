@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--单选框中使用v-model；会将都绑定val划分成一组，只能选中其中的一个-->
+    <input type="radio" v-model="val" value="男">男
+    <input type="radio" v-model="val" value="女">女
+    <input type="radio" v-model="val1" value="其他">其他
+    {{val}}
+    <!--val： 可以获取到当前被选中的单选的值-->
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            val:"男",
+            val1:""
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--v-model : 用于下拉框；那么select上v-model绑定的值；跟option中value属性有关系；那么如果没有value属性，那么会取option标签的内容-->
+    <select v-model="arr">
+        <option  value="1">篮球</option>
+        <option  value="2">羽毛球</option>
+        <option  value="3">乒乓球</option>
+    </select>
+    {{arr}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            arr:"4"
+            // arr的默认值，会让select这个下拉框默认选中具体的option；
+        }
+    })
+
+
+</script>
+</body>
+</html>

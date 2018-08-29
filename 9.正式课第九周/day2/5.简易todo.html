@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--当按下enter键时，触发add这个方法-->
+    <input type="text"  @keydown.enter = "add" v-model="val">
+    <ul>
+        <li v-for="(item,index) in  arr">{{item}}
+            <button @click="remove(index)">删除</button>
+        </li>
+    </ul>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            arr:[],
+            val :""// v-model : 数据是双向的，当视图发生改变，那么data中的val也会随着发生变化；
+        },
+        methods:{
+            add(){
+                // 在Vue中给元素的事件行为绑定的方法中的this，指向了vue的实例
+                this.arr.unshift(this.val);
+                // 清除input框原有的内容
+                this.val = "";
+                //console.log(this.val);
+            },
+            remove(curIndex){
+                // 移出当前的li；只需要移出数组中对应的那一项；那么页面会自动把当前li给删除掉；
+                // filter : 把返回值是true的留下；
+                this.arr = this.arr.filter((item,index)=>curIndex!==index);
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--管道符-->
+    <!--管道符会把前面的返回值传给toFixed 第一个参数；-->
+    {{sum() | toFixed(2)}}
+    {{1.233344 | toFixed(3)}}
+    <!--方法调用的第一个参数就是管道符前面的值-->
+    {{18 | addZero()}}
+</div>
+<!--<div id="app1">
+    {{1 | addZero()}}
+</div>-->
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // 全局注册过滤器
+    // Vue.filter(方法的名字，函数)
+    // 可以在任何一个vue的实例进行使用；全局注册；
+    //Vue.filter("addZero",num=>num<10?"0"+num:num);
+
+    let  vm = new Vue({
+        el:"#app",
+        //过滤器: 经常用于数据的处理；封装一个方法；
+        filters:{
+            // 当前是私有的方法，不能供其他vue的实例调用；
+            // 局部注册过滤器
+            toFixed(val,num){
+                // 返回一个数字，保留num个小数；
+                return val.toFixed(num)
+            },
+            addZero(num){
+                // 第一个形参接收管道符前面的值；
+                return num <10?"0"+num:num;
+            },
+           // filters 和data中和methods中的方法没有冲突；
+           a(){
+
+           }
+        },
+        data:{
+            a:17
+        },
+        methods:{
+            sum(){
+                return 39.989889;
+            }
+        }
+    });
+    /*let vm1 = new Vue({
+        el:"#app1"
+    })*/
+
+</script>
+</body>
+</html>

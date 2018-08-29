@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" style="font-size: 40px;color:red">
+    <div  @click="parent">
+        parent
+        <div @click.self="child">
+            child
+            <div @click="grandChild">
+                grandChild
+            </div>
+        </div>
+    </div>
+    <!--<a href="https://www.baidu.com" @click.prevent="fn">请点击
+    </a>-->
+    <input type="text" @keydown.a="add">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // 事件修饰符；
+    // .prevent : 阻止事件的默认行为；
+    // .stop : 阻止事件的冒泡传播
+    // .capture : 事件行为在捕获阶段执行；
+    // .once : 只执行一次
+    // .self :只有触发自己的事件行为才会执行
+
+    // 键盘事件的修饰符： 修饰键盘事件的；
+    // .enter : 回车
+    // .esc :退出
+    // .delete : 退格
+    // .space : 空格
+    // .tab : tab键
+    // .left :
+    // .up: 向上
+    // .right
+    // .down ： 向下
+
+    let  vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"你很帅"
+        },
+        methods:{
+           fn(e){
+               console.log(1);
+           },
+           parent(){
+               console.log("parent");
+           },
+            child(){
+                console.log("child");
+            },
+            grandChild(){
+                console.log("grandChild")
+            },
+            add(e){
+                // e.keyCode === 13
+                // left :  37  top  38  right 39  bottom :40
+                console.log("新增")
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
