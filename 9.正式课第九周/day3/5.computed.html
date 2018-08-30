@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">
+    {{msg}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let  vm = new Vue({
+        el:"#app",
+        data:{
+            a:"",
+
+        },
+        computed:{
+            // 依赖a的长度，长度发生变化，触发msg发生；
+            // computed不支持异步的方法；
+            msg(){
+                setTimeout(()=>{
+                    if(this.a.length>5){
+                        return "太长了"
+                    }
+                    if(this.a.length<3){
+                        return "太少了"
+                    }
+                },1000);
+            }
+        }
+    })
+</script>
+</body>
+</html>

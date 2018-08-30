@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style type="text/css">
+        .del{
+            text-decoration: line-through;
+            color:#ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    TodoList
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <!--控制宽高；-->
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel">
+                    <div class="panel-heading bg-warning">
+                        <h2 class="text-danger">亲~^_^,你有2件事要完成</h2>
+                        <input type="text" class="form-control"  @keyup.enter="add" v-model="title">
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" v-for="todo  in  filterTodo">
+                                <span :class="{del:todo.isSelected}">
+                                   <input type="checkbox" v-model="todo.isSelected"> {{todo.title}}
+                                </span>
+
+                                <button class="btn btn-danger pull-right btn-xs" @click="remove(todo)">&bigotimes;</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <ul class="nav nav-pills">
+                            <li role="presentation" class="active"><a href="#all">全部任务</a></li>
+                            <li role="presentation"><a href="#finish">已完成</a></li>
+                            <li role="presentation"><a href="#unfinish">未完成</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="todo.js"></script>
+</body>
+</html>

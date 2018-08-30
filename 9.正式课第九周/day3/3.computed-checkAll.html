@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="checkAll">全选<br>
+    <input type="checkbox" v-for="item in products" v-model="item.isSelected" >
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // computed : 计算属性
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            products:[{isSelected:true},{isSelected:true}],
+            //checkAll:true
+        },
+        computed:{
+            // computed 计算的属性会缓存；
+            // checkAll : 这个属性的属性值是有下面两个input的的v-model计算得来的；当下面有一个是false，checkAll 就是false，两个都是true，结果是true；
+            // 在computed中的，属性都有一个get和一个set方法；当获取checkAll 时，会执行get方法，那么checkAll 是get方法的返回值；
+            // computed中的属性都会被vm所代理；最终放在vm属性上；
+            // computed 中的属性同样不能和data中重名，也不能和methods中的属性重名；
+
+            // computed属性还可以是一个函数，那么函数执行会默认调用get方法，那么sum函数执行的返回值就是sum这个属性的属性值；
+
+            // 如果一个属性依赖于其他属性计算而来，那么这个属性最好是用computed；因为computed计算的属性会有缓存；
+            checkAll:{
+                get(){
+                    // checkAll 会依赖item的isSelected属性执行get方法；由于item发生变化，所以会再次出发get方法；如果return 100；
+                    // computed 属性会被缓存，除非当依赖的属性发生改变时，会调用get方法；get方法中决定了当前属性的依赖属性；
+                    console.log(1);
+                    return this.products.every(item=>item.isSelected);
+                },
+                set(val){
+                    // 会把当前的值value传给set的参数；true/false;
+                    // 设置所有的数据中的isSelected 属性是和checkAll 的值一样；
+                    console.log(val);
+                    this.products.forEach(item=>item.isSelected=val)
+                }
+            }
+
+            //
+        },
+
+    })
+
+
+</script>
+</body>
+</html>

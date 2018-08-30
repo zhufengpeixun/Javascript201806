@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #app div{
+            width:100px;
+            height:100px;
+            background: red;
+
+            position:absolute;
+        }
+        #app div:nth-child(2){
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-drag>1</div>
+    <div v-drag>2</div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        directives:{
+            // 这里面存储到都是自定义的指令；
+            drag(el){
+                // drag :第一个参数就是拖拽这个元素；
+                // 当页面刷新或者第一次进来；初始化vue实例，这个directives中的方法会自动执行；
+                //console.log(el);
+                el.onmousedown = function (e) {
+                    // 也可以记录当前鼠标距离盒子左边的距离；或上边的距离
+                    //记录相对于盒子的位置；
+                    let disX = e.pageX-this.offsetLeft;
+                    let disY = e.pageY-this.offsetTop;
+                    document.onmousemove = function (e) {
+                        el.style.left = e.pageX-disX+"px";
+                        el.style.top = e.pageY -disY+"px";
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = document.onmouseup = null;
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

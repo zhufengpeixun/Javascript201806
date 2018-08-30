@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">
+    <!--解析出一个span标签-->
+    <transition-group enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+        <!--transition-group ：子元素会进行复用；应该给每一个元素加一个标识；区分是不同的元素；元素就不再进行复用-->
+        <!--key 最好不要相同-->
+        <div v-for="(val,index) in  newArr" :key="index">{{val}}</div>
+    </transition-group>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            a:"",
+            query:[1,2,3,4,5],// 存储值；
+        },
+        computed:{
+            // newArr: 是根据input中的输入值发生变化；根据input输入的内容；得出一个最新的数组；
+            newArr(){
+                return this.query.filter(item=>item==this.a);
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

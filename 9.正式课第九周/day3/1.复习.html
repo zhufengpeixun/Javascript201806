@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div onclick="console.log(1)">222233</div>
+<div id="app">
+    <!--函数没有括号，第一个参数默认接收事件对象；如果有括号，并且需要事件对象，需要给函数括号中传一个$event-->
+    <div @click="flag=true">点我</div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // 事件； v-on : + 事件行为 = “事件的方法”； ==>@click="fn()"
+    //
+    //oBox.addEventListener("click",fn,true);
+
+    let vm = new Vue({
+        el:"#app",
+        filters:{
+            // 过滤器；会对管道符前面的值进行过滤；
+        },
+        data:{
+            // 当存储一些公共的数据，或者响应式的数据一般放在data；
+            //
+             arr:[],
+             product:[],
+            flag :false
+        },
+        methods:{
+            // methods:存储的是所有的函数和事件行为的方法；
+            fn(a,b,c) {
+                console.log(this);// 指向vue的实例；
+                let f = ()=>{
+                    console.log(this);// 指向vue的实例；
+                }
+                f();
+                console.log(this.arr);
+
+                axios.get("list.json").then((data)=>{
+                     this.product =data.data;
+                },err=>{
+
+                })
+            },
+        }
+    });
+    // 事件的修饰符
+    // prevent :
+    // stop :
+    // capture:
+    // once :
+    // self :
+
+
+</script>
+
+</body>
+</html>

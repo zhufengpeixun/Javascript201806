@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+    <style type="">
+        #app div{
+            font-size: 50px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="flag=!flag">切换</button>
+    <!--谁需要过渡动画，就在谁外面套一个transition-->
+    <!--transition 有name属性，定义过渡动画的名称-->
+    <!--enter-active-class: 当元素进入页面时，leave-active-class 离开页面时-->
+    <transition name="zfpx" enter-active-class="animated bounceInRight"  leave-active-class="animated bounceOutLeft">
+        <div v-show="flag">I LOVE  YOU</div>
+    </transition>
+
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        },
+        methods:{
+            /*fn(){
+                console.log(1);
+                if(this.flag){
+                    this.flag = false;
+                }else{
+                    this.flag = true;
+                }
+            }*/
+        }
+    })
+</script>
+</body>
+</html>

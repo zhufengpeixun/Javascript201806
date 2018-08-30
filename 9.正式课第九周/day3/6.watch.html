@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">
+    {{msg}}
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let  vm = new Vue({
+        el:"#app",
+        data:{
+            a:"",
+            msg:""
+        },
+        // computed : 计算属性
+        // watch : 监听某个属性的方法啊；当某个属性发生变化，执行不同的操作；
+        // watch 可以支持异步；
+        watch:{
+            a(newVal,oldVal){
+                // 监听a属性，当a属性发生变化，会这行这个函数；
+                // watch会把最新的值和上一次的值传给这个函数；第一个接收新的数值，第二个接收上一次的值；
+                //console.log(newVal);
+                //console.log(oldVal);
+                setTimeout(()=>{
+                    this.msg = "";
+                    if(newVal.length>5){
+                        this.msg = "太长了"
+                    }
+                    if(newVal.length<3){
+                        this.msg = "太短了";
+                    }
+                },2000);
+
+                // 在工作中，能用computed，就不要用watch;
+            }
+        }
+
+    })
+    // 1. MVVM模式
+    // 2.vue双向数据绑定原理
+    // 3.vue的声明周期
+    // 4.vue 中computed和watch有什么区别；
+    // 5.用过VUEX吗；
+</script>
+</body>
+</html>

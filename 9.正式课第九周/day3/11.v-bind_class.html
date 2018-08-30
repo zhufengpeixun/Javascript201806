@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .x{
+            font-size: 30px;
+        }
+        .y{
+            color:red
+        }
+        .z{
+            background: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--<img :src="" alt="">-->
+    <div class="x" :class="{y:true,z:flag}">今天下雨了</div>
+    <div :class="['x','z',class1][0]">今天凉快了</div>
+    <div class="x" :class="{aa:class1,z:flag}['aa']">今天下雨了</div>
+    <div v-for="(a,index) in  10" :class="{z:index%2}">{{a}}</div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // v-bind : 绑定动态属性;v-bind: 简写成：
+    // v-bind：class : 可以是一个对象，那么对象属性名是对应的class；属性值是控制当前class是否生效；true就是生效的；
+    // v-bind:class ：属性值是一个数组，数组成员是对应的class;
+    // 如果是数组或对象，可以通过[]去获取具体的某一项
+    // :class 和原有的class是没有冲突的，如果都不相同，那么最后class合并到一起；如果出现相同的，那么会覆盖其中的一个；
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            class1:"y",
+            flag:true
+        }
+    })
+</script>
+</body>
+</html>

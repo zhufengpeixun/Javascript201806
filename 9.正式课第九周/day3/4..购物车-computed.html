@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style type="text/css">
+        .container  .row .table tr  td{
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<!--caption 只能放在table中使用:表头-->
+<!--danger:红色  success :绿色  default： 灰色  primary： 蓝色-->
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered">
+                <caption class="h2 text-center text-danger">珠峰购物车</caption>
+                <tr>
+                    <td>全选<input type="checkbox" v-model="checkAll" ></td>
+                    <td>商品</td>
+                    <td>单价</td>
+                    <td>数量</td>
+                    <td>小计</td>
+                    <td>操作</td>
+                </tr>
+                <tr v-for="product in  products">
+                    <!-- {
+                    "isSelected": true,
+                    "productCover": "https://img10.360buyimg.com/cms/s80x80_jfs/t6094/107/710811867/382815/4d54717/592bf165N755a88f0.jpg",
+                    "productName": "深入浅出Node.js",
+                    "productInfo": "颜色：Node.js学习",
+                    "productPrice": 57.8,
+                    "productCount": 3
+                  }-->
+                    <td><input type="checkbox" v-model="product.isSelected"></td>
+                    <td>
+                        <img :src="product.productCover" :title="product.productName" alt="">
+                        {{product.productInfo}}
+                    </td>
+                    <td>
+                        {{product.productPrice}}
+                    </td>
+                    <td>
+                        <input type="number" v-model="product.productCount" min="1">
+                    </td>
+                    <td>
+                        {{product.productPrice*product.productCount | toFixed(2)}}
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @click="remove(product)">删除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <!--colspan:合并单元格-->
+                    <td colspan="6">总价格：{{sum | toFixed(2)}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            products:[],
+        },
+        filters:{
+            // 保留两位小数；并且给数字加单位；
+            toFixed(num,n){
+                return "￥" + num.toFixed(n);
+            }
+        },
+        created(){
+            this.getData();// 发送请求；
+        },
+        computed:{
+            checkAll:{
+                get(){
+                    console.log(1);
+                    return this.products.every(item=>item.isSelected);
+                },
+                set(val){
+                    console.log(val);
+                    this.products.forEach(item=>item.isSelected=val)
+                }
+            },
+            sum(){
+
+                return this.products.reduce((prev,next)=>{
+                    if(!next.isSelected){return prev}
+                    return prev + next.productPrice*next.productCount;
+                },0);
+
+            }
+        },
+        methods:{
+            getData(){
+                // 通过axios获取carts中的数据
+                axios.get("carts.json").then(data=>{
+                    this.products = data.data;
+                },err=>{
+
+                })
+            },
+            remove(val){
+                // val ： 是点击删除时，传进来的product；
+                // 当两个值相等时，返回的是false；自动将相同的这一项过滤掉；
+                this.products = this.products.filter(item=>val !== item);
+            },
+            // 触发input的change事件，需要对全选的checkAll进行计算一次；
+        }
+    })
+    // v-model : 双向数据绑定
+</script>
+</body>
+</html>
