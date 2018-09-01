@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <!--<input type="text" v-model="a">-->
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // 初始化VUE；告诉浏览器谁具有vue的特点；
+    // 在vue.js中有一个构造函数叫Vue;它执行需要传一个对象，在这个对象中，有一些固定的属性名；
+    let div  = document.getElementById("app");
+    let vm = new Vue({
+        el:"#app",// el: 具有vue实例特点的最外层的元素；
+        data:{
+            // data 中数据最终都会放在当前vue的实例上；
+            msg:"hello",
+            a:"b"
+        }   // 属性值是一个对象；存储数据的；
+    });
+   /* new Vue({
+     el:"#ddd",// 如果vue的实例还有vue的实例，那么子实例的数据不被定义；
+     })*/
+   // 数据的响应式： 当vue中的data中的数据发生改变，那么会影响视图也随之发生变化；当数据发生改变，会直接影响虚拟DOM，那么虚拟DOM会影响真实的DOM；model==>view-model==>view
+
+    // view ===>view-model===>model;在vue中，利用DOM的监听，监听当前DOM有没有发生改变，如果发生改变，那么会触发订阅的事件；事件执行，会影响虚拟DOM；虚拟DOM影响数据；
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="checkAll">全选<br>
+    <input type="checkbox" v-for="a in products" v-model="a.isSelected" >
+    {{sum}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // el: string  data ： {}  methods:{} filters:{} created(){}
+    // computed :{}
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            products:[{isSelected:true},{isSelected:true}],
+        },
+        computed:{//计算属性；
+            checkAll:{
+                get(){
+                    //1. 当获取checkAll 这个属性时，就会默认调用get函数
+                    //2. computed的属性名不能和data中属性名和methods的属性名重名；
+                    //3.checkAll 的属性值跟get方法的返回值有关，返回值是多少，属性值就是多少；
+                    //4.在设置时，需要用一个参数接收当前设置的最新值；在input中，true或false；
+                    //5.computed 属性值会默认走缓存
+                    //6.如果computed属性属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；
+                    return this.products.every(item=>item.isSelected)
+                },
+                set(val){//
+                    this.products.forEach(item=>item.isSelected = val);
+                }
+            },
+            sum(){
+                return "你很好！"
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="checkAll" @change="changeAll">全选<br>
+    <input type="checkbox" v-for="item in products" v-model="item.isSelected" @change="checkone">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // computed : 计算属性
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            products:[{isSelected:true},{isSelected:true}],
+            checkAll:true
+        },
+        computed:{
+            // computed 计算的属性会缓存；
+        },
+        methods:{
+            // input :
+            // onchange ： 当input的value发生改变时，就会触发这个change事件；在input由于值发生变化，导致触发的事件一般都用change事件；
+            // onclick : 点击的时候，立即执行这个行为绑定的方法；
+            changeAll(){
+                this.products.forEach(item=>{
+                    item.isSelected = this.checkAll;
+                })
+            },
+            checkone(){
+                this.checkAll = this.products.every(item=>item.isSelected)
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

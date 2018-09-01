@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox">爱好<br>
+    <!--如果v-model绑定的值不是一个数组类型的，那么浏览器解析把其转换成布尔类型；同时选中，同时不被选中；所以需要跟每个input加上value属性值进行区分-->
+    <input type="checkbox" v-model="b"  value="跑步">跑步
+    <input type="checkbox" v-model="b"  value="爬山">爬山
+    <input type="checkbox" v-model="b"  value="游泳">游泳
+    {{b}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            b:[]
+        }
+    });
+</script>
+</body>
+</html>

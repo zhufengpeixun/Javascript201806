@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--<input type="text" v-model="a">-->
+    <!--<div v-model="a"></div>-->
+    <!--v-model：用于单选框；把v-model属性值一样的进行分组；具有互斥的作用-->
+    <!--<input type="radio" v-model="b" value="男">男
+    <input type="radio" v-model="b" value="女">女-->
+    <!--<input type="radio" v-model="a" value="姓名">姓名-->
+    <!--{{b}}-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // v-model :把data中的数据渲染到input中；当数据变话，input框发生改变；input值变化，那么data中的数据也发生改变；
+    // v-model: 一般用于表单元素；
+    
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            a:"小明",
+            b:"男"
+        }
+    });
+</script>
+</body>
+</html>

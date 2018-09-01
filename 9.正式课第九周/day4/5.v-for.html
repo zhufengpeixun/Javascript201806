@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--要循环谁，就把v-for放在谁身上；数据有多少条，那么就有多少个li-->
+        <li v-for="a in arr">
+            {{a.name}}
+            <ul>
+                <li v-for="b in a.list">
+                   {{b}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        created(){// 钩子函数；在初始化实例时，到了一定的阶段时,会默认调用的函数，叫钩子函数；
+            // axios 是一个基于promise封装的ajax库；成功时执行then中的第一个回调，失败执行第二个回调；
+            axios.get("list.json").then(data=>{
+                // data ==> data.data;
+                this.arr = data.data;
+            },err=>{
+
+            });
+        },
+        data: {
+            arr:[]
+        },
+    });
+
+</script>
+</body>
+</html>

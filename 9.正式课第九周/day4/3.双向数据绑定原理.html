@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            // vue 会遍历data中的所有的属性，通过Object.defineProperty把所有的属性转换成get方法和set方法；
+            msg:"hello"
+
+        }
+    });
+    // Object.definedProperty : 是es5 的方法，在IE8一下是不兼容的；所以vue也是不支持IE8 的；
+    let obj = {name:"珠峰"};
+    Object.defineProperty(obj,"name",{
+        get(){
+            // 当获取这个对象的属性名对应的属性值时，会默认执行get方法；
+            console.log(100);
+            // 函数return出去的值，就是获取的对象属性名对应的属性值；
+            return 1;
+        },
+        set() {
+            // 当设置这个对象的属性名对应的属性值时，会执行set方法
+            console.log(200);
+        }
+    });
+    // vue的数据劫持和vue双向数据绑定原理；
+
+</script>
+</body>
+</html>

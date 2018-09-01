@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--v-on: 可以改写成@-->
+    <div @click="fn($event,1)">你很帅</div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            //fn:"111"
+            a:100,
+            b:1000
+        },
+        methods:{
+            // 1.在vue中所有的事件行为的函数都写在methods里面；
+            // 2.methods中属性和data中的属性不能重名；
+            // 3.函数需要传实参，需要DOM的行间属性中加上括号以及实参
+            // 4.如果不是箭头函数，那么会有arguments
+            // 5.如果DOM行间不写括号，那么这个函数默认接收到第一个参数是事件对象
+            // 6.如果需要事件对象，也需要参数，那么需要在DOM行间函数括号中加$event;
+            fn(a){
+                console.log(a);
+               /* console.log(arguments);
+                console.log("你确实很帅！")*/
+            }
+        }
+    });
+</script>
+</body>
+</html>

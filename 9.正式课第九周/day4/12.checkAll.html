@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--click : 当点击时，会立即触发这个事件，那么当执行事件函数时，那这个input的value值是点击之前的value值；当值发生变化时，触发对应的事件；[change: 当value发生改变时，触发事件函数]-->
+    <input type="checkbox" v-model="checkAll" @change="changeAll">全选<br>
+    <input type="checkbox" v-for="a in products" v-model="a.isSelected" @change="checkone">
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            // data中的数据，最终都会放在vm的实例上；
+            checkAll:true,
+            products:[{isSelected:true},{isSelected:true}],
+        },
+        methods:{
+            changeAll(){
+                // 改变下面所有input的值；改变所有对象的isSelected属性值就可以；
+                // 绑定的函数中this会指向当前vue的实例；
+                //console.log(this);// this ==>实例
+                //console.log(this.products);
+                // 在vue中，能操作数据就不要操作DOM元素；让数据变化影响视图；
+                this.products.forEach((item,index)=>{
+                    item.isSelected  = this.checkAll;
+                })
+            },
+            checkone(){
+                // 当下面的input框值发生改变时，触发checkone 函数；只要有一个没有选中那么全选应该是false；当都选中时，checkALl 都选中；
+                this.checkAll = this.products.every(item=>item.isSelected);
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

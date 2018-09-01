@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">
+    {{msg}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    //  DOM-diff :
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            a:""
+        },
+        computed:{
+            // 根据input的value的长度来显示不同的提示；
+            // data中经常放一些公共的属性；
+            // 当依赖的属性发生改变时，会触发get方法；在页面中需要获取这个值；
+            // 在小胡子语法中遇到null,遇到undefined是没显示任何内容的；
+            msg(){
+                // this ---> 实例
+                // /[a-z]/.test(this.a)
+                setTimeout(()=>{
+
+                    if(this.a.length<3 &&this.a.length>=1){
+                        return "密码太短";
+                    }
+                    if(this.a.length>5){
+                        return "密码太长";
+                    }
+                },2000)
+
+            }
+        }
+    });
+</script>
+</body>

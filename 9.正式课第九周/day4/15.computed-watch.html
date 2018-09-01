@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="a">
+    {{msg}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    //  DOM-diff :
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            a:"",
+            msg:""
+        },
+        /*computed:{
+            msg(){
+                setTimeout(()=>{
+                    if(this.a.length<3 &&this.a.length>=1){
+                        return "密码太短";
+                    }
+                    if(this.a.length>5){
+                        return "密码太长";
+                    }
+                },2000)
+            }
+        }*/
+        watch:{// 监听属性；一定是存在的属性；是data中的属性；
+            a(newVal,oldVal){
+                // 1.当监听的属性发生改变时，那么会触发watch监听的这个函数；
+                // 2.监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；
+                // 3.watch监听属性可以支持异步；
+                // 4.在工作中，能用computed就别用watch；因为computed会有缓存；
+                // 5. computed 一般用于一个值依赖于多个值的操作（多对一）；watch ;当一个值变化，引起其他的数据变化（一对多）；
+                /*console.log(newVal);
+                console.log(oldVal);*/
+                setTimeout(()=>{
+                    if(newVal.length<3){
+                        this.msg = "密码太短";
+                        return;
+                    }
+                    if(newVal.length>5){
+                        this.msg = "密码太长";
+                        return;
+                    }
+                    this.msg=""
+                },1000);
+            }
+        }
+    });
+    // el  data  methods  filters  computed   watch  created
+</script>
+</body>

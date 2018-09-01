@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--在fn中,会默认把管道符前面那个值传给fn;-->
+    {{sum | fn(2)}}
+    {{1.7775332 | fn(3)}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // el  data  methods  filters
+    // filters : 过滤器
+    let vm = new Vue({
+        el: '#app',
+        filters:{// 用于过滤一些特殊的值；封装的一个方法；供其他值进行使用
+            fn(num,a){
+                return num.toFixed(a);
+            },
+            // 补零
+        },
+        data: {
+            sum:12.88888
+        }
+    });
+</script>
+</body>
+</html>

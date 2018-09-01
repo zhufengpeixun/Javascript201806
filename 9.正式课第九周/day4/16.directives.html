@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--v-开头的属性值是变量；不是字符串-->
+    <div v-color="color1">123</div>
+    <div v-color="color2">456</div>
+    <div>456</div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 实现自定义指令
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            color1:"red",
+            color2:"blue"
+        },
+        directives:{
+            // 函数的名字和v-后面的名字有关；
+            color(el,a){
+                // 1. 第一个参数是带有v-color行间属性的元素
+                // 2. 第二个参数是一个对象，其中这个对象的value属性名对应的属性值是v-color的属性值；
+                //console.log(el);
+                //console.log(a);
+                el.style.color=a.value;
+                //console.log(this);// window
+            }
+        }
+    });
+</script>
+</body>
+</html>

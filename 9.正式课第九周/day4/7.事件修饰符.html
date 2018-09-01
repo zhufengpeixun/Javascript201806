@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app" style="font-size: 30px;color:red">
+    <div @click.capture="parent">
+        parent
+        <div @click="child">
+            child
+            <div @click.once="grandchild">
+                grandchild
+            </div>
+            <input type="text" @keyup.13="">
+        </div>
+    </div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // addEventListener :
+    // attachEvent :
+    // 事件传播机制； 三个阶段
+    // 捕获阶段===>目标阶段===>冒泡阶段
+    // 事件的修饰符；放在时间行为的后面，修饰这个事件什么时候触发；
+    // .stop : 组织事件的冒泡；
+    // .prevent: 阻止事件的默认行为；
+   //  .capture : 事件在捕获阶段执行；
+    // .self : 只有点击自己时，才会执行；
+    // .once : 只执行一次；
+
+    // 键盘的事件修饰符
+    // .tab
+    // .esc
+    // .enter
+    // .left
+    // .right
+    // .up
+    // .down
+    // 支持数字和字母键
+
+
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        methods:{
+            parent(){
+                console.log("parent")
+            },
+            child(){
+                console.log("child")
+            },
+            grandchild(){
+                console.log("grandchild")
+            }
+        }
+    });
+</script>
+</body>
+</html>

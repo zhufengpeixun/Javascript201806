@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style type="text/css">
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--vue的指令： vue 定义DOM行间的一些特殊属性；以v-开头；在vue的实例被初始化时，vue的compile解析器会对其进行特殊的解析；-->
+    <!--小胡子语法:不仅仅可以取值，还可以放运算表达式-->
+    <!--{{1>5?msg:rr}}-->
+    <!--{{1+5}}-->
+    <!--{{!true}}-->
+    <!--<div>111</div>
+    <div v-html="msg"></div>
+    <div v-if="flag">100</div>
+    <div v-else-if="!flag">300</div>
+    <div v-else>200</div>-->
+
+    <!--<div v-show="flag">中国</div>-->
+   <!--<div v-once>{{rr}}</div>-->
+    <!--<img :src="add" alt="">-->
+    <div></div>
+    <div  v-cloak>
+        <div>{{msg}}</div>
+        <div>{{msg}}</div>
+    </div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // vue 中常用的指令: v-model  v-text  v-html v-for v-if  v-else  v-else-if  v-show v-on  v-bind  v-once  v-cloak;
+    // v-text :不识别标签
+    // v-html : 能够识别标签
+    // v-if : 控制的是元素的有无
+    // v-show : 控制的元素的样式display；如果频繁操作DOM元素，最好使用v-show；
+    // v-once :页面只会绑定一次，视图和数据不再有任何的关联；
+    // v-bind : 用于绑定动态的属性;v-bind:  简写成：
+    // v-cloak : 用于元素加载数据比较多时，vue解析时间比较长；为了防止{{}}的出现，给该元素加上v-cloak属性；直到vue中把DOM数据插入到真实DOM中时，让当前的元素显示；
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg:"中国足球加油",
+            rr:"你很帅",
+            flag:false,
+            add:"1.png"
+        }
+    });
+</script>
+</body>
+</html>

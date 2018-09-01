@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--在使用下拉框时，如果select有multiple; 那么v-model绑定的值最好是一个数组类型的；-->
+    <select name="" id="" multiple v-model="hobby">
+        <option value="吃">吃</option>
+        <option value="喝">喝</option>
+        <option value="玩">玩</option>
+    </select>
+    {{hobby}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            hobby:[]
+        }
+    });
+</script>
+</body>
