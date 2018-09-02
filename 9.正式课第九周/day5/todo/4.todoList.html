@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style type="text/css">
+        .del{
+            text-decoration: line-through;
+            color:#ccc;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    todoList
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-warning">
+                    <div class="panel-heading text-danger">
+                        <h3 class="text-danger">亲~，^_^你有{{count}}件事要完成</h3>
+                        <input type="text" class="form-control" @keyup.enter="add" v-model="title">
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" v-cloak v-for="todo in filterTodo" @dblclick="remember(todo)">
+                                <span :class="{del:todo.isSelected}" v-show="cur!==todo">
+                                    <!--当cur有值和这个todo相等时，说明点击是当前的li;那么让当前的span隐藏；cur只能存储一个值；-->
+                                    <input type="checkbox" v-model="todo.isSelected">
+                                    {{todo.title}}
+                                </span>
+                                <input type="text" v-model="todo.title" v-show="cur===todo" @keyup.enter="cancel" @blur="cancel" v-focus>
+                                <button class="btn btn-danger pull-right btn-xs" @click="remove(todo)">&bigotimes;</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <ul class="nav nav-pills">
+                            <li role="presentation" :class="{active:hash==='#all'}"><a href="#all">全部任务</a></li>
+                            <li role="presentation"  :class="{active:hash==='#finish'}"><a href="#finish">已完成</a></li>
+                            <li role="presentation"  :class="{active:hash==='#unfinish'}"><a href="#unfinish">未完成</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="todo.js"></script>
+</body>
+</html>

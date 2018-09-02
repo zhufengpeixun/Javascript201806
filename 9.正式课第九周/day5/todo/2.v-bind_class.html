@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style type="text/css">
+        .a{
+            font-size: 20px;
+        }
+        .x{
+            font-size: 30px;
+        }
+        .y{
+            color:red
+        }
+        .z{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--<img :src="" alt="">-->
+    <!--如果class名字相同，不会相互影响；如果样式相同，后面的会把前面的覆盖-->
+    <!--如果动态的class这个对象中，class的对象的属性名的属性值如果不是布尔值，那么会默认转成布尔；如果是true，当前class 生效；如果false，那么class不生效-->
+    <!--<div class="a" :class="{x:flag,y:false}">天凉了</div>-->
+    <!--可以通过对象获取属性名对应的属性值-->
+    <!--<div class="a" :class="{a:class1,y:true}['a']">天凉了</div>-->
+    <!--v-bind：class : 属性值可以对象还可以是数组-->
+    <div class="a" :class="[class1,class2][1]">天凉了</div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            flag :true,
+            class1:"x",
+            class2:"z"
+        }
+    });
+
+</script>
+</body>
+</html>

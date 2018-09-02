@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--<div style="color:red" :style="{width:'100px'}">天凉了</div>-->
+    <div style="color:red" :style="[bg1,bg2]">天凉了</div>
+    <!--v-bind:style: 动态绑定样式；可以是数组，数组成员一般从data中去获取；还可以接受对象；-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            bg1:{background:"green"},
+            bg2:{background:"black"}
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+   {{sum}}{{msg}}{{total}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // vue  ： 被new （{})
+    // el  data  methods  created  computed filters watch  directives
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg:1
+        },
+        computed:{
+            sum:{
+                get(){
+                    // 把get方法的返回值给sum;
+                },
+                set(){
+
+                }
+            },
+            total(){
+                // 默认调用get方法
+                // 返回值是total；
+            }
+        },
+        watch:{
+
+        },
+        filters:{// 过滤器
+
+        },
+        directives:{// 自定义指令
+
+        }
+    });
+    // v-text   v-html  v-bind  v-for  v-if  v-else  v-else-if  v-show   v-cloak  v-on  v-model  v-once
+</script>
+</body>
+</html>
