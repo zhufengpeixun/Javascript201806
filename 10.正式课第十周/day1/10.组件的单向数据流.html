@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <div @click="fn">{{msg}}</div>
+    <son :m="msg"></son>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 单向数据流： 只能从父组件传递给子组件，不能从子组件传递父组件；当父组件的数据发生改变之后，那么子组件的数据也会随着发生改变；
+    // 如果是一个对象或者数组，那么当子组件改变时，也会影响到父组件；是由于是同一个空间地址的原因；
+    let vm = new Vue({
+        el:"#app",
+        data: {
+            msg:"hello"
+        },
+        methods:{
+            fn(){
+                this.msg = "zfpx"
+            }
+        },
+        components:{
+            son:{
+                data(){
+                     return {}
+                },
+                props:["m"],
+                // props : 会把这个属性放到当前的组件的实例的属性上；
+                // 通过props传递过来的数据也具有响应式；但是不能再次传递父组件；
+                template:"<div @click='fn'>{{m}}</div>",
+                methods:{
+                    fn(){
+                        // 在组件的函数或者事件中，那么函数中的this指向了当前组件的实例；
+                        //
+                        //console.log(this);
+                        //console.log(this.m);
+                        this.m = "world";
+                    }
+                }
+            }
+        }
+    });
+    //
+</script>
+</body>
+</html>

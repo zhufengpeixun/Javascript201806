@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<template id="divs">
+    <!--template 标签不被页面渲染出来的；-->
+    <div>
+        <div v-for="a in arr">{{a}}</div>
+    </div>
+</template>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data:{
+            msg:"培训",
+            arr:[1,23,3]
+        },
+        //template:"<div><div></div></div>",
+        // 1.template的属性值会把外层div给替换掉；
+        // 2.template 只支持一个子元素；组件模板中只能由一个根元素；如果有多个元素，需要在外面加一个元素包裹起来；
+        // 3.两个不同的写法；
+        template:"#divs"
+    });
+</script>
+</body>
+</html>

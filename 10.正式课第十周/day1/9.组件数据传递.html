@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <son :m="msg"></son>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    //  父传子；
+    // 组件必须依托于一个根组件vue实例；
+    /*let son={
+        data(){
+            return {
+                val:100
+            }
+        },
+        template:"<div>{{val}}</div>"
+    }*/
+
+    // 1. 把父组件中的数组绑定子组件中的一个行间属性；并且是动态绑定的这个属性；
+    // 2.利用子组件中的props，去接收一下这个行间的属性；
+    // 3.在子组件中进行使用；
+    let vm = new Vue({
+        el:"#app",
+        data: {
+            msg:"hello"
+        },
+        components:{
+            son:{
+                // 在子组件中，data  computed  watch  methods 这些属性都有；子组件就是一个vue的实例；
+                data(){
+                    return {
+                        val:100
+                    }
+                },
+                // props
+                props:["m"],
+                template:"<div>{{m}}</div>"
+            }
+        }
+    });
+</script>
+</body>
+</html>

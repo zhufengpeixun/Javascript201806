@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <parent></parent>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 创建===>注册 ====>使用
+    //  1. 先创建一个组件 2.在对应的父组件中进行注册，3 在父组件的标签中让子组件的标签名放进去；
+    let  grandson = {
+        data(){
+            return {}
+        },
+        template:"<div>grandson</div>"
+    };
+    let  son = {
+        data(){
+            return {}
+        },
+        components:{
+            grandson
+        },
+        template:"<div>son<grandson></grandson></div>"
+    };
+    let  parent = {
+        data(){
+            return {msg:100}
+        },
+        components:{
+            son
+        },
+        template:"<div>parent<son></son></div>"
+    };
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        components:{
+            parent
+        }
+    });
+</script>
+</body>
+</html>

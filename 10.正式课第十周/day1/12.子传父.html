@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    父亲： {{money}}
+    <!--change 是获取到的父组件中methods中的值-->
+    <!--如果元素绑定的是一个自定义的事件，需要实例上的$emit 方法来触发这个函数；-->
+    <!--在vue中自定义事件需要带有-；在行间属性上，不支持驼峰的自定义事件；如果有两个有意义的单词，需要用-隔开；-->
+    <child :a="money"  @changem = "change"></child>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+
+    // 子传父: 如果需要当触发子组件上的操作改变父组件上的数据时，需要在父组件定义方法，改变自己的值；在父组件中定义的方法，需要订阅到子组件的自定义事件上；当触发子组件中的某个操作时，通过$emit 去触发这个自定义的事件；让其对应的父组件的方法执行；
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            money:400
+        },
+        methods:{
+            change(val){
+                console.log(1);
+                this.money = val;
+            }
+        },
+        components:{
+            child:{
+                data(){
+                    return {};
+                },
+                props:["a"],
+                template:"<div>儿子：{{a}}<button @click='fn'>多要钱</button></div>",
+                methods:{
+                    fn(){
+                        // $emit存在于每一个vue的实例上；
+                        // 需要和DOM行间的的属性是保持一致；
+                        //this.$emit("changem",800)
+                        //console.log(vm.money);
+                        //vm.money = 800;
+                    }
+                }
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

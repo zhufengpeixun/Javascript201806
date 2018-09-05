@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <components1></components1>
+    <components2></components2>
+</div>
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+   // 局部组件使用三部曲：
+   // 1.创建组件；
+   // 2.注册组件
+   // 3.使用组件；
+
+   let  obj  = {school:"zfpx"};
+   // 1.创建一个组件
+   let components1 = {
+       // 每一个组件都是一个vue的实例；那么每个组件都有自己的生命周期；都有钩子函数；
+       data(){
+           // data是私有的；
+           // 在各自的组件中，如果return的对象是一个公有的对象，那么其中一个组件影响数据，那么其他组件也会跟着发生改变；‘
+           //return obj;
+           return {school:"zfpx",arr:[]};
+       },
+       methods:{
+           fn(){
+               this.school = "珠峰培训";
+           }
+       },
+       template:"<div  @click='fn'>{{school}}</div>"
+   };
+   let components2 = {
+       data(){
+           //return obj;
+           return {school:"zfpx"};
+       },
+       methods:{
+           fn(){
+               console.log(1);
+           }
+       },
+       template:"<div  @click='fn'>{{school}}</div>"
+   }
+    let vm = new Vue({
+        el: '#app',
+        data: {a:1},
+        components:{
+            //注册一些局部的组件；
+            components1,components2
+        }
+    });
+   /*let vm1 = new Vue({
+       el:"#app1",
+       components:{
+           //注册一些局部的组件；
+           components1
+       }
+   })*/
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <div @click="fn()"></div>
+    {{fn}}
+    <div v-drag="50"></div>
+    <div v-drag="150"></div>
+    {{sum | fn(2)}}
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 操作数据；
+    // 代码的适应能力；
+    // v-for  v-model v-html  v-text  v-once   v-if  v-else  v-else-if  v-show   v-bind   v-cloak;
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            // 响应式：
+            // 最终放到vue的实例上；
+
+        },
+        created(){
+            this.fn()
+        },
+        methods:{
+            // 事件行为的方法；
+            fn(a){
+                console.log(1);
+            }
+        },
+        // data  methods  computed  :里面不能重名
+        computed:{
+            sum:{
+                get(){
+                    
+                },
+                set() {
+                    
+                }
+            },
+            checkAll(){
+                // 默认走get；
+                return 100;
+            }
+        },
+        watch:{
+            // 监听；
+        },
+        directives:{
+            // 自定义指令；
+            drag(el,val){
+                //
+                if(val.value>100){
+
+                }
+                console.log(val);
+            }
+        },
+        filters:{
+            fn(val,a){
+
+            }
+        }
+    });
+</script>
+</body>
+</html>

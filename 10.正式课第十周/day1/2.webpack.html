@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 打包工具；js
+    // 模块；
+    // import  export
+    // webpack.config.js
+    // webpack 是运行在node环境下；
+    // common.js  : require  module.exports;
+    // 第三方模块：path
+    module.exports = {
+        entry:"",// ""  {}   []
+        output:{
+            filename:"",
+            path:""
+        },
+        module:{
+            rules:[
+                {test:/\.js$/,use:""},{}
+            ]
+            // loader  : style-loader  css-loader  less-loader  url-loader  file-loader   babel-loader
+
+        },
+        plugins:[
+            new HtmlWebpackPlugins({
+                template:""// 路径；
+            })
+        ]
+    }
+
+
+</script>
+</body>
+</html>

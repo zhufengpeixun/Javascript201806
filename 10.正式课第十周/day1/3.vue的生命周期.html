@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <div v-html="1">{{msg}}</div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    //生命周期；
+    // vue的实例具有生命周期；vue实例在生成时，会经历一系列的初始化过程；数据的监听，编译模板，实例挂载DOM元素，或者数据更新DOM更新;在执行的过程中，会运行一些叫做生命周期的钩子函数；在vue实例生命周期中的特定的时间点内，执行的函数；
+
+    // 生命周期钩子函数，不能控制其执行的顺序；
+    // beforeCreate  created ： 创建；
+    // beforeMount  mounted : 挂载
+    let vm = new Vue({
+        el:"#app",
+        data: {
+            msg:"hello"
+        },
+        // 初始化事件和生命周期钩子函数；
+        beforeCreate(){
+            console.log(1);
+            // 数据和元素都没有
+            console.log(this.msg);
+            console.log(this.$el);// 挂载的元素；
+        },
+        // 注射属性和增加数据的响应式；Object.definedProperty
+        created(){
+            console.log(2);
+            // 数据已经响应式；但是挂载元素没有
+            console.log(this.msg);
+            console.log(this.$el);
+        },
+        beforeMount(){
+            console.log(3);
+            // 数据和元素都放在vm的实例身上；
+            console.log(this.msg);
+            console.log(this.$el);
+            //debugger
+        },
+        mounted(){
+            // 把虚拟的DOM挂载到真实的DOM上；虚拟的DOM实际就是一个JS对象；页面上已经是vue渲染出的真实DOM；
+            // 如果需要获取vue的元素，一般可以在这里获取；
+            // 在真实的项目中，一般的ajax请求放到created或mounted中；
+            console.log(4);
+            //debugger
+        },
+        // 只有当数据发生改变时，才会触发这个函数；
+        beforeUpdate(){
+            console.log(5);
+        },
+        updated(){
+            console.log(6);
+        },
+        // vue的生命周期，不会自己结束；需要手动结束这个vue生命周期；
+        beforeDestroy(){
+            console.log(7);
+        },
+        destroyed(){
+            console.log(8);
+        }
+    });
+    // $mount 写在new Vue的外面；如果vue 中没有el属性，此处代码会立即执行；
+    //vm.$mount("#app");
+    // 销毁这个vue的实例；
+    // vue的实例被销毁，但是由vue渲染出的DOM不能销毁；
+    // vue的数据和视图已经没有响应式了；销毁了属性的watcher,销毁了子组件；销毁了事件监听者；
+    vm.$destroy();
+</script>
+</body>
+</html>

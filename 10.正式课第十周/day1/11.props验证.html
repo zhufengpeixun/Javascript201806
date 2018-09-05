@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+   <child :m="msg"></child>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg:100
+        },
+        components:{
+            child:{
+                data(){
+                    return {}
+                },
+                // props  ： 不仅可以传数组，还可以传对象；
+                props:{
+                    // 单个类型校验
+                    //m:Number
+                    //m:[Number,String,Object,Function]
+                    m:{
+                        type:Number,// 校验类型的；
+                        required:true,// 必填项
+                        //default:100,// 默认值；
+                        validator(val){
+                            //console.log(val);
+                            // 会根据当前validator的返回值，向浏览器的控制台抛出警告；
+                            /*if(val>100){
+                                return true;
+                            }*/
+                            return false;
+                        }
+                    }
+                },
+                template:"<div @click='fn'>{{m}}</div>",
+                methods:{
+                    fn(){
+                        console.log(typeof this.m);
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

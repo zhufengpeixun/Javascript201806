@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <p ref="myp">{{msg}}</p>
+    <div ref="mydiv">
+        <div v-for="a in  arr" ref="wrap">{{a}}</div>
+    </div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // vue 中提供一个行间属性： ref;
+    // this.$refs : 获取到所有的元素带有行间属性ref的属性；
+    // this.$set :
+    // this.$mount : 挂载
+    // this.$el : 挂载的元素；
+    // this.$data:
+    // this.$options
+    // this.$nextTick
+    // this.$emit ： 发布
+    // this.$on: 订阅
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg:"zfpx",
+            arr:[1,2,3,4]
+        },
+        mounted(){
+            // 可以获取DOM，操作DOM；
+            // this  ---> vue的实例；
+            //后面把前面的覆盖掉；只能获取后面的一个；
+            // 如果当前元素是v-for循环绑定来的，那么当前获取一个数组
+            /*console.log(this.$refs);
+            console.log(this.$el);
+            console.log(this);*/
+            this.arr=[1,2,3,4,5];
+            //DOM的渲染是异步的；如果需要获取数据改变之后，最新的DOM元素，那么需要等待DOM渲染完成之后，再次获取就可以了；
+            this.$nextTick(()=>{
+                // 这个回调函数会等待DOM异步渲染完成执行；
+                console.log(this.$refs.wrap.length);// 5
+            });
+            console.log(this.$refs.wrap.length);// 4
+        },
+        beforeUpdate(){
+            console.log(this.$refs.wrap.length);// 4
+        },
+        updated(){
+            console.log(this.$refs.wrap.length);// 5
+        }
+    });
+</script>
+</body>
+</html>

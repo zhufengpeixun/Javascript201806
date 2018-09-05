@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <hand-some></hand-some>
+</div>
+<div id="app1">
+    <hand-some></hand-some>
+    <div></div>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 组件： 把页面中公共部分提炼出来，可以进行复用；
+    // 每个组件都是一个vue的实例；那么具有生命周期；并且也有data ,computed,methods ,watch这些属性；每个组件都有自己独立的维护的数据；
+    // 注册一个组件；
+    // 组件中data属性值需要是一个函数；函数return一个对象；
+    // Vue.component(string,{})
+
+    // 1.组件的名字，在JS中可以带有-;还可以驼峰的命名；
+    // 2.在HTML中进行引用时，支持-；但是不支持驼峰；
+    // 3.Vue.component 是全局注册组件，在其他各个vue的实例中，可以使用；
+    Vue.component("handSome",{
+        data(){
+            return {msg:"zfpx"}
+        },
+        template:"<div>{{msg}}</div>"
+    });
+    let vm = new Vue({
+        el: '#app',
+        data: {}
+    });
+    let vm1 = new Vue({
+        el: '#app1',
+        data: {}
+    });
+
+</script>
+</body>
+</html>
