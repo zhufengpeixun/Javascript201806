@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!-- 如果没有/ ，会默认在后面拼上当前的路径；需要回到根路径上；给路径加上/;-->
+    <router-link to="/home">首页</router-link>
+    <router-link to="/detail">详情页</router-link>
+    <router-view></router-view>
+</div>
+<template id="detail">
+    <div>
+        <!--当前profile和about是detail的一个子路由；-->
+        <router-link to="/detail/profile">个人中心</router-link>
+        <router-link to="/detail/about">关于我</router-link>
+        <router-view></router-view>
+    </div>
+</template>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    // 1.创建组件
+    let home = {template:"<div>首页</div>"};
+    let list = {template:"#detail"};
+    let profile = {template:"<div>profile</div>"};
+    let about = {template:"<div>about</div>"};
+    //2.配置路由的映射表
+    let routes = [
+        {path:"/home",component:home},
+        {path:"/detail",component:list,
+          // children : 配置当前路由的子路由；
+           children:[
+              // 子路由中不需要带/ ;如果加上/,相当于一级路由；
+               // 如果路由写到children中，会path进行了一个拼接；
+              {path:"profile",component:profile},
+              {path:"about",component:about}
+           ]
+        },
+        {path:"*",component:home}
+    ];
+    let router = new  VueRouter({
+        routes
+    });
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+    });
+</script>
+</body>
+</html>

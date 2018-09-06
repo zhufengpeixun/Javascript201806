@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+
+   <router-link to="home" tag="button">首页</router-link>
+   <router-link to="list" tag="button">列表页</router-link>
+    <router-view></router-view>
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+
+    let  home = {
+        template:"<div>首页<button @click='fn'>去列表</button></div>",
+        methods:{
+            fn(){
+                console.log(this);
+                // this.$router.push : 直接让当前跳转对应的组件上；
+                this.$router.push("/list");
+            }
+        }
+    };
+    let list = {
+        template:"<div>列表页<button @click='goBack'>返回</button></div>",
+        methods:{
+            goBack(){
+                // 返回上一个组件上；
+                this.$router.go(-1);
+            }
+        }
+    };
+    let  routes = [
+        {path:"",component:home},
+        {path:"/home",component:home},
+        {path:"/list",component:list},
+        {path:"*",component:home}
+    ];
+    let router = new VueRouter({
+        routes
+    });
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+    });
+</script>
+</body>
+</html>

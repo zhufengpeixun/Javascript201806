@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <!--to 是一个router-link 必须一个属性-->
+    <!--router-link 是一个自定义的标签-->
+    <!--router-link 中行间属性tag;属性值是展示对应的标签；把route-link 解析成对应的标签-->
+   <router-link to="home" tag="button">首页</router-link>
+   <router-link to="list" tag="button">列表页</router-link>
+    <!--是一个标签，也全局一个组件-->
+    <!--显示真实的对应的组件-->
+    <router-view></router-view>
+    <!--<router-view></router-view>-->
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    // 路由： node
+    // 根据不同的路径，执行不同的内容；
+    // 路由 ： 切换组件；
+    // vue-router : 实现页面的跳转；
+    // 1.创建组件
+    // 2.配置路由映射表
+    // 3.路由映射表放进VueRouter 进行注册；
+    let  home = {
+        template:"<div>首页</div>"
+    };
+    let list = {
+        template:"<div>列表页</div>"
+    };
+    // routes ; 路由映射表
+    //在routes中路径必须加上/;
+    let  routes = [
+        {path:"",component:home},// 默认显示当前的组件；
+        {path:"/home",component:home},
+        {path:"/list",component:list},
+        {path:"*",component:home}// 如果路径出错，那么回到首页；
+    ];
+    // vue-router ： 提供一个构造函数
+    let router = new VueRouter({
+        // routes ： 路由映射表；
+        routes
+    });
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        router
+    });
+</script>
+</body>
+</html>

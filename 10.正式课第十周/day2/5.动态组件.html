@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <input type="radio" v-model="title" value="home">home
+    <input type="radio" v-model="title" value="list">list
+    <!-- 在使用component这个自定义组件时，需要配合:is这个属性，动态绑定一个组件的名称；-->
+    <!--is后面的属性值是哪个组件的名称，显示哪个组件；不可以同时显示两个-->
+    <keep-alive>
+        <!---->
+        <component v-bind:is="title"></component>
+    </keep-alive>
+
+    <!--<component is="home"></component>-->
+
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 创建组件
+    // 动态组件进行切换时，会将上一个组件进行销毁，然后再挂载最新的组件；
+    //keep-alive: 保存了组件第一次生成时的状态；以后需要该组件，直接读取缓存中的组件就可以；不再执行挂载，销毁；从而提高了浏览器的性能；
+    let home  = {
+        template:"<div>home</div>",
+        mounted(){
+            console.log("挂载home")
+        },
+        destroyed(){
+            console.log("已销毁home")
+        }
+    };
+    let list  = {
+        template:"<div>list</div>",
+        mounted(){
+            console.log("挂载list")
+        },
+        destroyed(){
+            console.log("已销毁list")
+        }
+    };
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            title:"home",
+
+        },
+        // 注册组件
+        components:{
+            home,list
+        }
+    });
+</script>
+</body>
+</html>

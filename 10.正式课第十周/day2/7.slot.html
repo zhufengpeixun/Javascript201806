@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <modal>
+       <!--<div slot="title"> 123</div>
+        <a href="" slot="footer">去哪儿</a>
+        <a href="" slot="content">来哪儿</a>-->
+       <div slot="content">今天特价</div>
+    </modal>
+    <modal>
+        <!--写在组件中的标签，如果没有slot属性，这个元素不能被解析出来；如果需要解析，必须加上slot属性；属性和template模板中的slot的name属性是匹配的-->
+        <!--如果没有slot属性，那么会走默认的插槽；如果slot没有匹配上，那么将不被解析；-->
+        <div>手机</div>
+        <div slot="content">个人中心</div>
+        <div slot="">个人</div>
+        <div>电话</div>
+    </modal>
+
+</div>
+<template id="title">
+    <div>
+        <slot name="title">1</slot>
+        <!--定制模板；通过name属性来定制模板-->
+        <!--<div>模板</div>-->
+        <slot name="content">2</slot>
+        <slot name="default"></slot>
+        <!--<slot name="footer">3</slot>-->
+    </div>
+
+</template>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // slot  : 定制模板；
+    let modal = {
+        data(){
+            return {}
+        },
+        template:"#title"
+    }
+
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        components:{
+            modal
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    父亲： {{money}}
+    <!--绑定自定义事件的过程，就是订阅的过程；-->
+    <!--叫发布订阅的语法糖：简写-->
+    <!--<child  v-bind:m="money" v-on:update:m="money=$event"></child>-->
+    <child :m.sync="money"></child>
+</div>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            money : 400
+        },
+        components:{
+            child:{
+                data(){
+                    return {}
+                },
+                props:["m"],
+                template:"<div>儿子：{{m}}<button @click='fn'>多要钱</button></div>",
+                methods:{
+                    fn(){
+                        // 希望在fn执行时，触发父组件身上的change方法；
+                        this.$emit("update:m",888)
+                    }
+                }
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

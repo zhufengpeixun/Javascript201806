@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <hasn></hasn>
+    <obj :m="msg"></obj>
+</div>
+<template id="div">
+    <div>
+
+    </div>
+</template>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //  生命周期    组件    组件数据的传递；
+    // 钩子函数：
+    // 创建  ===> 挂载  ===>更新 ===>销毁；
+    // beforeCreate  created
+    // beforeMount   mounted
+    // beforeUpdate  updated
+    // beforeDestroy destroyed
+
+
+    //
+    Vue.component("hasn",{
+        data(){
+            return {msg:"hh"}
+        },
+        methods:{
+        },
+        template:"<div>{{msg}}</div>"
+    });
+
+    // 局部组件：
+    // 1.创建组件
+    // 2.注册组件
+    let  obj = {
+
+    }
+    // 组件数据传递： 单向数据流；
+    // 父传子： props
+    // 子组件改变父组件的数据；发布订阅方式
+    let vm = new  Vue({
+        el:"#app",
+        data:{
+            msg:"1"
+        },
+        created(){
+            this.fn();
+        },
+        methods:{
+            fn(){
+
+            }
+        },
+        //template:"<div></div>"
+        template:"#div",
+        components:{
+            obj:{
+                props:["m"],
+                template:"<div>{{m}}</div>"
+            }
+        }
+    });
+
+    //template
+
+    // 组件 ： 全局组件  局部组件
+
+
+
+</script>
+</body>
+</html>

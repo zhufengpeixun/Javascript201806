@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+   <!-- 父子组件会先执行谁的mounted？-->
+    <!--如果有父子组件，会先触发子组件的mounted，然后在触发父组件的mounted；为了在父组件中放方便操作DOM元素；-->
+    <!--子组件就是一个自定义的标签-->
+    <child ref="b"></child>
+</div>
+
+<template id="divs" >
+    <div>
+        <ul ref="a">
+            <li v-for="a in  arr"></li>
+        </ul>
+    </div>
+</template>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    let  child = {
+        template:"#divs",
+        data(){
+            return {
+                arr:[1,2,3]
+            }
+        },
+       /* created(){
+            console.log(300);
+        },*/
+        mounted(){
+            this.arr = [1,2,3,4,5];
+            // DOM的渲染是异步的；
+            console.log(100);
+        },
+        methods:{
+            hide(){
+                console.log(1);
+            }
+        }
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        /*created(){
+            console.log(400);
+        },*/
+        mounted(){
+            //console.log(200);
+            // $nextTick : 会等待异步执行完成，才会执行；
+           /* this.$nextTick(()=>{
+                // 会等待当前组件的DOM，子组件的DOM渲染完成，才可以执行；
+                console.log(this.$children[0].$refs.a.children.length);
+            })
+            console.log(this.$refs.b);*/
+            console.log(this.$refs.b.hide());
+            console.log(this.$refs);
+        },
+        components:{
+            child
+        }
+    });
+</script>
+</body>
+</html>
