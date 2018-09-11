@@ -10,6 +10,12 @@ let vm = new Vue({
         title:"",
         hash:"#all"
     },
+    directives:{
+        focus(el){
+            // 获取鼠标焦点的事件focus;
+           el.focus();
+        }
+    },
     created(){
         // window 可以监听当前页面hash值的变化；hashchange;
         window.addEventListener("hashchange",()=>{

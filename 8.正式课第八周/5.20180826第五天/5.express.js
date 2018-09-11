@@ -38,4 +38,4 @@ app.all("*",function (req,res) {
 app.listen(8888,function () {
     console.log("启动成功");
 });
-express.router()
+

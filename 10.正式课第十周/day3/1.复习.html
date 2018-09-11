@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<div id="app">
+    <hand></hand>
+    <temp :a="flag"></temp>
+</div>
+<template>
+
+</template>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    // 生命周期    组件    路由；
+
+    // 1. beforeCreate  created
+    // 2. beforeMount   mounted(ref、DOM渲染、nextTick)
+    // 3. beforeUpdate  updated(真实的DOM发生改变)
+    // 4. beforeDestroy  destroyed(销毁)
+
+
+    // 组件 ： 页面的组件化，组件的复用；方便开发和维护；
+    // 组件就是一个vue的实例，也有生命周期
+    // 全局组件
+    //Vue.component("hand",{});创建并且注册组件；
+
+
+    // 局部组件
+    // 创建组件 ==>注册组件 ===>使用组件
+    let temp = {
+        data(){
+            return {}
+        },
+        template:"",
+        methods:{
+
+        }
+        // data   methods  computed  watch   filters directives  template  created  mounted
+
+    };
+
+
+    // 数据传递；单向数据流；每一个组件都是一个单独的实例，相互之间不能改变对方法数据；子组件不能改变父组件数据；
+    // 父传子 ：  自定义属性 props
+    //  子传父 ： 发布订阅
+    // 兄弟==>兄弟： eventBus : 发布订阅；
+
+
+
+    // 路由 ： 改变hash，实现页面的跳转；  组件使用；
+    // vue-router vue   vuex  vue-cli  axios
+
+    // 1.创建  ---> 2.配置路由映射表 --->3.new  VueRouter-->4.在vue中使用；
+
+    // router-link ： to="/home/1" tag
+    // router-view  :
+
+    //$route.params.id
+
+    let routes = [{path:"/home/:id",component:temp}];
+    let  router = new  VueRouter({
+        routes
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        template:"<div></div>",
+        components:{
+            temp
+        },
+        router
+    });
+</script>
+</body>
+</html>

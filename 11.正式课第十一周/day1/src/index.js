@@ -1,8 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+// index.js : 是webpack的入口；
+// .js 是可以省略的；
+import './source/4.createElement'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+//
